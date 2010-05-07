@@ -187,7 +187,6 @@ class PathParameters < WADLTest
     # NOTE: Repeating plain arguments get separated by commas
     # (an arbitrary decision on my part).
     [['plain', 'http://www.example.com/i/want/pony,water%20slide,BB%20gun'],
-     #['form', 'http://www.example.com/i/want/a=pony&a=water%20slide&a=BB%20gun'],  # XXX fails
      ['matrix', 'http://www.example.com/i/want/;a=pony;a=water%20slide;a=BB%20gun']].each do |style, uri|
       repeating = wadl(text % style)
       list = repeating.find_resource('list')
