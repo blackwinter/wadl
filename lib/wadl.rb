@@ -4,14 +4,9 @@
 # v20070217
 # For more on WADL, see http://wadl.dev.java.net/
 
-require 'delegate'
-require 'rexml/document'
-require 'set'
-require 'cgi'
-require 'yaml'
-
-require 'rubygems'
-require 'rest-open-uri'
+%w[delegate rexml/document set cgi yaml rubygems rest-open-uri].each { |lib|
+  require lib
+}
 
 begin
   require 'mime/types'
@@ -100,69 +95,45 @@ module WADL
           collection_name = klass.names[:collection]
           dereferencing_instance_accessor(collection_name)
 
-          find_method_name = "find_#{klass.names[:element]}"
-
           # Define a method for finding a specific element of this
           # collection.
-          # TODO: In Ruby 1.9, make match_block a block argument.
-          define_method(find_method_name) { |name, *args|
-            name = name.to_s
+          class_eval <<-EOT, __FILE__, __LINE__ + 1
+            def find_#{klass.names[:element]}(*args, &block)
+              block ||= begin
+                name = args.shift.to_s
+                lambda { |match| match.matches?(name) }
+              end
 
-            match_block = args[0].respond_to?(:call) ?
-              args[0] : lambda { |match| match.name_matches(name) }
+              auto_dereference = args.shift
+              auto_dereference = true if auto_dereference.nil?
 
-            auto_dereference = args[1].nil? ? true : args[1]
+              match = #{collection_name}.find { |match|
+                block[match] || (
+                  #{klass}.may_be_reference? &&
+                  auto_dereference &&
+                  block[match.dereference]
+                )
+              }
 
-            match = send(collection_name).find { |match|
-              match_block.call(match) || (
-                klass.may_be_reference? &&
-                auto_dereference &&
-                match_block.call(match.dereference)
-              )
-            }
-
-            match && auto_dereference ? match.dereference : match
-          }
+              match && auto_dereference ? match.dereference : match
+            end
+          EOT
         }
       end
 
       def dereferencing_instance_accessor(*symbols)
-        symbols.each { |name|
-          define_method(name) {
-            d, v = dereference, "@#{name}"
-            d.instance_variable_get(v) if d.instance_variable_defined?(v)
-          }
-
-          define_method("#{name}=") { |value|
-            dereference.instance_variable_set("@#{name}", value)
-          }
-        }
+        define_dereferencing_accessors(symbols,
+          'd, v = dereference, :@%s; ' <<
+          'd.instance_variable_get(v) if d.instance_variable_defined?(v)',
+          'dereference.instance_variable_set(:@%s, value)'
+        )
       end
 
       def dereferencing_attr_accessor(*symbols)
-        symbols.each { |name|
-          define_method(name) {
-            dereference.attributes[name.to_s]
-          }
-
-          define_method("#{name}=") { |value|
-            dereference.attributes[name.to_s] = value
-          }
-        }
-      end
-
-      def has_required_or_attributes(names, var)
-        names.each { |name|
-          var << name
-
-          @index_attribute ||= name.to_s
-
-          if name == :href
-            attr_accessor name
-          else
-            dereferencing_attr_accessor name
-          end
-        }
+        define_dereferencing_accessors(symbols,
+          'dereference.attributes["%s"]',
+          'dereference.attributes["%s"] = value'
+        )
       end
 
       def has_attributes(*names)
@@ -176,27 +147,27 @@ module WADL
       def may_be_reference
         @may_be_reference = true
 
-        define_method(:dereference) {
-          return self unless attributes['href']
+        find_method_name = "find_#{names[:element]}"
 
-          unless @referenced
-            if attributes['href']
-              find_method_name = "find_#{self.class.names[:element]}"
+        class_eval <<-EOT, __FILE__, __LINE__ + 1
+          def dereference
+            return self unless href = attributes['href']
 
+            unless @referenced
               p = self
 
               until @referenced || !p
                 begin
                   p = p.parent
-                end until !p || p.respond_to?(find_method_name)
+                end until !p || p.respond_to?(:#{find_method_name})
 
-                @referenced = p.send(find_method_name, attributes['href'], nil, false) if p
+                @referenced = p.#{find_method_name}(href, false) if p
               end
             end
-          end
 
-          dereference_with_context(@referenced) if @referenced
-        }
+            dereference_with_context(@referenced) if @referenced
+          end
+        EOT
       end
 
       # Turn an XML element into an instance of this class.
@@ -264,6 +235,27 @@ module WADL
         me
       end
 
+      private
+
+      def define_dereferencing_accessors(symbols, getter, setter)
+        symbols.each { |name|
+          name = name.to_s
+
+          class_eval <<-EOT, __FILE__, __LINE__ + 1 unless name =~ /\W/
+            def #{name}; #{getter % name}; end
+            def #{name}=(value); #{setter % name}; end
+          EOT
+        }
+      end
+
+      def has_required_or_attributes(names, var)
+        names.each { |name|
+          var << name
+          @index_attribute ||= name.to_s
+          name == :href ? attr_accessor(name) : dereferencing_attr_accessor(name)
+        }
+      end
+
     end
 
     # Common instance methods
@@ -293,7 +285,7 @@ module WADL
 
     # Returns whether or not the given name matches this object.
     # By default, checks the index key for this class.
-    def name_matches(name)
+    def matches?(name)
       index_key == name
     end
 
@@ -343,17 +335,15 @@ module WADL
   URIParts = Struct.new(:uri, :query, :headers) do
 
     def to_s
-      u = uri.dup
-      u << (uri.include?('?') ? '&' : '?') << query_string unless query.empty?
-      u
+      qs = "#{uri.include?('?') ? '&' : '?'}#{query_string}" unless query.empty?
+      "#{uri}#{qs}"
     end
 
     alias_method :to_str, :to_s
 
     def inspect
-      s = to_s
-      s << " Plus headers: #{headers.inspect}" if headers
-      s
+      hs = " Plus headers: #{headers.inspect}" if headers
+      "#{to_s}#{hs}"
     end
 
     def query_string
@@ -392,7 +382,7 @@ module WADL
     end
 
     def _deep_copy_hash(h)
-      h.inject({}) { |h, kv| h[kv[0]] = kv[1] && kv[1].dup; h }
+      h.inject({}) { |h, (k, v)| h[k] = v && v.dup; h }
     end
 
     def _deep_copy_array(a)
@@ -473,30 +463,23 @@ module WADL
 
       # Bind query variable values to query parameters
       query_var_values.each { |name, value|
-        if param = query_params[name.to_s]
-          query_vars << param % value
-          query_params.delete(name.to_s)
-        end
+        param = query_params.delete(name.to_s)
+        query_vars << param % value if param
       }
 
       # Bind header variables to header parameters
       header_var_values.each { |name, value|
-        if param = header_params[name.to_s]
-          headers[name] = param % value
-          header_params.delete(name.to_s)
-        end
+        param = header_params.delete(name.to_s)
+        headers[name] = param % value if param
       }
 
       self
     end
 
     def uri(args = {})
-      obj = deep_copy
-      obj.bind!(args)
+      obj, uri = deep_copy.bind!(args), ''
 
       # Build the path
-      uri = ''
-
       obj.path_fragments.flatten.each { |fragment|
         if fragment.respond_to?(:to_str)
           embedded_param_names = self.class.embedded_param_names(fragment)
@@ -551,8 +534,12 @@ module WADL
 
     # Convenience method to define a no-argument singleton method on
     # this object.
-    def define_singleton(name, contents)
-      instance_eval(%Q{def #{name}\n#{contents}\nend}) unless name =~ /\W/ || respond_to?(name)
+    def define_singleton(r, sym, method)
+      name = r.send(sym)
+
+      if name && name !~ /\W/ && !r.respond_to?(name) && !respond_to?(name)
+        instance_eval(%Q{def #{name}\n#{method}('#{name}')\nend})
+      end
     end
 
   end
@@ -587,7 +574,7 @@ module WADL
       @default ||= begin
         default = Param.new
 
-        default.required = true
+        default.required = 'true'
         default.style    = 'plain'
         default.type     = 'xsd:string'
 
@@ -650,14 +637,14 @@ module WADL
       end
 
       if style == 'query' || parent.is_a?(RequestFormat) || (
-        parent.respond_to?('is_form_representation?') && parent.is_form_representation?
+        parent.respond_to?(:is_form_representation?) && parent.is_form_representation?
       )
-        values.map { |v| URI.escape(name) + '=' + URI.escape(v.to_s) }.join('&')
+        values.map { |v| "#{URI.escape(name)}=#{URI.escape(v.to_s)}" }.join('&')
       elsif style == 'matrix'
         if type == 'xsd:boolean'
-          values.map { |v| (v == 'true' || v == true) ? ';' + name : '' }.join
+          values.map { |v| ";#{name}" if v =~ BOOLEAN_RE }.compact.join
         else
-          values.map { |v| v ? ';' + URI.escape(name) + '=' + URI.escape(v.to_s) : '' }.join
+          values.map { |v| ";#{URI.escape(name)}=#{URI.escape(v.to_s)}" if v }.compact.join
         end
       elsif style == 'header'
         values.join(',')
@@ -709,21 +696,13 @@ module WADL
 
         if param.fixed
           p_values = [param.fixed]
-        elsif values[name] || values[name.to_sym]
-          p_values = values[name] || values[name.to_sym]
-
-          if !param.repeating? || !(p_values.respond_to?(:each) && !p_values.respond_to?(:to_str))
-            p_values = [p_values]
-          end
+        elsif p_values = values[name] || values[name.to_sym]
+          p_values = [p_values] if !param.repeating? || !p_values.respond_to?(:each) || p_values.respond_to?(:to_str)
         else
-          if param.required?
-            raise ArgumentError, "Your proposed representation is missing a value for #{param.name}"
-          end
+          raise ArgumentError, "Your proposed representation is missing a value for #{param.name}" if param.required?
         end
 
-        if p_values
-          p_values.each { |v| representation << CGI::escape(name) + '=' + CGI::escape(v.to_s) }
-        end
+        p_values.each { |v| representation << "#{CGI::escape(name)}=#{CGI::escape(v.to_s)}" } if p_values
       }
 
       representation.join('&')
@@ -749,20 +728,16 @@ module WADL
     def self.from_element(*args)
       me = super
 
-      unless me.attributes['href']
-        if name = me.attributes['id']
-          begin
-            c = Class.new(Fault)
-            WADL::Faults.const_set(name, c) unless WADL::Faults.const_defined?(name)
-            me.subclass = c
-          rescue NameError
-            # This fault format's ID can't be a class name. Use the
-            # generic subclass of Fault.
-          end
+      me.subclass = if name = me.attributes['id']
+        begin
+          WADL::Faults.const_defined?(name) ?
+            WADL::Faults.const_get(name) :
+            WADL::Faults.const_set(name, Class.new(Fault))
+        rescue NameError
+          # This fault format's ID can't be a class name. Use the
+          # generic subclass of Fault.
         end
-
-        me.subclass ||= Fault
-      end
+      end || Fault unless me.attributes['href']
 
       me
     end
@@ -822,25 +797,24 @@ module WADL
         # type.
         response_media_type = http_response.content_type
         response_format = representations.find { |f|
-          t = f.dereference.mediaType
-          t && response_media_type.index(t) == 0
+          t = f.dereference.mediaType and response_media_type.index(t) == 0
         }
 
         # If an exact media type match fails, use the mime-types gem to
         # match the response to a response format using the underlying
         # subtype. This will match "application/xml" with "text/xml".
-        unless response_format || !defined?(MIME::Types)
+        response_format ||= begin
           mime_type = MIME::Types[response_media_type]
           raw_sub_type = mime_type[0].raw_sub_type if mime_type && !mime_type.empty?
 
-          response_format = representations.find { |f|
+          representations.find { |f|
             if t = f.dereference.mediaType
               response_mime_type = MIME::Types[t]
               response_raw_sub_type = response_mime_type[0].raw_sub_type if response_mime_type && !response_mime_type.empty?
               response_raw_sub_type == raw_sub_type
             end
           }
-        end
+        end if defined?(MIME::Types)
 
         # If all else fails, try to find a response that specifies no
         # media type. TODO: check if this would be valid WADL.
@@ -908,10 +882,10 @@ module WADL
 
       set_oauth_header(headers, uri)
 
-      begin
-        response = open(uri, headers)
+      response = begin
+        open(uri, headers)
       rescue OpenURI::HTTPError => err
-        response = err.io
+        err.io
       end
 
       method.response.build(response)
@@ -952,18 +926,18 @@ module WADL
 
     def resource(name_or_id)
       name_or_id = name_or_id.to_s
-      find_resource(nil, lambda { |r| r.id == name_or_id || r.path == name_or_id })
+      find_resource { |r| r.id == name_or_id || r.path == name_or_id }
     end
 
-    def find_resource_by_path(path, *args)
+    def find_resource_by_path(path, auto_dereference = nil)
       path = path.to_s
-      find_resource(nil, lambda { |r| r.path == path }, *args)
+      find_resource(auto_dereference) { |r| r.path == path }
     end
 
     def finalize_creation
       resources.each { |r|
-        define_singleton(r.id, "find_resource('#{r.id}')") if r.id && !r.respond_to?(r.id)
-        define_singleton(r.path, "find_resource_by_path('#{r.path}')") if r.path && !r.respond_to?(r.path)
+        define_singleton(r, :id,   :find_resource)
+        define_singleton(r, :path, :find_resource_by_path)
       } if resources
     end
 
@@ -998,9 +972,7 @@ module WADL
     # Returns a ResourceAndAddress object bound to this resource
     # and the given query variables.
     def bind(args = {})
-      resource = ResourceAndAddress.new(self)
-      resource.bind!(args)
-      resource
+      ResourceAndAddress.new(self).bind!(args)
     end
 
     # Sets basic auth parameters
@@ -1020,8 +992,7 @@ module WADL
     end
 
     def uri(args = {}, working_address = nil)
-      working_address &&= working_address.deep_copy
-      address(working_address).uri(args)
+      address(working_address && working_address.deep_copy).uri(args)
     end
 
     # Returns an Address object refering to this resource
@@ -1094,22 +1065,13 @@ module WADL
     end
 
     # Methods for reading or writing this resource
-
-    def get(*args, &block)
-      find_method_by_http_method('get').call(self, *args, &block)
-    end
-
-    def post(*args, &block)
-      find_method_by_http_method('post').call(self, *args, &block)
-    end
-
-    def put(*args, &block)
-      find_method_by_http_method('put').call(self, *args, &block)
-    end
-
-    def delete(*args, &block)
-      find_method_by_http_method('delete').call(self, *args, &block)
-    end
+    %w[get post put delete].each { |method|
+      class_eval <<-EOT, __FILE__, __LINE__ + 1
+        def #{method}(*args, &block)
+          find_method_by_http_method(:#{method}).call(self, *args, &block)
+        end
+      EOT
+    }
 
   end
 
@@ -1169,33 +1131,17 @@ module WADL
     # the delegation operation.
     def resource(*args, &block)
       resource = @resource.resource(*args, &block)
-      resource ? ResourceAndAddress.new(resource, @address) : resource
+      resource && ResourceAndAddress.new(resource, @address)
     end
 
     def find_resource(*args, &block)
       resource = @resource.find_resource(*args, &block)
-      resource ? ResourceAndAddress.new(resource, @address) : resource
+      resource && ResourceAndAddress.new(resource, @address)
     end
 
     def find_resource_by_path(*args, &block)
       resource = @resource.find_resource_by_path(*args, &block)
-      resource ? ResourceAndAddress.new(resource, @address) : resource
-    end
-
-    def get(*args, &block)
-      find_method_by_http_method('get').call(self, *args, &block)
-    end
-
-    def post(*args, &block)
-      find_method_by_http_method('post').call(self, *args, &block)
-    end
-
-    def put(*args, &block)
-      find_method_by_http_method('put').call(self, *args, &block)
-    end
-
-    def delete(*args, &block)
-      find_method_by_http_method('delete').call(self, *args, &block)
+      resource && ResourceAndAddress.new(resource, @address)
     end
 
   end
@@ -1240,12 +1186,10 @@ module WADL
     end
 
     def finalize_creation
-      return unless resource_list
-
       resource_list.resources.each { |r|
-        define_singleton(r.id, "resource_list.find_resource('#{r.id}')") if r.id && !r.respond_to?(r.id)
-        define_singleton(r.path, "resource_list.find_resource_by_path('#{r.path}')") if r.path && !r.respond_to?(r.path)
-      }
+        define_singleton(r, :id,   'resource_list.find_resource')
+        define_singleton(r, :path, 'resource_list.find_resource_by_path')
+      } if resource_list
     end
 
   end
