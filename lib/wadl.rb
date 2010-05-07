@@ -332,7 +332,7 @@ module WADL
 
   #########################################################################
   # Classes to keep track of the logical structure of a URI.
-  URIParts = Struct.new(:uri, :query, :headers) do
+  class URIParts < Struct.new(:uri, :query, :headers)
 
     def to_s
       qs = "#{uri.include?('?') ? '&' : '?'}#{query_string}" unless query.empty?
