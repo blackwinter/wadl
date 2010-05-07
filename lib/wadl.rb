@@ -181,7 +181,7 @@ module WADL
           me.instance_variable_set("@#{klass.names[:collection]}", [])
         }
 
-        if @may_be_reference and href = attributes['href']
+        if may_be_reference? and href = attributes['href']
           # Handle objects that are just references to other objects
           # somewhere above this one in the hierarchy
           href = href.dup
@@ -564,6 +564,7 @@ module WADL
     has_required :name
     has_attributes :type, :default, :style, :path, :required, :repeating, :fixed
     has_many Option, Link
+    may_be_reference
 
     # cf. <http://www.w3.org/TR/xmlschema-2/#boolean>
     BOOLEAN_RE = %r{\A(?:true|1)\z}
@@ -960,6 +961,7 @@ module WADL
     in_document 'resource'
     has_attributes :id, :path
     has_many Resource, HTTPMethod, Param, ResourceType
+    may_be_reference  # not conforming to spec (20090831), but tests make use of it
 
     def initialize(*args)
       super

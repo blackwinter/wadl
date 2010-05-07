@@ -49,7 +49,7 @@ class FindingWhatYouNeed < WADLTest
     frogs = @wadl.find_resource(:frogs)
     assert_equal(green_things.id, 'green_things')
     assert_equal(frogs.path, 'frog')
-    #assert_equal(green_things.find_resource(:frogs), frogs)  # XXX <nil> expected
+    assert_equal(green_things.find_resource(:frogs), frogs)
     assert_equal(green_things.find_resource(:pistachios).path, "pistachio")
   end
 
@@ -61,14 +61,13 @@ class FindingWhatYouNeed < WADLTest
     assert_equal(green_things.id, 'green_things')
     green_things = @wadl.resource('green')
     assert_equal(green_things.id, 'green_things')
-    frogs = green_things.find_resource_by_path('frog') or return  # XXX nil
+    frogs = green_things.find_resource_by_path('frog')
     assert_equal(frogs.id, 'frogs')
   end
 
   # Dereference a resource two different ways and construct two different
   # URIs from the same resource.
   def test_dereference_resource
-    return  # XXX undefined method `frogs' for #<WADL::Resource:0x...>
     green_frogs = @wadl.green_things.frogs
     assert_equal(green_frogs.uri, 'http://www.example.com/green/frog')
 
@@ -159,7 +158,7 @@ class PathParameters < WADLTest
   def test_bound_resource_traversal
     im_mad_because = @wadl.find_resource('mad')    
     assert_equal(im_mad_because.uri, 'http://www.example.com/im/mad/because')
-    insult = im_mad_because.find_resource('insult') or return  # XXX nil
+    insult = im_mad_because.find_resource('insult')
     assert_equal(insult.uri(:path => {'person' => 'king', 'a' => 'fink'}),
                   'http://www.example.com/im/mad/because/the/king/is/;a=fink')
     im_mad_because_hes_a_fink = insult.bind!(:path => {'person' => 'king', 'a' => 'fink'})
