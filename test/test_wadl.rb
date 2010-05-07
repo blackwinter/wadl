@@ -223,12 +223,13 @@ class PathParameters < WADLTest
     off_uri = 'http://www.example.com/light-panel/;light1'
 
     assert_equal(lights.uri(:path => {:light3 => 'true'}), on_uri)
-    assert_equal(lights.uri(:path => {:light3 => true}), on_uri)
+    assert_equal(lights.uri(:path => {:light3 => '1'}), on_uri)
 
     assert_equal(lights.uri, off_uri)
     assert_equal(lights.uri(:path => {:light3 => 'false'}), off_uri)
     assert_equal(lights.uri(:path => {:light3 => false}), off_uri)
     assert_equal(lights.uri(:path => {:light3 => 'True'}), off_uri)
+    assert_equal(lights.uri(:path => {:light3 => true}), off_uri)
   end
 
   class RequestFormatTests < WADLTest
