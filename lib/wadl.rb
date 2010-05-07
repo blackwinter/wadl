@@ -35,6 +35,10 @@ begin
 rescue LoadError
 end
 
+class Object  # :nodoc:
+  def instance_variable_defined?(sym); instance_eval("defined?(#{sym})"); end
+end unless Object.method_defined?(:instance_variable_defined?)
+
 module WADL
 
   OAUTH_HEADER = 'Authorization'
