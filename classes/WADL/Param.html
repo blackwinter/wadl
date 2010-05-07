@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: WADL::Param</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">WADL::Param</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/wadl_rb.html">
+                lib/wadl.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="HasDocs.html">
+                HasDocs
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000032">%</a>&nbsp;&nbsp;
+      <a href="#M000027">default</a>&nbsp;&nbsp;
+      <a href="#M000031">format</a>&nbsp;&nbsp;
+      <a href="#M000030">inspect</a>&nbsp;&nbsp;
+      <a href="#M000029">repeating?</a>&nbsp;&nbsp;
+      <a href="#M000028">required?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">BOOLEAN_RE</td>
+          <td>=</td>
+          <td class="context-item-value">%r{\A(?:true|1)\z}</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+cf. &lt;<a
+href="http://www.w3.org/TR/xmlschema-2/#boolean">www.w3.org/TR/xmlschema-2/#boolean</a>&gt;
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+          <a href="#M000027" class="method-signature">
+          <span class="method-name">default</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+A <a href="Param.html#M000027">default</a> <a href="Param.html">Param</a>
+object to use for a path parameter that is only specified as a name in the
+path of a resource.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000027-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000027-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl.rb, line 603</span>
+603:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">default</span>
+604:       <span class="ruby-ivar">@default</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
+605:         <span class="ruby-identifier">default</span> = <span class="ruby-constant">Param</span>.<span class="ruby-identifier">new</span>
+606: 
+607:         <span class="ruby-identifier">default</span>.<span class="ruby-identifier">required</span> = <span class="ruby-value str">'true'</span>
+608:         <span class="ruby-identifier">default</span>.<span class="ruby-identifier">style</span>    = <span class="ruby-value str">'plain'</span>
+609:         <span class="ruby-identifier">default</span>.<span class="ruby-identifier">type</span>     = <span class="ruby-value str">'xsd:string'</span>
+610: 
+611:         <span class="ruby-identifier">default</span>
+612:       <span class="ruby-keyword kw">end</span>
+613:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000032" class="method-detail">
+        <a name="M000032"></a>
+
+        <div class="method-heading">
+          <span class="method-name">%</span><span class="method-args">(value, name = nil, style = nil)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Param.html#M000031">format</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000031" class="method-detail">
+        <a name="M000031"></a>
+
+        <div class="method-heading">
+          <a href="#M000031" class="method-signature">
+          <span class="method-name">format</span><span class="method-args">(value, name = nil, style = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Validates and formats a proposed value for this parameter. Returns the
+formatted value. Raises an ArgumentError if the value is invalid.
+</p>
+<p>
+The &#8216;name&#8217; and &#8216;style&#8217; arguments are used in
+conjunction with the <a href="Param.html#M000027">default</a> <a
+href="Param.html">Param</a> object.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000031-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000031-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl.rb, line 633</span>
+633:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">format</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">name</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">style</span> = <span class="ruby-keyword kw">nil</span>)
+634:       <span class="ruby-identifier">name</span>  <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">name</span>
+635:       <span class="ruby-identifier">style</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">style</span>
+636: 
+637:       <span class="ruby-identifier">value</span> = <span class="ruby-identifier">fixed</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">fixed</span>
+638:       <span class="ruby-identifier">value</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">default</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">default</span>
+639: 
+640:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">value</span>
+641:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">required?</span>
+642:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{No value provided for required param &quot;#{name}&quot;!}</span>
+643:         <span class="ruby-keyword kw">else</span>
+644:           <span class="ruby-keyword kw">return</span> <span class="ruby-value str">''</span> <span class="ruby-comment cmt"># No value provided and none required.</span>
+645:         <span class="ruby-keyword kw">end</span>
+646:       <span class="ruby-keyword kw">end</span>
+647: 
+648:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:each</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:to_str</span>)
+649:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">repeating?</span>
+650:           <span class="ruby-identifier">values</span> = <span class="ruby-identifier">value</span>
+651:         <span class="ruby-keyword kw">else</span>
+652:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{Multiple values provided for single-value param &quot;#{name}&quot;}</span>
+653:         <span class="ruby-keyword kw">end</span>
+654:       <span class="ruby-keyword kw">else</span>
+655:         <span class="ruby-identifier">values</span> = [<span class="ruby-identifier">value</span>]
+656:       <span class="ruby-keyword kw">end</span>
+657: 
+658:       <span class="ruby-comment cmt"># If the param lists acceptable values in option tags, make sure that</span>
+659:       <span class="ruby-comment cmt"># all values are found in those tags.</span>
+660:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>.<span class="ruby-identifier">empty?</span>
+661:         <span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+662:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">find_option</span>(<span class="ruby-identifier">value</span>)
+663:             <span class="ruby-identifier">acceptable</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">value</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'&quot;, &quot;'</span>)
+664:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{&quot;#{value}&quot; is not among the acceptable parameter values (&quot;#{acceptable}&quot;)}</span>
+665:           <span class="ruby-keyword kw">end</span>
+666:         }
+667:       <span class="ruby-keyword kw">end</span>
+668: 
+669:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'query'</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">RequestFormat</span>) <span class="ruby-operator">||</span> (
+670:         <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:is_form_representation?</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">is_form_representation?</span>
+671:       )
+672:         <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{URI.escape(name)}=#{URI.escape(v.to_s)}&quot;</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'&amp;'</span>)
+673:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'matrix'</span>
+674:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'xsd:boolean'</span>
+675:           <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;;#{name}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">BOOLEAN_RE</span> }.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>
+676:         <span class="ruby-keyword kw">else</span>
+677:           <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;;#{URI.escape(name)}=#{URI.escape(v.to_s)}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span> }.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>
+678:         <span class="ruby-keyword kw">end</span>
+679:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'header'</span>
+680:         <span class="ruby-identifier">values</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>)
+681:       <span class="ruby-keyword kw">else</span>
+682:         <span class="ruby-comment cmt"># All other cases: plain text representation.</span>
+683:         <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-constant">URI</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span>) }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>)
+684:       <span class="ruby-keyword kw">end</span>
+685:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000030" class="method-detail">
+        <a name="M000030"></a>
+
+        <div class="method-heading">
+          <a href="#M000030" class="method-signature">
+          <span class="method-name">inspect</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000030-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000030-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl.rb, line 623</span>
+623:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+624:       <span class="ruby-node">%Q{Param &quot;#{name}&quot;}</span>
+625:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000029" class="method-detail">
+        <a name="M000029"></a>
+
+        <div class="method-heading">
+          <a href="#M000029" class="method-signature">
+          <span class="method-name">repeating?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000029-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000029-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl.rb, line 619</span>
+619:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">repeating?</span>
+620:       <span class="ruby-identifier">repeating</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">BOOLEAN_RE</span>
+621:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+          <a href="#M000028" class="method-signature">
+          <span class="method-name">required?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000028-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000028-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl.rb, line 615</span>
+615:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">required?</span>
+616:       <span class="ruby-identifier">required</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">BOOLEAN_RE</span>
+617:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>README
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Fri May 07 13:56:54 +0200 2010</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>wadl - Ruby client for the Web Application Description Language.</h1>
+<h2>VERSION</h2>
+<p>
+This documentation refers to wadl version 0.1.2
+</p>
+<h2>DESCRIPTION</h2>
+<p>
+This is a Ruby client for the Web Application Description Language. It
+hides the details of HTTP communication between a web service client and a
+REST or HTTP+POX web service.
+</p>
+<p>
+We hope that <a href="../classes/WADL.html">WADL</a> descriptors and client
+libraries will replace one-off wrapper libraries specific to one service
+and one programming language &#8212; or at least make such wrapper
+libraries much easier to write.
+</p>
+<h3>Interesting Features:</h3>
+<ul>
+<li>Traversing the tree of resources is like traversing a data structure.
+Here&#8216;s code to get recent posts from del.icio.us:
+
+<pre>
+  WADL::Application.from_wadl(open(&quot;delicious.wadl&quot;)).v1.posts.recent.get
+</pre>
+</li>
+<li>Faults are custom subclasses named after the fault ID. You can catch
+specific faults.
+
+</li>
+<li>You can bind some parameters (such as authentication parameters or API
+keys) permanently to the <a href="../classes/WADL.html">WADL</a>
+application, and leave others (such as search queries) to be bound
+differently for each request.
+
+</li>
+<li>This feature isn&#8216;t in the <a href="../classes/WADL.html">WADL</a>
+standard yet: you can define &quot;header&quot;-style parameters to be
+included in the HTTP request headers. See delicious.wadl for an example.
+
+</li>
+</ul>
+<h3>Shortcomings:</h3>
+<p>
+The 20060802 <a href="../classes/WADL.html">WADL</a> standard is almost
+entirely supported. However,
+</p>
+<ul>
+<li>XML grammars are more or less ignored
+
+</li>
+<li>As are links
+
+</li>
+</ul>
+<h2>LINKS</h2>
+<p>
+</p>
+<table>
+<tr><td valign="top">Homepage:</td><td>&lt;<a
+href="http://www.crummy.com/software/wadl.rb">www.crummy.com/software/wadl.rb</a>/&gt;
+
+</td></tr>
+<tr><td valign="top"><a href="../classes/WADL.html">WADL</a>:</td><td>&lt;<a href="http://wadl.dev.java.net">wadl.dev.java.net</a>/&gt;
+
+</td></tr>
+<tr><td valign="top">Documentation:</td><td>&lt;<a
+href="http://rdoc.info/projects/blackwinter/wadl">rdoc.info/projects/blackwinter/wadl</a>&gt;
+
+</td></tr>
+<tr><td valign="top">Source code:</td><td>&lt;<a
+href="http://github.com/blackwinter/wadl">github.com/blackwinter/wadl</a>&gt;
+
+</td></tr>
+</table>
+<h2>AUTHORS</h2>
+<ul>
+<li>Leonard Richardson &lt;<a
+href="mailto:leonardr@segfault.org">leonardr@segfault.org</a>&gt; (Original
+author)
+
+</li>
+<li>Jens Wille &lt;<a
+href="mailto:jens.wille@uni-koeln.de">jens.wille@uni-koeln.de</a>&gt;
+
+</li>
+</ul>
+<h2>LICENSE AND COPYRIGHT</h2>
+<p>
+Copyright (C) 2006-2008 Leonard Richardson Copyright (C) 2010 Jens Wille
+</p>
+<p>
+wadl is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+</p>
+<p>
+wadl is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+details.
+</p>
+<p>
+You should have received a copy of the GNU General Public License along
+with wadl. If not, see &lt;<a
+href="http://www.gnu.org/licenses">www.gnu.org/licenses</a>/&gt;.
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
