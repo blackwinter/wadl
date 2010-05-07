@@ -1,7 +1,7 @@
 require 'wadl'
 
 delicious = WADL::Application.from_wadl(open("delicious.wadl")).v1
-delicious = delicious.bind_basic_auth('username', 'password' )
+delicious = delicious.with_basic_auth('username', 'password' )
 
 query_args = { :url => 'https://wadl.dev.java.net/',
                :description => 'WADL homepage',

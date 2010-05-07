@@ -9,7 +9,7 @@ representation = repr_format % {:password => 'mypassword',
                                 :title => 'The title!' }
 result = add_resource.post(:path => {:weblog => "personal"},
                            :send_representation => representation)
-if result.format.id == 'CreatedAtURI'
+if format = result.format and format.id == 'CreatedAtURI'
   puts "Success!"
   puts result.headers['Location']
 else
