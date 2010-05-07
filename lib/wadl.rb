@@ -509,7 +509,7 @@ module WADL
             uri << '/' unless uri.empty? || uri =~ /\/\z/
             uri << fragment
           end
-        elsif fragment.required
+        elsif fragment.required?
           # This is a required Param that was never bound to a value.
           raise ArgumentError, %Q{Missing a value for required path parameter "#{fragment.name}"!}
         end
@@ -517,14 +517,14 @@ module WADL
 
       # Hunt for required unbound query parameters.
       obj.query_params.each { |name, value|
-        if value.required
+        if value.required?
           raise ArgumentError, %Q{Missing a value for required query parameter "#{value.name}"!}
         end
       }
 
       # Hunt for required unbound header parameters.
       obj.header_params.each { |name, value|
-        if value.required
+        if value.required?
           raise ArgumentError, %Q{Missing a value for required header parameter "#{value.name}"!}
         end
       }
@@ -578,6 +578,9 @@ module WADL
     has_attributes :type, :default, :style, :path, :required, :repeating, :fixed
     has_many Option, Link
 
+    # cf. <http://www.w3.org/TR/xmlschema-2/#boolean>
+    BOOLEAN_RE = %r{\A(?:true|1)\z}
+
     # A default Param object to use for a path parameter that is
     # only specified as a name in the path of a resource.
     def self.default
@@ -590,6 +593,14 @@ module WADL
 
         default
       end
+    end
+
+    def required?
+      required =~ BOOLEAN_RE
+    end
+
+    def repeating?
+      repeating =~ BOOLEAN_RE
     end
 
     def inspect
@@ -610,7 +621,7 @@ module WADL
       value ||= default if default
 
       unless value
-        if required =~ /\A(?:true|1)\z/
+        if required?
           raise ArgumentError, %Q{No value provided for required param "#{name}"!}
         else
           return '' # No value provided and none required.
@@ -618,7 +629,7 @@ module WADL
       end
 
       if value.respond_to?(:each) && !value.respond_to?(:to_str)
-        if repeating
+        if repeating?
           values = value
         else
           raise ArgumentError, %Q{Multiple values provided for single-value param "#{name}"}
@@ -701,11 +712,11 @@ module WADL
         elsif values[name] || values[name.to_sym]
           p_values = values[name] || values[name.to_sym]
 
-          if !param.repeating || !(p_values.respond_to?(:each) && !p_values.respond_to?(:to_str))
+          if !param.repeating? || !(p_values.respond_to?(:each) && !p_values.respond_to?(:to_str))
             p_values = [p_values]
           end
         else
-          if param.required
+          if param.required?
             raise ArgumentError, "Your proposed representation is missing a value for #{param.name}"
           end
         end
