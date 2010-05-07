@@ -1,0 +1,34 @@
+<?xml version="1.0"?> 
+
+<!--Example of WADL being used to turn a not-particularly-RESTful CGI
+    application into a web service.-->
+
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+             xsi:schemaLocation="http://research.sun.com/wadl wadl.xsd"  
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:nb="urn:newsbruiser:nb"
+             xmlns="http://research.sun.com/wadl">
+
+ <resources base="http://www.crummy.com/nb/nb.cgi/">
+  <resource path="add" id="add">
+   <param name="weblog" type="xsd:string" />
+   <method href="#add"/>
+  </resource>
+ </resources>
+
+ <method name="POST" id="add">
+  <request>
+   <representation mediaType="application/x-www-form-encoded">
+    <param name="password" type="xsd:string" required="true" />
+    <param name="entry" type="xsd:string" required="true" />
+    <param name="title" type="xsd:string" />
+    <param name="make_change" type="xsd:string" fixed="true" />
+    <param name="Button" type="xsd:string" fixed="Publish" />
+   </representation>
+  </request>
+
+  <response>
+   <fault id="CreatedAtURI" status="302" />
+  </response>
+ </method>
+</application>

@@ -1,0 +1,75 @@
+= wadl - Ruby client for the Web Application Description Language.
+
+== VERSION
+
+This documentation refers to wadl version 0.0.1
+
+
+== DESCRIPTION
+
+This is a Ruby client for the Web Application Description Language. It
+hides the details of HTTP communication between a web service client
+and a REST or HTTP+POX web service.
+
+We hope that WADL descriptors and client libraries will replace
+one-off wrapper libraries specific to one service and one programming
+language -- or at least make such wrapper libraries much easier to
+write.
+
+=== Interesting Features:
+
+* Traversing the tree of resources is like traversing a data
+  structure. Here's code to get recent posts from del.icio.us:
+
+    WADL::Application.from_wadl(open("delicious.wadl")).v1.posts.recent.get
+
+* Faults are custom subclasses named after the fault ID. You can catch
+  specific faults.
+
+* You can bind some parameters (such as authentication parameters or
+  API keys) permanently to the WADL application, and leave others (such
+  as search queries) to be bound differently for each request.
+
+* This feature isn't in the WADL standard yet: you can define
+  "header"-style parameters to be included in the HTTP request
+  headers. See delicious.wadl for an example.
+
+=== Shortcomings:
+
+The 20060802 WADL standard is almost entirely supported. However,
+
+* XML grammars are more or less ignored
+* As are links
+
+
+== LINKS
+
+<b></b>
+Homepage::      <http://www.crummy.com/software/wadl.rb/>
+WADL::          <http://wadl.dev.java.net/>
+Documentation:: <http://rdoc.info/projects/blackwinter/wadl>
+Source code::   <http://github.com/blackwinter/wadl>
+
+
+== AUTHORS
+
+* Leonard Richardson <mailto:leonardr@segfault.org> (Original author)
+* Jens Wille <mailto:jens.wille@uni-koeln.de>
+
+
+== LICENSE AND COPYRIGHT
+
+Copyright (C) 2006-2008 Leonard Richardson
+Copyright (C) 2010 Jens Wille
+
+wadl is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+wadl is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+wadl. If not, see <http://www.gnu.org/licenses/>.

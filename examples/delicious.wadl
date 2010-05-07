@@ -1,0 +1,348 @@
+<?xml version="1.0"?>
+<!-- This is a bootleg WADL file for the del.icio.us API. -->
+
+<application xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+  xmlns="http://research.sun.com/wadl/2006/07">
+
+ <resources base="https://api.del.icio.us/">
+  <doc xml:lang="en" title="The del.icio.us API v1">
+   Post or retrieve your bookmarks from the social networking website.
+   Limit requests to one per second.
+  </doc>
+
+  <resource path="v1">
+   <param name="Authorization" style="header" required="true">
+    <doc xml:lang="en">All del.icio.us API calls must be authenticated
+    using Basic HTTP auth.</doc>
+   </param>
+
+   <resource path="update"><method href="#getLastUpdateTime" /></resource>
+
+   <resource path="tags">
+    <resource path="get"><method href="#getTags" /></resource>
+    <resource path="rename"><method href="#renameTag" /></resource>
+   </resource>
+
+   <resource path="posts">
+    <resource path="get"><method href="#getPosts" /></resource>
+    <resource path="recent"><method href="#getRecentPosts" /></resource>
+    <resource path="all"><method href="#getAllPosts" /></resource>
+    <resource path="dates"><method href="#getDates" /></resource>
+
+    <resource path="add"><method href="#addPost" /></resource>
+    <resource path="delete"><method href="#deletePost" /></resource>
+   </resource>
+
+   <resource path="bundles">
+    <resource path="all"><method href="#getBundles" /></resource>
+    <resource path="set"><method href="#makeBundle" /></resource>
+    <resource path="delete"><method href="#deleteBundle" /></resource>
+   </resource>
+  </resource>
+ </resources>
+
+ <!-- Methods -->
+
+ <!-- "update" method -->
+
+ <method id="getLastUpdateTime" name="GET">
+  <response>
+   <representation mediaType="application/xml" element="update">
+    <doc xml:lang="en" title="A note on structure">
+     The "time" attribute contains the last update time for the
+     authenticated user, in ISO8661 format.
+    </doc>   
+   </representation>
+   <fault href="#AuthorizationRequired" />
+  </response>
+ </method>
+
+ <!-- "tags" methods -->
+
+ <method id="getTags" name="GET">
+  <response>
+   <representation mediaType="application/xml" element="tags">
+    <doc xml:lang="en" title="Schema description">
+     Contains "tag" tags, each with "count" and "tag" attributes.
+    </doc>
+   </representation>
+   <fault href="#AuthorizationRequired" />
+  </response>
+ </method>
+
+ <method id="renameTag" name="POST">
+  <request>
+   <param name="old" required="true" style="form">
+    <doc xml:lang="en" title="Tag to rename." />
+   </param>
+   <param name="new" required="true" style="form">
+    <doc xml:lang="en" title="New name." />
+   </param>
+  </request>
+ 
+  <response>
+   <representation href="#resultCodeDone" />
+   <fault href="#AuthorizationRequired" />
+  </response>
+ </method>
+
+ <!-- "posts" methods part I: ways of getting posts -->
+
+ <method id="getPosts" name="GET">
+  <doc xml:lang="en" title="Returns posts matching the arguments.">
+   If no date or url is given, most recent date will be used.
+  </doc>
+
+  <request>
+   <param name="tag" style="form">
+    <doc xml:lang="en" title="Filter by this tag." />
+   </param>
+   <param name="dt" style="form">
+    <doc xml:lang="en" title="Filter by this date (CCYY-MM-DDThh:mm:ssZ)." />
+   </param>
+   <param name="url" style="form">
+    <doc xml:lang="en" title="Filter by this URL." />
+   </param>
+  </request>
+  <response>
+   <representation mediaType="application/xml" element="posts">
+    <doc xml:lang="en" title="Sample response">
+     &lt;posts dt=&quot;2005-11-28&quot; tag=&quot;webdev&quot; user=&quot;user&quot;&gt;
+      &lt;post href=&quot;http://www.howtocreate.co.uk/tutorials/texterise.php?dom=1&quot; 
+       description=&quot;JavaScript DOM reference&quot; 
+       extended=&quot;dom reference&quot; 
+       hash=&quot;c0238dc0c44f07daedd9a1fd9bbdeebd&quot; 
+       others=&quot;55&quot; tag=&quot;dom javascript webdev&quot; time=&quot;2005-11-28T05:26:09Z&quot; /&gt;
+     &lt;/posts&gt;
+    </doc>
+   </representation>
+  </response>
+ </method>
+
+ <method id="getRecentPosts" name="GET">
+
+  <doc xml:lang="en" title="Returns a list of the most recent posts.">
+   Filtered by argument. Maximum 100.
+  </doc>
+
+  <request>
+   <param name="tag" style="form">
+    <doc xml:lang="en" title="Filter by this tag." />
+   </param>
+   <param name="count" style="form" default="15">
+    <doc xml:lang="en" title="Number of items to retrieve.">Maximum: 100</doc>
+   </param>
+  </request>
+
+  <response>
+   <representation href="#postList" />
+   <fault href="#AuthorizationRequired" />
+  </response>
+ </method>
+
+ <method id="getAllPosts" name="GET">
+  <doc xml:lang="en" title="Returns all posts">
+   Please use sparingly. Call the update function to see if you need
+   to fetch this at all.
+  </doc>
+
+  <request>
+   <param name="tag" style="form">
+    <doc xml:lang="en" title="Filter by this tag." />
+   </param>
+  </request>
+
+  <response>
+   <representation href="#postList" />
+   <fault href="#AuthorizationRequired" />
+  </response>
+ </method>
+
+ <method id="getDates" name="GET">
+  <doc xml:lang="en" 
+   title="Returns a list of dates with the number of posts at each date." />
+
+  <request>
+   <param name="tag" style="form">
+    <doc xml:lang="en" title="Filter by this tag." />
+   </param>
+  </request>
+  <response>
+   <representation mediaType="application/xml">
+    <doc xml:lang="en" title="Sample">
+     &lt;dates tag=&quot;&quot; user=&quot;user&quot;&gt;
+       &lt;date count=&quot;5&quot; date=&quot;2005-11-29&quot; /&gt;
+       &lt;date count=&quot;15&quot; date=&quot;2005-11-28&quot; /&gt;
+       &lt;date count=&quot;2&quot; date=&quot;2005-11-26&quot; /&gt;
+       &lt;date count=&quot;2&quot; date=&quot;2005-11-25&quot; /&gt;
+       &lt;date count=&quot;7&quot; date=&quot;2005-11-23&quot; /&gt;
+       &lt;date count=&quot;20&quot; date=&quot;2005-11-22&quot; /&gt;
+       &lt;date count=&quot;16&quot; date=&quot;2005-11-21&quot; /&gt;
+       &lt;date count=&quot;4&quot; date=&quot;2005-11-19&quot; /&gt;
+     &lt;/dates&gt;
+    </doc>
+   </representation>
+  </response>
+ </method>
+
+ <!-- "posts" methods part II: ways of manipulating posts -->
+
+ <method id="addPost" name="GET">
+  <doc xml:lang="en" title="Add a post to del.icio.us" />
+  <request>
+   <param name="url" required="true" style="form">
+    <doc xml:lang="en" title="The URL of the item." />
+   </param>
+
+   <param name="description" required="true" style="form">
+    <doc xml:lang="en" title="The description of the item." />
+   </param>
+
+   <param name="extended" style="form">
+    <doc xml:lang="en" title="Notes for the item." />
+   </param>
+
+   <param name="tags" style="form">
+    <doc xml:lang="en" title="Tags for the item.">Space delimited</doc>
+   </param>
+
+   <param name="dt" style="form"> 
+   <doc xml:lang="en" title="Datestamp of the item.">
+     Format: "CCYY-MM-DDThh:mm:ssZ". Requires a LITERAL "T" and "Z"
+     like in 
+     <html:a href="http://www.cl.cam.ac.uk/~mgk25/iso-time.html">ISO8601</html:a>.
+     For example: "1984-09-01T14:21:31Z"
+    </doc>
+   </param>
+
+   <param name="replace" default="" style="form"> 
+    <doc xml:lang="en" 
+     title="Unless set to &quot;no&quot;, a post will overwrite an
+            earlier post with the same URL." />
+    <option value="" />
+    <option value="no" />
+   </param>
+
+   <param name="shared" style="form"> 
+    <doc xml:lang="en" title="Set to &quot;no&quot; to make the item private." />
+    <option value="" />
+    <option value="no" />
+   </param>
+
+  </request>
+ 
+  <response>
+   <representation href="#resultCode" />
+   <fault href="#AuthorizationRequired" />
+  </response>
+ </method>
+
+ <method id="deletePost" name="GET">
+  <doc xml:lang="en" title="Delete a post from del.icio.us" />
+
+  <request>
+   <param name="url" required="true" style="form">
+    <doc xml:lang="en" title="The URL of the item." />
+   </param>
+  </request>
+
+  <response>
+   <representation href="#resultCodeDone" />
+   <fault href="#AuthorizationRequired" />
+  </response>
+ </method>
+
+ <!-- "bundles" methods -->
+
+ <method id="getBundles" name="GET">
+  <doc xml:lang="en" title="Retrieve all of a user's bundles." />
+
+  <response>
+   <representation mediaType="application/xml" element="bundles">
+    <doc xml:lang="en" title="Sample">
+     &lt;bundles&gt;
+       &lt;bundle name=&quot;music&quot; tags=&quot;ipod mp3 music&quot; /&gt;
+     &lt;/bundles&gt;
+    </doc>
+   </representation>
+   <fault href="#AuthorizationRequired" />
+  </response>
+ </method>
+ 
+ <method id="makeBundle" name="GET">
+  <doc xml:lang="en" title="Assign a set of tags to a single bundle.">
+   Wipes away previous settings for bundle.
+  </doc>
+
+  <request>
+   <param name="bundle" style="form">
+    <doc xml:lang="en" title="The bundle name." />
+   </param>
+   <param name="tags" required="true" style="form">
+    <doc xml:lang="en" title="List of tags.">Space-separated.</doc>
+   </param>
+  </request>
+
+  <response>
+   <representation mediaType="application/xml" element="result">
+    <doc xml:lang="en" title="A note on structure">
+     On success, contents are &quot;done&quot; On failure,
+     contents are &quot;you must supply a bundle name and at least one
+     tag&quot;
+    </doc>
+   </representation>
+   <fault href="#AuthorizationRequired" />
+  </response>
+ </method>
+
+ <method id="deleteBundle" name="GET">
+  <doc xml:lang="en" title="Deletes a bundle." />
+  <request>
+   <param name="bundle" style="form">
+    <doc xml:lang="en" title="The bundle name." />
+   </param>
+  </request>
+
+  <response>
+   <representation href="#resultCodeDone" />
+   <fault href="#AuthorizationRequired" />
+  </response>
+ </method> 
+
+ <!-- Commonly used representations -->
+
+ <representation id="postList" mediaType="text/xml" element="posts">
+  <doc xml:lang="en" title="Sample">
+    &lt;posts tag=&quot;&quot; user=&quot;user&quot;&gt;
+      &lt;post href=&quot;http://www.weather.com/&quot; description=&quot;weather.com&quot; 
+      hash=&quot;6cfedbe75f413c56b6ce79e6fa102aba&quot; tag=&quot;weather reference&quot; 
+      time=&quot;2005-11-29T20:30:47Z&quot; /&gt;
+      &lt;post href=&quot;http://www.nytimes.com/&quot; 
+      description=&quot;The New York Times - Breaking News, World News &amp; Multimedia&quot; 
+      extended=&quot;requires login&quot; hash=&quot;ca1e6357399774951eed4628d69eb84b&quot; 
+      tag=&quot;news media&quot; time=&quot;2005-11-29T20:30:05Z&quot; /&gt;
+    &lt;/posts&gt;
+  </doc>
+ </representation>
+
+ <representation id="resultCode" mediaType="application/xml" element="result">
+  <doc xml:lang="en" title="A note on structure">
+   This representation has the same structure whether or not the
+   operation succeeded. If it succeeded, the value of the 'code'
+   attribute is "done". Otherwise, it's "something went wrong".
+  </doc>
+ </representation>
+
+ <representation id="resultCodeDone" mediaType="application/xml" element="result">
+  <doc xml:lang="en" title="A note on structure">
+   Allegedly, this representation has a "code" attribute whose value
+   is always "done". I think it might actually be the same as the
+   resultCode representation.
+  </doc>
+ </representation>
+
+ <fault id="AuthorizationRequired" status="401" />
+
+
+</application>
