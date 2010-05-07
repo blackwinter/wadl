@@ -1225,7 +1225,8 @@ module WADL
 
   end
 
-  Response = Struct.new(:code, :headers, :representation, :format)
+  class Response < Struct.new(:code, :headers, :representation, :format)
+  end
 
   class Fault < Exception
 
