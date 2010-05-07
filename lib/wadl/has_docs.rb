@@ -1,7 +1,7 @@
 #--
 ###############################################################################
 #                                                                             #
-# wadl -- Super cheap Ruby WADL client                                        #
+# A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
 # Copyright (C) 2010 Jens Wille                                               #
@@ -26,32 +26,24 @@
 ###############################################################################
 #++
 
-require 'wadl/version'
+require 'wadl'
 
 module WADL
 
-  autoload :Address,                 'wadl/address'
-  autoload :Application,             'wadl/application'
-  autoload :CheapSchema,             'wadl/cheap_schema'
-  autoload :Documentation,           'wadl/documentation'
-  autoload :FaultFormat,             'wadl/fault_format'
-  autoload :Fault,                   'wadl/fault'
-  autoload :HasDocs,                 'wadl/has_docs'
-  autoload :HTTPMethod,              'wadl/http_method'
-  autoload :Link,                    'wadl/link'
-  autoload :Option,                  'wadl/option'
-  autoload :Param,                   'wadl/param'
-  autoload :RepresentationContainer, 'wadl/representation_container'
-  autoload :RepresentationFormat,    'wadl/representation_format'
-  autoload :RequestFormat,           'wadl/request_format'
-  autoload :ResourceAndAddress,      'wadl/resource_and_address'
-  autoload :ResourceContainer,       'wadl/resource_container'
-  autoload :Resource,                'wadl/resource'
-  autoload :Resources,               'wadl/resources'
-  autoload :ResourceType,            'wadl/resource_type'
-  autoload :ResponseFormat,          'wadl/response_format'
-  autoload :Response,                'wadl/response'
-  autoload :URIParts,                'wadl/uri_parts'
-  autoload :XMLRepresentation,       'wadl/xml_representation'
+  class HasDocs < CheapSchema
+
+    has_many Documentation
+
+    # Convenience method to define a no-argument singleton method on
+    # this object.
+    def define_singleton(r, sym, method)
+      name = r.send(sym)
+
+      if name && name !~ /\W/ && !r.respond_to?(name) && !respond_to?(name)
+        instance_eval(%Q{def #{name}\n#{method}('#{name}')\nend})
+      end
+    end
+
+  end
 
 end

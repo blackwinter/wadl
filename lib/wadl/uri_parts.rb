@@ -1,7 +1,7 @@
 #--
 ###############################################################################
 #                                                                             #
-# wadl -- Super cheap Ruby WADL client                                        #
+# A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
 # Copyright (C) 2010 Jens Wille                                               #
@@ -26,32 +26,38 @@
 ###############################################################################
 #++
 
-require 'wadl/version'
+require 'wadl'
 
 module WADL
 
-  autoload :Address,                 'wadl/address'
-  autoload :Application,             'wadl/application'
-  autoload :CheapSchema,             'wadl/cheap_schema'
-  autoload :Documentation,           'wadl/documentation'
-  autoload :FaultFormat,             'wadl/fault_format'
-  autoload :Fault,                   'wadl/fault'
-  autoload :HasDocs,                 'wadl/has_docs'
-  autoload :HTTPMethod,              'wadl/http_method'
-  autoload :Link,                    'wadl/link'
-  autoload :Option,                  'wadl/option'
-  autoload :Param,                   'wadl/param'
-  autoload :RepresentationContainer, 'wadl/representation_container'
-  autoload :RepresentationFormat,    'wadl/representation_format'
-  autoload :RequestFormat,           'wadl/request_format'
-  autoload :ResourceAndAddress,      'wadl/resource_and_address'
-  autoload :ResourceContainer,       'wadl/resource_container'
-  autoload :Resource,                'wadl/resource'
-  autoload :Resources,               'wadl/resources'
-  autoload :ResourceType,            'wadl/resource_type'
-  autoload :ResponseFormat,          'wadl/response_format'
-  autoload :Response,                'wadl/response'
-  autoload :URIParts,                'wadl/uri_parts'
-  autoload :XMLRepresentation,       'wadl/xml_representation'
+  # Classes to keep track of the logical structure of a URI.
+
+  class URIParts < Struct.new(:uri, :query, :headers)
+
+    def to_s
+      qs = "#{uri.include?('?') ? '&' : '?'}#{query_string}" unless query.empty?
+      "#{uri}#{qs}"
+    end
+
+    alias_method :to_str, :to_s
+
+    def inspect
+      hs = " Plus headers: #{headers.inspect}" if headers
+      "#{to_s}#{hs}"
+    end
+
+    def query_string
+      query.join('&')
+    end
+
+    def hash(x)
+      to_str.hash
+    end
+
+    def ==(x)
+      x.respond_to?(:to_str) ? to_str == x : super
+    end
+
+  end
 
 end

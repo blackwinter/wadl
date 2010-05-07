@@ -1,7 +1,7 @@
 #--
 ###############################################################################
 #                                                                             #
-# wadl -- Super cheap Ruby WADL client                                        #
+# A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
 # Copyright (C) 2010 Jens Wille                                               #
@@ -26,32 +26,46 @@
 ###############################################################################
 #++
 
-require 'wadl/version'
+require 'rexml/document'
+require 'wadl'
 
 module WADL
 
-  autoload :Address,                 'wadl/address'
-  autoload :Application,             'wadl/application'
-  autoload :CheapSchema,             'wadl/cheap_schema'
-  autoload :Documentation,           'wadl/documentation'
-  autoload :FaultFormat,             'wadl/fault_format'
-  autoload :Fault,                   'wadl/fault'
-  autoload :HasDocs,                 'wadl/has_docs'
-  autoload :HTTPMethod,              'wadl/http_method'
-  autoload :Link,                    'wadl/link'
-  autoload :Option,                  'wadl/option'
-  autoload :Param,                   'wadl/param'
-  autoload :RepresentationContainer, 'wadl/representation_container'
-  autoload :RepresentationFormat,    'wadl/representation_format'
-  autoload :RequestFormat,           'wadl/request_format'
-  autoload :ResourceAndAddress,      'wadl/resource_and_address'
-  autoload :ResourceContainer,       'wadl/resource_container'
-  autoload :Resource,                'wadl/resource'
-  autoload :Resources,               'wadl/resources'
-  autoload :ResourceType,            'wadl/resource_type'
-  autoload :ResponseFormat,          'wadl/response_format'
-  autoload :Response,                'wadl/response'
-  autoload :URIParts,                'wadl/uri_parts'
-  autoload :XMLRepresentation,       'wadl/xml_representation'
+  class Application < HasDocs
+
+    in_document 'application'
+    has_one Resources
+    has_many HTTPMethod, RepresentationFormat, FaultFormat
+
+    def self.from_wadl(wadl)
+      wadl = wadl.read if wadl.respond_to?(:read)
+      doc = REXML::Document.new(wadl)
+
+      application = from_element(nil, doc.root, need_finalization = [])
+      need_finalization.each { |x| x.finalize_creation }
+
+      application
+    end
+
+    def find_resource(symbol, *args, &block)
+      resource_list.find_resource(symbol, *args, &block)
+    end
+
+    def resource(symbol)
+      resource_list.resource(symbol)
+    end
+
+    def find_resource_by_path(symbol, *args, &block)
+      resource_list.find_resource_by_path(symbol, *args, &block)
+    end
+
+    def finalize_creation
+      resource_list.resources.each { |r|
+        define_singleton(r, :id,   'resource_list.find_resource')
+        define_singleton(r, :path, 'resource_list.find_resource_by_path')
+      } if resource_list
+    end
+
+  end
 
 end

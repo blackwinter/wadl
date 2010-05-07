@@ -1,7 +1,7 @@
 #--
 ###############################################################################
 #                                                                             #
-# wadl -- Super cheap Ruby WADL client                                        #
+# A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
 # Copyright (C) 2010 Jens Wille                                               #
@@ -26,32 +26,42 @@
 ###############################################################################
 #++
 
-require 'wadl/version'
+require 'wadl'
 
 module WADL
 
-  autoload :Address,                 'wadl/address'
-  autoload :Application,             'wadl/application'
-  autoload :CheapSchema,             'wadl/cheap_schema'
-  autoload :Documentation,           'wadl/documentation'
-  autoload :FaultFormat,             'wadl/fault_format'
-  autoload :Fault,                   'wadl/fault'
-  autoload :HasDocs,                 'wadl/has_docs'
-  autoload :HTTPMethod,              'wadl/http_method'
-  autoload :Link,                    'wadl/link'
-  autoload :Option,                  'wadl/option'
-  autoload :Param,                   'wadl/param'
-  autoload :RepresentationContainer, 'wadl/representation_container'
-  autoload :RepresentationFormat,    'wadl/representation_format'
-  autoload :RequestFormat,           'wadl/request_format'
-  autoload :ResourceAndAddress,      'wadl/resource_and_address'
-  autoload :ResourceContainer,       'wadl/resource_container'
-  autoload :Resource,                'wadl/resource'
-  autoload :Resources,               'wadl/resources'
-  autoload :ResourceType,            'wadl/resource_type'
-  autoload :ResponseFormat,          'wadl/response_format'
-  autoload :Response,                'wadl/response'
-  autoload :URIParts,                'wadl/uri_parts'
-  autoload :XMLRepresentation,       'wadl/xml_representation'
+  class FaultFormat < RepresentationFormat
+
+    in_document 'fault'
+    has_attributes :id, :mediaType, :element, :status
+    has_many Param
+    may_be_reference
+
+    attr_writer :subclass
+
+    def subclass
+      attributes['href'] ? dereference.subclass : @subclass
+    end
+
+    # Define a custom subclass for this fault, so that the programmer
+    # can rescue this particular fault.
+    def self.from_element(*args)
+      me = super
+
+      me.subclass = if name = me.attributes['id']
+        begin
+          WADL::Faults.const_defined?(name) ?
+            WADL::Faults.const_get(name) :
+            WADL::Faults.const_set(name, Class.new(Fault))
+        rescue NameError
+          # This fault format's ID can't be a class name. Use the
+          # generic subclass of Fault.
+        end
+      end || Fault unless me.attributes['href']
+
+      me
+    end
+
+  end
 
 end

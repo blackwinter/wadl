@@ -1,7 +1,7 @@
 #--
 ###############################################################################
 #                                                                             #
-# wadl -- Super cheap Ruby WADL client                                        #
+# A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
 # Copyright (C) 2010 Jens Wille                                               #
@@ -26,32 +26,39 @@
 ###############################################################################
 #++
 
-require 'wadl/version'
+require 'rexml/document'
+require 'wadl'
 
 module WADL
 
-  autoload :Address,                 'wadl/address'
-  autoload :Application,             'wadl/application'
-  autoload :CheapSchema,             'wadl/cheap_schema'
-  autoload :Documentation,           'wadl/documentation'
-  autoload :FaultFormat,             'wadl/fault_format'
-  autoload :Fault,                   'wadl/fault'
-  autoload :HasDocs,                 'wadl/has_docs'
-  autoload :HTTPMethod,              'wadl/http_method'
-  autoload :Link,                    'wadl/link'
-  autoload :Option,                  'wadl/option'
-  autoload :Param,                   'wadl/param'
-  autoload :RepresentationContainer, 'wadl/representation_container'
-  autoload :RepresentationFormat,    'wadl/representation_format'
-  autoload :RequestFormat,           'wadl/request_format'
-  autoload :ResourceAndAddress,      'wadl/resource_and_address'
-  autoload :ResourceContainer,       'wadl/resource_container'
-  autoload :Resource,                'wadl/resource'
-  autoload :Resources,               'wadl/resources'
-  autoload :ResourceType,            'wadl/resource_type'
-  autoload :ResponseFormat,          'wadl/response_format'
-  autoload :Response,                'wadl/response'
-  autoload :URIParts,                'wadl/uri_parts'
-  autoload :XMLRepresentation,       'wadl/xml_representation'
+  # A module mixed in to REXML documents to make them representations in the
+  # WADL sense.
+
+  module XMLRepresentation
+
+    def representation_of(format)
+      @params = format.params
+    end
+
+    def lookup_param(name)
+      param = @params.find { |p| p.name == name }
+
+      raise ArgumentError, "No such param #{name}" unless param
+      raise ArgumentError, "Param #{name} has no path!" unless param.path
+
+      param
+    end
+
+    # Yields up each XML element for the given Param object.
+    def each_by_param(param_name)
+      REXML::XPath.each(self, lookup_param(param_name).path) { |e| yield e }
+    end
+
+    # Returns an XML element for the given Param object.
+    def get_by_param(param_name)
+      REXML::XPath.first(self, lookup_param(param_name).path)
+    end
+
+  end
 
 end

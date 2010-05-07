@@ -1,7 +1,7 @@
 #--
 ###############################################################################
 #                                                                             #
-# wadl -- Super cheap Ruby WADL client                                        #
+# A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
 # Copyright (C) 2010 Jens Wille                                               #
@@ -26,32 +26,48 @@
 ###############################################################################
 #++
 
-require 'wadl/version'
+require 'cgi'
+require 'wadl'
 
 module WADL
 
-  autoload :Address,                 'wadl/address'
-  autoload :Application,             'wadl/application'
-  autoload :CheapSchema,             'wadl/cheap_schema'
-  autoload :Documentation,           'wadl/documentation'
-  autoload :FaultFormat,             'wadl/fault_format'
-  autoload :Fault,                   'wadl/fault'
-  autoload :HasDocs,                 'wadl/has_docs'
-  autoload :HTTPMethod,              'wadl/http_method'
-  autoload :Link,                    'wadl/link'
-  autoload :Option,                  'wadl/option'
-  autoload :Param,                   'wadl/param'
-  autoload :RepresentationContainer, 'wadl/representation_container'
-  autoload :RepresentationFormat,    'wadl/representation_format'
-  autoload :RequestFormat,           'wadl/request_format'
-  autoload :ResourceAndAddress,      'wadl/resource_and_address'
-  autoload :ResourceContainer,       'wadl/resource_container'
-  autoload :Resource,                'wadl/resource'
-  autoload :Resources,               'wadl/resources'
-  autoload :ResourceType,            'wadl/resource_type'
-  autoload :ResponseFormat,          'wadl/response_format'
-  autoload :Response,                'wadl/response'
-  autoload :URIParts,                'wadl/uri_parts'
-  autoload :XMLRepresentation,       'wadl/xml_representation'
+  class RepresentationFormat < HasDocs
+
+    in_document 'representation'
+    has_attributes :id, :mediaType, :element
+    has_many Param
+    may_be_reference
+
+    def is_form_representation?
+      mediaType == 'application/x-www-form-encoded' || mediaType == 'multipart/form-data'
+    end
+
+    # Creates a representation by plugging a set of parameters
+    # into a representation format.
+    def %(values)
+      unless mediaType == 'application/x-www-form-encoded'
+        raise "wadl.rb can't instantiate a representation of type #{mediaType}"
+      end
+
+      representation = []
+
+      params.each { |param|
+        name = param.name
+
+        if param.fixed
+          p_values = [param.fixed]
+        elsif p_values = values[name] || values[name.to_sym]
+          p_values = [p_values] if !param.repeating? || !p_values.respond_to?(:each) || p_values.respond_to?(:to_str)
+        else
+          raise ArgumentError, "Your proposed representation is missing a value for #{param.name}" if param.required?
+        end
+
+        p_values.each { |v| representation << "#{CGI::escape(name)}=#{CGI::escape(v.to_s)}" } if p_values
+      }
+
+      representation.join('&')
+    end
+
+  end
 
 end
