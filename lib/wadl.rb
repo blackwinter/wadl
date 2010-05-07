@@ -616,7 +616,7 @@ class Param < HasDocs
     unless value 
       if default
         value = default
-      elsif required
+      elsif required =~ /\A(?:true|1)\z/
         raise ArgumentError, "No value provided for required param \"#{name}\"!"
       else
         return '' # No value provided and none required.
@@ -828,12 +828,12 @@ class ResponseFormat < HasDocs
       # subtype. This will match "application/xml" with "text/xml".
       if !response_format && MIME_TYPES_SUPPORTED
         mime_type = MIME::Types[response_media_type]
-        raw_sub_type = mime_type[0].raw_sub_type if mime_type
+        raw_sub_type = mime_type[0].raw_sub_type if mime_type && !mime_type.empty?
         response_format = representations.detect do |f|
           t = f.dereference.mediaType
           if t
             response_mime_type = MIME::Types[t]
-            response_raw_sub_type = response_mime_type[0].raw_sub_type if response_mime_type
+            response_raw_sub_type = response_mime_type[0].raw_sub_type if response_mime_type && !response_mime_type.empty?
             response_raw_sub_type == raw_sub_type
           end
         end
@@ -897,7 +897,7 @@ class HTTPMethod < HasDocs
     if method.request
       uri = method.request.uri(resource, args)
     else
-      uri = resource.uri
+      uri = resource.uri(args)
     end
     headers = uri.headers.dup
     if args[:expect_representation]
@@ -1244,7 +1244,7 @@ module XMLRepresentation
   end
 
   def lookup_param(name)
-    p = @params.detect { |p| p.name = name }
+    p = @params.detect { |p| p.name == name }
     raise ArgumentError, "No such param #{name}" unless p
     raise ArgumentError, "Param #{name} has no path!" unless p.path
     return p
