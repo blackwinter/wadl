@@ -8,6 +8,7 @@ require 'delegate'
 require 'rexml/document'
 require 'set'
 require 'cgi'
+require 'yaml'
 
 require 'rubygems'
 require 'rest-open-uri'
@@ -18,6 +19,9 @@ rescue LoadError
 end
 
 module WADL
+
+  OAUTH_HEADER = 'Authorization'
+  OAUTH_PREFIX = 'OAuth:'
 
   # A container for application-specific faults
   module Faults
@@ -891,6 +895,8 @@ module WADL
       headers[:method]        = name.downcase.to_sym
       headers[:body]          = args[:send_representation]
 
+      set_oauth_header(headers, uri)
+
       begin
         response = open(uri, headers)
       rescue OpenURI::HTTPError => err
@@ -898,6 +904,32 @@ module WADL
       end
 
       method.response.build(response)
+    end
+
+    def set_oauth_header(headers, uri)
+      args = headers[OAUTH_HEADER] or return
+
+      yaml = args.dup
+      yaml.sub!(/\A#{OAUTH_PREFIX}/, '') or return
+
+      consumer_key, consumer_secret, access_token, token_secret = YAML.load(yaml)
+
+      require 'oauth/client/helper'
+
+      request = OpenURI::Methods[headers[:method]].new(uri.to_s)
+
+      consumer = OAuth::Consumer.new(consumer_key, consumer_secret)
+      token    = OAuth::AccessToken.new(consumer, access_token, token_secret)
+
+      helper = OAuth::Client::Helper.new(request,
+        :request_uri      => request.path,
+        :consumer         => consumer,
+        :token            => token,
+        :scheme           => 'header',
+        :signature_method => 'HMAC-SHA1'
+      )
+
+      headers[OAUTH_HEADER] = helper.header
     end
 
   end
@@ -963,6 +995,17 @@ module WADL
     # Sets basic auth parameters
     def with_basic_auth(user, pass, param_name = 'Authorization')
       bind(:headers => { param_name => "Basic #{["#{user}:#{pass}"].pack('m')}" })
+    end
+
+    # Sets OAuth parameters
+    #
+    # Args:
+    #  :consumer_key
+    #  :consumer_secret
+    #  :access_token
+    #  :token_secret
+    def with_oauth(*args)
+      bind(:headers => { OAUTH_HEADER => "#{OAUTH_PREFIX}#{args.to_yaml}" })
     end
 
     def uri(args = {}, working_address = nil)
