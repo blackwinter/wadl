@@ -55,8 +55,8 @@
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
-                <a href="../../files/lib/wadl_rb.html">
-                lib/wadl.rb
+                <a href="../../files/lib/wadl/resource_rb.html">
+                lib/wadl/resource.rb
                 </a>
         <br />
             </td>
@@ -88,18 +88,19 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000047">address</a>&nbsp;&nbsp;
-      <a href="#M000043">bind</a>&nbsp;&nbsp;
-      <a href="#M000042">dereference_with_context</a>&nbsp;&nbsp;
-      <a href="#M000050">each_http_method</a>&nbsp;&nbsp;
-      <a href="#M000049">find_by_id</a>&nbsp;&nbsp;
-      <a href="#M000052">find_method_by_http_method</a>&nbsp;&nbsp;
-      <a href="#M000051">find_method_by_id</a>&nbsp;&nbsp;
-      <a href="#M000041">new</a>&nbsp;&nbsp;
-      <a href="#M000048">representation_for</a>&nbsp;&nbsp;
-      <a href="#M000046">uri</a>&nbsp;&nbsp;
-      <a href="#M000044">with_basic_auth</a>&nbsp;&nbsp;
-      <a href="#M000045">with_oauth</a>&nbsp;&nbsp;
+      <a href="#M000042">address</a>&nbsp;&nbsp;
+      <a href="#M000038">bind</a>&nbsp;&nbsp;
+      <a href="#M000048">define_http_methods</a>&nbsp;&nbsp;
+      <a href="#M000037">dereference_with_context</a>&nbsp;&nbsp;
+      <a href="#M000045">each_http_method</a>&nbsp;&nbsp;
+      <a href="#M000044">find_by_id</a>&nbsp;&nbsp;
+      <a href="#M000047">find_method_by_http_method</a>&nbsp;&nbsp;
+      <a href="#M000046">find_method_by_id</a>&nbsp;&nbsp;
+      <a href="#M000036">new</a>&nbsp;&nbsp;
+      <a href="#M000043">representation_for</a>&nbsp;&nbsp;
+      <a href="#M000041">uri</a>&nbsp;&nbsp;
+      <a href="#M000039">with_basic_auth</a>&nbsp;&nbsp;
+      <a href="#M000040">with_oauth</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -128,24 +129,52 @@
     <div id="methods">
       <h3 class="section-bar">Public Class methods</h3>
 
-      <div id="method-M000041" class="method-detail">
-        <a name="M000041"></a>
+      <div id="method-M000048" class="method-detail">
+        <a name="M000048"></a>
 
         <div class="method-heading">
-          <a href="#M000041" class="method-signature">
+          <a href="#M000048" class="method-signature">
+          <span class="method-name">define_http_methods</span><span class="method-args">(klass = self, methods = %w[get post put delete])</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Methods for reading or writing this resource
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000048-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000048-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/resource.rb, line 149</span>
+149:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">define_http_methods</span>(<span class="ruby-identifier">klass</span> = <span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">methods</span> = <span class="ruby-node">%w[get post put delete]</span>)
+150:       <span class="ruby-identifier">methods</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">method</span><span class="ruby-operator">|</span>
+151:         <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">class_eval</span> <span class="ruby-value str">&quot;def \#{method}(*args, &amp;block)\nfind_method_by_http_method(:\#{method}).call(self, *args, &amp;block)\nend\n&quot;</span>, <span class="ruby-keyword kw">__FILE__</span>, <span class="ruby-keyword kw">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+152:       }
+153:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000036" class="method-detail">
+        <a name="M000036"></a>
+
+        <div class="method-heading">
+          <a href="#M000036" class="method-signature">
           <span class="method-name">new</span><span class="method-args">(*args)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000041-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000041-source">
+            onclick="toggleCode('M000036-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000036-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 995</span>
-995:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-996:       <span class="ruby-keyword kw">super</span>
-997:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/resource.rb, line 43</span>
+43:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+44:       <span class="ruby-keyword kw">super</span>
+45:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -153,11 +182,11 @@
 
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000047" class="method-detail">
-        <a name="M000047"></a>
+      <div id="method-M000042" class="method-detail">
+        <a name="M000042"></a>
 
         <div class="method-heading">
-          <a href="#M000047" class="method-signature">
+          <a href="#M000042" class="method-signature">
           <span class="method-name">address</span><span class="method-args">(working_address = nil)</span>
           </a>
         </div>
@@ -168,60 +197,61 @@ Returns an <a href="Address.html">Address</a> object refering to this
 resource
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000047-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000047-source">
+            onclick="toggleCode('M000042-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000042-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1030</span>
-1030:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">address</span>(<span class="ruby-identifier">working_address</span> = <span class="ruby-keyword kw">nil</span>)
-1031:       <span class="ruby-identifier">working_address</span> <span class="ruby-operator">&amp;&amp;=</span> <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">deep_copy</span>
-1032:       <span class="ruby-identifier">working_address</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:base</span>)
-1033:         <span class="ruby-identifier">address</span> = <span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>
-1034:         <span class="ruby-identifier">address</span>.<span class="ruby-identifier">path_fragments</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">base</span>
-1035:         <span class="ruby-identifier">address</span>
-1036:       <span class="ruby-keyword kw">else</span>
-1037:         <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">address</span>.<span class="ruby-identifier">deep_copy</span>
-1038:       <span class="ruby-keyword kw">end</span>
-1039: 
-1040:       <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">path_fragments</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">dup</span>
-1041: 
-1042:       <span class="ruby-comment cmt"># Install path, query, and header parameters in the Address. These</span>
-1043:       <span class="ruby-comment cmt"># may override existing parameters with the same names, but if</span>
-1044:       <span class="ruby-comment cmt"># you've got a WADL application that works that way, you should</span>
-1045:       <span class="ruby-comment cmt"># have bound parameters to values earlier.</span>
-1046:       <span class="ruby-identifier">new_path_fragments</span> = []
-1047:       <span class="ruby-identifier">embedded_param_names</span> = <span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Address</span>.<span class="ruby-identifier">embedded_param_names</span>(<span class="ruby-identifier">path</span>))
-1048: 
-1049:       <span class="ruby-identifier">params</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">param</span><span class="ruby-operator">|</span>
-1050:         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">param</span>.<span class="ruby-identifier">name</span>
-1051: 
-1052:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">embedded_param_names</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
-1053:           <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">path_params</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">param</span>
-1054:         <span class="ruby-keyword kw">else</span>
-1055:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">param</span>.<span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'query'</span>
-1056:             <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">query_params</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">param</span>
-1057:           <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">param</span>.<span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'header'</span>
-1058:             <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">header_params</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">param</span>
-1059:           <span class="ruby-keyword kw">else</span>
-1060:             <span class="ruby-identifier">new_path_fragments</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">param</span>
-1061:             <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">path_params</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">param</span>
-1062:           <span class="ruby-keyword kw">end</span>
-1063:         <span class="ruby-keyword kw">end</span>
-1064:       }
-1065: 
-1066:       <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">path_fragments</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new_path_fragments</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">new_path_fragments</span>.<span class="ruby-identifier">empty?</span>
-1067: 
-1068:       <span class="ruby-identifier">working_address</span>
-1069:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/resource.rb, line 79</span>
+ 79:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">address</span>(<span class="ruby-identifier">working_address</span> = <span class="ruby-keyword kw">nil</span>)
+ 80:       <span class="ruby-identifier">working_address</span> <span class="ruby-operator">&amp;&amp;=</span> <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">deep_copy</span>
+ 81: 
+ 82:       <span class="ruby-identifier">working_address</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:base</span>)
+ 83:         <span class="ruby-identifier">address</span> = <span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>
+ 84:         <span class="ruby-identifier">address</span>.<span class="ruby-identifier">path_fragments</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">base</span>
+ 85:         <span class="ruby-identifier">address</span>
+ 86:       <span class="ruby-keyword kw">else</span>
+ 87:         <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">address</span>.<span class="ruby-identifier">deep_copy</span>
+ 88:       <span class="ruby-keyword kw">end</span>
+ 89: 
+ 90:       <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">path_fragments</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">dup</span>
+ 91: 
+ 92:       <span class="ruby-comment cmt"># Install path, query, and header parameters in the Address. These</span>
+ 93:       <span class="ruby-comment cmt"># may override existing parameters with the same names, but if</span>
+ 94:       <span class="ruby-comment cmt"># you've got a WADL application that works that way, you should</span>
+ 95:       <span class="ruby-comment cmt"># have bound parameters to values earlier.</span>
+ 96:       <span class="ruby-identifier">new_path_fragments</span> = []
+ 97:       <span class="ruby-identifier">embedded_param_names</span> = <span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Address</span>.<span class="ruby-identifier">embedded_param_names</span>(<span class="ruby-identifier">path</span>))
+ 98: 
+ 99:       <span class="ruby-identifier">params</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">param</span><span class="ruby-operator">|</span>
+100:         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">param</span>.<span class="ruby-identifier">name</span>
+101: 
+102:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">embedded_param_names</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
+103:           <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">path_params</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">param</span>
+104:         <span class="ruby-keyword kw">else</span>
+105:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">param</span>.<span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'query'</span>
+106:             <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">query_params</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">param</span>
+107:           <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">param</span>.<span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'header'</span>
+108:             <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">header_params</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">param</span>
+109:           <span class="ruby-keyword kw">else</span>
+110:             <span class="ruby-identifier">new_path_fragments</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">param</span>
+111:             <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">path_params</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">param</span>
+112:           <span class="ruby-keyword kw">end</span>
+113:         <span class="ruby-keyword kw">end</span>
+114:       }
+115: 
+116:       <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">path_fragments</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new_path_fragments</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">new_path_fragments</span>.<span class="ruby-identifier">empty?</span>
+117: 
+118:       <span class="ruby-identifier">working_address</span>
+119:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000043" class="method-detail">
-        <a name="M000043"></a>
+      <div id="method-M000038" class="method-detail">
+        <a name="M000038"></a>
 
         <div class="method-heading">
-          <a href="#M000043" class="method-signature">
+          <a href="#M000038" class="method-signature">
           <span class="method-name">bind</span><span class="method-args">(args = {})</span>
           </a>
         </div>
@@ -232,209 +262,36 @@ Returns a <a href="ResourceAndAddress.html">ResourceAndAddress</a> object
 bound to this resource and the given query variables.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000043-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000043-source">
+            onclick="toggleCode('M000038-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000038-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1005</span>
-1005:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bind</span>(<span class="ruby-identifier">args</span> = {})
-1006:       <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>).<span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span>)
-1007:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/resource.rb, line 53</span>
+53:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bind</span>(<span class="ruby-identifier">args</span> = {})
+54:       <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>).<span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span>)
+55:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000042" class="method-detail">
-        <a name="M000042"></a>
+      <div id="method-M000037" class="method-detail">
+        <a name="M000037"></a>
 
         <div class="method-heading">
-          <a href="#M000042" class="method-signature">
+          <a href="#M000037" class="method-signature">
           <span class="method-name">dereference_with_context</span><span class="method-args">(child)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000042-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000042-source">
+            onclick="toggleCode('M000037-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000037-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 999</span>
- 999:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dereference_with_context</span>(<span class="ruby-identifier">child</span>)
-1000:       <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">child</span>, <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">address</span>)
-1001:     <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000050" class="method-detail">
-        <a name="M000050"></a>
-
-        <div class="method-heading">
-          <a href="#M000050" class="method-signature">
-          <span class="method-name">each_http_method</span><span class="method-args">() {|m| ...}</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Find HTTP methods in this resource and in the mixed-in types
-</p>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000050-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000050-source">
-<pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1084</span>
-1084:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_http_method</span>
-1085:       [<span class="ruby-keyword kw">self</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">resource_types</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">http_methods</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">m</span> } }
-1086:     <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000049" class="method-detail">
-        <a name="M000049"></a>
-
-        <div class="method-heading">
-          <a href="#M000049" class="method-signature">
-          <span class="method-name">find_by_id</span><span class="method-args">(id)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000049-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000049-source">
-<pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1078</span>
-1078:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>)
-1079:       <span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>
-1080:       <span class="ruby-identifier">resources</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">id</span> }
-1081:     <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000052" class="method-detail">
-        <a name="M000052"></a>
-
-        <div class="method-heading">
-          <a href="#M000052" class="method-signature">
-          <span class="method-name">find_method_by_http_method</span><span class="method-args">(action)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000052-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000052-source">
-<pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1093</span>
-1093:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_method_by_http_method</span>(<span class="ruby-identifier">action</span>)
-1094:       <span class="ruby-identifier">action</span> = <span class="ruby-identifier">action</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>
-1095:       <span class="ruby-identifier">each_http_method</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">m</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">action</span> }
-1096:     <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000051" class="method-detail">
-        <a name="M000051"></a>
-
-        <div class="method-heading">
-          <a href="#M000051" class="method-signature">
-          <span class="method-name">find_method_by_id</span><span class="method-args">(id)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000051-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000051-source">
-<pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1088</span>
-1088:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_method_by_id</span>(<span class="ruby-identifier">id</span>)
-1089:       <span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>
-1090:       <span class="ruby-identifier">each_http_method</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">m</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">id</span> }
-1091:     <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000048" class="method-detail">
-        <a name="M000048"></a>
-
-        <div class="method-heading">
-          <a href="#M000048" class="method-signature">
-          <span class="method-name">representation_for</span><span class="method-args">(http_method, request = true, all = false)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000048-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000048-source">
-<pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1071</span>
-1071:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">representation_for</span>(<span class="ruby-identifier">http_method</span>, <span class="ruby-identifier">request</span> = <span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">all</span> = <span class="ruby-keyword kw">false</span>)
-1072:       <span class="ruby-identifier">method</span> = <span class="ruby-identifier">find_method_by_http_method</span>(<span class="ruby-identifier">http_method</span>)
-1073:       <span class="ruby-identifier">representations</span> = (<span class="ruby-identifier">request</span> <span class="ruby-value">? </span><span class="ruby-identifier">method</span>.<span class="ruby-identifier">request</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">method</span>.<span class="ruby-identifier">response</span>).<span class="ruby-identifier">representations</span>
-1074: 
-1075:       <span class="ruby-identifier">all</span> <span class="ruby-value">? </span><span class="ruby-identifier">representations</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">representations</span>[<span class="ruby-value">0</span>]
-1076:     <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000046" class="method-detail">
-        <a name="M000046"></a>
-
-        <div class="method-heading">
-          <a href="#M000046" class="method-signature">
-          <span class="method-name">uri</span><span class="method-args">(args = {}, working_address = nil)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000046-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000046-source">
-<pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1025</span>
-1025:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uri</span>(<span class="ruby-identifier">args</span> = {}, <span class="ruby-identifier">working_address</span> = <span class="ruby-keyword kw">nil</span>)
-1026:       <span class="ruby-identifier">address</span>(<span class="ruby-identifier">working_address</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">deep_copy</span>).<span class="ruby-identifier">uri</span>(<span class="ruby-identifier">args</span>)
-1027:     <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000044" class="method-detail">
-        <a name="M000044"></a>
-
-        <div class="method-heading">
-          <a href="#M000044" class="method-signature">
-          <span class="method-name">with_basic_auth</span><span class="method-args">(user, pass, param_name = 'Authorization')</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Sets basic auth parameters
-</p>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000044-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000044-source">
-<pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1010</span>
-1010:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">with_basic_auth</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>, <span class="ruby-identifier">param_name</span> = <span class="ruby-value str">'Authorization'</span>)
-1011:       <span class="ruby-identifier">bind</span>(<span class="ruby-identifier">:headers</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-identifier">param_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;Basic #{[&quot;#{user}:#{pass}&quot;].pack('m')}&quot;</span> })
-1012:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/resource.rb, line 47</span>
+47:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dereference_with_context</span>(<span class="ruby-identifier">child</span>)
+48:       <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">child</span>, <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">address</span>)
+49:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -445,6 +302,179 @@ Sets basic auth parameters
 
         <div class="method-heading">
           <a href="#M000045" class="method-signature">
+          <span class="method-name">each_http_method</span><span class="method-args">() {|m| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Find HTTP methods in this resource and in the mixed-in types
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000045-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000045-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/resource.rb, line 134</span>
+134:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_http_method</span>
+135:       [<span class="ruby-keyword kw">self</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">resource_types</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">http_methods</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">m</span> } }
+136:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000044" class="method-detail">
+        <a name="M000044"></a>
+
+        <div class="method-heading">
+          <a href="#M000044" class="method-signature">
+          <span class="method-name">find_by_id</span><span class="method-args">(id)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000044-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000044-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/resource.rb, line 128</span>
+128:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>)
+129:       <span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>
+130:       <span class="ruby-identifier">resources</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">id</span> }
+131:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000047" class="method-detail">
+        <a name="M000047"></a>
+
+        <div class="method-heading">
+          <a href="#M000047" class="method-signature">
+          <span class="method-name">find_method_by_http_method</span><span class="method-args">(action)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000047-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000047-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/resource.rb, line 143</span>
+143:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_method_by_http_method</span>(<span class="ruby-identifier">action</span>)
+144:       <span class="ruby-identifier">action</span> = <span class="ruby-identifier">action</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>
+145:       <span class="ruby-identifier">each_http_method</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">m</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">action</span> }
+146:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000046" class="method-detail">
+        <a name="M000046"></a>
+
+        <div class="method-heading">
+          <a href="#M000046" class="method-signature">
+          <span class="method-name">find_method_by_id</span><span class="method-args">(id)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000046-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000046-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/resource.rb, line 138</span>
+138:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_method_by_id</span>(<span class="ruby-identifier">id</span>)
+139:       <span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>
+140:       <span class="ruby-identifier">each_http_method</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">m</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">id</span> }
+141:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000043" class="method-detail">
+        <a name="M000043"></a>
+
+        <div class="method-heading">
+          <a href="#M000043" class="method-signature">
+          <span class="method-name">representation_for</span><span class="method-args">(http_method, request = true, all = false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000043-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000043-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/resource.rb, line 121</span>
+121:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">representation_for</span>(<span class="ruby-identifier">http_method</span>, <span class="ruby-identifier">request</span> = <span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">all</span> = <span class="ruby-keyword kw">false</span>)
+122:       <span class="ruby-identifier">method</span> = <span class="ruby-identifier">find_method_by_http_method</span>(<span class="ruby-identifier">http_method</span>)
+123:       <span class="ruby-identifier">representations</span> = (<span class="ruby-identifier">request</span> <span class="ruby-value">? </span><span class="ruby-identifier">method</span>.<span class="ruby-identifier">request</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">method</span>.<span class="ruby-identifier">response</span>).<span class="ruby-identifier">representations</span>
+124: 
+125:       <span class="ruby-identifier">all</span> <span class="ruby-value">? </span><span class="ruby-identifier">representations</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">representations</span>[<span class="ruby-value">0</span>]
+126:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000041" class="method-detail">
+        <a name="M000041"></a>
+
+        <div class="method-heading">
+          <a href="#M000041" class="method-signature">
+          <span class="method-name">uri</span><span class="method-args">(args = {}, working_address = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000041-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000041-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/wadl/resource.rb, line 74</span>
+74:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uri</span>(<span class="ruby-identifier">args</span> = {}, <span class="ruby-identifier">working_address</span> = <span class="ruby-keyword kw">nil</span>)
+75:       <span class="ruby-identifier">address</span>(<span class="ruby-identifier">working_address</span>).<span class="ruby-identifier">uri</span>(<span class="ruby-identifier">args</span>)
+76:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000039" class="method-detail">
+        <a name="M000039"></a>
+
+        <div class="method-heading">
+          <a href="#M000039" class="method-signature">
+          <span class="method-name">with_basic_auth</span><span class="method-args">(user, pass, header = 'Authorization')</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets basic auth parameters
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000039-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000039-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/wadl/resource.rb, line 58</span>
+58:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">with_basic_auth</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>, <span class="ruby-identifier">header</span> = <span class="ruby-value str">'Authorization'</span>)
+59:       <span class="ruby-identifier">bind</span>(<span class="ruby-identifier">:headers</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-identifier">header</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;Basic #{[&quot;#{user}:#{pass}&quot;].pack('m')}&quot;</span> })
+60:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000040" class="method-detail">
+        <a name="M000040"></a>
+
+        <div class="method-heading">
+          <a href="#M000040" class="method-signature">
           <span class="method-name">with_oauth</span><span class="method-args">(*args)</span>
           </a>
         </div>
@@ -463,13 +493,14 @@ Args:
  :token_secret
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000045-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000045-source">
+            onclick="toggleCode('M000040-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000040-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1021</span>
-1021:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">with_oauth</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-1022:       <span class="ruby-identifier">bind</span>(<span class="ruby-identifier">:headers</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-constant">OAUTH_HEADER</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{OAUTH_PREFIX}#{args.to_yaml}&quot;</span> })
-1023:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/resource.rb, line 69</span>
+69:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">with_oauth</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+70:       <span class="ruby-identifier">header</span>, <span class="ruby-identifier">prefix</span> = <span class="ruby-constant">HTTPMethod</span><span class="ruby-operator">::</span><span class="ruby-constant">OAUTH_HEADER</span>, <span class="ruby-constant">HTTPMethod</span><span class="ruby-operator">::</span><span class="ruby-constant">OAUTH_PREFIX</span>
+71:       <span class="ruby-identifier">bind</span>(<span class="ruby-identifier">:headers</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-identifier">header</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{prefix}#{args.to_yaml}&quot;</span> })
+72:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

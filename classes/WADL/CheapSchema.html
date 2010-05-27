@@ -55,8 +55,8 @@
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
-                <a href="../../files/lib/wadl_rb.html">
-                lib/wadl.rb
+                <a href="../../files/lib/wadl/cheap_schema_rb.html">
+                lib/wadl/cheap_schema.rb
                 </a>
         <br />
             </td>
@@ -93,29 +93,29 @@ documents into instances of those classes.
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000058">as_collection</a>&nbsp;&nbsp;
-      <a href="#M000059">as_member</a>&nbsp;&nbsp;
-      <a href="#M000060">contents_are_mixed_data</a>&nbsp;&nbsp;
-      <a href="#M000069">define_dereferencing_accessors</a>&nbsp;&nbsp;
-      <a href="#M000073">dereference</a>&nbsp;&nbsp;
-      <a href="#M000072">dereference_with_context</a>&nbsp;&nbsp;
-      <a href="#M000064">dereferencing_attr_accessor</a>&nbsp;&nbsp;
-      <a href="#M000063">dereferencing_instance_accessor</a>&nbsp;&nbsp;
-      <a href="#M000068">from_element</a>&nbsp;&nbsp;
-      <a href="#M000065">has_attributes</a>&nbsp;&nbsp;
-      <a href="#M000062">has_many</a>&nbsp;&nbsp;
-      <a href="#M000061">has_one</a>&nbsp;&nbsp;
-      <a href="#M000066">has_required</a>&nbsp;&nbsp;
-      <a href="#M000070">has_required_or_attributes</a>&nbsp;&nbsp;
-      <a href="#M000057">in_document</a>&nbsp;&nbsp;
-      <a href="#M000054">inherit</a>&nbsp;&nbsp;
-      <a href="#M000055">inherited</a>&nbsp;&nbsp;
-      <a href="#M000053">init</a>&nbsp;&nbsp;
-      <a href="#M000074">matches?</a>&nbsp;&nbsp;
-      <a href="#M000067">may_be_reference</a>&nbsp;&nbsp;
-      <a href="#M000056">may_be_reference?</a>&nbsp;&nbsp;
-      <a href="#M000071">new</a>&nbsp;&nbsp;
-      <a href="#M000075">to_s</a>&nbsp;&nbsp;
+      <a href="#M000054">as_collection</a>&nbsp;&nbsp;
+      <a href="#M000055">as_member</a>&nbsp;&nbsp;
+      <a href="#M000056">contents_are_mixed_data</a>&nbsp;&nbsp;
+      <a href="#M000065">define_dereferencing_accessors</a>&nbsp;&nbsp;
+      <a href="#M000069">dereference</a>&nbsp;&nbsp;
+      <a href="#M000068">dereference_with_context</a>&nbsp;&nbsp;
+      <a href="#M000060">dereferencing_attr_accessor</a>&nbsp;&nbsp;
+      <a href="#M000059">dereferencing_instance_accessor</a>&nbsp;&nbsp;
+      <a href="#M000064">from_element</a>&nbsp;&nbsp;
+      <a href="#M000061">has_attributes</a>&nbsp;&nbsp;
+      <a href="#M000058">has_many</a>&nbsp;&nbsp;
+      <a href="#M000057">has_one</a>&nbsp;&nbsp;
+      <a href="#M000062">has_required</a>&nbsp;&nbsp;
+      <a href="#M000066">has_required_or_attributes</a>&nbsp;&nbsp;
+      <a href="#M000053">in_document</a>&nbsp;&nbsp;
+      <a href="#M000050">inherit</a>&nbsp;&nbsp;
+      <a href="#M000051">inherited</a>&nbsp;&nbsp;
+      <a href="#M000049">init</a>&nbsp;&nbsp;
+      <a href="#M000070">matches?</a>&nbsp;&nbsp;
+      <a href="#M000063">may_be_reference</a>&nbsp;&nbsp;
+      <a href="#M000052">may_be_reference?</a>&nbsp;&nbsp;
+      <a href="#M000067">new</a>&nbsp;&nbsp;
+      <a href="#M000071">to_s</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -156,26 +156,17 @@ documents into instances of those classes.
         <tr class="top-aligned-row context-row">
           <td class="context-item-name">href</td>
           <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
-          <td class="context-item-desc">
-Common instance methods
-
-</td>
+          <td class="context-item-desc"></td>
         </tr>
         <tr class="top-aligned-row context-row">
           <td class="context-item-name">index_key</td>
           <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
-          <td class="context-item-desc">
-Common instance methods
-
-</td>
+          <td class="context-item-desc"></td>
         </tr>
         <tr class="top-aligned-row context-row">
           <td class="context-item-name">parent</td>
           <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
-          <td class="context-item-desc">
-Common instance methods
-
-</td>
+          <td class="context-item-desc"></td>
         </tr>
         </table>
       </div>
@@ -187,349 +178,12 @@ Common instance methods
     <div id="methods">
       <h3 class="section-bar">Public Class methods</h3>
 
-      <div id="method-M000058" class="method-detail">
-        <a name="M000058"></a>
-
-        <div class="method-heading">
-          <a href="#M000058" class="method-signature">
-          <span class="method-name">as_collection</span><span class="method-args">(collection_name)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000058-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000058-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 98</span>
- 98:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">as_collection</span>(<span class="ruby-identifier">collection_name</span>)
- 99:         <span class="ruby-ivar">@names</span>[<span class="ruby-identifier">:collection</span>] = <span class="ruby-identifier">collection_name</span>
-100:       <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000059" class="method-detail">
-        <a name="M000059"></a>
-
-        <div class="method-heading">
-          <a href="#M000059" class="method-signature">
-          <span class="method-name">as_member</span><span class="method-args">(member_name)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000059-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000059-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 102</span>
-102:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">as_member</span>(<span class="ruby-identifier">member_name</span>)
-103:         <span class="ruby-ivar">@names</span>[<span class="ruby-identifier">:member</span>] = <span class="ruby-identifier">member_name</span>
-104:       <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000060" class="method-detail">
-        <a name="M000060"></a>
-
-        <div class="method-heading">
-          <a href="#M000060" class="method-signature">
-          <span class="method-name">contents_are_mixed_data</span><span class="method-args">()</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000060-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000060-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 106</span>
-106:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">contents_are_mixed_data</span>
-107:         <span class="ruby-ivar">@contents_are_mixed_data</span> = <span class="ruby-keyword kw">true</span>
-108:       <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000064" class="method-detail">
-        <a name="M000064"></a>
-
-        <div class="method-heading">
-          <a href="#M000064" class="method-signature">
-          <span class="method-name">dereferencing_attr_accessor</span><span class="method-args">(*symbols)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000064-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000064-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 159</span>
-159:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dereferencing_attr_accessor</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">symbols</span>)
-160:         <span class="ruby-identifier">define_dereferencing_accessors</span>(<span class="ruby-identifier">symbols</span>,
-161:           <span class="ruby-value str">'dereference.attributes[&quot;%s&quot;]'</span>,
-162:           <span class="ruby-value str">'dereference.attributes[&quot;%s&quot;] = value'</span>
-163:         )
-164:       <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000063" class="method-detail">
-        <a name="M000063"></a>
-
-        <div class="method-heading">
-          <a href="#M000063" class="method-signature">
-          <span class="method-name">dereferencing_instance_accessor</span><span class="method-args">(*symbols)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000063-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000063-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 151</span>
-151:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dereferencing_instance_accessor</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">symbols</span>)
-152:         <span class="ruby-identifier">define_dereferencing_accessors</span>(<span class="ruby-identifier">symbols</span>,
-153:           <span class="ruby-value str">'d, v = dereference, :@%s; '</span> <span class="ruby-operator">&lt;&lt;</span>
-154:           <span class="ruby-value str">'d.instance_variable_get(v) if d.instance_variable_defined?(v)'</span>,
-155:           <span class="ruby-value str">'dereference.instance_variable_set(:@%s, value)'</span>
-156:         )
-157:       <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000068" class="method-detail">
-        <a name="M000068"></a>
-
-        <div class="method-heading">
-          <a href="#M000068" class="method-signature">
-          <span class="method-name">from_element</span><span class="method-args">(parent, element, need_finalization)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Turn an XML element into an instance of this class.
-</p>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000068-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000068-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 202</span>
-202:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">from_element</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">element</span>, <span class="ruby-identifier">need_finalization</span>)
-203:         <span class="ruby-identifier">attributes</span> = <span class="ruby-identifier">element</span>.<span class="ruby-identifier">attributes</span>
-204: 
-205:         <span class="ruby-identifier">me</span> = <span class="ruby-identifier">new</span>
-206:         <span class="ruby-identifier">me</span>.<span class="ruby-identifier">parent</span> = <span class="ruby-identifier">parent</span>
-207: 
-208:         <span class="ruby-ivar">@collections</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">klass</span><span class="ruby-operator">|</span>
-209:           <span class="ruby-identifier">me</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{klass.names[:collection]}&quot;</span>, [])
-210:         }
-211: 
-212:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">may_be_reference?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">href</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'href'</span>]
-213:           <span class="ruby-comment cmt"># Handle objects that are just references to other objects</span>
-214:           <span class="ruby-comment cmt"># somewhere above this one in the hierarchy</span>
-215:           <span class="ruby-identifier">href</span> = <span class="ruby-identifier">href</span>.<span class="ruby-identifier">dup</span>
-216:           <span class="ruby-identifier">href</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-regexp re">/\A#/</span>, <span class="ruby-value str">''</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;Warning: HREF #{href} should be ##{href}&quot;</span>
-217: 
-218:           <span class="ruby-identifier">me</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'href'</span>] = <span class="ruby-identifier">href</span>
-219:         <span class="ruby-keyword kw">else</span>
-220:           <span class="ruby-comment cmt"># Handle this element's attributes</span>
-221:           <span class="ruby-ivar">@required_attributes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
-222:             <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
-223: 
-224:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{Missing required attribute &quot;#{name}&quot; in element: #{element}}</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>]
-225: 
-226:             <span class="ruby-identifier">me</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>]
-227:             <span class="ruby-identifier">me</span>.<span class="ruby-identifier">index_key</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@index_attribute</span>
-228:           }
-229: 
-230:           <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
-231:             <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
-232: 
-233:             <span class="ruby-identifier">me</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>]
-234:             <span class="ruby-identifier">me</span>.<span class="ruby-identifier">index_key</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@index_attribute</span>
-235:           }
-236:         <span class="ruby-keyword kw">end</span>
-237: 
-238:         <span class="ruby-comment cmt"># Handle this element's children.</span>
-239:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@contents_are_mixed_data</span>
-240:           <span class="ruby-identifier">me</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">:@contents</span>, <span class="ruby-identifier">element</span>.<span class="ruby-identifier">children</span>)
-241:         <span class="ruby-keyword kw">else</span>
-242:           <span class="ruby-identifier">element</span>.<span class="ruby-identifier">each_element</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>
-243:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span> = <span class="ruby-ivar">@members</span>[<span class="ruby-identifier">child</span>.<span class="ruby-identifier">name</span>] <span class="ruby-operator">||</span> <span class="ruby-ivar">@collections</span>[<span class="ruby-identifier">child</span>.<span class="ruby-identifier">name</span>]
-244:               <span class="ruby-identifier">object</span> = <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">from_element</span>(<span class="ruby-identifier">me</span>, <span class="ruby-identifier">child</span>, <span class="ruby-identifier">need_finalization</span>)
-245: 
-246:               <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@members</span>[<span class="ruby-identifier">child</span>.<span class="ruby-identifier">name</span>]
-247:                 <span class="ruby-identifier">instance_variable_name</span> = <span class="ruby-node">&quot;@#{klass.names[:member]}&quot;</span>
-248: 
-249:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">me</span>.<span class="ruby-identifier">instance_variable_defined?</span>(<span class="ruby-identifier">instance_variable_name</span>)
-250:                   <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;#{name} can only have one #{klass.name}, but several were specified in element: #{element}&quot;</span>
-251:                 <span class="ruby-keyword kw">end</span>
-252: 
-253:                 <span class="ruby-identifier">me</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">instance_variable_name</span>, <span class="ruby-identifier">object</span>)
-254:               <span class="ruby-keyword kw">else</span>
-255:                 <span class="ruby-identifier">me</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-node">&quot;@#{klass.names[:collection]}&quot;</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">object</span>
-256:               <span class="ruby-keyword kw">end</span>
-257:             <span class="ruby-keyword kw">end</span>
-258:           }
-259:         <span class="ruby-keyword kw">end</span>
-260: 
-261:         <span class="ruby-identifier">need_finalization</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">me</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">me</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:finalize_creation</span>)
-262: 
-263:         <span class="ruby-identifier">me</span>
-264:       <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000065" class="method-detail">
-        <a name="M000065"></a>
-
-        <div class="method-heading">
-          <a href="#M000065" class="method-signature">
-          <span class="method-name">has_attributes</span><span class="method-args">(*names)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000065-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000065-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 166</span>
-166:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_attributes</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">names</span>)
-167:         <span class="ruby-identifier">has_required_or_attributes</span>(<span class="ruby-identifier">names</span>, <span class="ruby-ivar">@attributes</span>)
-168:       <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000062" class="method-detail">
-        <a name="M000062"></a>
-
-        <div class="method-heading">
-          <a href="#M000062" class="method-signature">
-          <span class="method-name">has_many</span><span class="method-args">(*classes)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000062-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000062-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 117</span>
-117:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_many</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">classes</span>)
-118:         <span class="ruby-identifier">classes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">klass</span><span class="ruby-operator">|</span>
-119:           <span class="ruby-ivar">@collections</span>[<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">names</span>[<span class="ruby-identifier">:element</span>]] = <span class="ruby-identifier">klass</span>
-120: 
-121:           <span class="ruby-identifier">collection_name</span> = <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">names</span>[<span class="ruby-identifier">:collection</span>]
-122:           <span class="ruby-identifier">dereferencing_instance_accessor</span>(<span class="ruby-identifier">collection_name</span>)
-123: 
-124:           <span class="ruby-comment cmt"># Define a method for finding a specific element of this</span>
-125:           <span class="ruby-comment cmt"># collection.</span>
-126:           <span class="ruby-identifier">class_eval</span> <span class="ruby-value str">&quot;def find_\#{klass.names[:element]}(*args, &amp;block)\nblock ||= begin\nname = args.shift.to_s\nlambda { |match| match.matches?(name) }\nend\n\nauto_dereference = args.shift\nauto_dereference = true if auto_dereference.nil?\n\nmatch = \#{collection_name}.find { |match|\nblock[match] || (\n\#{klass}.may_be_reference? &amp;&amp;\nauto_dereference &amp;&amp;\nblock[match.dereference]\n)\n}\n\nmatch &amp;&amp; auto_dereference ? match.dereference : match\nend\n&quot;</span>, <span class="ruby-keyword kw">__FILE__</span>, <span class="ruby-keyword kw">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
-127:         }
-128:       <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000061" class="method-detail">
-        <a name="M000061"></a>
-
-        <div class="method-heading">
-          <a href="#M000061" class="method-signature">
-          <span class="method-name">has_one</span><span class="method-args">(*classes)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000061-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000061-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 110</span>
-110:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_one</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">classes</span>)
-111:         <span class="ruby-identifier">classes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">klass</span><span class="ruby-operator">|</span>
-112:           <span class="ruby-ivar">@members</span>[<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">names</span>[<span class="ruby-identifier">:element</span>]] = <span class="ruby-identifier">klass</span>
-113:           <span class="ruby-identifier">dereferencing_instance_accessor</span>(<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">names</span>[<span class="ruby-identifier">:member</span>])
-114:         }
-115:       <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000066" class="method-detail">
-        <a name="M000066"></a>
-
-        <div class="method-heading">
-          <a href="#M000066" class="method-signature">
-          <span class="method-name">has_required</span><span class="method-args">(*names)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000066-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000066-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 170</span>
-170:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_required</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">names</span>)
-171:         <span class="ruby-identifier">has_required_or_attributes</span>(<span class="ruby-identifier">names</span>, <span class="ruby-ivar">@required_attributes</span>)
-172:       <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000057" class="method-detail">
-        <a name="M000057"></a>
-
-        <div class="method-heading">
-          <a href="#M000057" class="method-signature">
-          <span class="method-name">in_document</span><span class="method-args">(element_name)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000057-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000057-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/wadl.rb, line 92</span>
-92:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">in_document</span>(<span class="ruby-identifier">element_name</span>)
-93:         <span class="ruby-ivar">@names</span>[<span class="ruby-identifier">:element</span>]    = <span class="ruby-identifier">element_name</span>
-94:         <span class="ruby-ivar">@names</span>[<span class="ruby-identifier">:member</span>]     = <span class="ruby-identifier">element_name</span>
-95:         <span class="ruby-ivar">@names</span>[<span class="ruby-identifier">:collection</span>] = <span class="ruby-identifier">element_name</span> <span class="ruby-operator">+</span> <span class="ruby-value str">'s'</span>
-96:       <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
       <div id="method-M000054" class="method-detail">
         <a name="M000054"></a>
 
         <div class="method-heading">
           <a href="#M000054" class="method-signature">
-          <span class="method-name">inherit</span><span class="method-args">(from)</span>
+          <span class="method-name">as_collection</span><span class="method-args">(collection_name)</span>
           </a>
         </div>
       
@@ -538,19 +192,10 @@ Turn an XML element into an instance of this class.
             onclick="toggleCode('M000054-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000054-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/wadl.rb, line 71</span>
-71:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inherit</span>(<span class="ruby-identifier">from</span>)
-72:         <span class="ruby-identifier">init</span>
-73: 
-74:         <span class="ruby-constant">ATTRIBUTES</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
-75:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">from</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">attr</span>)
-76:           <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{attr}&quot;</span>, <span class="ruby-identifier">value</span>.<span class="ruby-identifier">dup</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>
-77:         }
-78: 
-79:         <span class="ruby-node">%w[may_be_reference contents_are_mixed_data]</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
-80:           <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{attr}&quot;</span>, <span class="ruby-identifier">from</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-node">&quot;@#{attr}&quot;</span>))
-81:         }
-82:       <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 79</span>
+79:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">as_collection</span>(<span class="ruby-identifier">collection_name</span>)
+80:         <span class="ruby-ivar">@names</span>[<span class="ruby-identifier">:collection</span>] = <span class="ruby-identifier">collection_name</span>
+81:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -561,7 +206,7 @@ Turn an XML element into an instance of this class.
 
         <div class="method-heading">
           <a href="#M000055" class="method-signature">
-          <span class="method-name">inherited</span><span class="method-args">(klass)</span>
+          <span class="method-name">as_member</span><span class="method-args">(member_name)</span>
           </a>
         </div>
       
@@ -570,61 +215,10 @@ Turn an XML element into an instance of this class.
             onclick="toggleCode('M000055-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000055-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/wadl.rb, line 84</span>
-84:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inherited</span>(<span class="ruby-identifier">klass</span>)
-85:         <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">inherit</span>(<span class="ruby-keyword kw">self</span>)
-86:       <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000053" class="method-detail">
-        <a name="M000053"></a>
-
-        <div class="method-heading">
-          <a href="#M000053" class="method-signature">
-          <span class="method-name">init</span><span class="method-args">()</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000053-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000053-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/wadl.rb, line 66</span>
-66:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">init</span>
-67:         <span class="ruby-ivar">@names</span>, <span class="ruby-ivar">@members</span>, <span class="ruby-ivar">@collections</span> = {}, {}, {}
-68:         <span class="ruby-ivar">@required_attributes</span>, <span class="ruby-ivar">@attributes</span> = [], []
-69:       <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000067" class="method-detail">
-        <a name="M000067"></a>
-
-        <div class="method-heading">
-          <a href="#M000067" class="method-signature">
-          <span class="method-name">may_be_reference</span><span class="method-args">()</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000067-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000067-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 174</span>
-174:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">may_be_reference</span>
-175:         <span class="ruby-ivar">@may_be_reference</span> = <span class="ruby-keyword kw">true</span>
-176: 
-177:         <span class="ruby-identifier">find_method_name</span> = <span class="ruby-node">&quot;find_#{names[:element]}&quot;</span>
-178: 
-179:         <span class="ruby-identifier">class_eval</span> <span class="ruby-value str">&quot;def dereference\nreturn self unless href = attributes['href']\n\nunless @referenced\np = self\n\nuntil @referenced || !p\nbegin\np = p.parent\nend until !p || p.respond_to?(:\#{find_method_name})\n\n@referenced = p.\#{find_method_name}(href, false) if p\nend\nend\n\ndereference_with_context(@referenced) if @referenced\nend\n&quot;</span>, <span class="ruby-keyword kw">__FILE__</span>, <span class="ruby-keyword kw">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
-180:       <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 83</span>
+83:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">as_member</span>(<span class="ruby-identifier">member_name</span>)
+84:         <span class="ruby-ivar">@names</span>[<span class="ruby-identifier">:member</span>] = <span class="ruby-identifier">member_name</span>
+85:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -635,7 +229,7 @@ Turn an XML element into an instance of this class.
 
         <div class="method-heading">
           <a href="#M000056" class="method-signature">
-          <span class="method-name">may_be_reference?</span><span class="method-args">()</span>
+          <span class="method-name">contents_are_mixed_data</span><span class="method-args">()</span>
           </a>
         </div>
       
@@ -644,33 +238,430 @@ Turn an XML element into an instance of this class.
             onclick="toggleCode('M000056-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000056-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/wadl.rb, line 88</span>
-88:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">may_be_reference?</span>
-89:         <span class="ruby-ivar">@may_be_reference</span>
-90:       <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 87</span>
+87:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">contents_are_mixed_data</span>
+88:         <span class="ruby-ivar">@contents_are_mixed_data</span> = <span class="ruby-keyword kw">true</span>
+89:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000071" class="method-detail">
-        <a name="M000071"></a>
+      <div id="method-M000060" class="method-detail">
+        <a name="M000060"></a>
 
         <div class="method-heading">
-          <a href="#M000071" class="method-signature">
+          <a href="#M000060" class="method-signature">
+          <span class="method-name">dereferencing_attr_accessor</span><span class="method-args">(*symbols)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000060-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000060-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 140</span>
+140:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dereferencing_attr_accessor</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">symbols</span>)
+141:         <span class="ruby-identifier">define_dereferencing_accessors</span>(<span class="ruby-identifier">symbols</span>,
+142:           <span class="ruby-value str">'dereference.attributes[&quot;%s&quot;]'</span>,
+143:           <span class="ruby-value str">'dereference.attributes[&quot;%s&quot;] = value'</span>
+144:         )
+145:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000059" class="method-detail">
+        <a name="M000059"></a>
+
+        <div class="method-heading">
+          <a href="#M000059" class="method-signature">
+          <span class="method-name">dereferencing_instance_accessor</span><span class="method-args">(*symbols)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000059-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000059-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 132</span>
+132:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dereferencing_instance_accessor</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">symbols</span>)
+133:         <span class="ruby-identifier">define_dereferencing_accessors</span>(<span class="ruby-identifier">symbols</span>,
+134:           <span class="ruby-value str">'d, v = dereference, :@%s; '</span> <span class="ruby-operator">&lt;&lt;</span>
+135:           <span class="ruby-value str">'d.instance_variable_get(v) if d.instance_variable_defined?(v)'</span>,
+136:           <span class="ruby-value str">'dereference.instance_variable_set(:@%s, value)'</span>
+137:         )
+138:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000064" class="method-detail">
+        <a name="M000064"></a>
+
+        <div class="method-heading">
+          <a href="#M000064" class="method-signature">
+          <span class="method-name">from_element</span><span class="method-args">(parent, element, need_finalization)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Turn an XML element into an instance of this class.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000064-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000064-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 183</span>
+183:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">from_element</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">element</span>, <span class="ruby-identifier">need_finalization</span>)
+184:         <span class="ruby-identifier">attributes</span> = <span class="ruby-identifier">element</span>.<span class="ruby-identifier">attributes</span>
+185: 
+186:         <span class="ruby-identifier">me</span> = <span class="ruby-identifier">new</span>
+187:         <span class="ruby-identifier">me</span>.<span class="ruby-identifier">parent</span> = <span class="ruby-identifier">parent</span>
+188: 
+189:         <span class="ruby-ivar">@collections</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">klass</span><span class="ruby-operator">|</span>
+190:           <span class="ruby-identifier">me</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{klass.names[:collection]}&quot;</span>, [])
+191:         }
+192: 
+193:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">may_be_reference?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">href</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'href'</span>]
+194:           <span class="ruby-comment cmt"># Handle objects that are just references to other objects</span>
+195:           <span class="ruby-comment cmt"># somewhere above this one in the hierarchy</span>
+196:           <span class="ruby-identifier">href</span> = <span class="ruby-identifier">href</span>.<span class="ruby-identifier">dup</span>
+197:           <span class="ruby-identifier">href</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-regexp re">/\A#/</span>, <span class="ruby-value str">''</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;Warning: HREF #{href} should be ##{href}&quot;</span>
+198: 
+199:           <span class="ruby-identifier">me</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'href'</span>] = <span class="ruby-identifier">href</span>
+200:         <span class="ruby-keyword kw">else</span>
+201:           <span class="ruby-comment cmt"># Handle this element's attributes</span>
+202:           <span class="ruby-ivar">@required_attributes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+203:             <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+204: 
+205:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{Missing required attribute &quot;#{name}&quot; in element: #{element}}</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>]
+206: 
+207:             <span class="ruby-identifier">me</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>]
+208:             <span class="ruby-identifier">me</span>.<span class="ruby-identifier">index_key</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@index_attribute</span>
+209:           }
+210: 
+211:           <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+212:             <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+213: 
+214:             <span class="ruby-identifier">me</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>]
+215:             <span class="ruby-identifier">me</span>.<span class="ruby-identifier">index_key</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@index_attribute</span>
+216:           }
+217:         <span class="ruby-keyword kw">end</span>
+218: 
+219:         <span class="ruby-comment cmt"># Handle this element's children.</span>
+220:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@contents_are_mixed_data</span>
+221:           <span class="ruby-identifier">me</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">:@contents</span>, <span class="ruby-identifier">element</span>.<span class="ruby-identifier">children</span>)
+222:         <span class="ruby-keyword kw">else</span>
+223:           <span class="ruby-identifier">element</span>.<span class="ruby-identifier">each_element</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>
+224:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span> = <span class="ruby-ivar">@members</span>[<span class="ruby-identifier">child</span>.<span class="ruby-identifier">name</span>] <span class="ruby-operator">||</span> <span class="ruby-ivar">@collections</span>[<span class="ruby-identifier">child</span>.<span class="ruby-identifier">name</span>]
+225:               <span class="ruby-identifier">object</span> = <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">from_element</span>(<span class="ruby-identifier">me</span>, <span class="ruby-identifier">child</span>, <span class="ruby-identifier">need_finalization</span>)
+226: 
+227:               <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@members</span>[<span class="ruby-identifier">child</span>.<span class="ruby-identifier">name</span>]
+228:                 <span class="ruby-identifier">instance_variable_name</span> = <span class="ruby-node">&quot;@#{klass.names[:member]}&quot;</span>
+229: 
+230:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">me</span>.<span class="ruby-identifier">instance_variable_defined?</span>(<span class="ruby-identifier">instance_variable_name</span>)
+231:                   <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;#{name} can only have one #{klass.name}, but several were specified in element: #{element}&quot;</span>
+232:                 <span class="ruby-keyword kw">end</span>
+233: 
+234:                 <span class="ruby-identifier">me</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">instance_variable_name</span>, <span class="ruby-identifier">object</span>)
+235:               <span class="ruby-keyword kw">else</span>
+236:                 <span class="ruby-identifier">me</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-node">&quot;@#{klass.names[:collection]}&quot;</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">object</span>
+237:               <span class="ruby-keyword kw">end</span>
+238:             <span class="ruby-keyword kw">end</span>
+239:           }
+240:         <span class="ruby-keyword kw">end</span>
+241: 
+242:         <span class="ruby-identifier">need_finalization</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">me</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">me</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:finalize_creation</span>)
+243: 
+244:         <span class="ruby-identifier">me</span>
+245:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000061" class="method-detail">
+        <a name="M000061"></a>
+
+        <div class="method-heading">
+          <a href="#M000061" class="method-signature">
+          <span class="method-name">has_attributes</span><span class="method-args">(*names)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000061-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000061-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 147</span>
+147:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_attributes</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">names</span>)
+148:         <span class="ruby-identifier">has_required_or_attributes</span>(<span class="ruby-identifier">names</span>, <span class="ruby-ivar">@attributes</span>)
+149:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000058" class="method-detail">
+        <a name="M000058"></a>
+
+        <div class="method-heading">
+          <a href="#M000058" class="method-signature">
+          <span class="method-name">has_many</span><span class="method-args">(*classes)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000058-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000058-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 98</span>
+ 98:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_many</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">classes</span>)
+ 99:         <span class="ruby-identifier">classes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">klass</span><span class="ruby-operator">|</span>
+100:           <span class="ruby-ivar">@collections</span>[<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">names</span>[<span class="ruby-identifier">:element</span>]] = <span class="ruby-identifier">klass</span>
+101: 
+102:           <span class="ruby-identifier">collection_name</span> = <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">names</span>[<span class="ruby-identifier">:collection</span>]
+103:           <span class="ruby-identifier">dereferencing_instance_accessor</span>(<span class="ruby-identifier">collection_name</span>)
+104: 
+105:           <span class="ruby-comment cmt"># Define a method for finding a specific element of this</span>
+106:           <span class="ruby-comment cmt"># collection.</span>
+107:           <span class="ruby-identifier">class_eval</span> <span class="ruby-value str">&quot;def find_\#{klass.names[:element]}(*args, &amp;block)\nblock ||= begin\nname = args.shift.to_s\nlambda { |match| match.matches?(name) }\nend\n\nauto_dereference = args.shift\nauto_dereference = true if auto_dereference.nil?\n\nmatch = \#{collection_name}.find { |match|\nblock[match] || (\n\#{klass}.may_be_reference? &amp;&amp;\nauto_dereference &amp;&amp;\nblock[match.dereference]\n)\n}\n\nmatch &amp;&amp; auto_dereference ? match.dereference : match\nend\n&quot;</span>, <span class="ruby-keyword kw">__FILE__</span>, <span class="ruby-keyword kw">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+108:         }
+109:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000057" class="method-detail">
+        <a name="M000057"></a>
+
+        <div class="method-heading">
+          <a href="#M000057" class="method-signature">
+          <span class="method-name">has_one</span><span class="method-args">(*classes)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000057-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000057-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 91</span>
+91:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_one</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">classes</span>)
+92:         <span class="ruby-identifier">classes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">klass</span><span class="ruby-operator">|</span>
+93:           <span class="ruby-ivar">@members</span>[<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">names</span>[<span class="ruby-identifier">:element</span>]] = <span class="ruby-identifier">klass</span>
+94:           <span class="ruby-identifier">dereferencing_instance_accessor</span>(<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">names</span>[<span class="ruby-identifier">:member</span>])
+95:         }
+96:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000062" class="method-detail">
+        <a name="M000062"></a>
+
+        <div class="method-heading">
+          <a href="#M000062" class="method-signature">
+          <span class="method-name">has_required</span><span class="method-args">(*names)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000062-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000062-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 151</span>
+151:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_required</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">names</span>)
+152:         <span class="ruby-identifier">has_required_or_attributes</span>(<span class="ruby-identifier">names</span>, <span class="ruby-ivar">@required_attributes</span>)
+153:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000053" class="method-detail">
+        <a name="M000053"></a>
+
+        <div class="method-heading">
+          <a href="#M000053" class="method-signature">
+          <span class="method-name">in_document</span><span class="method-args">(element_name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000053-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000053-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 73</span>
+73:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">in_document</span>(<span class="ruby-identifier">element_name</span>)
+74:         <span class="ruby-ivar">@names</span>[<span class="ruby-identifier">:element</span>]    = <span class="ruby-identifier">element_name</span>
+75:         <span class="ruby-ivar">@names</span>[<span class="ruby-identifier">:member</span>]     = <span class="ruby-identifier">element_name</span>
+76:         <span class="ruby-ivar">@names</span>[<span class="ruby-identifier">:collection</span>] = <span class="ruby-identifier">element_name</span> <span class="ruby-operator">+</span> <span class="ruby-value str">'s'</span>
+77:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000050" class="method-detail">
+        <a name="M000050"></a>
+
+        <div class="method-heading">
+          <a href="#M000050" class="method-signature">
+          <span class="method-name">inherit</span><span class="method-args">(from)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000050-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000050-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 52</span>
+52:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inherit</span>(<span class="ruby-identifier">from</span>)
+53:         <span class="ruby-identifier">init</span>
+54: 
+55:         <span class="ruby-constant">ATTRIBUTES</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
+56:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">from</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">attr</span>)
+57:           <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{attr}&quot;</span>, <span class="ruby-identifier">value</span>.<span class="ruby-identifier">dup</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>
+58:         }
+59: 
+60:         <span class="ruby-node">%w[may_be_reference contents_are_mixed_data]</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
+61:           <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{attr}&quot;</span>, <span class="ruby-identifier">from</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-node">&quot;@#{attr}&quot;</span>))
+62:         }
+63:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000051" class="method-detail">
+        <a name="M000051"></a>
+
+        <div class="method-heading">
+          <a href="#M000051" class="method-signature">
+          <span class="method-name">inherited</span><span class="method-args">(klass)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000051-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000051-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 65</span>
+65:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inherited</span>(<span class="ruby-identifier">klass</span>)
+66:         <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">inherit</span>(<span class="ruby-keyword kw">self</span>)
+67:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000049" class="method-detail">
+        <a name="M000049"></a>
+
+        <div class="method-heading">
+          <a href="#M000049" class="method-signature">
+          <span class="method-name">init</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000049-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000049-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 47</span>
+47:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">init</span>
+48:         <span class="ruby-ivar">@names</span>, <span class="ruby-ivar">@members</span>, <span class="ruby-ivar">@collections</span> = {}, {}, {}
+49:         <span class="ruby-ivar">@required_attributes</span>, <span class="ruby-ivar">@attributes</span> = [], []
+50:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000063" class="method-detail">
+        <a name="M000063"></a>
+
+        <div class="method-heading">
+          <a href="#M000063" class="method-signature">
+          <span class="method-name">may_be_reference</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000063-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000063-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 155</span>
+155:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">may_be_reference</span>
+156:         <span class="ruby-ivar">@may_be_reference</span> = <span class="ruby-keyword kw">true</span>
+157: 
+158:         <span class="ruby-identifier">find_method_name</span> = <span class="ruby-node">&quot;find_#{names[:element]}&quot;</span>
+159: 
+160:         <span class="ruby-identifier">class_eval</span> <span class="ruby-value str">&quot;def dereference\nreturn self unless href = attributes['href']\n\nunless @referenced\np = self\n\nuntil @referenced || !p\nbegin\np = p.parent\nend until !p || p.respond_to?(:\#{find_method_name})\n\n@referenced = p.\#{find_method_name}(href, false) if p\nend\nend\n\ndereference_with_context(@referenced) if @referenced\nend\n&quot;</span>, <span class="ruby-keyword kw">__FILE__</span>, <span class="ruby-keyword kw">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+161:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000052" class="method-detail">
+        <a name="M000052"></a>
+
+        <div class="method-heading">
+          <a href="#M000052" class="method-signature">
+          <span class="method-name">may_be_reference?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000052-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000052-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 69</span>
+69:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">may_be_reference?</span>
+70:         <span class="ruby-ivar">@may_be_reference</span>
+71:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000067" class="method-detail">
+        <a name="M000067"></a>
+
+        <div class="method-heading">
+          <a href="#M000067" class="method-signature">
           <span class="method-name">new</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000071-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000071-source">
+            onclick="toggleCode('M000067-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000067-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 295</span>
-295:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>
-296:       <span class="ruby-ivar">@attributes</span>, <span class="ruby-ivar">@contents</span>, <span class="ruby-ivar">@referenced</span> = {}, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>
-297:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 274</span>
+274:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>
+275:       <span class="ruby-ivar">@attributes</span>, <span class="ruby-ivar">@contents</span>, <span class="ruby-ivar">@referenced</span> = {}, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>
+276:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -678,55 +669,55 @@ Turn an XML element into an instance of this class.
 
       <h3 class="section-bar">Private Class methods</h3>
 
-      <div id="method-M000069" class="method-detail">
-        <a name="M000069"></a>
+      <div id="method-M000065" class="method-detail">
+        <a name="M000065"></a>
 
         <div class="method-heading">
-          <a href="#M000069" class="method-signature">
+          <a href="#M000065" class="method-signature">
           <span class="method-name">define_dereferencing_accessors</span><span class="method-args">(symbols, getter, setter)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000069-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000069-source">
+            onclick="toggleCode('M000065-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000065-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 268</span>
-268:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">define_dereferencing_accessors</span>(<span class="ruby-identifier">symbols</span>, <span class="ruby-identifier">getter</span>, <span class="ruby-identifier">setter</span>)
-269:         <span class="ruby-identifier">symbols</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
-270:           <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
-271: 
-272:           <span class="ruby-identifier">class_eval</span> <span class="ruby-value str">&quot;def \#{name}; \#{getter % name}; end\ndef \#{name}=(value); \#{setter % name}; end\n&quot;</span>, <span class="ruby-keyword kw">__FILE__</span>, <span class="ruby-keyword kw">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/\W/</span>
-273:         }
-274:       <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 249</span>
+249:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">define_dereferencing_accessors</span>(<span class="ruby-identifier">symbols</span>, <span class="ruby-identifier">getter</span>, <span class="ruby-identifier">setter</span>)
+250:         <span class="ruby-identifier">symbols</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+251:           <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+252: 
+253:           <span class="ruby-identifier">class_eval</span> <span class="ruby-value str">&quot;def \#{name}; \#{getter % name}; end\ndef \#{name}=(value); \#{setter % name}; end\n&quot;</span>, <span class="ruby-keyword kw">__FILE__</span>, <span class="ruby-keyword kw">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/\W/</span>
+254:         }
+255:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000070" class="method-detail">
-        <a name="M000070"></a>
+      <div id="method-M000066" class="method-detail">
+        <a name="M000066"></a>
 
         <div class="method-heading">
-          <a href="#M000070" class="method-signature">
+          <a href="#M000066" class="method-signature">
           <span class="method-name">has_required_or_attributes</span><span class="method-args">(names, var)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000070-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000070-source">
+            onclick="toggleCode('M000066-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000066-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 280</span>
-280:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_required_or_attributes</span>(<span class="ruby-identifier">names</span>, <span class="ruby-identifier">var</span>)
-281:         <span class="ruby-identifier">names</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
-282:           <span class="ruby-identifier">var</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">name</span>
-283:           <span class="ruby-ivar">@index_attribute</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
-284:           <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:href</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">attr_accessor</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">dereferencing_attr_accessor</span>(<span class="ruby-identifier">name</span>)
-285:         }
-286:       <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 261</span>
+261:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_required_or_attributes</span>(<span class="ruby-identifier">names</span>, <span class="ruby-identifier">var</span>)
+262:         <span class="ruby-identifier">names</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+263:           <span class="ruby-identifier">var</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">name</span>
+264:           <span class="ruby-ivar">@index_attribute</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+265:           <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:href</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">attr_accessor</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">dereferencing_attr_accessor</span>(<span class="ruby-identifier">name</span>)
+266:         }
+267:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -734,11 +725,11 @@ Turn an XML element into an instance of this class.
 
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000073" class="method-detail">
-        <a name="M000073"></a>
+      <div id="method-M000069" class="method-detail">
+        <a name="M000069"></a>
 
         <div class="method-heading">
-          <a href="#M000073" class="method-signature">
+          <a href="#M000069" class="method-signature">
           <span class="method-name">dereference</span><span class="method-args">()</span>
           </a>
         </div>
@@ -749,23 +740,23 @@ A null implementation so that foo.dereference will always return the
 &quot;real&quot; object.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000073-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000073-source">
+            onclick="toggleCode('M000069-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000069-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 311</span>
-311:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dereference</span>
-312:       <span class="ruby-keyword kw">self</span>
-313:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 290</span>
+290:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dereference</span>
+291:       <span class="ruby-keyword kw">self</span>
+292:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000072" class="method-detail">
-        <a name="M000072"></a>
+      <div id="method-M000068" class="method-detail">
+        <a name="M000068"></a>
 
         <div class="method-heading">
-          <a href="#M000072" class="method-signature">
+          <a href="#M000068" class="method-signature">
           <span class="method-name">dereference_with_context</span><span class="method-args">(referent)</span>
           </a>
         </div>
@@ -781,23 +772,23 @@ resource that referenced it (otherwise, there&#8216;s no way to build the
 URI).
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000072-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000072-source">
+            onclick="toggleCode('M000068-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000068-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 305</span>
-305:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dereference_with_context</span>(<span class="ruby-identifier">referent</span>)
-306:       <span class="ruby-identifier">referent</span>
-307:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 284</span>
+284:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dereference_with_context</span>(<span class="ruby-identifier">referent</span>)
+285:       <span class="ruby-identifier">referent</span>
+286:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000074" class="method-detail">
-        <a name="M000074"></a>
+      <div id="method-M000070" class="method-detail">
+        <a name="M000070"></a>
 
         <div class="method-heading">
-          <a href="#M000074" class="method-signature">
+          <a href="#M000070" class="method-signature">
           <span class="method-name">matches?</span><span class="method-args">(name)</span>
           </a>
         </div>
@@ -808,71 +799,71 @@ Returns whether or not the given name matches this object. By default,
 checks the index key for this class.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000074-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000074-source">
+            onclick="toggleCode('M000070-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000070-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 317</span>
-317:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">name</span>)
-318:       <span class="ruby-identifier">index_key</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span>
-319:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 296</span>
+296:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">name</span>)
+297:       <span class="ruby-identifier">index_key</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span>
+298:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000075" class="method-detail">
-        <a name="M000075"></a>
+      <div id="method-M000071" class="method-detail">
+        <a name="M000071"></a>
 
         <div class="method-heading">
-          <a href="#M000075" class="method-signature">
+          <a href="#M000071" class="method-signature">
           <span class="method-name">to_s</span><span class="method-args">(indent = 0)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000075-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000075-source">
+            onclick="toggleCode('M000071-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000071-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 321</span>
-321:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">indent</span> = <span class="ruby-value">0</span>)
-322:       <span class="ruby-identifier">klass</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 300</span>
+300:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">indent</span> = <span class="ruby-value">0</span>)
+301:       <span class="ruby-identifier">klass</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>
+302: 
+303:       <span class="ruby-identifier">i</span> = <span class="ruby-value str">' '</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">indent</span>
+304:       <span class="ruby-identifier">s</span> = <span class="ruby-node">&quot;#{i}#{klass.name}\n&quot;</span>
+305: 
+306:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">may_be_reference?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">href</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'href'</span>]
+307:         <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{i} href=#{href}\n&quot;</span>
+308:       <span class="ruby-keyword kw">else</span>
+309:         [<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">required_attributes</span>, <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">attributes</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">list</span><span class="ruby-operator">|</span>
+310:           <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
+311:             <span class="ruby-identifier">val</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">attr</span>.<span class="ruby-identifier">to_s</span>]
+312:             <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{i} #{attr}=#{val}\n&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">val</span>
+313:           }
+314:         }
+315: 
+316:         <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">members</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">member_class</span><span class="ruby-operator">|</span>
+317:           <span class="ruby-identifier">o</span> = <span class="ruby-identifier">send</span>(<span class="ruby-identifier">member_class</span>.<span class="ruby-identifier">names</span>[<span class="ruby-identifier">:member</span>])
+318:           <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">indent</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>
+319:         }
+320: 
+321:         <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">collections</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">collection_class</span><span class="ruby-operator">|</span>
+322:           <span class="ruby-identifier">c</span> = <span class="ruby-identifier">send</span>(<span class="ruby-identifier">collection_class</span>.<span class="ruby-identifier">names</span>[<span class="ruby-identifier">:collection</span>])
 323: 
-324:       <span class="ruby-identifier">i</span> = <span class="ruby-value str">' '</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">indent</span>
-325:       <span class="ruby-identifier">s</span> = <span class="ruby-node">&quot;#{i}#{klass.name}\n&quot;</span>
-326: 
-327:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">may_be_reference?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">href</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'href'</span>]
-328:         <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{i} href=#{href}\n&quot;</span>
-329:       <span class="ruby-keyword kw">else</span>
-330:         [<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">required_attributes</span>, <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">attributes</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">list</span><span class="ruby-operator">|</span>
-331:           <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
-332:             <span class="ruby-identifier">val</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">attr</span>.<span class="ruby-identifier">to_s</span>]
-333:             <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{i} #{attr}=#{val}\n&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">val</span>
-334:           }
-335:         }
-336: 
-337:         <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">members</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">member_class</span><span class="ruby-operator">|</span>
-338:           <span class="ruby-identifier">o</span> = <span class="ruby-identifier">send</span>(<span class="ruby-identifier">member_class</span>.<span class="ruby-identifier">names</span>[<span class="ruby-identifier">:member</span>])
-339:           <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">indent</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>
-340:         }
-341: 
-342:         <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">collections</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">collection_class</span><span class="ruby-operator">|</span>
-343:           <span class="ruby-identifier">c</span> = <span class="ruby-identifier">send</span>(<span class="ruby-identifier">collection_class</span>.<span class="ruby-identifier">names</span>[<span class="ruby-identifier">:collection</span>])
-344: 
-345:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">c</span>.<span class="ruby-identifier">empty?</span>
-346:             <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{i} Collection of #{c.size} #{collection_class.name}(s)\n&quot;</span>
-347:             <span class="ruby-identifier">c</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">indent</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span>) }
-348:           <span class="ruby-keyword kw">end</span>
-349:         }
-350: 
-351:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@contents</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@contents</span>.<span class="ruby-identifier">empty?</span>
-352:           <span class="ruby-identifier">sep</span> = <span class="ruby-value str">'-'</span> <span class="ruby-operator">*</span> <span class="ruby-value">80</span>
-353:           <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{sep}\n#{@contents.join(' ')}\n#{sep}\n&quot;</span>
-354:         <span class="ruby-keyword kw">end</span>
-355:       <span class="ruby-keyword kw">end</span>
-356: 
-357:       <span class="ruby-identifier">s</span>
-358:     <span class="ruby-keyword kw">end</span>
+324:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">c</span>.<span class="ruby-identifier">empty?</span>
+325:             <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{i} Collection of #{c.size} #{collection_class.name}(s)\n&quot;</span>
+326:             <span class="ruby-identifier">c</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">indent</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span>) }
+327:           <span class="ruby-keyword kw">end</span>
+328:         }
+329: 
+330:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@contents</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@contents</span>.<span class="ruby-identifier">empty?</span>
+331:           <span class="ruby-identifier">sep</span> = <span class="ruby-value str">'-'</span> <span class="ruby-operator">*</span> <span class="ruby-value">80</span>
+332:           <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{sep}\n#{@contents.join(' ')}\n#{sep}\n&quot;</span>
+333:         <span class="ruby-keyword kw">end</span>
+334:       <span class="ruby-keyword kw">end</span>
+335: 
+336:       <span class="ruby-identifier">s</span>
+337:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

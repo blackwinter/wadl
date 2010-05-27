@@ -55,8 +55,8 @@
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
-                <a href="../../files/lib/wadl_rb.html">
-                lib/wadl.rb
+                <a href="../../files/lib/wadl/address_rb.html">
+                lib/wadl/address.rb
                 </a>
         <br />
             </td>
@@ -89,7 +89,7 @@ values.
 </p>
 <p>
 An <a href="Address.html">Address</a> object is built up through calls to
-<a href="Resource.html#M000047">Resource#address</a>
+<a href="Resource.html#M000042">Resource#address</a>
 </p>
 
     </div>
@@ -101,15 +101,15 @@ An <a href="Address.html">Address</a> object is built up through calls to
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000081">_deep_copy_array</a>&nbsp;&nbsp;
-      <a href="#M000080">_deep_copy_hash</a>&nbsp;&nbsp;
-      <a href="#M000085">bind!</a>&nbsp;&nbsp;
-      <a href="#M000082">deep_copy</a>&nbsp;&nbsp;
-      <a href="#M000078">embedded_param_names</a>&nbsp;&nbsp;
-      <a href="#M000084">inspect</a>&nbsp;&nbsp;
-      <a href="#M000079">new</a>&nbsp;&nbsp;
-      <a href="#M000083">to_s</a>&nbsp;&nbsp;
-      <a href="#M000086">uri</a>&nbsp;&nbsp;
+      <a href="#M000087">_deep_copy_array</a>&nbsp;&nbsp;
+      <a href="#M000086">_deep_copy_hash</a>&nbsp;&nbsp;
+      <a href="#M000084">bind!</a>&nbsp;&nbsp;
+      <a href="#M000081">deep_copy</a>&nbsp;&nbsp;
+      <a href="#M000079">embedded_param_names</a>&nbsp;&nbsp;
+      <a href="#M000083">inspect</a>&nbsp;&nbsp;
+      <a href="#M000080">new</a>&nbsp;&nbsp;
+      <a href="#M000082">to_s</a>&nbsp;&nbsp;
+      <a href="#M000085">uri</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -169,35 +169,12 @@ An <a href="Address.html">Address</a> object is built up through calls to
     <div id="methods">
       <h3 class="section-bar">Public Class methods</h3>
 
-      <div id="method-M000078" class="method-detail">
-        <a name="M000078"></a>
-
-        <div class="method-heading">
-          <a href="#M000078" class="method-signature">
-          <span class="method-name">embedded_param_names</span><span class="method-args">(fragment)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000078-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000078-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 403</span>
-403:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">embedded_param_names</span>(<span class="ruby-identifier">fragment</span>)
-404:       <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp re">/\{(.+?)\}/</span>).<span class="ruby-identifier">flatten</span>
-405:     <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
       <div id="method-M000079" class="method-detail">
         <a name="M000079"></a>
 
         <div class="method-heading">
           <a href="#M000079" class="method-signature">
-          <span class="method-name">new</span><span class="method-args">(path_fragments = [], query_vars = [], headers = {}, path_params = {}, query_params = {}, header_params = {})</span>
+          <span class="method-name">embedded_param_names</span><span class="method-args">(fragment)</span>
           </a>
         </div>
       
@@ -206,37 +183,10 @@ An <a href="Address.html">Address</a> object is built up through calls to
             onclick="toggleCode('M000079-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000079-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 407</span>
-407:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">path_fragments</span> = [], <span class="ruby-identifier">query_vars</span> = [], <span class="ruby-identifier">headers</span> = {},
-408:                    <span class="ruby-identifier">path_params</span> = {}, <span class="ruby-identifier">query_params</span> = {}, <span class="ruby-identifier">header_params</span> = {})
-409:       <span class="ruby-ivar">@path_fragments</span>, <span class="ruby-ivar">@query_vars</span>, <span class="ruby-ivar">@headers</span> = <span class="ruby-identifier">path_fragments</span>, <span class="ruby-identifier">query_vars</span>, <span class="ruby-identifier">headers</span>
-410:       <span class="ruby-ivar">@path_params</span>, <span class="ruby-ivar">@query_params</span>, <span class="ruby-ivar">@header_params</span> = <span class="ruby-identifier">path_params</span>, <span class="ruby-identifier">query_params</span>, <span class="ruby-identifier">header_params</span>
-411:     <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="section-bar">Public Instance methods</h3>
-
-      <div id="method-M000081" class="method-detail">
-        <a name="M000081"></a>
-
-        <div class="method-heading">
-          <a href="#M000081" class="method-signature">
-          <span class="method-name">_deep_copy_array</span><span class="method-args">(a)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000081-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000081-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 417</span>
-417:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">_deep_copy_array</span>(<span class="ruby-identifier">a</span>)
-418:       <span class="ruby-identifier">a</span>.<span class="ruby-identifier">inject</span>([]) { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">e</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">dup</span>) }
-419:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/address.rb, line 45</span>
+45:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">embedded_param_names</span>(<span class="ruby-identifier">fragment</span>)
+46:       <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp re">/\{(.+?)\}/</span>).<span class="ruby-identifier">flatten</span>
+47:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -247,7 +197,7 @@ An <a href="Address.html">Address</a> object is built up through calls to
 
         <div class="method-heading">
           <a href="#M000080" class="method-signature">
-          <span class="method-name">_deep_copy_hash</span><span class="method-args">(h)</span>
+          <span class="method-name">new</span><span class="method-args">(path_fragments = [], query_vars = [], headers = {}, path_params = {}, query_params = {}, header_params = {})</span>
           </a>
         </div>
       
@@ -256,10 +206,174 @@ An <a href="Address.html">Address</a> object is built up through calls to
             onclick="toggleCode('M000080-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000080-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 413</span>
-413:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">_deep_copy_hash</span>(<span class="ruby-identifier">h</span>)
-414:       <span class="ruby-identifier">h</span>.<span class="ruby-identifier">inject</span>({}) { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span>, (<span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span>)<span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">dup</span>; <span class="ruby-identifier">h</span> }
-415:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/address.rb, line 49</span>
+49:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">path_fragments</span> = [], <span class="ruby-identifier">query_vars</span> = [], <span class="ruby-identifier">headers</span> = {},
+50:                    <span class="ruby-identifier">path_params</span> = {}, <span class="ruby-identifier">query_params</span> = {}, <span class="ruby-identifier">header_params</span> = {})
+51:       <span class="ruby-ivar">@path_fragments</span>, <span class="ruby-ivar">@query_vars</span>, <span class="ruby-ivar">@headers</span> = <span class="ruby-identifier">path_fragments</span>, <span class="ruby-identifier">query_vars</span>, <span class="ruby-identifier">headers</span>
+52:       <span class="ruby-ivar">@path_params</span>, <span class="ruby-ivar">@query_params</span>, <span class="ruby-ivar">@header_params</span> = <span class="ruby-identifier">path_params</span>, <span class="ruby-identifier">query_params</span>, <span class="ruby-identifier">header_params</span>
+53:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000084" class="method-detail">
+        <a name="M000084"></a>
+
+        <div class="method-heading">
+          <a href="#M000084" class="method-signature">
+          <span class="method-name">bind!</span><span class="method-args">(args = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Binds some or all of the unbound variables in this address to values.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000084-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000084-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/address.rb, line 80</span>
+ 80:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span> = {})
+ 81:       <span class="ruby-identifier">path_var_values</span>   = <span class="ruby-identifier">args</span>[<span class="ruby-identifier">:path</span>]    <span class="ruby-operator">||</span> {}
+ 82:       <span class="ruby-identifier">query_var_values</span>  = <span class="ruby-identifier">args</span>[<span class="ruby-identifier">:query</span>]   <span class="ruby-operator">||</span> {}
+ 83:       <span class="ruby-identifier">header_var_values</span> = <span class="ruby-identifier">args</span>[<span class="ruby-identifier">:headers</span>] <span class="ruby-operator">||</span> {}
+ 84: 
+ 85:       <span class="ruby-comment cmt"># Bind variables found in the path fragments.</span>
+ 86:       <span class="ruby-identifier">path_params_to_delete</span> = []
+ 87: 
+ 88:       <span class="ruby-identifier">path_fragments</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fragment</span><span class="ruby-operator">|</span>
+ 89:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:to_str</span>)
+ 90:           <span class="ruby-comment cmt"># This fragment is a string which might contain {} substitutions.</span>
+ 91:           <span class="ruby-comment cmt"># Make any substitutions available to the provided path variables.</span>
+ 92:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">embedded_param_names</span>(<span class="ruby-identifier">fragment</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">param_name</span><span class="ruby-operator">|</span>
+ 93:             <span class="ruby-identifier">value</span> = <span class="ruby-identifier">path_var_values</span>[<span class="ruby-identifier">param_name</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">path_var_values</span>[<span class="ruby-identifier">param_name</span>.<span class="ruby-identifier">to_sym</span>]
+ 94: 
+ 95:             <span class="ruby-identifier">value</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">param</span> = <span class="ruby-identifier">path_params</span>[<span class="ruby-identifier">param_name</span>]
+ 96:               <span class="ruby-identifier">path_params_to_delete</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">param</span>
+ 97:               <span class="ruby-identifier">param</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">value</span>
+ 98:             <span class="ruby-keyword kw">else</span>
+ 99:               <span class="ruby-constant">Param</span>.<span class="ruby-identifier">default</span>.<span class="ruby-identifier">format</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">param_name</span>)
+100:             <span class="ruby-keyword kw">end</span>
+101: 
+102:             <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-node">&quot;{#{param_name}}&quot;</span>, <span class="ruby-identifier">value</span>)
+103:           }
+104:         <span class="ruby-keyword kw">else</span>
+105:           <span class="ruby-comment cmt"># This fragment is an array of Param objects (style 'matrix'</span>
+106:           <span class="ruby-comment cmt"># or 'plain') which may be bound to strings. As substitutions</span>
+107:           <span class="ruby-comment cmt"># happen, the array will become a mixed array of Param objects</span>
+108:           <span class="ruby-comment cmt"># and strings.</span>
+109:           <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">param</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+110:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">param</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:name</span>)
+111:               <span class="ruby-identifier">name</span> = <span class="ruby-identifier">param</span>.<span class="ruby-identifier">name</span>
+112: 
+113:               <span class="ruby-identifier">value</span> = <span class="ruby-identifier">path_var_values</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">path_var_values</span>[<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>]
+114:               <span class="ruby-identifier">value</span> = <span class="ruby-identifier">param</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">value</span>
+115:               <span class="ruby-identifier">fragment</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">value</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>
+116: 
+117:               <span class="ruby-identifier">path_params_to_delete</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">param</span>
+118:             <span class="ruby-keyword kw">end</span>
+119:           }
+120:         <span class="ruby-keyword kw">end</span>
+121:       }
+122: 
+123:       <span class="ruby-comment cmt"># Delete any embedded path parameters that are now bound from</span>
+124:       <span class="ruby-comment cmt"># our list of unbound parameters.</span>
+125:       <span class="ruby-identifier">path_params_to_delete</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">path_params</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">p</span>.<span class="ruby-identifier">name</span>) }
+126: 
+127:       <span class="ruby-comment cmt"># Bind query variable values to query parameters</span>
+128:       <span class="ruby-identifier">query_var_values</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+129:         <span class="ruby-identifier">param</span> = <span class="ruby-identifier">query_params</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>)
+130:         <span class="ruby-identifier">query_vars</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">param</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">param</span>
+131:       }
+132: 
+133:       <span class="ruby-comment cmt"># Bind header variables to header parameters</span>
+134:       <span class="ruby-identifier">header_var_values</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+135:         <span class="ruby-identifier">param</span> = <span class="ruby-identifier">header_params</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>)
+136:         <span class="ruby-identifier">headers</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">param</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">param</span>
+137:       }
+138: 
+139:       <span class="ruby-keyword kw">self</span>
+140:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000081" class="method-detail">
+        <a name="M000081"></a>
+
+        <div class="method-heading">
+          <a href="#M000081" class="method-signature">
+          <span class="method-name">deep_copy</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Perform a deep copy.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000081-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000081-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/wadl/address.rb, line 56</span>
+56:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">deep_copy</span>
+57:       <span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>(
+58:         <span class="ruby-identifier">_deep_copy_array</span>(<span class="ruby-ivar">@path_fragments</span>),
+59:         <span class="ruby-identifier">_deep_copy_array</span>(<span class="ruby-ivar">@query_vars</span>),
+60:         <span class="ruby-identifier">_deep_copy_hash</span>(<span class="ruby-ivar">@headers</span>),
+61:         <span class="ruby-ivar">@path_params</span>.<span class="ruby-identifier">dup</span>,
+62:         <span class="ruby-ivar">@query_params</span>.<span class="ruby-identifier">dup</span>,
+63:         <span class="ruby-ivar">@header_params</span>.<span class="ruby-identifier">dup</span>
+64:       )
+65:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000083" class="method-detail">
+        <a name="M000083"></a>
+
+        <div class="method-heading">
+          <span class="method-name">inspect</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Address.html#M000082">to_s</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000082" class="method-detail">
+        <a name="M000082"></a>
+
+        <div class="method-heading">
+          <a href="#M000082" class="method-signature">
+          <span class="method-name">to_s</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000082-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000082-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/wadl/address.rb, line 67</span>
+67:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+68:       <span class="ruby-value str">&quot;Address:\n&quot;</span>                                            <span class="ruby-operator">&lt;&lt;</span>
+69:       <span class="ruby-node">&quot; Path fragments: #{@path_fragments.inspect}\n&quot;</span>         <span class="ruby-operator">&lt;&lt;</span>
+70:       <span class="ruby-node">&quot; Query variables: #{@query_vars.inspect}\n&quot;</span>            <span class="ruby-operator">&lt;&lt;</span>
+71:       <span class="ruby-node">&quot; Header variables: #{@headers.inspect}\n&quot;</span>              <span class="ruby-operator">&lt;&lt;</span>
+72:       <span class="ruby-node">&quot; Unbound path parameters: #{@path_params.inspect}\n&quot;</span>   <span class="ruby-operator">&lt;&lt;</span>
+73:       <span class="ruby-node">&quot; Unbound query parameters: #{@query_params.inspect}\n&quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+74:       <span class="ruby-node">&quot; Unbound header parameters: #{@header_params.inspect}\n&quot;</span>
+75:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -270,156 +384,79 @@ An <a href="Address.html">Address</a> object is built up through calls to
 
         <div class="method-heading">
           <a href="#M000085" class="method-signature">
-          <span class="method-name">bind!</span><span class="method-args">(args = {})</span>
+          <span class="method-name">uri</span><span class="method-args">(args = {})</span>
           </a>
         </div>
       
         <div class="method-description">
-          <p>
-Binds some or all of the unbound variables in this address to values.
-</p>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000085-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000085-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 446</span>
-446:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span> = {})
-447:       <span class="ruby-identifier">path_var_values</span>   = <span class="ruby-identifier">args</span>[<span class="ruby-identifier">:path</span>]    <span class="ruby-operator">||</span> {}
-448:       <span class="ruby-identifier">query_var_values</span>  = <span class="ruby-identifier">args</span>[<span class="ruby-identifier">:query</span>]   <span class="ruby-operator">||</span> {}
-449:       <span class="ruby-identifier">header_var_values</span> = <span class="ruby-identifier">args</span>[<span class="ruby-identifier">:headers</span>] <span class="ruby-operator">||</span> {}
-450: 
-451:       <span class="ruby-comment cmt"># Bind variables found in the path fragments.</span>
-452:       <span class="ruby-identifier">path_params_to_delete</span> = []
-453: 
-454:       <span class="ruby-identifier">path_fragments</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fragment</span><span class="ruby-operator">|</span>
-455:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:to_str</span>)
-456:           <span class="ruby-comment cmt"># This fragment is a string which might contain {} substitutions.</span>
-457:           <span class="ruby-comment cmt"># Make any substitutions available to the provided path variables.</span>
-458:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">embedded_param_names</span>(<span class="ruby-identifier">fragment</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">param_name</span><span class="ruby-operator">|</span>
-459:             <span class="ruby-identifier">value</span> = <span class="ruby-identifier">path_var_values</span>[<span class="ruby-identifier">param_name</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">path_var_values</span>[<span class="ruby-identifier">param_name</span>.<span class="ruby-identifier">to_sym</span>]
-460: 
-461:             <span class="ruby-identifier">value</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">param</span> = <span class="ruby-identifier">path_params</span>[<span class="ruby-identifier">param_name</span>]
-462:               <span class="ruby-identifier">path_params_to_delete</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">param</span>
-463:               <span class="ruby-identifier">param</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">value</span>
-464:             <span class="ruby-keyword kw">else</span>
-465:               <span class="ruby-constant">Param</span>.<span class="ruby-identifier">default</span>.<span class="ruby-identifier">format</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">param_name</span>)
-466:             <span class="ruby-keyword kw">end</span>
-467: 
-468:             <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-node">&quot;{#{param_name}}&quot;</span>, <span class="ruby-identifier">value</span>)
-469:           }
-470:         <span class="ruby-keyword kw">else</span>
-471:           <span class="ruby-comment cmt"># This fragment is an array of Param objects (style 'matrix'</span>
-472:           <span class="ruby-comment cmt"># or 'plain') which may be bound to strings. As substitutions</span>
-473:           <span class="ruby-comment cmt"># happen, the array will become a mixed array of Param objects</span>
-474:           <span class="ruby-comment cmt"># and strings.</span>
-475:           <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">param</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
-476:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">param</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:name</span>)
-477:               <span class="ruby-identifier">name</span> = <span class="ruby-identifier">param</span>.<span class="ruby-identifier">name</span>
-478: 
-479:               <span class="ruby-identifier">value</span> = <span class="ruby-identifier">path_var_values</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">path_var_values</span>[<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>]
-480:               <span class="ruby-identifier">value</span> = <span class="ruby-identifier">param</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">value</span>
-481:               <span class="ruby-identifier">fragment</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">value</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>
-482: 
-483:               <span class="ruby-identifier">path_params_to_delete</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">param</span>
-484:             <span class="ruby-keyword kw">end</span>
-485:           }
-486:         <span class="ruby-keyword kw">end</span>
-487:       }
-488: 
-489:       <span class="ruby-comment cmt"># Delete any embedded path parameters that are now bound from</span>
-490:       <span class="ruby-comment cmt"># our list of unbound parameters.</span>
-491:       <span class="ruby-identifier">path_params_to_delete</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">path_params</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">p</span>.<span class="ruby-identifier">name</span>) }
-492: 
-493:       <span class="ruby-comment cmt"># Bind query variable values to query parameters</span>
-494:       <span class="ruby-identifier">query_var_values</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
-495:         <span class="ruby-identifier">param</span> = <span class="ruby-identifier">query_params</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>)
-496:         <span class="ruby-identifier">query_vars</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">param</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">param</span>
-497:       }
-498: 
-499:       <span class="ruby-comment cmt"># Bind header variables to header parameters</span>
-500:       <span class="ruby-identifier">header_var_values</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
-501:         <span class="ruby-identifier">param</span> = <span class="ruby-identifier">header_params</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>)
-502:         <span class="ruby-identifier">headers</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">param</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">param</span>
-503:       }
-504: 
-505:       <span class="ruby-keyword kw">self</span>
-506:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/address.rb, line 142</span>
+142:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uri</span>(<span class="ruby-identifier">args</span> = {})
+143:       <span class="ruby-identifier">obj</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-identifier">deep_copy</span>.<span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span>), <span class="ruby-value str">''</span>
+144: 
+145:       <span class="ruby-comment cmt"># Build the path</span>
+146:       <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">path_fragments</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fragment</span><span class="ruby-operator">|</span>
+147:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:to_str</span>)
+148:           <span class="ruby-identifier">embedded_param_names</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">embedded_param_names</span>(<span class="ruby-identifier">fragment</span>)
+149: 
+150:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">embedded_param_names</span>.<span class="ruby-identifier">empty?</span>
+151:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{Missing a value for required path parameter &quot;#{embedded_param_names[0]}&quot;!}</span>
+152:           <span class="ruby-keyword kw">end</span>
+153: 
+154:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">empty?</span>
+155:             <span class="ruby-identifier">uri</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'/'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">uri</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/\/\z/</span>
+156:             <span class="ruby-identifier">uri</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">fragment</span>
+157:           <span class="ruby-keyword kw">end</span>
+158:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">required?</span>
+159:           <span class="ruby-comment cmt"># This is a required Param that was never bound to a value.</span>
+160:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{Missing a value for required path parameter &quot;#{fragment.name}&quot;!}</span>
+161:         <span class="ruby-keyword kw">end</span>
+162:       }
+163: 
+164:       <span class="ruby-comment cmt"># Hunt for required unbound query parameters.</span>
+165:       <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">query_params</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+166:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">required?</span>
+167:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{Missing a value for required query parameter &quot;#{value.name}&quot;!}</span>
+168:         <span class="ruby-keyword kw">end</span>
+169:       }
+170: 
+171:       <span class="ruby-comment cmt"># Hunt for required unbound header parameters.</span>
+172:       <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">header_params</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+173:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">required?</span>
+174:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{Missing a value for required header parameter &quot;#{value.name}&quot;!}</span>
+175:         <span class="ruby-keyword kw">end</span>
+176:       }
+177: 
+178:       <span class="ruby-constant">URIParts</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">query_vars</span>, <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">headers</span>)
+179:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000082" class="method-detail">
-        <a name="M000082"></a>
+      <h3 class="section-bar">Private Instance methods</h3>
+
+      <div id="method-M000087" class="method-detail">
+        <a name="M000087"></a>
 
         <div class="method-heading">
-          <a href="#M000082" class="method-signature">
-          <span class="method-name">deep_copy</span><span class="method-args">()</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Perform a deep copy.
-</p>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000082-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000082-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 422</span>
-422:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">deep_copy</span>
-423:       <span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>(
-424:         <span class="ruby-identifier">_deep_copy_array</span>(<span class="ruby-ivar">@path_fragments</span>),
-425:         <span class="ruby-identifier">_deep_copy_array</span>(<span class="ruby-ivar">@query_vars</span>),
-426:         <span class="ruby-identifier">_deep_copy_hash</span>(<span class="ruby-ivar">@headers</span>),
-427:         <span class="ruby-ivar">@path_params</span>.<span class="ruby-identifier">dup</span>,
-428:         <span class="ruby-ivar">@query_params</span>.<span class="ruby-identifier">dup</span>,
-429:         <span class="ruby-ivar">@header_params</span>.<span class="ruby-identifier">dup</span>
-430:       )
-431:     <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000084" class="method-detail">
-        <a name="M000084"></a>
-
-        <div class="method-heading">
-          <span class="method-name">inspect</span><span class="method-args">()</span>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Alias for <a href="Address.html#M000083">to_s</a>
-</p>
-        </div>
-      </div>
-
-      <div id="method-M000083" class="method-detail">
-        <a name="M000083"></a>
-
-        <div class="method-heading">
-          <a href="#M000083" class="method-signature">
-          <span class="method-name">to_s</span><span class="method-args">()</span>
+          <a href="#M000087" class="method-signature">
+          <span class="method-name">_deep_copy_array</span><span class="method-args">(a)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000083-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000083-source">
+            onclick="toggleCode('M000087-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000087-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 433</span>
-433:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
-434:       <span class="ruby-value str">&quot;Address:\n&quot;</span>                                            <span class="ruby-operator">&lt;&lt;</span>
-435:       <span class="ruby-node">&quot; Path fragments: #{@path_fragments.inspect}\n&quot;</span>         <span class="ruby-operator">&lt;&lt;</span>
-436:       <span class="ruby-node">&quot; Query variables: #{@query_vars.inspect}\n&quot;</span>            <span class="ruby-operator">&lt;&lt;</span>
-437:       <span class="ruby-node">&quot; Header variables: #{@headers.inspect}\n&quot;</span>              <span class="ruby-operator">&lt;&lt;</span>
-438:       <span class="ruby-node">&quot; Unbound path parameters: #{@path_params.inspect}\n&quot;</span>   <span class="ruby-operator">&lt;&lt;</span>
-439:       <span class="ruby-node">&quot; Unbound query parameters: #{@query_params.inspect}\n&quot;</span> <span class="ruby-operator">&lt;&lt;</span>
-440:       <span class="ruby-node">&quot; Unbound header parameters: #{@header_params.inspect}\n&quot;</span>
-441:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/address.rb, line 187</span>
+187:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">_deep_copy_array</span>(<span class="ruby-identifier">a</span>)
+188:       <span class="ruby-identifier">a</span>.<span class="ruby-identifier">inject</span>([]) { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">e</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">dup</span>) }
+189:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -430,7 +467,7 @@ Alias for <a href="Address.html#M000083">to_s</a>
 
         <div class="method-heading">
           <a href="#M000086" class="method-signature">
-          <span class="method-name">uri</span><span class="method-args">(args = {})</span>
+          <span class="method-name">_deep_copy_hash</span><span class="method-args">(h)</span>
           </a>
         </div>
       
@@ -439,45 +476,10 @@ Alias for <a href="Address.html#M000083">to_s</a>
             onclick="toggleCode('M000086-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000086-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 508</span>
-508:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uri</span>(<span class="ruby-identifier">args</span> = {})
-509:       <span class="ruby-identifier">obj</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-identifier">deep_copy</span>.<span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span>), <span class="ruby-value str">''</span>
-510: 
-511:       <span class="ruby-comment cmt"># Build the path</span>
-512:       <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">path_fragments</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fragment</span><span class="ruby-operator">|</span>
-513:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:to_str</span>)
-514:           <span class="ruby-identifier">embedded_param_names</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">embedded_param_names</span>(<span class="ruby-identifier">fragment</span>)
-515: 
-516:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">embedded_param_names</span>.<span class="ruby-identifier">empty?</span>
-517:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{Missing a value for required path parameter &quot;#{embedded_param_names[0]}&quot;!}</span>
-518:           <span class="ruby-keyword kw">end</span>
-519: 
-520:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">empty?</span>
-521:             <span class="ruby-identifier">uri</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'/'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">uri</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/\/\z/</span>
-522:             <span class="ruby-identifier">uri</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">fragment</span>
-523:           <span class="ruby-keyword kw">end</span>
-524:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">required?</span>
-525:           <span class="ruby-comment cmt"># This is a required Param that was never bound to a value.</span>
-526:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{Missing a value for required path parameter &quot;#{fragment.name}&quot;!}</span>
-527:         <span class="ruby-keyword kw">end</span>
-528:       }
-529: 
-530:       <span class="ruby-comment cmt"># Hunt for required unbound query parameters.</span>
-531:       <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">query_params</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
-532:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">required?</span>
-533:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{Missing a value for required query parameter &quot;#{value.name}&quot;!}</span>
-534:         <span class="ruby-keyword kw">end</span>
-535:       }
-536: 
-537:       <span class="ruby-comment cmt"># Hunt for required unbound header parameters.</span>
-538:       <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">header_params</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
-539:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">required?</span>
-540:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{Missing a value for required header parameter &quot;#{value.name}&quot;!}</span>
-541:         <span class="ruby-keyword kw">end</span>
-542:       }
-543: 
-544:       <span class="ruby-constant">URIParts</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">query_vars</span>, <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">headers</span>)
-545:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/address.rb, line 183</span>
+183:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">_deep_copy_hash</span>(<span class="ruby-identifier">h</span>)
+184:       <span class="ruby-identifier">h</span>.<span class="ruby-identifier">inject</span>({}) { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span>, (<span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span>)<span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">dup</span>; <span class="ruby-identifier">h</span> }
+185:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

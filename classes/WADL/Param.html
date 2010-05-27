@@ -55,8 +55,8 @@
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
-                <a href="../../files/lib/wadl_rb.html">
-                lib/wadl.rb
+                <a href="../../files/lib/wadl/param_rb.html">
+                lib/wadl/param.rb
                 </a>
         <br />
             </td>
@@ -153,18 +153,18 @@ path of a resource.
             onclick="toggleCode('M000027-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000027-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 603</span>
-603:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">default</span>
-604:       <span class="ruby-ivar">@default</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
-605:         <span class="ruby-identifier">default</span> = <span class="ruby-constant">Param</span>.<span class="ruby-identifier">new</span>
-606: 
-607:         <span class="ruby-identifier">default</span>.<span class="ruby-identifier">required</span> = <span class="ruby-value str">'true'</span>
-608:         <span class="ruby-identifier">default</span>.<span class="ruby-identifier">style</span>    = <span class="ruby-value str">'plain'</span>
-609:         <span class="ruby-identifier">default</span>.<span class="ruby-identifier">type</span>     = <span class="ruby-value str">'xsd:string'</span>
-610: 
-611:         <span class="ruby-identifier">default</span>
-612:       <span class="ruby-keyword kw">end</span>
-613:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/param.rb, line 46</span>
+46:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">default</span>
+47:       <span class="ruby-ivar">@default</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
+48:         <span class="ruby-identifier">default</span> = <span class="ruby-constant">Param</span>.<span class="ruby-identifier">new</span>
+49: 
+50:         <span class="ruby-identifier">default</span>.<span class="ruby-identifier">required</span> = <span class="ruby-value str">'true'</span>
+51:         <span class="ruby-identifier">default</span>.<span class="ruby-identifier">style</span>    = <span class="ruby-value str">'plain'</span>
+52:         <span class="ruby-identifier">default</span>.<span class="ruby-identifier">type</span>     = <span class="ruby-value str">'xsd:string'</span>
+53: 
+54:         <span class="ruby-identifier">default</span>
+55:       <span class="ruby-keyword kw">end</span>
+56:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -209,60 +209,60 @@ href="Param.html">Param</a> object.
             onclick="toggleCode('M000031-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000031-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 633</span>
-633:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">format</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">name</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">style</span> = <span class="ruby-keyword kw">nil</span>)
-634:       <span class="ruby-identifier">name</span>  <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">name</span>
-635:       <span class="ruby-identifier">style</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">style</span>
-636: 
-637:       <span class="ruby-identifier">value</span> = <span class="ruby-identifier">fixed</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">fixed</span>
-638:       <span class="ruby-identifier">value</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">default</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">default</span>
-639: 
-640:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">value</span>
-641:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">required?</span>
-642:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{No value provided for required param &quot;#{name}&quot;!}</span>
-643:         <span class="ruby-keyword kw">else</span>
-644:           <span class="ruby-keyword kw">return</span> <span class="ruby-value str">''</span> <span class="ruby-comment cmt"># No value provided and none required.</span>
-645:         <span class="ruby-keyword kw">end</span>
-646:       <span class="ruby-keyword kw">end</span>
-647: 
-648:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:each</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:to_str</span>)
-649:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">repeating?</span>
-650:           <span class="ruby-identifier">values</span> = <span class="ruby-identifier">value</span>
-651:         <span class="ruby-keyword kw">else</span>
-652:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{Multiple values provided for single-value param &quot;#{name}&quot;}</span>
-653:         <span class="ruby-keyword kw">end</span>
-654:       <span class="ruby-keyword kw">else</span>
-655:         <span class="ruby-identifier">values</span> = [<span class="ruby-identifier">value</span>]
-656:       <span class="ruby-keyword kw">end</span>
-657: 
-658:       <span class="ruby-comment cmt"># If the param lists acceptable values in option tags, make sure that</span>
-659:       <span class="ruby-comment cmt"># all values are found in those tags.</span>
-660:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>.<span class="ruby-identifier">empty?</span>
-661:         <span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
-662:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">find_option</span>(<span class="ruby-identifier">value</span>)
-663:             <span class="ruby-identifier">acceptable</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">value</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'&quot;, &quot;'</span>)
-664:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{&quot;#{value}&quot; is not among the acceptable parameter values (&quot;#{acceptable}&quot;)}</span>
-665:           <span class="ruby-keyword kw">end</span>
-666:         }
-667:       <span class="ruby-keyword kw">end</span>
-668: 
-669:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'query'</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">RequestFormat</span>) <span class="ruby-operator">||</span> (
-670:         <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:is_form_representation?</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">is_form_representation?</span>
-671:       )
-672:         <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{URI.escape(name)}=#{URI.escape(v.to_s)}&quot;</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'&amp;'</span>)
-673:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'matrix'</span>
-674:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'xsd:boolean'</span>
-675:           <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;;#{name}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">BOOLEAN_RE</span> }.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>
-676:         <span class="ruby-keyword kw">else</span>
-677:           <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;;#{URI.escape(name)}=#{URI.escape(v.to_s)}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span> }.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>
-678:         <span class="ruby-keyword kw">end</span>
-679:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'header'</span>
-680:         <span class="ruby-identifier">values</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>)
-681:       <span class="ruby-keyword kw">else</span>
-682:         <span class="ruby-comment cmt"># All other cases: plain text representation.</span>
-683:         <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-constant">URI</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span>) }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>)
-684:       <span class="ruby-keyword kw">end</span>
-685:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/param.rb, line 76</span>
+ 76:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">format</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">name</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">style</span> = <span class="ruby-keyword kw">nil</span>)
+ 77:       <span class="ruby-identifier">name</span>  <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">name</span>
+ 78:       <span class="ruby-identifier">style</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">style</span>
+ 79: 
+ 80:       <span class="ruby-identifier">value</span> = <span class="ruby-identifier">fixed</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">fixed</span>
+ 81:       <span class="ruby-identifier">value</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">default</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">default</span>
+ 82: 
+ 83:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">value</span>
+ 84:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">required?</span>
+ 85:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{No value provided for required param &quot;#{name}&quot;!}</span>
+ 86:         <span class="ruby-keyword kw">else</span>
+ 87:           <span class="ruby-keyword kw">return</span> <span class="ruby-value str">''</span> <span class="ruby-comment cmt"># No value provided and none required.</span>
+ 88:         <span class="ruby-keyword kw">end</span>
+ 89:       <span class="ruby-keyword kw">end</span>
+ 90: 
+ 91:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:each</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:to_str</span>)
+ 92:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">repeating?</span>
+ 93:           <span class="ruby-identifier">values</span> = <span class="ruby-identifier">value</span>
+ 94:         <span class="ruby-keyword kw">else</span>
+ 95:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{Multiple values provided for single-value param &quot;#{name}&quot;}</span>
+ 96:         <span class="ruby-keyword kw">end</span>
+ 97:       <span class="ruby-keyword kw">else</span>
+ 98:         <span class="ruby-identifier">values</span> = [<span class="ruby-identifier">value</span>]
+ 99:       <span class="ruby-keyword kw">end</span>
+100: 
+101:       <span class="ruby-comment cmt"># If the param lists acceptable values in option tags, make sure that</span>
+102:       <span class="ruby-comment cmt"># all values are found in those tags.</span>
+103:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>.<span class="ruby-identifier">empty?</span>
+104:         <span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+105:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">find_option</span>(<span class="ruby-identifier">value</span>)
+106:             <span class="ruby-identifier">acceptable</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">value</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'&quot;, &quot;'</span>)
+107:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{&quot;#{value}&quot; is not among the acceptable parameter values (&quot;#{acceptable}&quot;)}</span>
+108:           <span class="ruby-keyword kw">end</span>
+109:         }
+110:       <span class="ruby-keyword kw">end</span>
+111: 
+112:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'query'</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">RequestFormat</span>) <span class="ruby-operator">||</span> (
+113:         <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:is_form_representation?</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">is_form_representation?</span>
+114:       )
+115:         <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{URI.escape(name)}=#{URI.escape(v.to_s)}&quot;</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'&amp;'</span>)
+116:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'matrix'</span>
+117:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'xsd:boolean'</span>
+118:           <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;;#{name}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">BOOLEAN_RE</span> }.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>
+119:         <span class="ruby-keyword kw">else</span>
+120:           <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;;#{URI.escape(name)}=#{URI.escape(v.to_s)}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span> }.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>
+121:         <span class="ruby-keyword kw">end</span>
+122:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'header'</span>
+123:         <span class="ruby-identifier">values</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>)
+124:       <span class="ruby-keyword kw">else</span>
+125:         <span class="ruby-comment cmt"># All other cases: plain text representation.</span>
+126:         <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-constant">URI</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span>) }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>)
+127:       <span class="ruby-keyword kw">end</span>
+128:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -282,10 +282,10 @@ href="Param.html">Param</a> object.
             onclick="toggleCode('M000030-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000030-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 623</span>
-623:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
-624:       <span class="ruby-node">%Q{Param &quot;#{name}&quot;}</span>
-625:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/param.rb, line 66</span>
+66:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+67:       <span class="ruby-node">%Q{Param &quot;#{name}&quot;}</span>
+68:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -305,10 +305,10 @@ href="Param.html">Param</a> object.
             onclick="toggleCode('M000029-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000029-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 619</span>
-619:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">repeating?</span>
-620:       <span class="ruby-identifier">repeating</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">BOOLEAN_RE</span>
-621:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/param.rb, line 62</span>
+62:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">repeating?</span>
+63:       <span class="ruby-identifier">repeating</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">BOOLEAN_RE</span>
+64:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -328,10 +328,10 @@ href="Param.html">Param</a> object.
             onclick="toggleCode('M000028-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000028-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 615</span>
-615:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">required?</span>
-616:       <span class="ruby-identifier">required</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">BOOLEAN_RE</span>
-617:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/param.rb, line 58</span>
+58:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">required?</span>
+59:       <span class="ruby-identifier">required</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">BOOLEAN_RE</span>
+60:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

@@ -55,8 +55,8 @@
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
-                <a href="../../files/lib/wadl_rb.html">
-                lib/wadl.rb
+                <a href="../../files/lib/wadl/request_format_rb.html">
+                lib/wadl/request_format.rb
                 </a>
         <br />
             </td>
@@ -88,7 +88,7 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000077">uri</a>&nbsp;&nbsp;
+      <a href="#M000078">uri</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -117,11 +117,11 @@
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000077" class="method-detail">
-        <a name="M000077"></a>
+      <div id="method-M000078" class="method-detail">
+        <a name="M000078"></a>
 
         <div class="method-heading">
-          <a href="#M000077" class="method-signature">
+          <a href="#M000078" class="method-signature">
           <span class="method-name">uri</span><span class="method-args">(resource, args = {})</span>
           </a>
         </div>
@@ -131,34 +131,34 @@
 Returns a URI and a set of HTTP headers for this request.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000077-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000077-source">
+            onclick="toggleCode('M000078-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000078-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 785</span>
-785:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uri</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-identifier">args</span> = {})
-786:       <span class="ruby-identifier">uri</span> = <span class="ruby-identifier">resource</span>.<span class="ruby-identifier">uri</span>(<span class="ruby-identifier">args</span>)
-787: 
-788:       <span class="ruby-identifier">query_values</span>  = <span class="ruby-identifier">args</span>[<span class="ruby-identifier">:query</span>]   <span class="ruby-operator">||</span> {}
-789:       <span class="ruby-identifier">header_values</span> = <span class="ruby-identifier">args</span>[<span class="ruby-identifier">:headers</span>] <span class="ruby-operator">||</span> {}
-790: 
-791:       <span class="ruby-identifier">params</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">param</span><span class="ruby-operator">|</span>
-792:         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">param</span>.<span class="ruby-identifier">name</span>
-793: 
-794:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">param</span>.<span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'header'</span>
-795:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">header_values</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">header_values</span>[<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>]
-796:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">param</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">value</span>
-797: 
-798:           <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">headers</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">value</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>
-799:         <span class="ruby-keyword kw">else</span>
-800:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">query_values</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">query_values</span>[<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>]
-801:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">param</span>.<span class="ruby-identifier">format</span>(<span class="ruby-identifier">value</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'query'</span>)
-802: 
-803:           <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">query</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>
-804:         <span class="ruby-keyword kw">end</span>
-805:       }
-806: 
-807:       <span class="ruby-identifier">uri</span>
-808:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/request_format.rb, line 41</span>
+41:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uri</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-identifier">args</span> = {})
+42:       <span class="ruby-identifier">uri</span> = <span class="ruby-identifier">resource</span>.<span class="ruby-identifier">uri</span>(<span class="ruby-identifier">args</span>)
+43: 
+44:       <span class="ruby-identifier">query_values</span>  = <span class="ruby-identifier">args</span>[<span class="ruby-identifier">:query</span>]   <span class="ruby-operator">||</span> {}
+45:       <span class="ruby-identifier">header_values</span> = <span class="ruby-identifier">args</span>[<span class="ruby-identifier">:headers</span>] <span class="ruby-operator">||</span> {}
+46: 
+47:       <span class="ruby-identifier">params</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">param</span><span class="ruby-operator">|</span>
+48:         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">param</span>.<span class="ruby-identifier">name</span>
+49: 
+50:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">param</span>.<span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'header'</span>
+51:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">header_values</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">header_values</span>[<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>]
+52:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">param</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">value</span>
+53: 
+54:           <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">headers</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">value</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>
+55:         <span class="ruby-keyword kw">else</span>
+56:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">query_values</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">query_values</span>[<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>]
+57:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">param</span>.<span class="ruby-identifier">format</span>(<span class="ruby-identifier">value</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'query'</span>)
+58: 
+59:           <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">query</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>
+60:         <span class="ruby-keyword kw">end</span>
+61:       }
+62: 
+63:       <span class="ruby-identifier">uri</span>
+64:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

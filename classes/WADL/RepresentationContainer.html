@@ -55,8 +55,8 @@
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
-                <a href="../../files/lib/wadl_rb.html">
-                lib/wadl.rb
+                <a href="../../files/lib/wadl/representation_container_rb.html">
+                lib/wadl/representation_container.rb
                 </a>
         <br />
             </td>
@@ -123,10 +123,10 @@ A mixin for objects that contain representations
             onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000004-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 698</span>
-698:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_form</span>
-699:       <span class="ruby-identifier">representations</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">is_form_representation?</span> }
-700:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/representation_container.rb, line 41</span>
+41:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_form</span>
+42:       <span class="ruby-identifier">representations</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">is_form_representation?</span> }
+43:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -146,10 +146,10 @@ A mixin for objects that contain representations
             onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000003-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 694</span>
-694:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_representation_by_media_type</span>(<span class="ruby-identifier">type</span>)
-695:       <span class="ruby-identifier">representations</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">mediaType</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">type</span> }
-696:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/representation_container.rb, line 37</span>
+37:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_representation_by_media_type</span>(<span class="ruby-identifier">type</span>)
+38:       <span class="ruby-identifier">representations</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">mediaType</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">type</span> }
+39:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

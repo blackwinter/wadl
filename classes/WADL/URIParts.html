@@ -55,8 +55,8 @@
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
-                <a href="../../files/lib/wadl_rb.html">
-                lib/wadl.rb
+                <a href="../../files/lib/wadl/uri_parts_rb.html">
+                lib/wadl/uri_parts.rb
                 </a>
         <br />
             </td>
@@ -92,12 +92,12 @@ Classes to keep track of the logical structure of a URI.
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000094">==</a>&nbsp;&nbsp;
-      <a href="#M000093">hash</a>&nbsp;&nbsp;
-      <a href="#M000091">inspect</a>&nbsp;&nbsp;
-      <a href="#M000092">query_string</a>&nbsp;&nbsp;
-      <a href="#M000089">to_s</a>&nbsp;&nbsp;
-      <a href="#M000090">to_str</a>&nbsp;&nbsp;
+      <a href="#M000095">==</a>&nbsp;&nbsp;
+      <a href="#M000094">hash</a>&nbsp;&nbsp;
+      <a href="#M000092">inspect</a>&nbsp;&nbsp;
+      <a href="#M000093">query_string</a>&nbsp;&nbsp;
+      <a href="#M000090">to_s</a>&nbsp;&nbsp;
+      <a href="#M000091">to_str</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -119,12 +119,35 @@ Classes to keep track of the logical structure of a URI.
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
+      <div id="method-M000095" class="method-detail">
+        <a name="M000095"></a>
+
+        <div class="method-heading">
+          <a href="#M000095" class="method-signature">
+          <span class="method-name">==</span><span class="method-args">(x)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000095-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000095-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/wadl/uri_parts.rb, line 57</span>
+57:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">==</span>(<span class="ruby-identifier">x</span>)
+58:       <span class="ruby-identifier">x</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:to_str</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">to_str</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">super</span>
+59:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
       <div id="method-M000094" class="method-detail">
         <a name="M000094"></a>
 
         <div class="method-heading">
           <a href="#M000094" class="method-signature">
-          <span class="method-name">==</span><span class="method-args">(x)</span>
+          <span class="method-name">hash</span><span class="method-args">(x)</span>
           </a>
         </div>
       
@@ -133,57 +156,10 @@ Classes to keep track of the logical structure of a URI.
             onclick="toggleCode('M000094-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000094-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 386</span>
-386:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">==</span>(<span class="ruby-identifier">x</span>)
-387:       <span class="ruby-identifier">x</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:to_str</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">to_str</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">super</span>
-388:     <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000093" class="method-detail">
-        <a name="M000093"></a>
-
-        <div class="method-heading">
-          <a href="#M000093" class="method-signature">
-          <span class="method-name">hash</span><span class="method-args">(x)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000093-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000093-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 382</span>
-382:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hash</span>(<span class="ruby-identifier">x</span>)
-383:       <span class="ruby-identifier">to_str</span>.<span class="ruby-identifier">hash</span>
-384:     <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000091" class="method-detail">
-        <a name="M000091"></a>
-
-        <div class="method-heading">
-          <a href="#M000091" class="method-signature">
-          <span class="method-name">inspect</span><span class="method-args">()</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000091-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000091-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 373</span>
-373:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
-374:       <span class="ruby-identifier">hs</span> = <span class="ruby-node">&quot; Plus headers: #{headers.inspect}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">headers</span>
-375:       <span class="ruby-node">&quot;#{to_s}#{hs}&quot;</span>
-376:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/uri_parts.rb, line 53</span>
+53:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hash</span>(<span class="ruby-identifier">x</span>)
+54:       <span class="ruby-identifier">to_str</span>.<span class="ruby-identifier">hash</span>
+55:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -194,7 +170,7 @@ Classes to keep track of the logical structure of a URI.
 
         <div class="method-heading">
           <a href="#M000092" class="method-signature">
-          <span class="method-name">query_string</span><span class="method-args">()</span>
+          <span class="method-name">inspect</span><span class="method-args">()</span>
           </a>
         </div>
       
@@ -203,34 +179,34 @@ Classes to keep track of the logical structure of a URI.
             onclick="toggleCode('M000092-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000092-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 378</span>
-378:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">query_string</span>
-379:       <span class="ruby-identifier">query</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'&amp;'</span>)
-380:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/uri_parts.rb, line 44</span>
+44:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+45:       <span class="ruby-identifier">hs</span> = <span class="ruby-node">&quot; Plus headers: #{headers.inspect}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">headers</span>
+46:       <span class="ruby-node">&quot;#{to_s}#{hs}&quot;</span>
+47:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000089" class="method-detail">
-        <a name="M000089"></a>
+      <div id="method-M000093" class="method-detail">
+        <a name="M000093"></a>
 
         <div class="method-heading">
-          <a href="#M000089" class="method-signature">
-          <span class="method-name">to_s</span><span class="method-args">()</span>
+          <a href="#M000093" class="method-signature">
+          <span class="method-name">query_string</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000089-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000089-source">
+            onclick="toggleCode('M000093-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000093-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 366</span>
-366:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
-367:       <span class="ruby-identifier">qs</span> = <span class="ruby-node">&quot;#{uri.include?('?') ? '&amp;' : '?'}#{query_string}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">query</span>.<span class="ruby-identifier">empty?</span>
-368:       <span class="ruby-node">&quot;#{uri}#{qs}&quot;</span>
-369:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/uri_parts.rb, line 49</span>
+49:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">query_string</span>
+50:       <span class="ruby-identifier">query</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'&amp;'</span>)
+51:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -240,12 +216,36 @@ Classes to keep track of the logical structure of a URI.
         <a name="M000090"></a>
 
         <div class="method-heading">
+          <a href="#M000090" class="method-signature">
+          <span class="method-name">to_s</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000090-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000090-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/wadl/uri_parts.rb, line 37</span>
+37:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+38:       <span class="ruby-identifier">qs</span> = <span class="ruby-node">&quot;#{uri.include?('?') ? '&amp;' : '?'}#{query_string}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">query</span>.<span class="ruby-identifier">empty?</span>
+39:       <span class="ruby-node">&quot;#{uri}#{qs}&quot;</span>
+40:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000091" class="method-detail">
+        <a name="M000091"></a>
+
+        <div class="method-heading">
           <span class="method-name">to_str</span><span class="method-args">()</span>
         </div>
       
         <div class="method-description">
           <p>
-Alias for <a href="URIParts.html#M000089">to_s</a>
+Alias for <a href="URIParts.html#M000090">to_s</a>
 </p>
         </div>
       </div>

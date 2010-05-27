@@ -55,8 +55,8 @@
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
-                <a href="../../files/lib/wadl_rb.html">
-                lib/wadl.rb
+                <a href="../../files/lib/wadl/resource_and_address_rb.html">
+                lib/wadl/resource_and_address.rb
                 </a>
         <br />
             </td>
@@ -143,13 +143,13 @@ references.
             onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000012-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1114</span>
-1114:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-identifier">address</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">combine_address_with_resource</span> = <span class="ruby-keyword kw">true</span>)
-1115:       <span class="ruby-ivar">@resource</span> = <span class="ruby-identifier">resource</span>
-1116:       <span class="ruby-ivar">@address</span>  = <span class="ruby-identifier">combine_address_with_resource</span> <span class="ruby-value">? </span><span class="ruby-identifier">resource</span>.<span class="ruby-identifier">address</span>(<span class="ruby-identifier">address</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">address</span>
-1117: 
-1118:       <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">resource</span>)
-1119:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/resource_and_address.rb, line 39</span>
+39:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-identifier">address</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">combine_address_with_resource</span> = <span class="ruby-keyword kw">true</span>)
+40:       <span class="ruby-ivar">@resource</span> = <span class="ruby-identifier">resource</span>
+41:       <span class="ruby-ivar">@address</span>  = <span class="ruby-identifier">combine_address_with_resource</span> <span class="ruby-value">? </span><span class="ruby-identifier">resource</span>.<span class="ruby-identifier">address</span>(<span class="ruby-identifier">address</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">address</span>
+42: 
+43:       <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">resource</span>)
+44:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -171,10 +171,10 @@ references.
             onclick="toggleCode('M000016-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000016-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1135</span>
-1135:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">address</span>
-1136:       <span class="ruby-ivar">@address</span>
-1137:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/resource_and_address.rb, line 60</span>
+60:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">address</span>
+61:       <span class="ruby-ivar">@address</span>
+62:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -194,10 +194,10 @@ references.
             onclick="toggleCode('M000017-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000017-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1139</span>
-1139:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bind</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-1140:       <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@resource</span>, <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">deep_copy</span>, <span class="ruby-keyword kw">false</span>).<span class="ruby-identifier">bind!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-1141:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/resource_and_address.rb, line 64</span>
+64:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bind</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+65:       <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@resource</span>, <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">deep_copy</span>, <span class="ruby-keyword kw">false</span>).<span class="ruby-identifier">bind!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+66:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -217,11 +217,11 @@ references.
             onclick="toggleCode('M000018-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000018-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1143</span>
-1143:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span> = {})
-1144:       <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span>)
-1145:       <span class="ruby-keyword kw">self</span>
-1146:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/resource_and_address.rb, line 68</span>
+68:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span> = {})
+69:       <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span>)
+70:       <span class="ruby-keyword kw">self</span>
+71:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -241,11 +241,11 @@ references.
             onclick="toggleCode('M000022-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000022-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1169</span>
-1169:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_resource</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-1170:       <span class="ruby-identifier">resource</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">find_resource</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-1171:       <span class="ruby-identifier">resource</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-ivar">@address</span>)
-1172:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/resource_and_address.rb, line 94</span>
+94:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_resource</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+95:       <span class="ruby-identifier">resource</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">find_resource</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+96:       <span class="ruby-identifier">resource</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-ivar">@address</span>)
+97:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -265,11 +265,11 @@ references.
             onclick="toggleCode('M000023-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000023-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1174</span>
-1174:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_resource_by_path</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-1175:       <span class="ruby-identifier">resource</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">find_resource_by_path</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-1176:       <span class="ruby-identifier">resource</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-ivar">@address</span>)
-1177:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/resource_and_address.rb, line 99</span>
+ 99:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_resource_by_path</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+100:       <span class="ruby-identifier">resource</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">find_resource_by_path</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+101:       <span class="ruby-identifier">resource</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-ivar">@address</span>)
+102:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -294,10 +294,10 @@ method. We wnat to delegate it.
             onclick="toggleCode('M000013-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000013-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1123</span>
-1123:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">id</span>
-1124:       <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">id</span>
-1125:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/resource_and_address.rb, line 48</span>
+48:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">id</span>
+49:       <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">id</span>
+50:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -317,10 +317,10 @@ method. We wnat to delegate it.
             onclick="toggleCode('M000015-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000015-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1131</span>
-1131:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
-1132:       <span class="ruby-node">&quot;ResourceAndAddress\n Resource: #{@resource}\n #{@address.inspect}&quot;</span>
-1133:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/resource_and_address.rb, line 56</span>
+56:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+57:       <span class="ruby-node">&quot;ResourceAndAddress\n Resource: #{@resource}\n #{@address.inspect}&quot;</span>
+58:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -344,15 +344,15 @@ generated methods that don&#8216;t get delegated.
             onclick="toggleCode('M000020-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000020-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1153</span>
-1153:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-1154:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">name</span>)
-1155:         <span class="ruby-identifier">result</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-1156:         <span class="ruby-identifier">result</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Resource</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">result</span>, <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">dup</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">result</span>
-1157:       <span class="ruby-keyword kw">else</span>
-1158:         <span class="ruby-keyword kw">super</span>
-1159:       <span class="ruby-keyword kw">end</span>
-1160:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/resource_and_address.rb, line 78</span>
+78:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+79:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">name</span>)
+80:         <span class="ruby-identifier">result</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+81:         <span class="ruby-identifier">result</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Resource</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">result</span>, <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">dup</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">result</span>
+82:       <span class="ruby-keyword kw">else</span>
+83:         <span class="ruby-keyword kw">super</span>
+84:       <span class="ruby-keyword kw">end</span>
+85:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -376,11 +376,11 @@ catch these guys because they were defined in the delegation operation.
             onclick="toggleCode('M000021-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000021-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1164</span>
-1164:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resource</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-1165:       <span class="ruby-identifier">resource</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">resource</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-1166:       <span class="ruby-identifier">resource</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-ivar">@address</span>)
-1167:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/resource_and_address.rb, line 89</span>
+89:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resource</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+90:       <span class="ruby-identifier">resource</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">resource</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+91:       <span class="ruby-identifier">resource</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-ivar">@address</span>)
+92:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -400,10 +400,10 @@ catch these guys because they were defined in the delegation operation.
             onclick="toggleCode('M000014-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000014-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1127</span>
-1127:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
-1128:       <span class="ruby-identifier">inspect</span>
-1129:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/resource_and_address.rb, line 52</span>
+52:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+53:       <span class="ruby-identifier">inspect</span>
+54:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -423,10 +423,10 @@ catch these guys because they were defined in the delegation operation.
             onclick="toggleCode('M000019-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000019-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1148</span>
-1148:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uri</span>(<span class="ruby-identifier">args</span> = {})
-1149:       <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">deep_copy</span>.<span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span>).<span class="ruby-identifier">uri</span>
-1150:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/resource_and_address.rb, line 73</span>
+73:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uri</span>(<span class="ruby-identifier">args</span> = {})
+74:       <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">deep_copy</span>.<span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span>).<span class="ruby-identifier">uri</span>
+75:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

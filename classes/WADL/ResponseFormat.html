@@ -55,8 +55,8 @@
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
-                <a href="../../files/lib/wadl_rb.html">
-                lib/wadl.rb
+                <a href="../../files/lib/wadl/response_format_rb.html">
+                lib/wadl/response_format.rb
                 </a>
         <br />
             </td>
@@ -88,7 +88,7 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000076">build</a>&nbsp;&nbsp;
+      <a href="#M000077">build</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -117,11 +117,11 @@
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000076" class="method-detail">
-        <a name="M000076"></a>
+      <div id="method-M000077" class="method-detail">
+        <a name="M000077"></a>
 
         <div class="method-heading">
-          <a href="#M000076" class="method-signature">
+          <a href="#M000077" class="method-signature">
           <span class="method-name">build</span><span class="method-args">(http_response)</span>
           </a>
         </div>
@@ -131,69 +131,69 @@
 Builds a service response object out of an HTTPResponse object.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000076-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000076-source">
+            onclick="toggleCode('M000077-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000077-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 820</span>
-820:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build</span>(<span class="ruby-identifier">http_response</span>)
-821:       <span class="ruby-comment cmt"># Figure out which fault or representation to use.</span>
-822: 
-823:       <span class="ruby-identifier">status</span> = <span class="ruby-identifier">http_response</span>.<span class="ruby-identifier">status</span>[<span class="ruby-value">0</span>]
-824: 
-825:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">response_format</span> = <span class="ruby-identifier">faults</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">status</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">status</span> }
-826:         <span class="ruby-comment cmt"># Try to match the response to a response format using a media</span>
-827:         <span class="ruby-comment cmt"># type.</span>
-828:         <span class="ruby-identifier">response_media_type</span> = <span class="ruby-identifier">http_response</span>.<span class="ruby-identifier">content_type</span>
-829:         <span class="ruby-identifier">response_format</span> = <span class="ruby-identifier">representations</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
-830:           <span class="ruby-identifier">t</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">mediaType</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">response_media_type</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">t</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-831:         }
-832: 
-833:         <span class="ruby-comment cmt"># If an exact media type match fails, use the mime-types gem to</span>
-834:         <span class="ruby-comment cmt"># match the response to a response format using the underlying</span>
-835:         <span class="ruby-comment cmt"># subtype. This will match &quot;application/xml&quot; with &quot;text/xml&quot;.</span>
-836:         <span class="ruby-identifier">response_format</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
-837:           <span class="ruby-identifier">mime_type</span> = <span class="ruby-constant">MIME</span><span class="ruby-operator">::</span><span class="ruby-constant">Types</span>[<span class="ruby-identifier">response_media_type</span>]
-838:           <span class="ruby-identifier">raw_sub_type</span> = <span class="ruby-identifier">mime_type</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">raw_sub_type</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mime_type</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">mime_type</span>.<span class="ruby-identifier">empty?</span>
-839: 
-840:           <span class="ruby-identifier">representations</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
-841:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">t</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">mediaType</span>
-842:               <span class="ruby-identifier">response_mime_type</span> = <span class="ruby-constant">MIME</span><span class="ruby-operator">::</span><span class="ruby-constant">Types</span>[<span class="ruby-identifier">t</span>]
-843:               <span class="ruby-identifier">response_raw_sub_type</span> = <span class="ruby-identifier">response_mime_type</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">raw_sub_type</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">response_mime_type</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">response_mime_type</span>.<span class="ruby-identifier">empty?</span>
-844:               <span class="ruby-identifier">response_raw_sub_type</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">raw_sub_type</span>
-845:             <span class="ruby-keyword kw">end</span>
-846:           }
-847:         <span class="ruby-keyword kw">end</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">defined?</span>(<span class="ruby-constant">MIME</span><span class="ruby-operator">::</span><span class="ruby-constant">Types</span>)
-848: 
-849:         <span class="ruby-comment cmt"># If all else fails, try to find a response that specifies no</span>
-850:         <span class="ruby-comment cmt"># media type. TODO: check if this would be valid WADL.</span>
-851:         <span class="ruby-identifier">response_format</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">representations</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-operator">!</span><span class="ruby-identifier">f</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">mediaType</span> }
-852:       <span class="ruby-keyword kw">end</span>
-853: 
-854:       <span class="ruby-identifier">body</span> = <span class="ruby-identifier">http_response</span>.<span class="ruby-identifier">read</span>
-855: 
-856:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">response_format</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">response_format</span>.<span class="ruby-identifier">mediaType</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/xml/</span>
-857:         <span class="ruby-keyword kw">begin</span>
-858:           <span class="ruby-identifier">body</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">body</span>)
-859: 
-860:           <span class="ruby-comment cmt"># Find the appropriate element of the document</span>
-861:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">response_format</span>.<span class="ruby-identifier">element</span>
-862:             <span class="ruby-comment cmt"># TODO: don't strip the damn namespace. I'm not very good at</span>
-863:             <span class="ruby-comment cmt"># namespaces and I don't see how to deal with them here.</span>
-864:             <span class="ruby-identifier">element</span> = <span class="ruby-identifier">response_format</span>.<span class="ruby-identifier">element</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-regexp re">/.*:/</span>, <span class="ruby-value str">''</span>)
-865:             <span class="ruby-identifier">body</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">XPath</span>.<span class="ruby-identifier">first</span>(<span class="ruby-identifier">body</span>, <span class="ruby-node">&quot;//#{element}&quot;</span>)
-866:           <span class="ruby-keyword kw">end</span>
-867:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">ParseException</span>
-868:         <span class="ruby-keyword kw">end</span>
-869: 
-870:         <span class="ruby-identifier">body</span>.<span class="ruby-identifier">extend</span>(<span class="ruby-constant">XMLRepresentation</span>)
-871:         <span class="ruby-identifier">body</span>.<span class="ruby-identifier">representation_of</span>(<span class="ruby-identifier">response_format</span>)
-872:       <span class="ruby-keyword kw">end</span>
-873: 
-874:       <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">response_format</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FaultFormat</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">response_format</span>.<span class="ruby-identifier">subclass</span> <span class="ruby-operator">:</span> <span class="ruby-constant">Response</span>
-875:       <span class="ruby-identifier">obj</span> = <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">http_response</span>.<span class="ruby-identifier">status</span>, <span class="ruby-identifier">http_response</span>, <span class="ruby-identifier">body</span>, <span class="ruby-identifier">response_format</span>)
-876: 
-877:       <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Exception</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">raise</span>(<span class="ruby-identifier">obj</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">obj</span>
-878:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/response_format.rb, line 46</span>
+ 46:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build</span>(<span class="ruby-identifier">http_response</span>)
+ 47:       <span class="ruby-comment cmt"># Figure out which fault or representation to use.</span>
+ 48: 
+ 49:       <span class="ruby-identifier">status</span> = <span class="ruby-identifier">http_response</span>.<span class="ruby-identifier">status</span>[<span class="ruby-value">0</span>]
+ 50: 
+ 51:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">response_format</span> = <span class="ruby-identifier">faults</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">status</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">status</span> }
+ 52:         <span class="ruby-comment cmt"># Try to match the response to a response format using a media</span>
+ 53:         <span class="ruby-comment cmt"># type.</span>
+ 54:         <span class="ruby-identifier">response_media_type</span> = <span class="ruby-identifier">http_response</span>.<span class="ruby-identifier">content_type</span>
+ 55:         <span class="ruby-identifier">response_format</span> = <span class="ruby-identifier">representations</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+ 56:           <span class="ruby-identifier">t</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">mediaType</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">response_media_type</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">t</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+ 57:         }
+ 58: 
+ 59:         <span class="ruby-comment cmt"># If an exact media type match fails, use the mime-types gem to</span>
+ 60:         <span class="ruby-comment cmt"># match the response to a response format using the underlying</span>
+ 61:         <span class="ruby-comment cmt"># subtype. This will match &quot;application/xml&quot; with &quot;text/xml&quot;.</span>
+ 62:         <span class="ruby-identifier">response_format</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
+ 63:           <span class="ruby-identifier">mime_type</span> = <span class="ruby-constant">MIME</span><span class="ruby-operator">::</span><span class="ruby-constant">Types</span>[<span class="ruby-identifier">response_media_type</span>]
+ 64:           <span class="ruby-identifier">raw_sub_type</span> = <span class="ruby-identifier">mime_type</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">raw_sub_type</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mime_type</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">mime_type</span>.<span class="ruby-identifier">empty?</span>
+ 65: 
+ 66:           <span class="ruby-identifier">representations</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+ 67:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">t</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">mediaType</span>
+ 68:               <span class="ruby-identifier">response_mime_type</span> = <span class="ruby-constant">MIME</span><span class="ruby-operator">::</span><span class="ruby-constant">Types</span>[<span class="ruby-identifier">t</span>]
+ 69:               <span class="ruby-identifier">response_raw_sub_type</span> = <span class="ruby-identifier">response_mime_type</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">raw_sub_type</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">response_mime_type</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">response_mime_type</span>.<span class="ruby-identifier">empty?</span>
+ 70:               <span class="ruby-identifier">response_raw_sub_type</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">raw_sub_type</span>
+ 71:             <span class="ruby-keyword kw">end</span>
+ 72:           }
+ 73:         <span class="ruby-keyword kw">end</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">defined?</span>(<span class="ruby-constant">MIME</span><span class="ruby-operator">::</span><span class="ruby-constant">Types</span>)
+ 74: 
+ 75:         <span class="ruby-comment cmt"># If all else fails, try to find a response that specifies no</span>
+ 76:         <span class="ruby-comment cmt"># media type. TODO: check if this would be valid WADL.</span>
+ 77:         <span class="ruby-identifier">response_format</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">representations</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-operator">!</span><span class="ruby-identifier">f</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">mediaType</span> }
+ 78:       <span class="ruby-keyword kw">end</span>
+ 79: 
+ 80:       <span class="ruby-identifier">body</span> = <span class="ruby-identifier">http_response</span>.<span class="ruby-identifier">read</span>
+ 81: 
+ 82:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">response_format</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">response_format</span>.<span class="ruby-identifier">mediaType</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/xml/</span>
+ 83:         <span class="ruby-keyword kw">begin</span>
+ 84:           <span class="ruby-identifier">body</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">body</span>)
+ 85: 
+ 86:           <span class="ruby-comment cmt"># Find the appropriate element of the document</span>
+ 87:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">response_format</span>.<span class="ruby-identifier">element</span>
+ 88:             <span class="ruby-comment cmt"># TODO: don't strip the damn namespace. I'm not very good at</span>
+ 89:             <span class="ruby-comment cmt"># namespaces and I don't see how to deal with them here.</span>
+ 90:             <span class="ruby-identifier">element</span> = <span class="ruby-identifier">response_format</span>.<span class="ruby-identifier">element</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-regexp re">/.*:/</span>, <span class="ruby-value str">''</span>)
+ 91:             <span class="ruby-identifier">body</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">XPath</span>.<span class="ruby-identifier">first</span>(<span class="ruby-identifier">body</span>, <span class="ruby-node">&quot;//#{element}&quot;</span>)
+ 92:           <span class="ruby-keyword kw">end</span>
+ 93:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">ParseException</span>
+ 94:         <span class="ruby-keyword kw">end</span>
+ 95: 
+ 96:         <span class="ruby-identifier">body</span>.<span class="ruby-identifier">extend</span>(<span class="ruby-constant">XMLRepresentation</span>)
+ 97:         <span class="ruby-identifier">body</span>.<span class="ruby-identifier">representation_of</span>(<span class="ruby-identifier">response_format</span>)
+ 98:       <span class="ruby-keyword kw">end</span>
+ 99: 
+100:       <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">response_format</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FaultFormat</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">response_format</span>.<span class="ruby-identifier">subclass</span> <span class="ruby-operator">:</span> <span class="ruby-constant">Response</span>
+101:       <span class="ruby-identifier">obj</span> = <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">http_response</span>.<span class="ruby-identifier">status</span>, <span class="ruby-identifier">http_response</span>, <span class="ruby-identifier">body</span>, <span class="ruby-identifier">response_format</span>)
+102: 
+103:       <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Exception</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">raise</span>(<span class="ruby-identifier">obj</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">obj</span>
+104:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

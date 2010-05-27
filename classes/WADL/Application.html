@@ -55,8 +55,8 @@
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
-                <a href="../../files/lib/wadl_rb.html">
-                lib/wadl.rb
+                <a href="../../files/lib/wadl/application_rb.html">
+                lib/wadl/application.rb
                 </a>
         <br />
             </td>
@@ -88,11 +88,11 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000040">finalize_creation</a>&nbsp;&nbsp;
-      <a href="#M000037">find_resource</a>&nbsp;&nbsp;
-      <a href="#M000039">find_resource_by_path</a>&nbsp;&nbsp;
-      <a href="#M000036">from_wadl</a>&nbsp;&nbsp;
-      <a href="#M000038">resource</a>&nbsp;&nbsp;
+      <a href="#M000076">finalize_creation</a>&nbsp;&nbsp;
+      <a href="#M000073">find_resource</a>&nbsp;&nbsp;
+      <a href="#M000075">find_resource_by_path</a>&nbsp;&nbsp;
+      <a href="#M000072">from_wadl</a>&nbsp;&nbsp;
+      <a href="#M000074">resource</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -114,30 +114,30 @@
     <div id="methods">
       <h3 class="section-bar">Public Class methods</h3>
 
-      <div id="method-M000036" class="method-detail">
-        <a name="M000036"></a>
+      <div id="method-M000072" class="method-detail">
+        <a name="M000072"></a>
 
         <div class="method-heading">
-          <a href="#M000036" class="method-signature">
+          <a href="#M000072" class="method-signature">
           <span class="method-name">from_wadl</span><span class="method-args">(wadl)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000036-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000036-source">
+            onclick="toggleCode('M000072-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000072-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1198</span>
-1198:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_wadl</span>(<span class="ruby-identifier">wadl</span>)
-1199:       <span class="ruby-identifier">wadl</span> = <span class="ruby-identifier">wadl</span>.<span class="ruby-identifier">read</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">wadl</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:read</span>)
-1200:       <span class="ruby-identifier">doc</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">wadl</span>)
-1201: 
-1202:       <span class="ruby-identifier">application</span> = <span class="ruby-identifier">from_element</span>(<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>, <span class="ruby-identifier">need_finalization</span> = [])
-1203:       <span class="ruby-identifier">need_finalization</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">finalize_creation</span> }
-1204: 
-1205:       <span class="ruby-identifier">application</span>
-1206:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/application.rb, line 40</span>
+40:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_wadl</span>(<span class="ruby-identifier">wadl</span>)
+41:       <span class="ruby-identifier">wadl</span> = <span class="ruby-identifier">wadl</span>.<span class="ruby-identifier">read</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">wadl</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:read</span>)
+42:       <span class="ruby-identifier">doc</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">wadl</span>)
+43: 
+44:       <span class="ruby-identifier">application</span> = <span class="ruby-identifier">from_element</span>(<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>, <span class="ruby-identifier">need_finalization</span> = [])
+45:       <span class="ruby-identifier">need_finalization</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">finalize_creation</span> }
+46: 
+47:       <span class="ruby-identifier">application</span>
+48:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -145,96 +145,96 @@
 
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000040" class="method-detail">
-        <a name="M000040"></a>
+      <div id="method-M000076" class="method-detail">
+        <a name="M000076"></a>
 
         <div class="method-heading">
-          <a href="#M000040" class="method-signature">
+          <a href="#M000076" class="method-signature">
           <span class="method-name">finalize_creation</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000040-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000040-source">
+            onclick="toggleCode('M000076-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000076-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1220</span>
-1220:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">finalize_creation</span>
-1221:       <span class="ruby-identifier">resource_list</span>.<span class="ruby-identifier">resources</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
-1222:         <span class="ruby-identifier">define_singleton</span>(<span class="ruby-identifier">r</span>, <span class="ruby-identifier">:id</span>,   <span class="ruby-value str">'resource_list.find_resource'</span>)
-1223:         <span class="ruby-identifier">define_singleton</span>(<span class="ruby-identifier">r</span>, <span class="ruby-identifier">:path</span>, <span class="ruby-value str">'resource_list.find_resource_by_path'</span>)
-1224:       } <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">resource_list</span>
-1225:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/application.rb, line 62</span>
+62:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">finalize_creation</span>
+63:       <span class="ruby-identifier">resource_list</span>.<span class="ruby-identifier">resources</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
+64:         <span class="ruby-identifier">define_singleton</span>(<span class="ruby-identifier">r</span>, <span class="ruby-identifier">:id</span>,   <span class="ruby-value str">'resource_list.find_resource'</span>)
+65:         <span class="ruby-identifier">define_singleton</span>(<span class="ruby-identifier">r</span>, <span class="ruby-identifier">:path</span>, <span class="ruby-value str">'resource_list.find_resource_by_path'</span>)
+66:       } <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">resource_list</span>
+67:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000037" class="method-detail">
-        <a name="M000037"></a>
+      <div id="method-M000073" class="method-detail">
+        <a name="M000073"></a>
 
         <div class="method-heading">
-          <a href="#M000037" class="method-signature">
+          <a href="#M000073" class="method-signature">
           <span class="method-name">find_resource</span><span class="method-args">(symbol, *args, &amp;block)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000037-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000037-source">
+            onclick="toggleCode('M000073-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000073-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1208</span>
-1208:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_resource</span>(<span class="ruby-identifier">symbol</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-1209:       <span class="ruby-identifier">resource_list</span>.<span class="ruby-identifier">find_resource</span>(<span class="ruby-identifier">symbol</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-1210:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/application.rb, line 50</span>
+50:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_resource</span>(<span class="ruby-identifier">symbol</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+51:       <span class="ruby-identifier">resource_list</span>.<span class="ruby-identifier">find_resource</span>(<span class="ruby-identifier">symbol</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+52:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000039" class="method-detail">
-        <a name="M000039"></a>
+      <div id="method-M000075" class="method-detail">
+        <a name="M000075"></a>
 
         <div class="method-heading">
-          <a href="#M000039" class="method-signature">
+          <a href="#M000075" class="method-signature">
           <span class="method-name">find_resource_by_path</span><span class="method-args">(symbol, *args, &amp;block)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000039-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000039-source">
+            onclick="toggleCode('M000075-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000075-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1216</span>
-1216:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_resource_by_path</span>(<span class="ruby-identifier">symbol</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-1217:       <span class="ruby-identifier">resource_list</span>.<span class="ruby-identifier">find_resource_by_path</span>(<span class="ruby-identifier">symbol</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-1218:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/application.rb, line 58</span>
+58:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_resource_by_path</span>(<span class="ruby-identifier">symbol</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+59:       <span class="ruby-identifier">resource_list</span>.<span class="ruby-identifier">find_resource_by_path</span>(<span class="ruby-identifier">symbol</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+60:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000038" class="method-detail">
-        <a name="M000038"></a>
+      <div id="method-M000074" class="method-detail">
+        <a name="M000074"></a>
 
         <div class="method-heading">
-          <a href="#M000038" class="method-signature">
+          <a href="#M000074" class="method-signature">
           <span class="method-name">resource</span><span class="method-args">(symbol)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000038-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000038-source">
+            onclick="toggleCode('M000074-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000074-source">
 <pre>
-      <span class="ruby-comment cmt"># File lib/wadl.rb, line 1212</span>
-1212:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resource</span>(<span class="ruby-identifier">symbol</span>)
-1213:       <span class="ruby-identifier">resource_list</span>.<span class="ruby-identifier">resource</span>(<span class="ruby-identifier">symbol</span>)
-1214:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/application.rb, line 54</span>
+54:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resource</span>(<span class="ruby-identifier">symbol</span>)
+55:       <span class="ruby-identifier">resource_list</span>.<span class="ruby-identifier">resource</span>(<span class="ruby-identifier">symbol</span>)
+56:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

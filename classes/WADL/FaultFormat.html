@@ -55,8 +55,8 @@
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
-                <a href="../../files/lib/wadl_rb.html">
-                lib/wadl.rb
+                <a href="../../files/lib/wadl/fault_format_rb.html">
+                lib/wadl/fault_format.rb
                 </a>
         <br />
             </td>
@@ -142,23 +142,23 @@ fault, so that the programmer can rescue this particular fault.
             onclick="toggleCode('M000034-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000034-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 758</span>
-758:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_element</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-759:       <span class="ruby-identifier">me</span> = <span class="ruby-keyword kw">super</span>
-760: 
-761:       <span class="ruby-identifier">me</span>.<span class="ruby-identifier">subclass</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span> = <span class="ruby-identifier">me</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'id'</span>]
-762:         <span class="ruby-keyword kw">begin</span>
-763:           <span class="ruby-constant">WADL</span><span class="ruby-operator">::</span><span class="ruby-constant">Faults</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">?</span>
-764:             <span class="ruby-constant">WADL</span><span class="ruby-operator">::</span><span class="ruby-constant">Faults</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">:</span>
-765:             <span class="ruby-constant">WADL</span><span class="ruby-operator">::</span><span class="ruby-constant">Faults</span>.<span class="ruby-identifier">const_set</span>(<span class="ruby-identifier">name</span>, <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Fault</span>))
-766:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NameError</span>
-767:           <span class="ruby-comment cmt"># This fault format's ID can't be a class name. Use the</span>
-768:           <span class="ruby-comment cmt"># generic subclass of Fault.</span>
-769:         <span class="ruby-keyword kw">end</span>
-770:       <span class="ruby-keyword kw">end</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Fault</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">me</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'href'</span>]
-771: 
-772:       <span class="ruby-identifier">me</span>
-773:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/fault_format.rb, line 48</span>
+48:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_element</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+49:       <span class="ruby-identifier">me</span> = <span class="ruby-keyword kw">super</span>
+50: 
+51:       <span class="ruby-identifier">me</span>.<span class="ruby-identifier">subclass</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span> = <span class="ruby-identifier">me</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'id'</span>]
+52:         <span class="ruby-keyword kw">begin</span>
+53:           <span class="ruby-constant">WADL</span><span class="ruby-operator">::</span><span class="ruby-constant">Faults</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">?</span>
+54:             <span class="ruby-constant">WADL</span><span class="ruby-operator">::</span><span class="ruby-constant">Faults</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">:</span>
+55:             <span class="ruby-constant">WADL</span><span class="ruby-operator">::</span><span class="ruby-constant">Faults</span>.<span class="ruby-identifier">const_set</span>(<span class="ruby-identifier">name</span>, <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Fault</span>))
+56:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NameError</span>
+57:           <span class="ruby-comment cmt"># This fault format's ID can't be a class name. Use the</span>
+58:           <span class="ruby-comment cmt"># generic subclass of Fault.</span>
+59:         <span class="ruby-keyword kw">end</span>
+60:       <span class="ruby-keyword kw">end</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Fault</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">me</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'href'</span>]
+61: 
+62:       <span class="ruby-identifier">me</span>
+63:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -180,10 +180,10 @@ fault, so that the programmer can rescue this particular fault.
             onclick="toggleCode('M000033-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000033-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl.rb, line 752</span>
-752:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">subclass</span>
-753:       <span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'href'</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">subclass</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@subclass</span>
-754:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/fault_format.rb, line 42</span>
+42:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">subclass</span>
+43:       <span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'href'</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">subclass</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@subclass</span>
+44:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
