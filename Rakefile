@@ -12,7 +12,7 @@ begin
       :email        => ['leonardr@segfault.org', 'jens.wille@uni-koeln.de'],
       :homepage     => 'http://github.com/blackwinter/wadl',
       :files        => FileList['lib/**/*.rb'].to_a,
-      :extra_files  => FileList['[A-Z]*', 'examples/*', 'test/**/*.rb'].to_a,
+      :extra_files  => FileList['[A-Z]*', 'examples/*', 'test/**/*.rb', 'bin/*'].to_a,
       :dependencies => %w[rest-open-uri mime-types]
     }
   }}

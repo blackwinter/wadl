@@ -1,0 +1,2 @@
+* generic API client: just provide the WADL location (path/URL) and make requests
+* WADL formatters (plain text, HTML?)
