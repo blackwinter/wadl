@@ -72,12 +72,13 @@ module WADL
     end
 
     def uri(args = {}, working_address = nil)
-      address(working_address && working_address.deep_copy).uri(args)
+      address(working_address).uri(args)
     end
 
     # Returns an Address object refering to this resource
     def address(working_address = nil)
       working_address &&= working_address.deep_copy
+
       working_address ||= if parent.respond_to?(:base)
         address = Address.new
         address.path_fragments << parent.base
@@ -145,13 +146,17 @@ module WADL
     end
 
     # Methods for reading or writing this resource
-    %w[get post put delete].each { |method|
-      class_eval <<-EOT, __FILE__, __LINE__ + 1
-        def #{method}(*args, &block)
-          find_method_by_http_method(:#{method}).call(self, *args, &block)
-        end
-      EOT
-    }
+    def self.define_http_methods(klass = self, methods = %w[get post put delete])
+      methods.each { |method|
+        klass.class_eval <<-EOT, __FILE__, __LINE__ + 1
+          def #{method}(*args, &block)
+            find_method_by_http_method(:#{method}).call(self, *args, &block)
+          end
+        EOT
+      }
+    end
+
+    define_http_methods
 
   end
 

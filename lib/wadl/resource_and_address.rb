@@ -101,6 +101,8 @@ module WADL
       resource && ResourceAndAddress.new(resource, @address)
     end
 
+    Resource.define_http_methods(self)
+
   end
 
 end
