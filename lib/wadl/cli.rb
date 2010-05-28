@@ -210,8 +210,8 @@ module WADL
       return unless access_token && token_secret
 
       if File.writable?(options[:config])
-        config[:token]        = access_token
-        config[:token_secret] = token_secret
+        config[:token]  = access_token
+        config[:secret] = token_secret
 
         File.open(options[:config], 'w') { |f| YAML.dump(config, f) }
       end
