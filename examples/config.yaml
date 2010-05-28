@@ -1,0 +1,5 @@
+---
+:consumer_key: your_consumer_key
+:consumer_secret: your_consumer_secret
+:api_base: api.v1  # or whatever
+:wadl: http://localhost/app.wadl
