@@ -30,6 +30,12 @@ require 'yaml'
 require 'rest-open-uri'
 require 'wadl'
 
+begin
+  require 'oauth/client/helper'
+rescue LoadError
+  warn "For OAuth support, install the 'oauth' library."
+end
+
 module WADL
 
   class HTTPMethod < HasDocs
@@ -84,8 +90,6 @@ module WADL
       yaml.sub!(/\A#{OAUTH_PREFIX}/, '') or return
 
       consumer_key, consumer_secret, access_token, token_secret = YAML.load(yaml)
-
-      require 'oauth/client/helper'
 
       request = OpenURI::Methods[headers[:method]].new(uri.to_s)
 
