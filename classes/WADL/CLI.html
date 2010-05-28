@@ -545,8 +545,8 @@
 210:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">access_token</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">token_secret</span>
 211: 
 212:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">writable?</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:config</span>])
-213:         <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:token</span>]        = <span class="ruby-identifier">access_token</span>
-214:         <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:token_secret</span>] = <span class="ruby-identifier">token_secret</span>
+213:         <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:token</span>]  = <span class="ruby-identifier">access_token</span>
+214:         <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:secret</span>] = <span class="ruby-identifier">token_secret</span>
 215: 
 216:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:config</span>], <span class="ruby-value str">'w'</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">config</span>, <span class="ruby-identifier">f</span>) }
 217:       <span class="ruby-keyword kw">end</span>
