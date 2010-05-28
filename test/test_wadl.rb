@@ -273,7 +273,7 @@ class PathParameters < WADLTest
 
 <method name="POST" id="set_graphic">
   <request>
-    <representation mediaType="application/x-www-form-encoded">
+    <representation mediaType="application/x-www-form-urlencoded">
       <param name="new_graphic" type="xsd:string" required="true" />
       <param name="filename" type="xsd:string" required="true" />
     </representation>

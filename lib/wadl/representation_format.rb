@@ -39,13 +39,13 @@ module WADL
     may_be_reference
 
     def is_form_representation?
-      mediaType == 'application/x-www-form-encoded' || mediaType == 'multipart/form-data'
+      mediaType == 'application/x-www-form-urlencoded' || mediaType == 'multipart/form-data'
     end
 
     # Creates a representation by plugging a set of parameters
     # into a representation format.
     def %(values)
-      unless mediaType == 'application/x-www-form-encoded'
+      unless mediaType == 'application/x-www-form-urlencoded'
         raise "wadl.rb can't instantiate a representation of type #{mediaType}"
       end
 

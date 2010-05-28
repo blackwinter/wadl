@@ -18,7 +18,7 @@
 
  <method name="POST" id="add">
   <request>
-   <representation mediaType="application/x-www-form-encoded">
+   <representation mediaType="application/x-www-form-urlencoded">
     <param name="password" type="xsd:string" required="true" />
     <param name="entry" type="xsd:string" required="true" />
     <param name="title" type="xsd:string" />
