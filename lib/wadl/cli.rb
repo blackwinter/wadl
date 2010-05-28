@@ -193,7 +193,7 @@ module WADL
 
       base_url = options[:base_url] || File.dirname(options[:wadl])
 
-      OAuth::CLI.execute(stdout, stdin, stderr, [
+      OAuth::CLI.execute(strio, stdin, stderr, [
         '--consumer-key',      consumer_key,
         '--consumer-secret',   consumer_secret,
         '--request-token-url', options[:request_token_url] % base_url,
