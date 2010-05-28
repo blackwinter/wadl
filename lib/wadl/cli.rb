@@ -184,12 +184,12 @@ module WADL
     end
 
     def oauthorize(consumer_key, consumer_secret)
-      strio = StringIO.new
+      strio, stdout = StringIO.new, self.stdout
 
-      def strio.puts(*args)
+      (class << strio; self; end).send(:define_method, :puts) { |*args|
         stdout.puts(*args)
         super
-      end
+      }
 
       base_url = options[:base_url] || File.dirname(options[:wadl])
 
