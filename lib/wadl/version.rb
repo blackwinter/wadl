@@ -4,7 +4,7 @@ module WADL
 
     MAJOR = 0
     MINOR = 1
-    TINY  = 5
+    TINY  = 6
 
     class << self
 
