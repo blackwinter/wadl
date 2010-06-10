@@ -247,9 +247,14 @@ module WADL
         opts.separator ''
         opts.separator 'Basic auth options:'
 
-        opts.on('-B', '--basic [USER]', "Perform Basic auth (with optional user)") { |user|
+        opts.on('-B', '--basic', "Perform Basic auth") {
           options[:basic] = true
-          options[:user] = user if user
+        }
+
+        opts.separator ''
+
+        opts.on('--user USER', "User name") { |user|
+          options[:user] = user
         }
 
         opts.on('--password PASSWORD', "Password for user") { |password|
@@ -259,9 +264,14 @@ module WADL
         opts.separator ''
         opts.separator 'OAuth options:'
 
-        opts.on('-O', '--oauth [CONSUMER_KEY]', "Perform OAuth (with optional consumer key)") { |consumer_key|
+        opts.on('-O', '--oauth', "Perform OAuth") {
           options[:oauth] = true
-          options[:consumer_key] = consumer_key if consumer_key
+        }
+
+        opts.separator ''
+
+        opts.on('--consumer-key KEY', "Consumer key to use") { |consumer_key|
+          options[:consumer_key] = consumer_key
         }
 
         opts.on('--consumer-secret SECRET', "Consumer secret to use") { |consumer_secret|
