@@ -601,71 +601,81 @@
 247:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
 248:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">'Basic auth options:'</span>
 249: 
-250:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-B'</span>, <span class="ruby-value str">'--basic [USER]'</span>, <span class="ruby-value str">&quot;Perform Basic auth (with optional user)&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>
+250:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-B'</span>, <span class="ruby-value str">'--basic'</span>, <span class="ruby-value str">&quot;Perform Basic auth&quot;</span>) {
 251:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:basic</span>] = <span class="ruby-keyword kw">true</span>
-252:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:user</span>] = <span class="ruby-identifier">user</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">user</span>
-253:         }
-254: 
-255:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--password PASSWORD'</span>, <span class="ruby-value str">&quot;Password for user&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">password</span><span class="ruby-operator">|</span>
-256:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:password</span>] = <span class="ruby-identifier">password</span>
-257:         }
-258: 
-259:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
-260:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">'OAuth options:'</span>
-261: 
-262:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-O'</span>, <span class="ruby-value str">'--oauth [CONSUMER_KEY]'</span>, <span class="ruby-value str">&quot;Perform OAuth (with optional consumer key)&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">consumer_key</span><span class="ruby-operator">|</span>
-263:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:oauth</span>] = <span class="ruby-keyword kw">true</span>
-264:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:consumer_key</span>] = <span class="ruby-identifier">consumer_key</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">consumer_key</span>
-265:         }
+252:         }
+253: 
+254:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+255: 
+256:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--user USER'</span>, <span class="ruby-value str">&quot;User name&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>
+257:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:user</span>] = <span class="ruby-identifier">user</span>
+258:         }
+259: 
+260:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--password PASSWORD'</span>, <span class="ruby-value str">&quot;Password for user&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">password</span><span class="ruby-operator">|</span>
+261:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:password</span>] = <span class="ruby-identifier">password</span>
+262:         }
+263: 
+264:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+265:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">'OAuth options:'</span>
 266: 
-267:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--consumer-secret SECRET'</span>, <span class="ruby-value str">&quot;Consumer secret to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">consumer_secret</span><span class="ruby-operator">|</span>
-268:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:consumer_secret</span>] = <span class="ruby-identifier">consumer_secret</span>
+267:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-O'</span>, <span class="ruby-value str">'--oauth'</span>, <span class="ruby-value str">&quot;Perform OAuth&quot;</span>) {
+268:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:oauth</span>] = <span class="ruby-keyword kw">true</span>
 269:         }
 270: 
 271:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
 272: 
-273:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--token TOKEN'</span>, <span class="ruby-value str">&quot;Access token to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">token</span><span class="ruby-operator">|</span>
-274:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:token</span>] = <span class="ruby-identifier">token</span>
+273:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--consumer-key KEY'</span>, <span class="ruby-value str">&quot;Consumer key to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">consumer_key</span><span class="ruby-operator">|</span>
+274:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:consumer_key</span>] = <span class="ruby-identifier">consumer_key</span>
 275:         }
 276: 
-277:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--secret SECRET'</span>, <span class="ruby-value str">&quot;Token secret to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">secret</span><span class="ruby-operator">|</span>
-278:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:secret</span>] = <span class="ruby-identifier">secret</span>
+277:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--consumer-secret SECRET'</span>, <span class="ruby-value str">&quot;Consumer secret to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">consumer_secret</span><span class="ruby-operator">|</span>
+278:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:consumer_secret</span>] = <span class="ruby-identifier">consumer_secret</span>
 279:         }
 280: 
 281:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
 282: 
-283:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-b'</span>, <span class="ruby-value str">'--base-url URL'</span>, <span class="ruby-value str">&quot;Base URL [Default: \&quot;dirname\&quot; of WADL]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">base_url</span><span class="ruby-operator">|</span>
-284:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:base_url</span>] = <span class="ruby-identifier">base_url</span>
+283:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--token TOKEN'</span>, <span class="ruby-value str">&quot;Access token to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">token</span><span class="ruby-operator">|</span>
+284:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:token</span>] = <span class="ruby-identifier">token</span>
 285:         }
 286: 
-287:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--request-token-url URL'</span>, <span class="ruby-node">&quot;Request token URL [Default: #{defaults[:request_token_url] % 'BASE_URL'}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">request_token_url</span><span class="ruby-operator">|</span>
-288:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:request_token_url</span>] = <span class="ruby-identifier">request_token_url</span>
+287:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--secret SECRET'</span>, <span class="ruby-value str">&quot;Token secret to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">secret</span><span class="ruby-operator">|</span>
+288:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:secret</span>] = <span class="ruby-identifier">secret</span>
 289:         }
 290: 
-291:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--access-token-url URL'</span>, <span class="ruby-node">&quot;Access token URL [Default: #{defaults[:access_token_url] % 'BASE_URL'}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">access_token_url</span><span class="ruby-operator">|</span>
-292:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:access_token_url</span>] = <span class="ruby-identifier">access_token_url</span>
-293:         }
-294: 
-295:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--authorize-url URL'</span>, <span class="ruby-node">&quot;Authorize URL [Default: #{defaults[:authorize_url] % 'BASE_URL'}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">authorize_url</span><span class="ruby-operator">|</span>
-296:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:authorize_url</span>] = <span class="ruby-identifier">authorize_url</span>
-297:         }
-298: 
-299:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
-300:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">'Generic options:'</span>
-301: 
-302:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-h'</span>, <span class="ruby-value str">'--help'</span>, <span class="ruby-value str">'Print this help message and exit'</span>) {
-303:           <span class="ruby-identifier">abort</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">to_s</span>
-304:         }
-305: 
-306:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--version'</span>, <span class="ruby-value str">'Print program version and exit'</span>) {
-307:           <span class="ruby-identifier">abort</span> <span class="ruby-node">&quot;#{File.basename($0)} v#{WADL::VERSION}&quot;</span>
-308:         }
-309: 
-310:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-D'</span>, <span class="ruby-value str">'--dump-config'</span>, <span class="ruby-value str">&quot;Dump config and exit&quot;</span>) {
-311:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dump_config</span>] = <span class="ruby-keyword kw">true</span>
-312:         }
-313:       }
-314:     <span class="ruby-keyword kw">end</span>
+291:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+292: 
+293:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-b'</span>, <span class="ruby-value str">'--base-url URL'</span>, <span class="ruby-value str">&quot;Base URL [Default: \&quot;dirname\&quot; of WADL]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">base_url</span><span class="ruby-operator">|</span>
+294:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:base_url</span>] = <span class="ruby-identifier">base_url</span>
+295:         }
+296: 
+297:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--request-token-url URL'</span>, <span class="ruby-node">&quot;Request token URL [Default: #{defaults[:request_token_url] % 'BASE_URL'}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">request_token_url</span><span class="ruby-operator">|</span>
+298:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:request_token_url</span>] = <span class="ruby-identifier">request_token_url</span>
+299:         }
+300: 
+301:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--access-token-url URL'</span>, <span class="ruby-node">&quot;Access token URL [Default: #{defaults[:access_token_url] % 'BASE_URL'}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">access_token_url</span><span class="ruby-operator">|</span>
+302:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:access_token_url</span>] = <span class="ruby-identifier">access_token_url</span>
+303:         }
+304: 
+305:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--authorize-url URL'</span>, <span class="ruby-node">&quot;Authorize URL [Default: #{defaults[:authorize_url] % 'BASE_URL'}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">authorize_url</span><span class="ruby-operator">|</span>
+306:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:authorize_url</span>] = <span class="ruby-identifier">authorize_url</span>
+307:         }
+308: 
+309:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+310:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">'Generic options:'</span>
+311: 
+312:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-h'</span>, <span class="ruby-value str">'--help'</span>, <span class="ruby-value str">'Print this help message and exit'</span>) {
+313:           <span class="ruby-identifier">abort</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">to_s</span>
+314:         }
+315: 
+316:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--version'</span>, <span class="ruby-value str">'Print program version and exit'</span>) {
+317:           <span class="ruby-identifier">abort</span> <span class="ruby-node">&quot;#{File.basename($0)} v#{WADL::VERSION}&quot;</span>
+318:         }
+319: 
+320:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-D'</span>, <span class="ruby-value str">'--dump-config'</span>, <span class="ruby-value str">&quot;Dump config and exit&quot;</span>) {
+321:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dump_config</span>] = <span class="ruby-keyword kw">true</span>
+322:         }
+323:       }
+324:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
