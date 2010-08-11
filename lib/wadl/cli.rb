@@ -26,6 +26,7 @@
 
 require 'optparse'
 require 'yaml'
+require 'cgi'
 require 'highline'
 require 'stringio'
 require 'wadl'
@@ -51,7 +52,7 @@ module WADL
       :authorize_url     => '%s/oauth/authorize'
     }
 
-    OPTION_RE = %r{\A--?(\w+)}
+    OPTION_RE = %r{\A--?(.+?)(?:=(.+))?\z}
     RESOURCE_PATH_RE = %r{[. /]}
 
     def self.execute(*args)
@@ -104,8 +105,8 @@ module WADL
 
     def resource
       @resource ||= begin
-        path = [options[:api_base], *resource_path].compact.join('/')
-        path.split(RESOURCE_PATH_RE).inject(api) { |m, n| m.send(:find_resource_by_path, n) }
+        path = [options[:api_base], *resource_path].compact.join('/').split(RESOURCE_PATH_RE)
+        path.inject(api) { |m, n| m.send(:find_resource_by_path, n) } or abort "Resource not found: #{path.join('/')}"
       end
     end
 
@@ -143,23 +144,25 @@ module WADL
     end
 
     def parse_arguments(arguments)
-      @resource_path, @opts, skip = [], {}, false
+      @resource_path, @opts, skip_next = [], {}, false
+      @opts.update(options[:query]) if options[:query]
 
       arguments.each_with_index { |arg, index|
-        if skip
-          skip = false
+        if skip_next
+          skip_next = false
           next
         end
 
-        case arg
-          when OPTION_RE
-            key, value = $1, arguments[index + 1]
-
-            value =~ OPTION_RE ? value = '1' : skip = true
-
-            opts[key] = value
+        if arg =~ OPTION_RE
+          key, value, next_arg = $1, $2, arguments[index + 1]
+          opts[key] = value || if next_arg =~ OPTION_RE
+            '1'  # "true"
           else
-            resource_path << arg
+            skip_next = true
+            next_arg
+          end
+        else
+          resource_path << arg
         end
       }
     end
@@ -246,6 +249,12 @@ module WADL
 
         opts.on('-a', '--api-base PATH', "Base path for API") { |api_base|
           options[:api_base] = api_base
+        }
+
+        opts.on('-q', '--query QUERY', "Query string to pass to request") { |query|
+          options[:query] = CGI.parse(query).inject({}) { |params, (key, values)|
+            params[key] = values.last; params
+          }
         }
 
         opts.separator ''
