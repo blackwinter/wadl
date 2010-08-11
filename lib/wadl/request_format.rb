@@ -56,7 +56,7 @@ module WADL
           value = query_values[name] || query_values[name.to_sym]
           value = param.format(value, nil, 'query')
 
-          uri.query << value if value
+          uri.query << value if value && !value.empty?
         end
       }
 
