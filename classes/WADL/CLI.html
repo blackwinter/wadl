@@ -130,7 +130,7 @@
         <tr class="top-aligned-row context-row">
           <td class="context-item-name">OPTION_RE</td>
           <td>=</td>
-          <td class="context-item-value">%r{\A--?(\w+)}</td>
+          <td class="context-item-value">%r{\A--?(.+?)(?:=(.+))?\z}</td>
         </tr>
         <tr class="top-aligned-row context-row">
           <td class="context-item-name">RESOURCE_PATH_RE</td>
@@ -212,10 +212,10 @@
             onclick="toggleCode('M000026-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000026-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 57</span>
-57:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-58:       <span class="ruby-identifier">new</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-59:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 58</span>
+58:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+59:       <span class="ruby-identifier">new</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+60:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -235,15 +235,15 @@
             onclick="toggleCode('M000027-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000027-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 65</span>
-65:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">defaults</span> = <span class="ruby-constant">DEFAULTS</span>)
-66:       <span class="ruby-ivar">@defaults</span> = <span class="ruby-identifier">defaults</span>
-67: 
-68:       <span class="ruby-identifier">reset</span>
-69: 
-70:       <span class="ruby-comment cmt"># prevent backtrace on ^C</span>
-71:       <span class="ruby-identifier">trap</span>(<span class="ruby-identifier">:INT</span>) { <span class="ruby-identifier">exit</span> <span class="ruby-value">130</span> }
-72:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 66</span>
+66:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">defaults</span> = <span class="ruby-constant">DEFAULTS</span>)
+67:       <span class="ruby-ivar">@defaults</span> = <span class="ruby-identifier">defaults</span>
+68: 
+69:       <span class="ruby-identifier">reset</span>
+70: 
+71:       <span class="ruby-comment cmt"># prevent backtrace on ^C</span>
+72:       <span class="ruby-identifier">trap</span>(<span class="ruby-identifier">:INT</span>) { <span class="ruby-identifier">exit</span> <span class="ruby-value">130</span> }
+73:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -265,10 +265,10 @@
             onclick="toggleCode('M000029-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000029-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 101</span>
-101:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">api</span>
-102:       <span class="ruby-ivar">@api</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">WADL</span><span class="ruby-operator">::</span><span class="ruby-constant">Application</span>.<span class="ruby-identifier">from_wadl</span>(<span class="ruby-identifier">open</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:wadl</span>]))
-103:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 102</span>
+102:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">api</span>
+103:       <span class="ruby-ivar">@api</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">WADL</span><span class="ruby-operator">::</span><span class="ruby-constant">Application</span>.<span class="ruby-identifier">from_wadl</span>(<span class="ruby-identifier">open</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:wadl</span>]))
+104:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -288,13 +288,13 @@
             onclick="toggleCode('M000031-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000031-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 112</span>
-112:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">auth_resource</span>
-113:       <span class="ruby-ivar">@auth_resource</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:skip_auth</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">resource</span>            <span class="ruby-operator">:</span>
-114:                          <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:oauth</span>]     <span class="ruby-operator">?</span> <span class="ruby-identifier">oauth_resource</span>      <span class="ruby-operator">:</span>
-115:                          <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:basic</span>]     <span class="ruby-operator">?</span> <span class="ruby-identifier">basic_auth_resource</span> <span class="ruby-operator">:</span>
-116:                                                <span class="ruby-identifier">resource</span>
-117:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 113</span>
+113:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">auth_resource</span>
+114:       <span class="ruby-ivar">@auth_resource</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:skip_auth</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">resource</span>            <span class="ruby-operator">:</span>
+115:                          <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:oauth</span>]     <span class="ruby-operator">?</span> <span class="ruby-identifier">oauth_resource</span>      <span class="ruby-operator">:</span>
+116:                          <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:basic</span>]     <span class="ruby-operator">?</span> <span class="ruby-identifier">basic_auth_resource</span> <span class="ruby-operator">:</span>
+117:                                                <span class="ruby-identifier">resource</span>
+118:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -314,33 +314,33 @@
             onclick="toggleCode('M000028-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000028-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 74</span>
-74:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">execute</span>(<span class="ruby-identifier">arguments</span> = [], <span class="ruby-operator">*</span><span class="ruby-identifier">inouterr</span>)
-75:       <span class="ruby-identifier">reset</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">inouterr</span>)
-76: 
-77:       <span class="ruby-identifier">abort</span> <span class="ruby-constant">USAGE</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">arguments</span>.<span class="ruby-identifier">empty?</span>
-78:       <span class="ruby-identifier">parse_options</span>(<span class="ruby-identifier">arguments</span>, <span class="ruby-identifier">defaults</span>)
-79: 
-80:       <span class="ruby-identifier">abort</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">options</span>), <span class="ruby-value">0</span>, <span class="ruby-identifier">stdout</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:dump_config</span>)
-81: 
-82:       <span class="ruby-identifier">parse_arguments</span>(<span class="ruby-identifier">arguments</span>)
-83:       <span class="ruby-identifier">abort</span> <span class="ruby-constant">USAGE</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">resource_path</span>.<span class="ruby-identifier">empty?</span>
-84: 
-85:       <span class="ruby-identifier">abort</span> <span class="ruby-value str">&quot;WADL location is required! (Specify with '--wadl' or see '--help')&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:wadl</span>]
-86:       <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:wadl</span>] <span class="ruby-operator">%=</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:base_url</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:base_url</span>]
-87: 
-88:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">debug</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:debug</span>]
-89:         <span class="ruby-identifier">debug</span> = <span class="ruby-value">1</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">debug</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Integer</span>)
-90: 
-91:         <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">api</span>.<span class="ruby-identifier">paths</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">debug</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">1</span>
-92:         <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">api</span>       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">debug</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">2</span>
-93:       <span class="ruby-keyword kw">end</span>
-94: 
-95:       <span class="ruby-identifier">response</span> = <span class="ruby-identifier">auth_resource</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:method</span>].<span class="ruby-identifier">downcase</span>, <span class="ruby-identifier">:query</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>)
-96: 
-97:       <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">' '</span>)
-98:       <span class="ruby-identifier">stdout</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">representation</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/\A[45]/</span>
-99:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 75</span>
+ 75:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">execute</span>(<span class="ruby-identifier">arguments</span> = [], <span class="ruby-operator">*</span><span class="ruby-identifier">inouterr</span>)
+ 76:       <span class="ruby-identifier">reset</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">inouterr</span>)
+ 77: 
+ 78:       <span class="ruby-identifier">abort</span> <span class="ruby-constant">USAGE</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">arguments</span>.<span class="ruby-identifier">empty?</span>
+ 79:       <span class="ruby-identifier">parse_options</span>(<span class="ruby-identifier">arguments</span>, <span class="ruby-identifier">defaults</span>)
+ 80: 
+ 81:       <span class="ruby-identifier">abort</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">options</span>), <span class="ruby-value">0</span>, <span class="ruby-identifier">stdout</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:dump_config</span>)
+ 82: 
+ 83:       <span class="ruby-identifier">parse_arguments</span>(<span class="ruby-identifier">arguments</span>)
+ 84:       <span class="ruby-identifier">abort</span> <span class="ruby-constant">USAGE</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">resource_path</span>.<span class="ruby-identifier">empty?</span>
+ 85: 
+ 86:       <span class="ruby-identifier">abort</span> <span class="ruby-value str">&quot;WADL location is required! (Specify with '--wadl' or see '--help')&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:wadl</span>]
+ 87:       <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:wadl</span>] <span class="ruby-operator">%=</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:base_url</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:base_url</span>]
+ 88: 
+ 89:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">debug</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:debug</span>]
+ 90:         <span class="ruby-identifier">debug</span> = <span class="ruby-value">1</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">debug</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Integer</span>)
+ 91: 
+ 92:         <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">api</span>.<span class="ruby-identifier">paths</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">debug</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">1</span>
+ 93:         <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">api</span>       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">debug</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">2</span>
+ 94:       <span class="ruby-keyword kw">end</span>
+ 95: 
+ 96:       <span class="ruby-identifier">response</span> = <span class="ruby-identifier">auth_resource</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:method</span>].<span class="ruby-identifier">downcase</span>, <span class="ruby-identifier">:query</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>)
+ 97: 
+ 98:       <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">' '</span>)
+ 99:       <span class="ruby-identifier">stdout</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">representation</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/\A[45]/</span>
+100:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -360,12 +360,12 @@
             onclick="toggleCode('M000032-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000032-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 119</span>
-119:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reset</span>(<span class="ruby-identifier">stdin</span> = <span class="ruby-constant">STDIN</span>, <span class="ruby-identifier">stdout</span> = <span class="ruby-constant">STDOUT</span>, <span class="ruby-identifier">stderr</span> = <span class="ruby-constant">STDERR</span>)
-120:       <span class="ruby-ivar">@stdin</span>, <span class="ruby-ivar">@stdout</span>, <span class="ruby-ivar">@stderr</span> = <span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>, <span class="ruby-identifier">stderr</span>
-121:       <span class="ruby-ivar">@api</span> = <span class="ruby-ivar">@resource</span> = <span class="ruby-ivar">@auth_resource</span> = <span class="ruby-keyword kw">nil</span>
-122:       <span class="ruby-ivar">@options</span>, <span class="ruby-ivar">@config</span> = {}, {}
-123:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 120</span>
+120:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reset</span>(<span class="ruby-identifier">stdin</span> = <span class="ruby-constant">STDIN</span>, <span class="ruby-identifier">stdout</span> = <span class="ruby-constant">STDOUT</span>, <span class="ruby-identifier">stderr</span> = <span class="ruby-constant">STDERR</span>)
+121:       <span class="ruby-ivar">@stdin</span>, <span class="ruby-ivar">@stdout</span>, <span class="ruby-ivar">@stderr</span> = <span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>, <span class="ruby-identifier">stderr</span>
+122:       <span class="ruby-ivar">@api</span> = <span class="ruby-ivar">@resource</span> = <span class="ruby-ivar">@auth_resource</span> = <span class="ruby-keyword kw">nil</span>
+123:       <span class="ruby-ivar">@options</span>, <span class="ruby-ivar">@config</span> = {}, {}
+124:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -385,13 +385,13 @@
             onclick="toggleCode('M000030-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000030-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 105</span>
-105:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resource</span>
-106:       <span class="ruby-ivar">@resource</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
-107:         <span class="ruby-identifier">path</span> = [<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:api_base</span>], <span class="ruby-operator">*</span><span class="ruby-identifier">resource_path</span>].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'/'</span>)
-108:         <span class="ruby-identifier">path</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">RESOURCE_PATH_RE</span>).<span class="ruby-identifier">inject</span>(<span class="ruby-identifier">api</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span>, <span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:find_resource_by_path</span>, <span class="ruby-identifier">n</span>) }
-109:       <span class="ruby-keyword kw">end</span>
-110:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 106</span>
+106:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resource</span>
+107:       <span class="ruby-ivar">@resource</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
+108:         <span class="ruby-identifier">path</span> = [<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:api_base</span>], <span class="ruby-operator">*</span><span class="ruby-identifier">resource_path</span>].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'/'</span>).<span class="ruby-identifier">split</span>(<span class="ruby-constant">RESOURCE_PATH_RE</span>)
+109:         <span class="ruby-identifier">path</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-identifier">api</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span>, <span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:find_resource_by_path</span>, <span class="ruby-identifier">n</span>) } <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">abort</span> <span class="ruby-node">&quot;Resource not found: #{path.join('/')}&quot;</span>
+110:       <span class="ruby-keyword kw">end</span>
+111:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -413,11 +413,11 @@
             onclick="toggleCode('M000034-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000034-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 131</span>
-131:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">abort</span>(<span class="ruby-identifier">msg</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">status</span> = <span class="ruby-value">1</span>, <span class="ruby-identifier">output</span> = <span class="ruby-identifier">stderr</span>)
-132:       <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">msg</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">msg</span>
-133:       <span class="ruby-identifier">exit</span> <span class="ruby-identifier">status</span>
-134:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 132</span>
+132:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">abort</span>(<span class="ruby-identifier">msg</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">status</span> = <span class="ruby-value">1</span>, <span class="ruby-identifier">output</span> = <span class="ruby-identifier">stderr</span>)
+133:       <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">msg</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">msg</span>
+134:       <span class="ruby-identifier">exit</span> <span class="ruby-identifier">status</span>
+135:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -437,10 +437,10 @@
             onclick="toggleCode('M000033-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000033-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 127</span>
-127:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ask</span>(<span class="ruby-identifier">question</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-128:       <span class="ruby-constant">HighLine</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>).<span class="ruby-identifier">ask</span>(<span class="ruby-identifier">question</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-129:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 128</span>
+128:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ask</span>(<span class="ruby-identifier">question</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+129:       <span class="ruby-constant">HighLine</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>).<span class="ruby-identifier">ask</span>(<span class="ruby-identifier">question</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+130:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -460,15 +460,15 @@
             onclick="toggleCode('M000037-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000037-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 167</span>
-167:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">basic_auth_resource</span>
-168:       <span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-identifier">:user</span>, <span class="ruby-identifier">:password</span>)
-169:       <span class="ruby-identifier">pass</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">ask</span>(<span class="ruby-node">&quot;Password for user #{user}: &quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">q</span><span class="ruby-operator">|</span> <span class="ruby-identifier">q</span>.<span class="ruby-identifier">echo</span> = <span class="ruby-keyword kw">false</span> }
-170: 
-171:       <span class="ruby-identifier">abort</span> <span class="ruby-value str">'USER and PASSWORD required'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">pass</span>
-172: 
-173:       <span class="ruby-identifier">resource</span>.<span class="ruby-identifier">with_basic_auth</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>)
-174:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 170</span>
+170:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">basic_auth_resource</span>
+171:       <span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-identifier">:user</span>, <span class="ruby-identifier">:password</span>)
+172:       <span class="ruby-identifier">pass</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">ask</span>(<span class="ruby-node">&quot;Password for user #{user}: &quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">q</span><span class="ruby-operator">|</span> <span class="ruby-identifier">q</span>.<span class="ruby-identifier">echo</span> = <span class="ruby-keyword kw">false</span> }
+173: 
+174:       <span class="ruby-identifier">abort</span> <span class="ruby-value str">'USER and PASSWORD required'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">pass</span>
+175: 
+176:       <span class="ruby-identifier">resource</span>.<span class="ruby-identifier">with_basic_auth</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>)
+177:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -488,20 +488,20 @@
             onclick="toggleCode('M000038-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000038-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 176</span>
-176:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">oauth_resource</span>
-177:       <span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-identifier">:consumer_key</span>, <span class="ruby-identifier">:consumer_secret</span>)
-178:       <span class="ruby-identifier">access_token</span>, <span class="ruby-identifier">token_secret</span>    = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-identifier">:token</span>, <span class="ruby-identifier">:secret</span>)
-179: 
-180:       <span class="ruby-identifier">abort</span> <span class="ruby-value str">&quot;CONSUMER KEY and SECRET required&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">consumer_key</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">consumer_secret</span>
-181: 
-182:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">access_token</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">token_secret</span>
-183:         <span class="ruby-identifier">access_token</span>, <span class="ruby-identifier">token_secret</span> = <span class="ruby-identifier">oauthorize</span>(<span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span>)
-184:         <span class="ruby-identifier">abort</span> <span class="ruby-value str">'Authorization failed!?'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">access_token</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">token_secret</span>
-185:       <span class="ruby-keyword kw">end</span>
-186: 
-187:       <span class="ruby-identifier">resource</span>.<span class="ruby-identifier">with_oauth</span>(<span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span>, <span class="ruby-identifier">access_token</span>, <span class="ruby-identifier">token_secret</span>)
-188:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 179</span>
+179:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">oauth_resource</span>
+180:       <span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-identifier">:consumer_key</span>, <span class="ruby-identifier">:consumer_secret</span>)
+181:       <span class="ruby-identifier">access_token</span>, <span class="ruby-identifier">token_secret</span>    = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-identifier">:token</span>, <span class="ruby-identifier">:secret</span>)
+182: 
+183:       <span class="ruby-identifier">abort</span> <span class="ruby-value str">&quot;CONSUMER KEY and SECRET required&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">consumer_key</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">consumer_secret</span>
+184: 
+185:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">access_token</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">token_secret</span>
+186:         <span class="ruby-identifier">access_token</span>, <span class="ruby-identifier">token_secret</span> = <span class="ruby-identifier">oauthorize</span>(<span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span>)
+187:         <span class="ruby-identifier">abort</span> <span class="ruby-value str">'Authorization failed!?'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">access_token</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">token_secret</span>
+188:       <span class="ruby-keyword kw">end</span>
+189: 
+190:       <span class="ruby-identifier">resource</span>.<span class="ruby-identifier">with_oauth</span>(<span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span>, <span class="ruby-identifier">access_token</span>, <span class="ruby-identifier">token_secret</span>)
+191:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -521,42 +521,42 @@
             onclick="toggleCode('M000039-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000039-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 190</span>
-190:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">oauthorize</span>(<span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span>)
-191:       <span class="ruby-identifier">strio</span>, <span class="ruby-identifier">stdout</span> = <span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">stdout</span>
-192: 
-193:       (<span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">strio</span>; <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">end</span>).<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:define_method</span>, <span class="ruby-identifier">:puts</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
-194:         <span class="ruby-identifier">stdout</span>.<span class="ruby-identifier">puts</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-195:         <span class="ruby-keyword kw">super</span>
-196:       }
-197: 
-198:       <span class="ruby-identifier">base_url</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:base_url</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:wadl</span>])
-199: 
-200:       <span class="ruby-constant">OAuth</span><span class="ruby-operator">::</span><span class="ruby-constant">CLI</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">strio</span>, <span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stderr</span>, [
-201:         <span class="ruby-value str">'--consumer-key'</span>,      <span class="ruby-identifier">consumer_key</span>,
-202:         <span class="ruby-value str">'--consumer-secret'</span>,   <span class="ruby-identifier">consumer_secret</span>,
-203:         <span class="ruby-value str">'--request-token-url'</span>, <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:request_token_url</span>] <span class="ruby-operator">%</span> <span class="ruby-identifier">base_url</span>,
-204:         <span class="ruby-value str">'--access-token-url'</span>,  <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:access_token_url</span>]  <span class="ruby-operator">%</span> <span class="ruby-identifier">base_url</span>,
-205:         <span class="ruby-value str">'--authorize-url'</span>,     <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:authorize_url</span>]     <span class="ruby-operator">%</span> <span class="ruby-identifier">base_url</span>,
-206:         <span class="ruby-value str">'--callback-url'</span>,      <span class="ruby-value str">'oob'</span>,
-207:         <span class="ruby-value str">'authorize'</span>
-208:       ])
-209: 
-210:       <span class="ruby-identifier">result</span> = <span class="ruby-identifier">strio</span>.<span class="ruby-identifier">string</span>
-211:       <span class="ruby-identifier">access_token</span> = <span class="ruby-identifier">result</span>[<span class="ruby-regexp re">/^\s+oauth_token:\s+(.*)$/</span>, <span class="ruby-value">1</span>]
-212:       <span class="ruby-identifier">token_secret</span> = <span class="ruby-identifier">result</span>[<span class="ruby-regexp re">/^\s+oauth_token_secret:\s+(.*)$/</span>, <span class="ruby-value">1</span>]
-213: 
-214:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">access_token</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">token_secret</span>
-215: 
-216:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">writable?</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:config</span>])
-217:         <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:token</span>]  = <span class="ruby-identifier">access_token</span>
-218:         <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:secret</span>] = <span class="ruby-identifier">token_secret</span>
-219: 
-220:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:config</span>], <span class="ruby-value str">'w'</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">config</span>, <span class="ruby-identifier">f</span>) }
-221:       <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 193</span>
+193:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">oauthorize</span>(<span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span>)
+194:       <span class="ruby-identifier">strio</span>, <span class="ruby-identifier">stdout</span> = <span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">stdout</span>
+195: 
+196:       (<span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">strio</span>; <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">end</span>).<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:define_method</span>, <span class="ruby-identifier">:puts</span>) { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+197:         <span class="ruby-identifier">stdout</span>.<span class="ruby-identifier">puts</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+198:         <span class="ruby-keyword kw">super</span>
+199:       }
+200: 
+201:       <span class="ruby-identifier">base_url</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:base_url</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:wadl</span>])
+202: 
+203:       <span class="ruby-constant">OAuth</span><span class="ruby-operator">::</span><span class="ruby-constant">CLI</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">strio</span>, <span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stderr</span>, [
+204:         <span class="ruby-value str">'--consumer-key'</span>,      <span class="ruby-identifier">consumer_key</span>,
+205:         <span class="ruby-value str">'--consumer-secret'</span>,   <span class="ruby-identifier">consumer_secret</span>,
+206:         <span class="ruby-value str">'--request-token-url'</span>, <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:request_token_url</span>] <span class="ruby-operator">%</span> <span class="ruby-identifier">base_url</span>,
+207:         <span class="ruby-value str">'--access-token-url'</span>,  <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:access_token_url</span>]  <span class="ruby-operator">%</span> <span class="ruby-identifier">base_url</span>,
+208:         <span class="ruby-value str">'--authorize-url'</span>,     <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:authorize_url</span>]     <span class="ruby-operator">%</span> <span class="ruby-identifier">base_url</span>,
+209:         <span class="ruby-value str">'--callback-url'</span>,      <span class="ruby-value str">'oob'</span>,
+210:         <span class="ruby-value str">'authorize'</span>
+211:       ])
+212: 
+213:       <span class="ruby-identifier">result</span> = <span class="ruby-identifier">strio</span>.<span class="ruby-identifier">string</span>
+214:       <span class="ruby-identifier">access_token</span> = <span class="ruby-identifier">result</span>[<span class="ruby-regexp re">/^\s+oauth_token:\s+(.*)$/</span>, <span class="ruby-value">1</span>]
+215:       <span class="ruby-identifier">token_secret</span> = <span class="ruby-identifier">result</span>[<span class="ruby-regexp re">/^\s+oauth_token_secret:\s+(.*)$/</span>, <span class="ruby-value">1</span>]
+216: 
+217:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">access_token</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">token_secret</span>
+218: 
+219:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">writable?</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:config</span>])
+220:         <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:token</span>]  = <span class="ruby-identifier">access_token</span>
+221:         <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:secret</span>] = <span class="ruby-identifier">token_secret</span>
 222: 
-223:       [<span class="ruby-identifier">access_token</span>, <span class="ruby-identifier">token_secret</span>]
-224:     <span class="ruby-keyword kw">end</span>
+223:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:config</span>], <span class="ruby-value str">'w'</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">config</span>, <span class="ruby-identifier">f</span>) }
+224:       <span class="ruby-keyword kw">end</span>
+225: 
+226:       [<span class="ruby-identifier">access_token</span>, <span class="ruby-identifier">token_secret</span>]
+227:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -576,123 +576,129 @@
             onclick="toggleCode('M000040-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000040-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 226</span>
-226:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">option_parser</span>(<span class="ruby-identifier">defaults</span>)
-227:       <span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">opts</span><span class="ruby-operator">|</span>
-228:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-constant">USAGE</span>
-229: 
-230:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
-231:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">'Options:'</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 229</span>
+229:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">option_parser</span>(<span class="ruby-identifier">defaults</span>)
+230:       <span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">opts</span><span class="ruby-operator">|</span>
+231:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-constant">USAGE</span>
 232: 
-233:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-c'</span>, <span class="ruby-value str">'--config YAML'</span>, <span class="ruby-node">&quot;Config file [Default: #{defaults[:config]}#{' (currently not present)' unless File.readable?(defaults[:config])}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">config</span><span class="ruby-operator">|</span>
-234:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:config</span>] = <span class="ruby-identifier">config</span>
-235:         }
-236: 
-237:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
-238: 
-239:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-w'</span>, <span class="ruby-value str">'--wadl FILE_OR_URL'</span>, <span class="ruby-value str">&quot;Path or URL to WADL file [Required]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">wadl</span><span class="ruby-operator">|</span>
-240:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:wadl</span>] = <span class="ruby-identifier">wadl</span>
-241:         }
-242: 
-243:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-m'</span>, <span class="ruby-value str">'--method METHOD'</span>, <span class="ruby-node">&quot;Request method [Default: #{defaults[:method]}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">method</span><span class="ruby-operator">|</span>
-244:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:method</span>] = <span class="ruby-identifier">method</span>.<span class="ruby-identifier">upcase</span>
-245:         }
-246: 
-247:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-a'</span>, <span class="ruby-value str">'--api-base PATH'</span>, <span class="ruby-value str">&quot;Base path for API&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">api_base</span><span class="ruby-operator">|</span>
-248:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:api_base</span>] = <span class="ruby-identifier">api_base</span>
-249:         }
-250: 
-251:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
-252: 
-253:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--skip-auth'</span>, <span class="ruby-value str">&quot;Skip any authentication&quot;</span>) {
-254:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:skip_auth</span>] = <span class="ruby-keyword kw">true</span>
-255:         }
-256: 
-257:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
-258:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">'Basic Auth options:'</span>
+233:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+234:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">'Options:'</span>
+235: 
+236:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-c'</span>, <span class="ruby-value str">'--config YAML'</span>, <span class="ruby-node">&quot;Config file [Default: #{defaults[:config]}#{' (currently not present)' unless File.readable?(defaults[:config])}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">config</span><span class="ruby-operator">|</span>
+237:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:config</span>] = <span class="ruby-identifier">config</span>
+238:         }
+239: 
+240:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+241: 
+242:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-w'</span>, <span class="ruby-value str">'--wadl FILE_OR_URL'</span>, <span class="ruby-value str">&quot;Path or URL to WADL file [Required]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">wadl</span><span class="ruby-operator">|</span>
+243:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:wadl</span>] = <span class="ruby-identifier">wadl</span>
+244:         }
+245: 
+246:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-m'</span>, <span class="ruby-value str">'--method METHOD'</span>, <span class="ruby-node">&quot;Request method [Default: #{defaults[:method]}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">method</span><span class="ruby-operator">|</span>
+247:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:method</span>] = <span class="ruby-identifier">method</span>.<span class="ruby-identifier">upcase</span>
+248:         }
+249: 
+250:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-a'</span>, <span class="ruby-value str">'--api-base PATH'</span>, <span class="ruby-value str">&quot;Base path for API&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">api_base</span><span class="ruby-operator">|</span>
+251:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:api_base</span>] = <span class="ruby-identifier">api_base</span>
+252:         }
+253: 
+254:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-q'</span>, <span class="ruby-value str">'--query QUERY'</span>, <span class="ruby-value str">&quot;Query string to pass to request&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">query</span><span class="ruby-operator">|</span>
+255:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:query</span>] = <span class="ruby-constant">CGI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">query</span>).<span class="ruby-identifier">inject</span>({}) { <span class="ruby-operator">|</span><span class="ruby-identifier">params</span>, (<span class="ruby-identifier">key</span>, <span class="ruby-identifier">values</span>)<span class="ruby-operator">|</span>
+256:             <span class="ruby-identifier">params</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">values</span>.<span class="ruby-identifier">last</span>; <span class="ruby-identifier">params</span>
+257:           }
+258:         }
 259: 
-260:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-B'</span>, <span class="ruby-value str">'--basic'</span>, <span class="ruby-value str">&quot;Perform Basic Auth&quot;</span>) {
-261:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:basic</span>] = <span class="ruby-keyword kw">true</span>
-262:         }
-263: 
-264:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+260:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+261: 
+262:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--skip-auth'</span>, <span class="ruby-value str">&quot;Skip any authentication&quot;</span>) {
+263:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:skip_auth</span>] = <span class="ruby-keyword kw">true</span>
+264:         }
 265: 
-266:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--user USER'</span>, <span class="ruby-value str">&quot;User name&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>
-267:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:user</span>] = <span class="ruby-identifier">user</span>
-268:         }
-269: 
-270:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--password PASSWORD'</span>, <span class="ruby-value str">&quot;Password for user&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">password</span><span class="ruby-operator">|</span>
-271:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:password</span>] = <span class="ruby-identifier">password</span>
-272:         }
-273: 
-274:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
-275:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">'OAuth options:'</span>
-276: 
-277:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-O'</span>, <span class="ruby-value str">'--oauth'</span>, <span class="ruby-value str">&quot;Perform OAuth&quot;</span>) {
-278:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:oauth</span>] = <span class="ruby-keyword kw">true</span>
-279:         }
-280: 
-281:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+266:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+267:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">'Basic Auth options:'</span>
+268: 
+269:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-B'</span>, <span class="ruby-value str">'--basic'</span>, <span class="ruby-value str">&quot;Perform Basic Auth&quot;</span>) {
+270:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:basic</span>] = <span class="ruby-keyword kw">true</span>
+271:         }
+272: 
+273:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+274: 
+275:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--user USER'</span>, <span class="ruby-value str">&quot;User name&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>
+276:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:user</span>] = <span class="ruby-identifier">user</span>
+277:         }
+278: 
+279:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--password PASSWORD'</span>, <span class="ruby-value str">&quot;Password for user&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">password</span><span class="ruby-operator">|</span>
+280:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:password</span>] = <span class="ruby-identifier">password</span>
+281:         }
 282: 
-283:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--consumer-key KEY'</span>, <span class="ruby-value str">&quot;Consumer key to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">consumer_key</span><span class="ruby-operator">|</span>
-284:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:consumer_key</span>] = <span class="ruby-identifier">consumer_key</span>
-285:         }
-286: 
-287:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--consumer-secret SECRET'</span>, <span class="ruby-value str">&quot;Consumer secret to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">consumer_secret</span><span class="ruby-operator">|</span>
-288:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:consumer_secret</span>] = <span class="ruby-identifier">consumer_secret</span>
-289:         }
-290: 
-291:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
-292: 
-293:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--token TOKEN'</span>, <span class="ruby-value str">&quot;Access token to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">token</span><span class="ruby-operator">|</span>
-294:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:token</span>] = <span class="ruby-identifier">token</span>
-295:         }
-296: 
-297:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--secret SECRET'</span>, <span class="ruby-value str">&quot;Token secret to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">secret</span><span class="ruby-operator">|</span>
-298:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:secret</span>] = <span class="ruby-identifier">secret</span>
-299:         }
-300: 
-301:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
-302: 
-303:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-b'</span>, <span class="ruby-value str">'--base-url URL'</span>, <span class="ruby-value str">&quot;Base URL [Default: \&quot;dirname\&quot; of WADL]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">base_url</span><span class="ruby-operator">|</span>
-304:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:base_url</span>] = <span class="ruby-identifier">base_url</span>
-305:         }
-306: 
-307:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--request-token-url URL'</span>, <span class="ruby-node">&quot;Request token URL [Default: #{defaults[:request_token_url] % 'BASE_URL'}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">request_token_url</span><span class="ruby-operator">|</span>
-308:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:request_token_url</span>] = <span class="ruby-identifier">request_token_url</span>
-309:         }
-310: 
-311:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--access-token-url URL'</span>, <span class="ruby-node">&quot;Access token URL [Default: #{defaults[:access_token_url] % 'BASE_URL'}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">access_token_url</span><span class="ruby-operator">|</span>
-312:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:access_token_url</span>] = <span class="ruby-identifier">access_token_url</span>
-313:         }
-314: 
-315:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--authorize-url URL'</span>, <span class="ruby-node">&quot;Authorize URL [Default: #{defaults[:authorize_url] % 'BASE_URL'}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">authorize_url</span><span class="ruby-operator">|</span>
-316:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:authorize_url</span>] = <span class="ruby-identifier">authorize_url</span>
-317:         }
-318: 
-319:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
-320:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">'Generic options:'</span>
-321: 
-322:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-h'</span>, <span class="ruby-value str">'--help'</span>, <span class="ruby-value str">'Print this help message and exit'</span>) {
-323:           <span class="ruby-identifier">abort</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">to_s</span>
-324:         }
-325: 
-326:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--version'</span>, <span class="ruby-value str">'Print program version and exit'</span>) {
-327:           <span class="ruby-identifier">abort</span> <span class="ruby-node">&quot;#{File.basename($0)} v#{WADL::VERSION}&quot;</span>
-328:         }
-329: 
-330:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-d'</span>, <span class="ruby-value str">'--debug [LEVEL]'</span>, <span class="ruby-constant">Integer</span>, <span class="ruby-value str">&quot;Enable debugging output&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">level</span><span class="ruby-operator">|</span>
-331:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:debug</span>] = <span class="ruby-identifier">level</span> <span class="ruby-operator">||</span> <span class="ruby-keyword kw">true</span>
-332:         }
-333: 
-334:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-D'</span>, <span class="ruby-value str">'--dump-config'</span>, <span class="ruby-value str">&quot;Dump config and exit&quot;</span>) {
-335:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dump_config</span>] = <span class="ruby-keyword kw">true</span>
-336:         }
-337: 
-338:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
-339:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-node">&quot;PATH may be separated by any of #{RESOURCE_PATH_RE.source}.&quot;</span>
-340:       }
-341:     <span class="ruby-keyword kw">end</span>
+283:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+284:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">'OAuth options:'</span>
+285: 
+286:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-O'</span>, <span class="ruby-value str">'--oauth'</span>, <span class="ruby-value str">&quot;Perform OAuth&quot;</span>) {
+287:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:oauth</span>] = <span class="ruby-keyword kw">true</span>
+288:         }
+289: 
+290:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+291: 
+292:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--consumer-key KEY'</span>, <span class="ruby-value str">&quot;Consumer key to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">consumer_key</span><span class="ruby-operator">|</span>
+293:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:consumer_key</span>] = <span class="ruby-identifier">consumer_key</span>
+294:         }
+295: 
+296:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--consumer-secret SECRET'</span>, <span class="ruby-value str">&quot;Consumer secret to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">consumer_secret</span><span class="ruby-operator">|</span>
+297:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:consumer_secret</span>] = <span class="ruby-identifier">consumer_secret</span>
+298:         }
+299: 
+300:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+301: 
+302:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--token TOKEN'</span>, <span class="ruby-value str">&quot;Access token to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">token</span><span class="ruby-operator">|</span>
+303:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:token</span>] = <span class="ruby-identifier">token</span>
+304:         }
+305: 
+306:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--secret SECRET'</span>, <span class="ruby-value str">&quot;Token secret to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">secret</span><span class="ruby-operator">|</span>
+307:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:secret</span>] = <span class="ruby-identifier">secret</span>
+308:         }
+309: 
+310:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+311: 
+312:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-b'</span>, <span class="ruby-value str">'--base-url URL'</span>, <span class="ruby-value str">&quot;Base URL [Default: \&quot;dirname\&quot; of WADL]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">base_url</span><span class="ruby-operator">|</span>
+313:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:base_url</span>] = <span class="ruby-identifier">base_url</span>
+314:         }
+315: 
+316:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--request-token-url URL'</span>, <span class="ruby-node">&quot;Request token URL [Default: #{defaults[:request_token_url] % 'BASE_URL'}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">request_token_url</span><span class="ruby-operator">|</span>
+317:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:request_token_url</span>] = <span class="ruby-identifier">request_token_url</span>
+318:         }
+319: 
+320:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--access-token-url URL'</span>, <span class="ruby-node">&quot;Access token URL [Default: #{defaults[:access_token_url] % 'BASE_URL'}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">access_token_url</span><span class="ruby-operator">|</span>
+321:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:access_token_url</span>] = <span class="ruby-identifier">access_token_url</span>
+322:         }
+323: 
+324:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--authorize-url URL'</span>, <span class="ruby-node">&quot;Authorize URL [Default: #{defaults[:authorize_url] % 'BASE_URL'}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">authorize_url</span><span class="ruby-operator">|</span>
+325:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:authorize_url</span>] = <span class="ruby-identifier">authorize_url</span>
+326:         }
+327: 
+328:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+329:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">'Generic options:'</span>
+330: 
+331:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-h'</span>, <span class="ruby-value str">'--help'</span>, <span class="ruby-value str">'Print this help message and exit'</span>) {
+332:           <span class="ruby-identifier">abort</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">to_s</span>
+333:         }
+334: 
+335:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--version'</span>, <span class="ruby-value str">'Print program version and exit'</span>) {
+336:           <span class="ruby-identifier">abort</span> <span class="ruby-node">&quot;#{File.basename($0)} v#{WADL::VERSION}&quot;</span>
+337:         }
+338: 
+339:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-d'</span>, <span class="ruby-value str">'--debug [LEVEL]'</span>, <span class="ruby-constant">Integer</span>, <span class="ruby-value str">&quot;Enable debugging output&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">level</span><span class="ruby-operator">|</span>
+340:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:debug</span>] = <span class="ruby-identifier">level</span> <span class="ruby-operator">||</span> <span class="ruby-keyword kw">true</span>
+341:         }
+342: 
+343:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-D'</span>, <span class="ruby-value str">'--dump-config'</span>, <span class="ruby-value str">&quot;Dump config and exit&quot;</span>) {
+344:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dump_config</span>] = <span class="ruby-keyword kw">true</span>
+345:         }
+346: 
+347:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">''</span>
+348:         <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-node">&quot;PATH may be separated by any of #{RESOURCE_PATH_RE.source}.&quot;</span>
+349:       }
+350:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -712,28 +718,30 @@
             onclick="toggleCode('M000036-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000036-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 145</span>
-145:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_arguments</span>(<span class="ruby-identifier">arguments</span>)
-146:       <span class="ruby-ivar">@resource_path</span>, <span class="ruby-ivar">@opts</span>, <span class="ruby-identifier">skip</span> = [], {}, <span class="ruby-keyword kw">false</span>
-147: 
-148:       <span class="ruby-identifier">arguments</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
-149:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">skip</span>
-150:           <span class="ruby-identifier">skip</span> = <span class="ruby-keyword kw">false</span>
-151:           <span class="ruby-keyword kw">next</span>
-152:         <span class="ruby-keyword kw">end</span>
-153: 
-154:         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">arg</span>
-155:           <span class="ruby-keyword kw">when</span> <span class="ruby-constant">OPTION_RE</span>
-156:             <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span> = <span class="ruby-identifier">$1</span>, <span class="ruby-identifier">arguments</span>[<span class="ruby-identifier">index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>]
-157: 
-158:             <span class="ruby-identifier">value</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">OPTION_RE</span> <span class="ruby-value">? </span><span class="ruby-identifier">value</span> = <span class="ruby-value str">'1'</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">skip</span> = <span class="ruby-keyword kw">true</span>
-159: 
-160:             <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span>
-161:           <span class="ruby-keyword kw">else</span>
-162:             <span class="ruby-identifier">resource_path</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">arg</span>
-163:         <span class="ruby-keyword kw">end</span>
-164:       }
-165:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 146</span>
+146:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_arguments</span>(<span class="ruby-identifier">arguments</span>)
+147:       <span class="ruby-ivar">@resource_path</span>, <span class="ruby-ivar">@opts</span>, <span class="ruby-identifier">skip_next</span> = [], {}, <span class="ruby-keyword kw">false</span>
+148:       <span class="ruby-ivar">@opts</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:query</span>]) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:query</span>]
+149: 
+150:       <span class="ruby-identifier">arguments</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+151:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">skip_next</span>
+152:           <span class="ruby-identifier">skip_next</span> = <span class="ruby-keyword kw">false</span>
+153:           <span class="ruby-keyword kw">next</span>
+154:         <span class="ruby-keyword kw">end</span>
+155: 
+156:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">arg</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">OPTION_RE</span>
+157:           <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">next_arg</span> = <span class="ruby-identifier">$1</span>, <span class="ruby-identifier">$2</span>, <span class="ruby-identifier">arguments</span>[<span class="ruby-identifier">index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>]
+158:           <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span> <span class="ruby-operator">||</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">next_arg</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">OPTION_RE</span>
+159:             <span class="ruby-value str">'1'</span>  <span class="ruby-comment cmt"># &quot;true&quot;</span>
+160:           <span class="ruby-keyword kw">else</span>
+161:             <span class="ruby-identifier">skip_next</span> = <span class="ruby-keyword kw">true</span>
+162:             <span class="ruby-identifier">next_arg</span>
+163:           <span class="ruby-keyword kw">end</span>
+164:         <span class="ruby-keyword kw">else</span>
+165:           <span class="ruby-identifier">resource_path</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">arg</span>
+166:         <span class="ruby-keyword kw">end</span>
+167:       }
+168:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -753,15 +761,15 @@
             onclick="toggleCode('M000035-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000035-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 136</span>
-136:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_options</span>(<span class="ruby-identifier">arguments</span>, <span class="ruby-identifier">defaults</span>)
-137:       <span class="ruby-identifier">option_parser</span>(<span class="ruby-identifier">defaults</span>).<span class="ruby-identifier">parse!</span>(<span class="ruby-identifier">arguments</span>)
-138: 
-139:       <span class="ruby-identifier">config_file</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:config</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">defaults</span>[<span class="ruby-identifier">:config</span>]
-140:       <span class="ruby-ivar">@config</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load_file</span>(<span class="ruby-identifier">config_file</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">config_file</span>)
-141: 
-142:       [<span class="ruby-identifier">config</span>, <span class="ruby-identifier">defaults</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">key</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">value</span> } }
-143:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cli.rb, line 137</span>
+137:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_options</span>(<span class="ruby-identifier">arguments</span>, <span class="ruby-identifier">defaults</span>)
+138:       <span class="ruby-identifier">option_parser</span>(<span class="ruby-identifier">defaults</span>).<span class="ruby-identifier">parse!</span>(<span class="ruby-identifier">arguments</span>)
+139: 
+140:       <span class="ruby-identifier">config_file</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:config</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">defaults</span>[<span class="ruby-identifier">:config</span>]
+141:       <span class="ruby-ivar">@config</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load_file</span>(<span class="ruby-identifier">config_file</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">config_file</span>)
+142: 
+143:       [<span class="ruby-identifier">config</span>, <span class="ruby-identifier">defaults</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">key</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">value</span> } }
+144:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
