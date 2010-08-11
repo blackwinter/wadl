@@ -294,39 +294,92 @@ module WADL
       index_key == name
     end
 
-    def to_s(indent = 0)
+    def each_attribute
+      [self.class.required_attributes, self.class.attributes].each { |list|
+        list.each { |attr|
+          val = attributes[attr.to_s]
+          yield attr, val if val
+        }
+      }
+    end
+
+    def each_member
+      self.class.members.each_value { |member_class|
+        member = send(member_class.names[:member])
+        yield member if member
+      }
+    end
+
+    def each_collection
+      self.class.collections.each_value { |collection_class|
+        collection = send(collection_class.names[:collection])
+        yield collection if collection && !collection.empty?
+      }
+    end
+
+    def paths(level = default = 0)
+      klass, paths = self.class, []
+      return paths if klass.may_be_reference? && attributes['href']
+
+      if klass == Resource
+        path = attributes['path']
+        paths << [level, path] if path
+      elsif klass == HTTPMethod
+        paths << [level]
+      end
+
+      each_member { |member|
+        paths.concat(member.paths(level))
+      }
+
+      each_collection { |collection|
+        collection.each { |member| paths.concat(member.paths(level + 1)) }
+      }
+
+      if default
+        memo = []
+
+        paths.map { |level, path|
+          if path
+            memo.slice!(level..-1)
+            memo[level] = path
+
+            nil  # ignore
+          else
+            memo.join('/')
+          end
+        }.compact
+      else
+        paths
+      end
+    end
+
+    def to_s(indent = 0, collection = false)
       klass = self.class
 
-      i = ' ' * indent
-      s = "#{i}#{klass.name}\n"
+      a = '  '
+      i = a * indent
+      s = "#{collection ? a * (indent - 1) + '- ' : i}#{klass.name}\n"
 
       if klass.may_be_reference? and href = attributes['href']
-        s << "#{i} href=#{href}\n"
+        s << "#{i}= href=#{href}\n"
       else
-        [klass.required_attributes, klass.attributes].each { |list|
-          list.each { |attr|
-            val = attributes[attr.to_s]
-            s << "#{i} #{attr}=#{val}\n" if val
-          }
+        each_attribute { |attr, val|
+          s << "#{i}* #{attr}=#{val}\n"
         }
 
-        klass.members.each_value { |member_class|
-          o = send(member_class.names[:member])
-          s << o.to_s(indent + 1) if o
+        each_member { |member|
+          s << member.to_s(indent + 1)
         }
 
-        klass.collections.each_value { |collection_class|
-          c = send(collection_class.names[:collection])
-
-          if c && !c.empty?
-            s << "#{i} Collection of #{c.size} #{collection_class.name}(s)\n"
-            c.each { |o| s << o.to_s(indent + 2) }
-          end
+        each_collection { |collection|
+          s << "#{i}> Collection of #{collection.size} #{collection.class}(s)\n"
+          collection.each { |member| s << member.to_s(indent + 2, true) }
         }
 
         if @contents && !@contents.empty?
           sep = '-' * 80
-          s << "#{sep}\n#{@contents.join(' ')}\n#{sep}\n"
+          s << "#{sep}\n#{@contents.join(' ').strip}\n#{sep}\n"
         end
       end
 

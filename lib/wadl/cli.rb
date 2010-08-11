@@ -85,6 +85,13 @@ module WADL
       abort "WADL location is required! (Specify with '--wadl' or see '--help')" unless options[:wadl]
       options[:wadl] %= options[:base_url] if options[:base_url]
 
+      if debug = options[:debug]
+        debug = 1 unless debug.is_a?(Integer)
+
+        stderr.puts api.paths if debug >= 1
+        stderr.puts api       if debug >= 2
+      end
+
       response = auth_resource.send(options[:method].downcase, :query => opts)
 
       stderr.puts response.code.join(' ')
@@ -318,6 +325,10 @@ module WADL
 
         opts.on('--version', 'Print program version and exit') {
           abort "#{File.basename($0)} v#{WADL::VERSION}"
+        }
+
+        opts.on('-d', '--debug [LEVEL]', Integer, "Enable debugging output") { |level|
+          options[:debug] = level || true
         }
 
         opts.on('-D', '--dump-config', "Dump config and exit") {
