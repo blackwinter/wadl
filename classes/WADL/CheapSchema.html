@@ -101,6 +101,9 @@ documents into instances of those classes.
       <a href="#M000083">dereference_with_context</a>&nbsp;&nbsp;
       <a href="#M000075">dereferencing_attr_accessor</a>&nbsp;&nbsp;
       <a href="#M000074">dereferencing_instance_accessor</a>&nbsp;&nbsp;
+      <a href="#M000086">each_attribute</a>&nbsp;&nbsp;
+      <a href="#M000088">each_collection</a>&nbsp;&nbsp;
+      <a href="#M000087">each_member</a>&nbsp;&nbsp;
       <a href="#M000079">from_element</a>&nbsp;&nbsp;
       <a href="#M000076">has_attributes</a>&nbsp;&nbsp;
       <a href="#M000073">has_many</a>&nbsp;&nbsp;
@@ -115,7 +118,8 @@ documents into instances of those classes.
       <a href="#M000078">may_be_reference</a>&nbsp;&nbsp;
       <a href="#M000067">may_be_reference?</a>&nbsp;&nbsp;
       <a href="#M000082">new</a>&nbsp;&nbsp;
-      <a href="#M000086">to_s</a>&nbsp;&nbsp;
+      <a href="#M000089">paths</a>&nbsp;&nbsp;
+      <a href="#M000090">to_s</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -784,6 +788,86 @@ URI).
         </div>
       </div>
 
+      <div id="method-M000086" class="method-detail">
+        <a name="M000086"></a>
+
+        <div class="method-heading">
+          <a href="#M000086" class="method-signature">
+          <span class="method-name">each_attribute</span><span class="method-args">() {|attr, val if val| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000086-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000086-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 300</span>
+300:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_attribute</span>
+301:       [<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">required_attributes</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">attributes</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">list</span><span class="ruby-operator">|</span>
+302:         <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
+303:           <span class="ruby-identifier">val</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">attr</span>.<span class="ruby-identifier">to_s</span>]
+304:           <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">attr</span>, <span class="ruby-identifier">val</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">val</span>
+305:         }
+306:       }
+307:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000088" class="method-detail">
+        <a name="M000088"></a>
+
+        <div class="method-heading">
+          <a href="#M000088" class="method-signature">
+          <span class="method-name">each_collection</span><span class="method-args">() {|collection if collection &amp;&amp; !collection.empty?| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000088-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000088-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 316</span>
+316:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_collection</span>
+317:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">collections</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">collection_class</span><span class="ruby-operator">|</span>
+318:         <span class="ruby-identifier">collection</span> = <span class="ruby-identifier">send</span>(<span class="ruby-identifier">collection_class</span>.<span class="ruby-identifier">names</span>[<span class="ruby-identifier">:collection</span>])
+319:         <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">collection</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">collection</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">collection</span>.<span class="ruby-identifier">empty?</span>
+320:       }
+321:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000087" class="method-detail">
+        <a name="M000087"></a>
+
+        <div class="method-heading">
+          <a href="#M000087" class="method-signature">
+          <span class="method-name">each_member</span><span class="method-args">() {|member if member| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000087-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000087-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 309</span>
+309:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_member</span>
+310:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">members</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">member_class</span><span class="ruby-operator">|</span>
+311:         <span class="ruby-identifier">member</span> = <span class="ruby-identifier">send</span>(<span class="ruby-identifier">member_class</span>.<span class="ruby-identifier">names</span>[<span class="ruby-identifier">:member</span>])
+312:         <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">member</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">member</span>
+313:       }
+314:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
       <div id="method-M000085" class="method-detail">
         <a name="M000085"></a>
 
@@ -811,59 +895,108 @@ checks the index key for this class.
         </div>
       </div>
 
-      <div id="method-M000086" class="method-detail">
-        <a name="M000086"></a>
+      <div id="method-M000089" class="method-detail">
+        <a name="M000089"></a>
 
         <div class="method-heading">
-          <a href="#M000086" class="method-signature">
-          <span class="method-name">to_s</span><span class="method-args">(indent = 0)</span>
+          <a href="#M000089" class="method-signature">
+          <span class="method-name">paths</span><span class="method-args">(level = default = 0)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000086-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000086-source">
+            onclick="toggleCode('M000089-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000089-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 300</span>
-300:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">indent</span> = <span class="ruby-value">0</span>)
-301:       <span class="ruby-identifier">klass</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>
-302: 
-303:       <span class="ruby-identifier">i</span> = <span class="ruby-value str">' '</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">indent</span>
-304:       <span class="ruby-identifier">s</span> = <span class="ruby-node">&quot;#{i}#{klass.name}\n&quot;</span>
-305: 
-306:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">may_be_reference?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">href</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'href'</span>]
-307:         <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{i} href=#{href}\n&quot;</span>
-308:       <span class="ruby-keyword kw">else</span>
-309:         [<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">required_attributes</span>, <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">attributes</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">list</span><span class="ruby-operator">|</span>
-310:           <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
-311:             <span class="ruby-identifier">val</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">attr</span>.<span class="ruby-identifier">to_s</span>]
-312:             <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{i} #{attr}=#{val}\n&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">val</span>
-313:           }
-314:         }
-315: 
-316:         <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">members</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">member_class</span><span class="ruby-operator">|</span>
-317:           <span class="ruby-identifier">o</span> = <span class="ruby-identifier">send</span>(<span class="ruby-identifier">member_class</span>.<span class="ruby-identifier">names</span>[<span class="ruby-identifier">:member</span>])
-318:           <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">indent</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>
-319:         }
-320: 
-321:         <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">collections</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">collection_class</span><span class="ruby-operator">|</span>
-322:           <span class="ruby-identifier">c</span> = <span class="ruby-identifier">send</span>(<span class="ruby-identifier">collection_class</span>.<span class="ruby-identifier">names</span>[<span class="ruby-identifier">:collection</span>])
-323: 
-324:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">c</span>.<span class="ruby-identifier">empty?</span>
-325:             <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{i} Collection of #{c.size} #{collection_class.name}(s)\n&quot;</span>
-326:             <span class="ruby-identifier">c</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">indent</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span>) }
-327:           <span class="ruby-keyword kw">end</span>
-328:         }
-329: 
-330:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@contents</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@contents</span>.<span class="ruby-identifier">empty?</span>
-331:           <span class="ruby-identifier">sep</span> = <span class="ruby-value str">'-'</span> <span class="ruby-operator">*</span> <span class="ruby-value">80</span>
-332:           <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{sep}\n#{@contents.join(' ')}\n#{sep}\n&quot;</span>
-333:         <span class="ruby-keyword kw">end</span>
-334:       <span class="ruby-keyword kw">end</span>
-335: 
-336:       <span class="ruby-identifier">s</span>
-337:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 323</span>
+323:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">paths</span>(<span class="ruby-identifier">level</span> = <span class="ruby-identifier">default</span> = <span class="ruby-value">0</span>)
+324:       <span class="ruby-identifier">klass</span>, <span class="ruby-identifier">paths</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>, []
+325:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">paths</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">may_be_reference?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'href'</span>]
+326: 
+327:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Resource</span>
+328:         <span class="ruby-identifier">path</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'path'</span>]
+329:         <span class="ruby-identifier">paths</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">level</span>, <span class="ruby-identifier">path</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">path</span>
+330:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">klass</span> <span class="ruby-operator">==</span> <span class="ruby-constant">HTTPMethod</span>
+331:         <span class="ruby-identifier">paths</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">level</span>]
+332:       <span class="ruby-keyword kw">end</span>
+333: 
+334:       <span class="ruby-identifier">each_member</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">member</span><span class="ruby-operator">|</span>
+335:         <span class="ruby-identifier">paths</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">member</span>.<span class="ruby-identifier">paths</span>(<span class="ruby-identifier">level</span>))
+336:       }
+337: 
+338:       <span class="ruby-identifier">each_collection</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">collection</span><span class="ruby-operator">|</span>
+339:         <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">member</span><span class="ruby-operator">|</span> <span class="ruby-identifier">paths</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">member</span>.<span class="ruby-identifier">paths</span>(<span class="ruby-identifier">level</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)) }
+340:       }
+341: 
+342:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">default</span>
+343:         <span class="ruby-identifier">memo</span> = []
+344: 
+345:         <span class="ruby-identifier">paths</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">level</span>, <span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+346:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">path</span>
+347:             <span class="ruby-identifier">memo</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-identifier">level</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>)
+348:             <span class="ruby-identifier">memo</span>[<span class="ruby-identifier">level</span>] = <span class="ruby-identifier">path</span>
+349: 
+350:             <span class="ruby-keyword kw">nil</span>  <span class="ruby-comment cmt"># ignore</span>
+351:           <span class="ruby-keyword kw">else</span>
+352:             <span class="ruby-identifier">memo</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'/'</span>)
+353:           <span class="ruby-keyword kw">end</span>
+354:         }.<span class="ruby-identifier">compact</span>
+355:       <span class="ruby-keyword kw">else</span>
+356:         <span class="ruby-identifier">paths</span>
+357:       <span class="ruby-keyword kw">end</span>
+358:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000090" class="method-detail">
+        <a name="M000090"></a>
+
+        <div class="method-heading">
+          <a href="#M000090" class="method-signature">
+          <span class="method-name">to_s</span><span class="method-args">(indent = 0, collection = false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000090-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000090-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/wadl/cheap_schema.rb, line 360</span>
+360:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">indent</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">collection</span> = <span class="ruby-keyword kw">false</span>)
+361:       <span class="ruby-identifier">klass</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>
+362: 
+363:       <span class="ruby-identifier">a</span> = <span class="ruby-value str">'  '</span>
+364:       <span class="ruby-identifier">i</span> = <span class="ruby-identifier">a</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">indent</span>
+365:       <span class="ruby-identifier">s</span> = <span class="ruby-node">&quot;#{collection ? a * (indent - 1) + '- ' : i}#{klass.name}\n&quot;</span>
+366: 
+367:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">may_be_reference?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">href</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-value str">'href'</span>]
+368:         <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{i}= href=#{href}\n&quot;</span>
+369:       <span class="ruby-keyword kw">else</span>
+370:         <span class="ruby-identifier">each_attribute</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+371:           <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{i}* #{attr}=#{val}\n&quot;</span>
+372:         }
+373: 
+374:         <span class="ruby-identifier">each_member</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">member</span><span class="ruby-operator">|</span>
+375:           <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">member</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">indent</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)
+376:         }
+377: 
+378:         <span class="ruby-identifier">each_collection</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">collection</span><span class="ruby-operator">|</span>
+379:           <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{i}&gt; Collection of #{collection.size} #{collection.class}(s)\n&quot;</span>
+380:           <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">member</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">member</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">indent</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span>, <span class="ruby-keyword kw">true</span>) }
+381:         }
+382: 
+383:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@contents</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@contents</span>.<span class="ruby-identifier">empty?</span>
+384:           <span class="ruby-identifier">sep</span> = <span class="ruby-value str">'-'</span> <span class="ruby-operator">*</span> <span class="ruby-value">80</span>
+385:           <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{sep}\n#{@contents.join(' ').strip}\n#{sep}\n&quot;</span>
+386:         <span class="ruby-keyword kw">end</span>
+387:       <span class="ruby-keyword kw">end</span>
+388: 
+389:       <span class="ruby-identifier">s</span>
+390:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
