@@ -103,13 +103,10 @@ module WADL
     end
 
     def auth_resource
-      @auth_resource ||= if options[:basic]
-        basic_auth_resource
-      elsif options[:oauth]
-        oauth_resource
-      else
-        resource
-      end
+      @auth_resource ||= options[:skip_auth] ? resource            :
+                         options[:oauth]     ? oauth_resource      :
+                         options[:basic]     ? basic_auth_resource :
+                                               resource
     end
 
     def reset(stdin = STDIN, stdout = STDOUT, stderr = STDERR)
@@ -245,9 +242,15 @@ module WADL
         }
 
         opts.separator ''
-        opts.separator 'Basic auth options:'
 
-        opts.on('-B', '--basic', "Perform Basic auth") {
+        opts.on('--skip-auth', "Skip any authentication") {
+          options[:skip_auth] = true
+        }
+
+        opts.separator ''
+        opts.separator 'Basic Auth options:'
+
+        opts.on('-B', '--basic', "Perform Basic Auth") {
           options[:basic] = true
         }
 
