@@ -28,4 +28,8 @@
 
 require 'wadl/cli'
 
-WADL::CLI.execute(ARGV, STDIN, STDOUT, STDERR)
+begin
+  WADL::CLI.execute(ARGV, STDIN, STDOUT, STDERR)
+rescue ArgumentError => err
+  abort err
+end
