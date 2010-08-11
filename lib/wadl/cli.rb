@@ -105,7 +105,7 @@ module WADL
     def resource
       @resource ||= begin
         path = [options[:api_base], *resource_path].compact.join('/')
-        path.split(RESOURCE_PATH_RE).inject(api) { |m, n| m.send(n) }
+        path.split(RESOURCE_PATH_RE).inject(api) { |m, n| m.send(:find_resource_by_path, n) }
       end
     end
 
