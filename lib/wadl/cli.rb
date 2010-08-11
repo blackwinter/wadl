@@ -82,7 +82,7 @@ module WADL
       parse_arguments(arguments)
       abort USAGE if resource_path.empty?
 
-      abort 'WADL required' unless options[:wadl]
+      abort "WADL location is required! (Specify with '--wadl' or see '--help')" unless options[:wadl]
       options[:wadl] %= options[:base_url] if options[:base_url]
 
       response = auth_resource.send(options[:method].downcase, :query => opts)
@@ -97,7 +97,7 @@ module WADL
 
     def resource
       @resource ||= begin
-        path = [options[:api_base], *resource_path].compact.join(' ')
+        path = [options[:api_base], *resource_path].compact.join('/')
         path.split(RESOURCE_PATH_RE).inject(api) { |m, n| m.send(n) }
       end
     end
@@ -232,7 +232,7 @@ module WADL
 
         opts.separator ''
 
-        opts.on('-w', '--wadl FILE_OR_URL', "Path or URL to WADL file") { |wadl|
+        opts.on('-w', '--wadl FILE_OR_URL', "Path or URL to WADL file [Required]") { |wadl|
           options[:wadl] = wadl
         }
 
@@ -320,6 +320,9 @@ module WADL
         opts.on('-D', '--dump-config', "Dump config and exit") {
           options[:dump_config] = true
         }
+
+        opts.separator ''
+        opts.separator "PATH may be separated by any of #{RESOURCE_PATH_RE.source}."
       }
     end
 
