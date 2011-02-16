@@ -1,4 +1,4 @@
-require %q{lib/wadl/version}
+require File.expand_path(%q{../lib/wadl/version}, __FILE__)
 
 begin
   require 'hen'
@@ -10,14 +10,10 @@ begin
       :summary      => %q{Ruby client for the Web Application Description Language.},
       :authors      => ['Leonard Richardson', 'Jens Wille'],
       :email        => ['leonardr@segfault.org', 'jens.wille@uni-koeln.de'],
-      :homepage     => 'http://github.com/blackwinter/wadl',
-      :files        => FileList['lib/**/*.rb'].to_a,
-      :extra_files  => FileList['[A-Z]*', 'examples/*', 'test/**/*.rb', 'bin/*'].to_a,
+      :homepage     => :blackwinter,
       :dependencies => %w[rest-open-uri mime-types]
     }
   }}
-rescue LoadError
-  abort "Please install the 'hen' gem first."
+rescue LoadError => err
+  warn "Please install the `hen' gem. (#{err})"
 end
-
-### Place your custom Rake tasks here.
