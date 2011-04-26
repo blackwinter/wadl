@@ -3,7 +3,7 @@
 #                                                                             #
 # A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
-# Copyright (C) 2010 Jens Wille                                               #
+# Copyright (C) 2010-2011 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@uni-koeln.de>                                    #
@@ -34,7 +34,7 @@ require 'wadl'
 begin
   require 'oauth/cli'
 rescue LoadError
-  warn "For OAuth support, install the 'oauth' library."
+  warn "For OAuth support, install the `oauth' library."
 end
 
 module WADL
@@ -52,8 +52,11 @@ module WADL
       :authorize_url     => '%s/oauth/authorize'
     }
 
-    OPTION_RE = %r{\A--?(.+?)(?:=(.+))?\z}
-    RESOURCE_PATH_RE = %r{[. /]}
+    OPTION_RE          = %r{\A--?(.+?)(?:=(.+))?\z}
+    RESOURCE_PATH_RE   = %r{[. /]}
+    QUERY_SEPARATOR_RE = %r{[&;]}n
+    ARRAY_SUFFIX_RE    = %r{\[\]\z}
+    HASH_SUFFIX_RE     = %r{\[(.+)\]\z}
 
     def self.execute(*args)
       new.execute(*args)
@@ -155,16 +158,50 @@ module WADL
 
         if arg =~ OPTION_RE
           key, value, next_arg = $1, $2, arguments[index + 1]
-          opts[key] = value || if next_arg =~ OPTION_RE
+
+          add_param(opts, key, value || if next_arg =~ OPTION_RE
             '1'  # "true"
           else
             skip_next = true
             next_arg
-          end
+          end)
         else
           resource_path << arg
         end
       }
+    end
+
+    def parse_query(query)
+      params = {}
+
+      query.split(QUERY_SEPARATOR_RE).each { |pair|
+        add_param(params, *pair.split('=', 2).map { |v| CGI.unescape(v) })
+      }
+
+      params
+    end
+
+    def add_param(params, key, value)
+      case key
+        when HASH_SUFFIX_RE
+          sub = $1
+
+          if (param = params[key]).is_a?(Hash)
+            param[sub] = value
+            return
+          else
+            value = { sub => value }
+          end
+        when ARRAY_SUFFIX_RE
+          if (param = params[key]).is_a?(Array)
+            param << value
+            return
+          else
+            value = [value]
+          end
+      end
+
+      params[key] = value
     end
 
     def basic_auth_resource
@@ -252,9 +289,7 @@ module WADL
         }
 
         opts.on('-q', '--query QUERY', "Query string to pass to request") { |query|
-          options[:query] = CGI.parse(query).inject({}) { |params, (key, values)|
-            params[key] = values.last; params
-          }
+          options[:query] = parse_query(query)
         }
 
         opts.separator ''
