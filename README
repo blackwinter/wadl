@@ -45,10 +45,10 @@ The 20060802 WADL standard is almost entirely supported. However,
 == LINKS
 
 <b></b>
-Homepage::      <http://www.crummy.com/software/wadl.rb/>
-WADL::          <http://wadl.dev.java.net/>
-Documentation:: <http://rdoc.info/projects/blackwinter/wadl>
-Source code::   <http://github.com/blackwinter/wadl>
+Homepage::      http://www.crummy.com/software/wadl.rb/
+WADL::          http://wadl.dev.java.net/
+Documentation:: http://rdoc.info/projects/blackwinter/wadl
+Source code::   http://github.com/blackwinter/wadl
 
 
 == AUTHORS
@@ -60,16 +60,17 @@ Source code::   <http://github.com/blackwinter/wadl>
 == LICENSE AND COPYRIGHT
 
 Copyright (C) 2006-2008 Leonard Richardson
-Copyright (C) 2010 Jens Wille
+Copyright (C) 2010-2011 Jens Wille
 
 wadl is free software: you can redistribute it and/or modify it under
-the terms of the GNU General Public License as published by the Free Software
-Foundation, either version 3 of the License, or (at your option) any later
-version.
+the terms of the GNU Affero General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your
+option) any later version.
 
 wadl is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
+License for more details.
 
-You should have received a copy of the GNU General Public License along with
-wadl. If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU Affero General Public License
+along with wadl. If not, see <http://www.gnu.org/licenses/>.
