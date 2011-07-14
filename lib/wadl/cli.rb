@@ -24,11 +24,9 @@
 ###############################################################################
 #++
 
-require 'optparse'
-require 'yaml'
 require 'cgi'
-require 'highline'
 require 'stringio'
+require 'nuggets/util/cli'
 require 'wadl'
 
 begin
@@ -39,18 +37,7 @@ end
 
 module WADL
 
-  class CLI
-
-    USAGE = "Usage: #{$0} [-h|--help] [options] <resource-path> [-- arguments]"
-
-    DEFAULTS = {
-      :config            => 'config.yaml',
-      :method            => 'GET',
-      :user              => ENV['USER'] || '',
-      :request_token_url => '%s/oauth/request_token',
-      :access_token_url  => '%s/oauth/access_token',
-      :authorize_url     => '%s/oauth/authorize'
-    }
+  class CLI < ::Util::CLI
 
     OPTION_RE          = %r{\A--?(.+?)(?:=(.+))?\z}
     RESOURCE_PATH_RE   = %r{[. /]}
@@ -58,35 +45,37 @@ module WADL
     ARRAY_SUFFIX_RE    = %r{\[\]\z}
     HASH_SUFFIX_RE     = %r{\[(.+)\]\z}
 
-    def self.execute(*args)
-      new.execute(*args)
+    class << self
+
+      def usage(*)
+        "#{super} <resource-path> [-- arguments]"
+      end
+
+      def defaults
+        super.merge(
+          :config            => 'config.yaml',
+          :method            => 'GET',
+          :user              => ENV['USER'] || '',
+          :request_token_url => '%s/oauth/request_token',
+          :access_token_url  => '%s/oauth/access_token',
+          :authorize_url     => '%s/oauth/authorize'
+        )
+      end
+
     end
 
-    attr_reader :options, :config, :defaults
-    attr_reader :stdin, :stdout, :stderr
     attr_reader :resource_path, :opts
 
-    def initialize(defaults = DEFAULTS)
-      @defaults = defaults
-
-      reset
-
-      # prevent backtrace on ^C
-      trap(:INT) { exit 130 }
-    end
-
-    def execute(arguments = [], *inouterr)
-      reset(*inouterr)
-
-      abort USAGE if arguments.empty?
-      parse_options(arguments, defaults)
-
-      abort YAML.dump(options), 0, stdout if options.delete(:dump_config)
+    def run(arguments)
+      if options.delete(:dump_config)
+        stdout.puts(YAML.dump(options))
+        exit
+      end
 
       parse_arguments(arguments)
-      abort USAGE if resource_path.empty?
+      quit if resource_path.empty?
 
-      abort "WADL location is required! (Specify with '--wadl' or see '--help')" unless options[:wadl]
+      quit "WADL location is required! (Specify with '--wadl' or see '--help')" unless options[:wadl]
       options[:wadl] %= options[:base_url] if options[:base_url]
 
       if debug = options[:debug]
@@ -109,7 +98,7 @@ module WADL
     def resource
       @resource ||= begin
         path = [options[:api_base], *resource_path].compact.join('/').split(RESOURCE_PATH_RE)
-        path.inject(api) { |m, n| m.send(:find_resource_by_path, n) } or abort "Resource not found: #{path.join('/')}"
+        path.inject(api) { |m, n| m.send(:find_resource_by_path, n) } or quit "Resource not found: #{path.join('/')}"
       end
     end
 
@@ -121,29 +110,15 @@ module WADL
     end
 
     def reset(stdin = STDIN, stdout = STDOUT, stderr = STDERR)
-      @stdin, @stdout, @stderr = stdin, stdout, stderr
+      super
       @api = @resource = @auth_resource = nil
-      @options, @config = {}, {}
     end
 
     private
 
-    def ask(question, &block)
-      HighLine.new(stdin, stdout).ask(question, &block)
-    end
-
-    def abort(msg = nil, status = 1, output = stderr)
-      output.puts msg if msg
-      exit status
-    end
-
-    def parse_options(arguments, defaults)
-      option_parser(defaults).parse!(arguments)
-
-      config_file = options[:config] || defaults[:config]
-      @config = YAML.load_file(config_file) if File.readable?(config_file)
-
-      [config, defaults].each { |hash| hash.each { |key, value| options[key] ||= value } }
+    def parse_options(arguments)
+      quit if arguments.empty?
+      super
     end
 
     def parse_arguments(arguments)
@@ -208,7 +183,7 @@ module WADL
       user, pass = options.values_at(:user, :password)
       pass ||= ask("Password for user #{user}: ") { |q| q.echo = false }
 
-      abort 'USER and PASSWORD required' unless user && pass
+      quit 'USER and PASSWORD required' unless user && pass
 
       resource.with_basic_auth(user, pass)
     end
@@ -217,11 +192,11 @@ module WADL
       consumer_key, consumer_secret = options.values_at(:consumer_key, :consumer_secret)
       access_token, token_secret    = options.values_at(:token, :secret)
 
-      abort "CONSUMER KEY and SECRET required" unless consumer_key && consumer_secret
+      quit "CONSUMER KEY and SECRET required" unless consumer_key && consumer_secret
 
       unless access_token && token_secret
         access_token, token_secret = oauthorize(consumer_key, consumer_secret)
-        abort 'Authorization failed!?' unless access_token && token_secret
+        quit 'Authorization failed!?' unless access_token && token_secret
       end
 
       resource.with_oauth(consumer_key, consumer_secret, access_token, token_secret)
@@ -263,125 +238,113 @@ module WADL
       [access_token, token_secret]
     end
 
-    def option_parser(defaults)
-      OptionParser.new { |opts|
-        opts.banner = USAGE
-
-        opts.separator ''
-        opts.separator 'Options:'
-
-        opts.on('-c', '--config YAML', "Config file [Default: #{defaults[:config]}#{' (currently not present)' unless File.readable?(defaults[:config])}]") { |config|
-          options[:config] = config
-        }
-
-        opts.separator ''
-
-        opts.on('-w', '--wadl FILE_OR_URL', "Path or URL to WADL file [Required]") { |wadl|
-          options[:wadl] = wadl
-        }
-
-        opts.on('-m', '--method METHOD', "Request method [Default: #{defaults[:method]}]") { |method|
-          options[:method] = method.upcase
-        }
-
-        opts.on('-a', '--api-base PATH', "Base path for API") { |api_base|
-          options[:api_base] = api_base
-        }
-
-        opts.on('-q', '--query QUERY', "Query string to pass to request") { |query|
-          options[:query] = parse_query(query)
-        }
-
-        opts.separator ''
-
-        opts.on('--skip-auth', "Skip any authentication") {
-          options[:skip_auth] = true
-        }
-
-        opts.separator ''
-        opts.separator 'Basic Auth options:'
-
-        opts.on('-B', '--basic', "Perform Basic Auth") {
-          options[:basic] = true
-        }
-
-        opts.separator ''
-
-        opts.on('--user USER', "User name") { |user|
-          options[:user] = user
-        }
-
-        opts.on('--password PASSWORD', "Password for user") { |password|
-          options[:password] = password
-        }
-
-        opts.separator ''
-        opts.separator 'OAuth options:'
-
-        opts.on('-O', '--oauth', "Perform OAuth") {
-          options[:oauth] = true
-        }
-
-        opts.separator ''
-
-        opts.on('--consumer-key KEY', "Consumer key to use") { |consumer_key|
-          options[:consumer_key] = consumer_key
-        }
-
-        opts.on('--consumer-secret SECRET', "Consumer secret to use") { |consumer_secret|
-          options[:consumer_secret] = consumer_secret
-        }
-
-        opts.separator ''
-
-        opts.on('--token TOKEN', "Access token to use") { |token|
-          options[:token] = token
-        }
-
-        opts.on('--secret SECRET', "Token secret to use") { |secret|
-          options[:secret] = secret
-        }
-
-        opts.separator ''
-
-        opts.on('-b', '--base-url URL', "Base URL [Default: \"dirname\" of WADL]") { |base_url|
-          options[:base_url] = base_url
-        }
-
-        opts.on('--request-token-url URL', "Request token URL [Default: #{defaults[:request_token_url] % 'BASE_URL'}]") { |request_token_url|
-          options[:request_token_url] = request_token_url
-        }
-
-        opts.on('--access-token-url URL', "Access token URL [Default: #{defaults[:access_token_url] % 'BASE_URL'}]") { |access_token_url|
-          options[:access_token_url] = access_token_url
-        }
-
-        opts.on('--authorize-url URL', "Authorize URL [Default: #{defaults[:authorize_url] % 'BASE_URL'}]") { |authorize_url|
-          options[:authorize_url] = authorize_url
-        }
-
-        opts.separator ''
-        opts.separator 'Generic options:'
-
-        opts.on('-h', '--help', 'Print this help message and exit') {
-          abort opts.to_s
-        }
-
-        opts.on('--version', 'Print program version and exit') {
-          abort "#{File.basename($0)} v#{WADL::VERSION}"
-        }
-
-        opts.on('-d', '--debug [LEVEL]', Integer, "Enable debugging output") { |level|
-          options[:debug] = level || true
-        }
-
-        opts.on('-D', '--dump-config', "Dump config and exit") {
-          options[:dump_config] = true
-        }
-
-        opts.separator ''
-        opts.separator "PATH may be separated by any of #{RESOURCE_PATH_RE.source}."
+    def opts(opts)
+      opts.on('-c', '--config YAML', "Config file [Default: #{defaults[:config]}#{' (currently not present)' unless File.readable?(defaults[:config])}]") { |config|
+        options[:config] = config
       }
+
+      opts.separator ''
+
+      opts.on('-w', '--wadl FILE_OR_URL', "Path or URL to WADL file [Required]") { |wadl|
+        options[:wadl] = wadl
+      }
+
+      opts.on('-m', '--method METHOD', "Request method [Default: #{defaults[:method]}]") { |method|
+        options[:method] = method.upcase
+      }
+
+      opts.on('-a', '--api-base PATH', "Base path for API") { |api_base|
+        options[:api_base] = api_base
+      }
+
+      opts.on('-q', '--query QUERY', "Query string to pass to request") { |query|
+        options[:query] = parse_query(query)
+      }
+
+      opts.separator ''
+
+      opts.on('--skip-auth', "Skip any authentication") {
+        options[:skip_auth] = true
+      }
+
+      opts.separator ''
+      opts.separator 'Basic Auth options:'
+
+      opts.on('-B', '--basic', "Perform Basic Auth") {
+        options[:basic] = true
+      }
+
+      opts.separator ''
+
+      opts.on('--user USER', "User name") { |user|
+        options[:user] = user
+      }
+
+      opts.on('--password PASSWORD', "Password for user") { |password|
+        options[:password] = password
+      }
+
+      opts.separator ''
+      opts.separator 'OAuth options:'
+
+      opts.on('-O', '--oauth', "Perform OAuth") {
+        options[:oauth] = true
+      }
+
+      opts.separator ''
+
+      opts.on('--consumer-key KEY', "Consumer key to use") { |consumer_key|
+        options[:consumer_key] = consumer_key
+      }
+
+      opts.on('--consumer-secret SECRET', "Consumer secret to use") { |consumer_secret|
+        options[:consumer_secret] = consumer_secret
+      }
+
+      opts.separator ''
+
+      opts.on('--token TOKEN', "Access token to use") { |token|
+        options[:token] = token
+      }
+
+      opts.on('--secret SECRET', "Token secret to use") { |secret|
+        options[:secret] = secret
+      }
+
+      opts.separator ''
+
+      opts.on('-b', '--base-url URL', "Base URL [Default: \"dirname\" of WADL]") { |base_url|
+        options[:base_url] = base_url
+      }
+
+      opts.on('--request-token-url URL', "Request token URL [Default: #{defaults[:request_token_url] % 'BASE_URL'}]") { |request_token_url|
+        options[:request_token_url] = request_token_url
+      }
+
+      opts.on('--access-token-url URL', "Access token URL [Default: #{defaults[:access_token_url] % 'BASE_URL'}]") { |access_token_url|
+        options[:access_token_url] = access_token_url
+      }
+
+      opts.on('--authorize-url URL', "Authorize URL [Default: #{defaults[:authorize_url] % 'BASE_URL'}]") { |authorize_url|
+        options[:authorize_url] = authorize_url
+      }
+    end
+
+    def generic_opts(opts)
+      super
+
+      opts.on('-d', '--debug [LEVEL]', Integer, 'Enable debugging output') { |level|
+        options[:debug] = level || true
+      }
+
+      opts.on('-D', '--dump-config', 'Dump config and exit') {
+        options[:dump_config] = true
+      }
+    end
+
+    def post_opts(opts)
+      opts.separator ''
+      opts.separator "PATH may be separated by any of #{RESOURCE_PATH_RE.source}."
     end
 
   end

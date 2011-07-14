@@ -11,7 +11,7 @@ begin
       :authors      => ['Leonard Richardson', 'Jens Wille'],
       :email        => ['leonardr@segfault.org', 'jens.wille@uni-koeln.de'],
       :homepage     => :blackwinter,
-      :dependencies => %w[rest-open-uri mime-types]
+      :dependencies => %w[rest-open-uri mime-types] << ['ruby-nuggets', '>= 0.7.3']
     }
   }}
 rescue LoadError => err
