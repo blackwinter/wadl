@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: WADL::Address</title>
+
+  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../lib/wadl/address_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/wadl/address.rb">lib/wadl/address.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link">Object</p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-embedded_param_names">::embedded_param_names</a></li>
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-i-_deep_copy_array">#_deep_copy_array</a></li>
+          
+          <li><a href="#method-i-_deep_copy_hash">#_deep_copy_hash</a></li>
+          
+          <li><a href="#method-i-bind-21">#bind!</a></li>
+          
+          <li><a href="#method-i-deep_copy">#deep_copy</a></li>
+          
+          <li><a href="#method-i-inspect">#inspect</a></li>
+          
+          <li><a href="#method-i-to_s">#to_s</a></li>
+          
+          <li><a href="#method-i-uri">#uri</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="../COPYING.html">COPYING</a></li>
+        
+          <li class="file"><a href="../ChangeLog.html">ChangeLog</a></li>
+        
+          <li class="file"><a href="../README.html">README</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../WADL.html">WADL</a></li>
+        
+          <li><a href="../WADL/Address.html">WADL::Address</a></li>
+        
+          <li><a href="../WADL/Application.html">WADL::Application</a></li>
+        
+          <li><a href="../WADL/CLI.html">WADL::CLI</a></li>
+        
+          <li><a href="../WADL/CheapSchema.html">WADL::CheapSchema</a></li>
+        
+          <li><a href="../WADL/Documentation.html">WADL::Documentation</a></li>
+        
+          <li><a href="../WADL/Fault.html">WADL::Fault</a></li>
+        
+          <li><a href="../WADL/FaultFormat.html">WADL::FaultFormat</a></li>
+        
+          <li><a href="../WADL/Faults.html">WADL::Faults</a></li>
+        
+          <li><a href="../WADL/HTTPMethod.html">WADL::HTTPMethod</a></li>
+        
+          <li><a href="../WADL/HasDocs.html">WADL::HasDocs</a></li>
+        
+          <li><a href="../WADL/Link.html">WADL::Link</a></li>
+        
+          <li><a href="../WADL/Option.html">WADL::Option</a></li>
+        
+          <li><a href="../WADL/Param.html">WADL::Param</a></li>
+        
+          <li><a href="../WADL/RepresentationContainer.html">WADL::RepresentationContainer</a></li>
+        
+          <li><a href="../WADL/RepresentationFormat.html">WADL::RepresentationFormat</a></li>
+        
+          <li><a href="../WADL/RequestFormat.html">WADL::RequestFormat</a></li>
+        
+          <li><a href="../WADL/Resource.html">WADL::Resource</a></li>
+        
+          <li><a href="../WADL/ResourceAndAddress.html">WADL::ResourceAndAddress</a></li>
+        
+          <li><a href="../WADL/ResourceContainer.html">WADL::ResourceContainer</a></li>
+        
+          <li><a href="../WADL/ResourceType.html">WADL::ResourceType</a></li>
+        
+          <li><a href="../WADL/Resources.html">WADL::Resources</a></li>
+        
+          <li><a href="../WADL/Response.html">WADL::Response</a></li>
+        
+          <li><a href="../WADL/ResponseFormat.html">WADL::ResponseFormat</a></li>
+        
+          <li><a href="../WADL/URIParts.html">WADL::URIParts</a></li>
+        
+          <li><a href="../WADL/Version.html">WADL::Version</a></li>
+        
+          <li><a href="../WADL/XMLRepresentation.html">WADL::XMLRepresentation</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">WADL::Address</h1>
+
+    <div id="description" class="description">
+      
+<p>The <a href="Address.html">Address</a> class keeps track of the user’s
+path through a resource graph. Values for <a href="../WADL.html">WADL</a>
+parameters may be specified at any time using the bind method. An <a
+href="Address.html">Address</a> cannot be turned into a URI and header set
+until all required parameters have been bound to values.</p>
+
+<p>An <a href="Address.html">Address</a> object is built up through calls to
+<a href="Resource.html#method-i-address">Resource#address</a></p>
+
+    </div><!-- description -->
+
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+      <!-- Attributes -->
+      <div id="attribute-method-details" class="method-section section">
+        <h3 class="section-header">Attributes</h3>
+
+        
+        <div id="header_params-attribute-method" class="method-detail">
+          <a name="header_params"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">header_params</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+        <div id="headers-attribute-method" class="method-detail">
+          <a name="headers"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">headers</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+        <div id="path_fragments-attribute-method" class="method-detail">
+          <a name="path_fragments"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">path_fragments</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+        <div id="path_params-attribute-method" class="method-detail">
+          <a name="path_params"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">path_params</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+        <div id="query_params-attribute-method" class="method-detail">
+          <a name="query_params"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">query_params</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+        <div id="query_vars-attribute-method" class="method-detail">
+          <a name="query_vars"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">query_vars</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+      </div><!-- attribute-method-details -->
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="embedded_param_names-method" class="method-detail ">
+          <a name="method-c-embedded_param_names"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">embedded_param_names</span><span
+              class="method-args">(fragment)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="embedded_param_names-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/address.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">embedded_param_names</span>(<span class="ruby-identifier">fragment</span>)
+  <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/\{(.+?)\}/</span>).<span class="ruby-identifier">flatten</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- embedded_param_names-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- embedded_param_names-method -->
+
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">(path_fragments = [], query_vars = [], headers = {}, path_params = {}, query_params = {}, header_params = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="new-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/address.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">path_fragments</span> = [], <span class="ruby-identifier">query_vars</span> = [], <span class="ruby-identifier">headers</span> = {},
+               <span class="ruby-identifier">path_params</span> = {}, <span class="ruby-identifier">query_params</span> = {}, <span class="ruby-identifier">header_params</span> = {})
+  <span class="ruby-ivar">@path_fragments</span>, <span class="ruby-ivar">@query_vars</span>, <span class="ruby-ivar">@headers</span> = <span class="ruby-identifier">path_fragments</span>, <span class="ruby-identifier">query_vars</span>, <span class="ruby-identifier">headers</span>
+  <span class="ruby-ivar">@path_params</span>, <span class="ruby-ivar">@query_params</span>, <span class="ruby-ivar">@header_params</span> = <span class="ruby-identifier">path_params</span>, <span class="ruby-identifier">query_params</span>, <span class="ruby-identifier">header_params</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="bind-21-method" class="method-detail ">
+          <a name="method-i-bind-21"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">bind!</span><span
+              class="method-args">(args = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Binds some or all of the unbound variables in this address to values.</p>
+            
+
+            
+            <div class="method-source-code" id="bind-21-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/address.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span> = {})
+  <span class="ruby-identifier">path_var_values</span>   = <span class="ruby-identifier">args</span>[<span class="ruby-value">:path</span>]    <span class="ruby-operator">||</span> {}
+  <span class="ruby-identifier">query_var_values</span>  = <span class="ruby-identifier">args</span>[<span class="ruby-value">:query</span>]   <span class="ruby-operator">||</span> {}
+  <span class="ruby-identifier">header_var_values</span> = <span class="ruby-identifier">args</span>[<span class="ruby-value">:headers</span>] <span class="ruby-operator">||</span> {}
+
+  <span class="ruby-comment"># Bind variables found in the path fragments.</span>
+  <span class="ruby-identifier">path_params_to_delete</span> = []
+
+  <span class="ruby-identifier">path_fragments</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fragment</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:to_str</span>)
+      <span class="ruby-comment"># This fragment is a string which might contain {} substitutions.</span>
+      <span class="ruby-comment"># Make any substitutions available to the provided path variables.</span>
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">embedded_param_names</span>(<span class="ruby-identifier">fragment</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">param_name</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">value</span> = <span class="ruby-identifier">path_var_values</span>[<span class="ruby-identifier">param_name</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">path_var_values</span>[<span class="ruby-identifier">param_name</span>.<span class="ruby-identifier">to_sym</span>]
+
+        <span class="ruby-identifier">value</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">param</span> = <span class="ruby-identifier">path_params</span>[<span class="ruby-identifier">param_name</span>]
+          <span class="ruby-identifier">path_params_to_delete</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">param</span>
+          <span class="ruby-identifier">param</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">value</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-constant">Param</span>.<span class="ruby-identifier">default</span>.<span class="ruby-identifier">format</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">param_name</span>)
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-node">&quot;{#{param_name}}&quot;</span>, <span class="ruby-identifier">value</span>)
+      }
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-comment"># This fragment is an array of Param objects (style 'matrix'</span>
+      <span class="ruby-comment"># or 'plain') which may be bound to strings. As substitutions</span>
+      <span class="ruby-comment"># happen, the array will become a mixed array of Param objects</span>
+      <span class="ruby-comment"># and strings.</span>
+      <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">param</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">param</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:name</span>)
+          <span class="ruby-identifier">name</span> = <span class="ruby-identifier">param</span>.<span class="ruby-identifier">name</span>
+
+          <span class="ruby-identifier">value</span> = <span class="ruby-identifier">path_var_values</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">path_var_values</span>[<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>]
+          <span class="ruby-identifier">value</span> = <span class="ruby-identifier">param</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">value</span>
+          <span class="ruby-identifier">fragment</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>
+
+          <span class="ruby-identifier">path_params_to_delete</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">param</span>
+        <span class="ruby-keyword">end</span>
+      }
+    <span class="ruby-keyword">end</span>
+  }
+
+  <span class="ruby-comment"># Delete any embedded path parameters that are now bound from</span>
+  <span class="ruby-comment"># our list of unbound parameters.</span>
+  <span class="ruby-identifier">path_params_to_delete</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">path_params</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">p</span>.<span class="ruby-identifier">name</span>) }
+
+  <span class="ruby-comment"># Bind query variable values to query parameters</span>
+  <span class="ruby-identifier">query_var_values</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">param</span> = <span class="ruby-identifier">query_params</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>)
+    <span class="ruby-identifier">query_vars</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">param</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">param</span>
+  }
+
+  <span class="ruby-comment"># Bind header variables to header parameters</span>
+  <span class="ruby-identifier">header_var_values</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">param</span> = <span class="ruby-identifier">header_params</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>)
+    <span class="ruby-identifier">headers</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">param</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">param</span>
+  }
+
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- bind-21-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- bind-21-method -->
+
+      
+        <div id="deep_copy-method" class="method-detail ">
+          <a name="method-i-deep_copy"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">deep_copy</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Perform a deep copy.</p>
+            
+
+            
+            <div class="method-source-code" id="deep_copy-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/address.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">deep_copy</span>
+  <span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>(
+    <span class="ruby-identifier">_deep_copy_array</span>(<span class="ruby-ivar">@path_fragments</span>),
+    <span class="ruby-identifier">_deep_copy_array</span>(<span class="ruby-ivar">@query_vars</span>),
+    <span class="ruby-identifier">_deep_copy_hash</span>(<span class="ruby-ivar">@headers</span>),
+    <span class="ruby-ivar">@path_params</span>.<span class="ruby-identifier">dup</span>,
+    <span class="ruby-ivar">@query_params</span>.<span class="ruby-identifier">dup</span>,
+    <span class="ruby-ivar">@header_params</span>.<span class="ruby-identifier">dup</span>
+  )
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- deep_copy-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- deep_copy-method -->
+
+      
+        <div id="inspect-method" class="method-detail method-alias">
+          <a name="method-i-inspect"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">inspect</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="Address.html#method-i-to_s">to_s</a>
+          </div>
+          
+        </div><!-- inspect-method -->
+
+      
+        <div id="to_s-method" class="method-detail ">
+          <a name="method-i-to_s"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">to_s</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="to_s-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/address.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
+  <span class="ruby-string">&quot;Address:\n&quot;</span>                                            <span class="ruby-operator">&lt;&lt;</span>
+  <span class="ruby-node">&quot; Path fragments: #{@path_fragments.inspect}\n&quot;</span>         <span class="ruby-operator">&lt;&lt;</span>
+  <span class="ruby-node">&quot; Query variables: #{@query_vars.inspect}\n&quot;</span>            <span class="ruby-operator">&lt;&lt;</span>
+  <span class="ruby-node">&quot; Header variables: #{@headers.inspect}\n&quot;</span>              <span class="ruby-operator">&lt;&lt;</span>
+  <span class="ruby-node">&quot; Unbound path parameters: #{@path_params.inspect}\n&quot;</span>   <span class="ruby-operator">&lt;&lt;</span>
+  <span class="ruby-node">&quot; Unbound query parameters: #{@query_params.inspect}\n&quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+  <span class="ruby-node">&quot; Unbound header parameters: #{@header_params.inspect}\n&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- to_s-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="Address.html#method-i-inspect">inspect</a>
+          </div>
+          
+
+          
+        </div><!-- to_s-method -->
+
+      
+        <div id="uri-method" class="method-detail ">
+          <a name="method-i-uri"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">uri</span><span
+              class="method-args">(args = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="uri-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/address.rb, line 142</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">uri</span>(<span class="ruby-identifier">args</span> = {})
+  <span class="ruby-identifier">obj</span>, <span class="ruby-identifier">uri</span> = <span class="ruby-identifier">deep_copy</span>.<span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span>), <span class="ruby-string">''</span>
+
+  <span class="ruby-comment"># Build the path</span>
+  <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">path_fragments</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fragment</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:to_str</span>)
+      <span class="ruby-identifier">embedded_param_names</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">embedded_param_names</span>(<span class="ruby-identifier">fragment</span>)
+
+      <span class="ruby-keyword">unless</span> <span class="ruby-identifier">embedded_param_names</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%{Missing a value for required path parameter &quot;#{embedded_param_names[0]}&quot;!}</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-keyword">unless</span> <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-identifier">uri</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'/'</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">uri</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\/\z/</span>
+        <span class="ruby-identifier">uri</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">fragment</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">fragment</span>.<span class="ruby-identifier">required?</span>
+      <span class="ruby-comment"># This is a required Param that was never bound to a value.</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%{Missing a value for required path parameter &quot;#{fragment.name}&quot;!}</span>
+    <span class="ruby-keyword">end</span>
+  }
+
+  <span class="ruby-comment"># Hunt for required unbound query parameters.</span>
+  <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">query_params</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">required?</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%{Missing a value for required query parameter &quot;#{value.name}&quot;!}</span>
+    <span class="ruby-keyword">end</span>
+  }
+
+  <span class="ruby-comment"># Hunt for required unbound header parameters.</span>
+  <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">header_params</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">required?</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%{Missing a value for required header parameter &quot;#{value.name}&quot;!}</span>
+    <span class="ruby-keyword">end</span>
+  }
+
+  <span class="ruby-constant">URIParts</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">query_vars</span>, <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">headers</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- uri-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- uri-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+      <div id="private-instance-method-details" class="method-section section">
+        <h3 class="section-header">Private Instance Methods</h3>
+
+      
+        <div id="_deep_copy_array-method" class="method-detail ">
+          <a name="method-i-_deep_copy_array"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">_deep_copy_array</span><span
+              class="method-args">(a)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="_deep_copy_array-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/address.rb, line 187</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">_deep_copy_array</span>(<span class="ruby-identifier">a</span>)
+  <span class="ruby-identifier">a</span>.<span class="ruby-identifier">inject</span>([]) { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">e</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">dup</span>) }
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- _deep_copy_array-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- _deep_copy_array-method -->
+
+      
+        <div id="_deep_copy_hash-method" class="method-detail ">
+          <a name="method-i-_deep_copy_hash"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">_deep_copy_hash</span><span
+              class="method-args">(h)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="_deep_copy_hash-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/address.rb, line 183</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">_deep_copy_hash</span>(<span class="ruby-identifier">h</span>)
+  <span class="ruby-identifier">h</span>.<span class="ruby-identifier">inject</span>({}) { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span>, (<span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span>)<span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">dup</span>; <span class="ruby-identifier">h</span> }
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- _deep_copy_hash-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- _deep_copy_hash-method -->
+
+      
+      </div><!-- private-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

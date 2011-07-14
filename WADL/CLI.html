@@ -1,0 +1,987 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: WADL::CLI</title>
+
+  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../lib/wadl/cli_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/wadl/cli.rb">lib/wadl/cli.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link">Util::CLI</p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-defaults">::defaults</a></li>
+          
+          <li><a href="#method-c-usage">::usage</a></li>
+          
+          <li><a href="#method-i-add_param">#add_param</a></li>
+          
+          <li><a href="#method-i-api">#api</a></li>
+          
+          <li><a href="#method-i-auth_resource">#auth_resource</a></li>
+          
+          <li><a href="#method-i-basic_auth_resource">#basic_auth_resource</a></li>
+          
+          <li><a href="#method-i-generic_opts">#generic_opts</a></li>
+          
+          <li><a href="#method-i-oauth_resource">#oauth_resource</a></li>
+          
+          <li><a href="#method-i-oauthorize">#oauthorize</a></li>
+          
+          <li><a href="#method-i-parse_arguments">#parse_arguments</a></li>
+          
+          <li><a href="#method-i-parse_options">#parse_options</a></li>
+          
+          <li><a href="#method-i-parse_query">#parse_query</a></li>
+          
+          <li><a href="#method-i-post_opts">#post_opts</a></li>
+          
+          <li><a href="#method-i-reset">#reset</a></li>
+          
+          <li><a href="#method-i-resource">#resource</a></li>
+          
+          <li><a href="#method-i-run">#run</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="../COPYING.html">COPYING</a></li>
+        
+          <li class="file"><a href="../ChangeLog.html">ChangeLog</a></li>
+        
+          <li class="file"><a href="../README.html">README</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../WADL.html">WADL</a></li>
+        
+          <li><a href="../WADL/Address.html">WADL::Address</a></li>
+        
+          <li><a href="../WADL/Application.html">WADL::Application</a></li>
+        
+          <li><a href="../WADL/CLI.html">WADL::CLI</a></li>
+        
+          <li><a href="../WADL/CheapSchema.html">WADL::CheapSchema</a></li>
+        
+          <li><a href="../WADL/Documentation.html">WADL::Documentation</a></li>
+        
+          <li><a href="../WADL/Fault.html">WADL::Fault</a></li>
+        
+          <li><a href="../WADL/FaultFormat.html">WADL::FaultFormat</a></li>
+        
+          <li><a href="../WADL/Faults.html">WADL::Faults</a></li>
+        
+          <li><a href="../WADL/HTTPMethod.html">WADL::HTTPMethod</a></li>
+        
+          <li><a href="../WADL/HasDocs.html">WADL::HasDocs</a></li>
+        
+          <li><a href="../WADL/Link.html">WADL::Link</a></li>
+        
+          <li><a href="../WADL/Option.html">WADL::Option</a></li>
+        
+          <li><a href="../WADL/Param.html">WADL::Param</a></li>
+        
+          <li><a href="../WADL/RepresentationContainer.html">WADL::RepresentationContainer</a></li>
+        
+          <li><a href="../WADL/RepresentationFormat.html">WADL::RepresentationFormat</a></li>
+        
+          <li><a href="../WADL/RequestFormat.html">WADL::RequestFormat</a></li>
+        
+          <li><a href="../WADL/Resource.html">WADL::Resource</a></li>
+        
+          <li><a href="../WADL/ResourceAndAddress.html">WADL::ResourceAndAddress</a></li>
+        
+          <li><a href="../WADL/ResourceContainer.html">WADL::ResourceContainer</a></li>
+        
+          <li><a href="../WADL/ResourceType.html">WADL::ResourceType</a></li>
+        
+          <li><a href="../WADL/Resources.html">WADL::Resources</a></li>
+        
+          <li><a href="../WADL/Response.html">WADL::Response</a></li>
+        
+          <li><a href="../WADL/ResponseFormat.html">WADL::ResponseFormat</a></li>
+        
+          <li><a href="../WADL/URIParts.html">WADL::URIParts</a></li>
+        
+          <li><a href="../WADL/Version.html">WADL::Version</a></li>
+        
+          <li><a href="../WADL/XMLRepresentation.html">WADL::XMLRepresentation</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">WADL::CLI</h1>
+
+    <div id="description" class="description">
+      
+    </div><!-- description -->
+
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+      <!-- Constants -->
+      <div id="constants-list" class="section">
+        <h3 class="section-header">Constants</h3>
+        <dl>
+        
+          <dt><a name="ARRAY_SUFFIX_RE">ARRAY_SUFFIX_RE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="HASH_SUFFIX_RE">HASH_SUFFIX_RE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="OPTION_RE">OPTION_RE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="QUERY_SEPARATOR_RE">QUERY_SEPARATOR_RE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="RESOURCE_PATH_RE">RESOURCE_PATH_RE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+        </dl>
+      </div>
+      
+
+      
+      <!-- Attributes -->
+      <div id="attribute-method-details" class="method-section section">
+        <h3 class="section-header">Attributes</h3>
+
+        
+        <div id="opts-attribute-method" class="method-detail">
+          <a name="opts"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">opts</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+        <div id="resource_path-attribute-method" class="method-detail">
+          <a name="resource_path"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">resource_path</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+      </div><!-- attribute-method-details -->
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="defaults-method" class="method-detail ">
+          <a name="method-c-defaults"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">defaults</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="defaults-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">defaults</span>
+  <span class="ruby-keyword">super</span>.<span class="ruby-identifier">merge</span>(
+    <span class="ruby-value">:config</span>            =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'config.yaml'</span>,
+    <span class="ruby-value">:method</span>            =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'GET'</span>,
+    <span class="ruby-value">:user</span>              =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">ENV</span>[<span class="ruby-string">'USER'</span>] <span class="ruby-operator">||</span> <span class="ruby-string">''</span>,
+    <span class="ruby-value">:request_token_url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'%s/oauth/request_token'</span>,
+    <span class="ruby-value">:access_token_url</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'%s/oauth/access_token'</span>,
+    <span class="ruby-value">:authorize_url</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'%s/oauth/authorize'</span>
+  )
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- defaults-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- defaults-method -->
+
+      
+        <div id="usage-method" class="method-detail ">
+          <a name="method-c-usage"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">usage</span><span
+              class="method-args">(*)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="usage-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">usage</span>(*)
+  <span class="ruby-node">&quot;#{super} &lt;resource-path&gt; [-- arguments]&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- usage-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- usage-method -->
+
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="api-method" class="method-detail ">
+          <a name="method-i-api"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">api</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="api-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 94</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">api</span>
+  <span class="ruby-ivar">@api</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">WADL</span><span class="ruby-operator">::</span><span class="ruby-constant">Application</span>.<span class="ruby-identifier">from_wadl</span>(<span class="ruby-identifier">open</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:wadl</span>]))
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- api-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- api-method -->
+
+      
+        <div id="auth_resource-method" class="method-detail ">
+          <a name="method-i-auth_resource"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">auth_resource</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="auth_resource-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">auth_resource</span>
+  <span class="ruby-ivar">@auth_resource</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:skip_auth</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">resource</span>            <span class="ruby-operator">:</span>
+                     <span class="ruby-identifier">options</span>[<span class="ruby-value">:oauth</span>]     <span class="ruby-operator">?</span> <span class="ruby-identifier">oauth_resource</span>      <span class="ruby-operator">:</span>
+                     <span class="ruby-identifier">options</span>[<span class="ruby-value">:basic</span>]     <span class="ruby-operator">?</span> <span class="ruby-identifier">basic_auth_resource</span> <span class="ruby-operator">:</span>
+                                           <span class="ruby-identifier">resource</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- auth_resource-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- auth_resource-method -->
+
+      
+        <div id="reset-method" class="method-detail ">
+          <a name="method-i-reset"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">reset</span><span
+              class="method-args">(stdin = STDIN, stdout = STDOUT, stderr = STDERR)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="reset-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reset</span>(<span class="ruby-identifier">stdin</span> = <span class="ruby-constant">STDIN</span>, <span class="ruby-identifier">stdout</span> = <span class="ruby-constant">STDOUT</span>, <span class="ruby-identifier">stderr</span> = <span class="ruby-constant">STDERR</span>)
+  <span class="ruby-keyword">super</span>
+  <span class="ruby-ivar">@api</span> = <span class="ruby-ivar">@resource</span> = <span class="ruby-ivar">@auth_resource</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- reset-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- reset-method -->
+
+      
+        <div id="resource-method" class="method-detail ">
+          <a name="method-i-resource"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">resource</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="resource-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 98</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">resource</span>
+  <span class="ruby-ivar">@resource</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">path</span> = [<span class="ruby-identifier">options</span>[<span class="ruby-value">:api_base</span>], *<span class="ruby-identifier">resource_path</span>].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">'/'</span>).<span class="ruby-identifier">split</span>(<span class="ruby-constant">RESOURCE_PATH_RE</span>)
+    <span class="ruby-identifier">path</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-identifier">api</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span>, <span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:find_resource_by_path</span>, <span class="ruby-identifier">n</span>) } <span class="ruby-keyword">or</span> <span class="ruby-identifier">quit</span> <span class="ruby-node">&quot;Resource not found: #{path.join('/')}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- resource-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- resource-method -->
+
+      
+        <div id="run-method" class="method-detail ">
+          <a name="method-i-run"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">run</span><span
+              class="method-args">(arguments)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="run-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">run</span>(<span class="ruby-identifier">arguments</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:dump_config</span>)
+    <span class="ruby-identifier">stdout</span>.<span class="ruby-identifier">puts</span>(<span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">options</span>))
+    <span class="ruby-identifier">exit</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">parse_arguments</span>(<span class="ruby-identifier">arguments</span>)
+  <span class="ruby-identifier">quit</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">resource_path</span>.<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-identifier">quit</span> <span class="ruby-string">&quot;WADL location is required! (Specify with '--wadl' or see '--help')&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:wadl</span>]
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:wadl</span>] <span class="ruby-operator">=</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:base_url</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:base_url</span>]
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">debug</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:debug</span>]
+    <span class="ruby-identifier">debug</span> = <span class="ruby-value">1</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">debug</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Integer</span>)
+
+    <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">api</span>.<span class="ruby-identifier">paths</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">debug</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">api</span>       <span class="ruby-keyword">if</span> <span class="ruby-identifier">debug</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">2</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">response</span> = <span class="ruby-identifier">auth_resource</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:method</span>].<span class="ruby-identifier">downcase</span>, <span class="ruby-value">:query</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>)
+
+  <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">' '</span>)
+  <span class="ruby-identifier">stdout</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">representation</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\A[45]/</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- run-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- run-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+      <div id="private-instance-method-details" class="method-section section">
+        <h3 class="section-header">Private Instance Methods</h3>
+
+      
+        <div id="add_param-method" class="method-detail ">
+          <a name="method-i-add_param"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">add_param</span><span
+              class="method-args">(params, key, value)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="add_param-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 159</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_param</span>(<span class="ruby-identifier">params</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">key</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">HASH_SUFFIX_RE</span>
+      <span class="ruby-identifier">sub</span> = <span class="ruby-node">$1</span>
+
+      <span class="ruby-keyword">if</span> (<span class="ruby-identifier">param</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">key</span>]).<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+        <span class="ruby-identifier">param</span>[<span class="ruby-identifier">sub</span>] = <span class="ruby-identifier">value</span>
+        <span class="ruby-keyword">return</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">value</span> = { <span class="ruby-identifier">sub</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">value</span> }
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">ARRAY_SUFFIX_RE</span>
+      <span class="ruby-keyword">if</span> (<span class="ruby-identifier">param</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">key</span>]).<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
+        <span class="ruby-identifier">param</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">value</span>
+        <span class="ruby-keyword">return</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">value</span> = [<span class="ruby-identifier">value</span>]
+      <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">params</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- add_param-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- add_param-method -->
+
+      
+        <div id="basic_auth_resource-method" class="method-detail ">
+          <a name="method-i-basic_auth_resource"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">basic_auth_resource</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="basic_auth_resource-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 182</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">basic_auth_resource</span>
+  <span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-value">:user</span>, <span class="ruby-value">:password</span>)
+  <span class="ruby-identifier">pass</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">ask</span>(<span class="ruby-node">&quot;Password for user #{user}: &quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">q</span><span class="ruby-operator">|</span> <span class="ruby-identifier">q</span>.<span class="ruby-identifier">echo</span> = <span class="ruby-keyword">false</span> }
+
+  <span class="ruby-identifier">quit</span> <span class="ruby-string">'USER and PASSWORD required'</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">pass</span>
+
+  <span class="ruby-identifier">resource</span>.<span class="ruby-identifier">with_basic_auth</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- basic_auth_resource-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- basic_auth_resource-method -->
+
+      
+        <div id="generic_opts-method" class="method-detail ">
+          <a name="method-i-generic_opts"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">generic_opts</span><span
+              class="method-args">(opts)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="generic_opts-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 333</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">generic_opts</span>(<span class="ruby-identifier">opts</span>)
+  <span class="ruby-keyword">super</span>
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-d'</span>, <span class="ruby-string">'--debug [LEVEL]'</span>, <span class="ruby-constant">Integer</span>, <span class="ruby-string">'Enable debugging output'</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">level</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:debug</span>] = <span class="ruby-identifier">level</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">true</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-D'</span>, <span class="ruby-string">'--dump-config'</span>, <span class="ruby-string">'Dump config and exit'</span>) {
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:dump_config</span>] = <span class="ruby-keyword">true</span>
+  }
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- generic_opts-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- generic_opts-method -->
+
+      
+        <div id="oauth_resource-method" class="method-detail ">
+          <a name="method-i-oauth_resource"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">oauth_resource</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="oauth_resource-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 191</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">oauth_resource</span>
+  <span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-value">:consumer_key</span>, <span class="ruby-value">:consumer_secret</span>)
+  <span class="ruby-identifier">access_token</span>, <span class="ruby-identifier">token_secret</span>    = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-value">:token</span>, <span class="ruby-value">:secret</span>)
+
+  <span class="ruby-identifier">quit</span> <span class="ruby-string">&quot;CONSUMER KEY and SECRET required&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">consumer_key</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">consumer_secret</span>
+
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">access_token</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">token_secret</span>
+    <span class="ruby-identifier">access_token</span>, <span class="ruby-identifier">token_secret</span> = <span class="ruby-identifier">oauthorize</span>(<span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span>)
+    <span class="ruby-identifier">quit</span> <span class="ruby-string">'Authorization failed!?'</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">access_token</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">token_secret</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">resource</span>.<span class="ruby-identifier">with_oauth</span>(<span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span>, <span class="ruby-identifier">access_token</span>, <span class="ruby-identifier">token_secret</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- oauth_resource-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- oauth_resource-method -->
+
+      
+        <div id="oauthorize-method" class="method-detail ">
+          <a name="method-i-oauthorize"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">oauthorize</span><span
+              class="method-args">(consumer_key, consumer_secret)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="oauthorize-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 205</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">oauthorize</span>(<span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span>)
+  <span class="ruby-identifier">strio</span>, <span class="ruby-identifier">stdout</span> = <span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">stdout</span>
+
+  (<span class="ruby-keyword">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">strio</span>; <span class="ruby-keyword">self</span>; <span class="ruby-keyword">end</span>).<span class="ruby-identifier">send</span>(<span class="ruby-value">:define_method</span>, <span class="ruby-value">:puts</span>) { <span class="ruby-operator">|</span>*<span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">stdout</span>.<span class="ruby-identifier">puts</span>(*<span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword">super</span>
+  }
+
+  <span class="ruby-identifier">base_url</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:base_url</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:wadl</span>])
+
+  <span class="ruby-constant">OAuth</span><span class="ruby-operator">::</span><span class="ruby-constant">CLI</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">strio</span>, <span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stderr</span>, [
+    <span class="ruby-string">'--consumer-key'</span>,      <span class="ruby-identifier">consumer_key</span>,
+    <span class="ruby-string">'--consumer-secret'</span>,   <span class="ruby-identifier">consumer_secret</span>,
+    <span class="ruby-string">'--request-token-url'</span>, <span class="ruby-identifier">options</span>[<span class="ruby-value">:request_token_url</span>] <span class="ruby-operator">%</span> <span class="ruby-identifier">base_url</span>,
+    <span class="ruby-string">'--access-token-url'</span>,  <span class="ruby-identifier">options</span>[<span class="ruby-value">:access_token_url</span>]  <span class="ruby-operator">%</span> <span class="ruby-identifier">base_url</span>,
+    <span class="ruby-string">'--authorize-url'</span>,     <span class="ruby-identifier">options</span>[<span class="ruby-value">:authorize_url</span>]     <span class="ruby-operator">%</span> <span class="ruby-identifier">base_url</span>,
+    <span class="ruby-string">'--callback-url'</span>,      <span class="ruby-string">'oob'</span>,
+    <span class="ruby-string">'authorize'</span>
+  ])
+
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">strio</span>.<span class="ruby-identifier">string</span>
+  <span class="ruby-identifier">access_token</span> = <span class="ruby-identifier">result</span>[<span class="ruby-regexp">/^\s+oauth_token:\s+(.*)$/</span>, <span class="ruby-value">1</span>]
+  <span class="ruby-identifier">token_secret</span> = <span class="ruby-identifier">result</span>[<span class="ruby-regexp">/^\s+oauth_token_secret:\s+(.*)$/</span>, <span class="ruby-value">1</span>]
+
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">access_token</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">token_secret</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">writable?</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:config</span>])
+    <span class="ruby-identifier">config</span>[<span class="ruby-value">:token</span>]  = <span class="ruby-identifier">access_token</span>
+    <span class="ruby-identifier">config</span>[<span class="ruby-value">:secret</span>] = <span class="ruby-identifier">token_secret</span>
+
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:config</span>], <span class="ruby-string">'w'</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">config</span>, <span class="ruby-identifier">f</span>) }
+  <span class="ruby-keyword">end</span>
+
+  [<span class="ruby-identifier">access_token</span>, <span class="ruby-identifier">token_secret</span>]
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- oauthorize-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- oauthorize-method -->
+
+      
+        <div id="parse_arguments-method" class="method-detail ">
+          <a name="method-i-parse_arguments"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">parse_arguments</span><span
+              class="method-args">(arguments)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="parse_arguments-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 124</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_arguments</span>(<span class="ruby-identifier">arguments</span>)
+  <span class="ruby-ivar">@resource_path</span>, <span class="ruby-ivar">@opts</span>, <span class="ruby-identifier">skip_next</span> = [], {}, <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@opts</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:query</span>]) <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:query</span>]
+
+  <span class="ruby-identifier">arguments</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">skip_next</span>
+      <span class="ruby-identifier">skip_next</span> = <span class="ruby-keyword">false</span>
+      <span class="ruby-keyword">next</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">arg</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">OPTION_RE</span>
+      <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">next_arg</span> = <span class="ruby-node">$1</span>, <span class="ruby-node">$2</span>, <span class="ruby-identifier">arguments</span>[<span class="ruby-identifier">index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>]
+
+      <span class="ruby-identifier">add_param</span>(<span class="ruby-identifier">opts</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">next_arg</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">OPTION_RE</span>
+        <span class="ruby-string">'1'</span>  <span class="ruby-comment"># &quot;true&quot;</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">skip_next</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-identifier">next_arg</span>
+      <span class="ruby-keyword">end</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">resource_path</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">arg</span>
+    <span class="ruby-keyword">end</span>
+  }
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- parse_arguments-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- parse_arguments-method -->
+
+      
+        <div id="parse_options-method" class="method-detail ">
+          <a name="method-i-parse_options"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">parse_options</span><span
+              class="method-args">(arguments)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="parse_options-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 119</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_options</span>(<span class="ruby-identifier">arguments</span>)
+  <span class="ruby-identifier">quit</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">arguments</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword">super</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- parse_options-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- parse_options-method -->
+
+      
+        <div id="parse_query-method" class="method-detail ">
+          <a name="method-i-parse_query"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">parse_query</span><span
+              class="method-args">(query)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="parse_query-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 149</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_query</span>(<span class="ruby-identifier">query</span>)
+  <span class="ruby-identifier">params</span> = {}
+
+  <span class="ruby-identifier">query</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">QUERY_SEPARATOR_RE</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">pair</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">add_param</span>(<span class="ruby-identifier">params</span>, *<span class="ruby-identifier">pair</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'='</span>, <span class="ruby-value">2</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-constant">CGI</span>.<span class="ruby-identifier">unescape</span>(<span class="ruby-identifier">v</span>) })
+  }
+
+  <span class="ruby-identifier">params</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- parse_query-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- parse_query-method -->
+
+      
+        <div id="post_opts-method" class="method-detail ">
+          <a name="method-i-post_opts"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">post_opts</span><span
+              class="method-args">(opts)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="post_opts-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 345</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">post_opts</span>(<span class="ruby-identifier">opts</span>)
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">''</span>
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-node">&quot;PATH may be separated by any of #{RESOURCE_PATH_RE.source}.&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- post_opts-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- post_opts-method -->
+
+      
+      </div><!-- private-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

@@ -1,1 +1,30 @@
-Wed, 11 Aug 2010 16:13:24 +0200
+Thu, 14 Jul 2011 18:27:30 +0200
+lib/wadl/documentation.rb	Fri, 29 Apr 2011 14:10:08 +0200
+lib/wadl/representation_format.rb	Fri, 29 Apr 2011 14:10:03 +0200
+lib/wadl/has_docs.rb	Fri, 29 Apr 2011 14:10:54 +0200
+lib/wadl/option.rb	Fri, 29 Apr 2011 14:10:47 +0200
+lib/wadl/xml_representation.rb	Fri, 29 Apr 2011 14:10:20 +0200
+lib/wadl/resources.rb	Fri, 29 Apr 2011 14:11:06 +0200
+lib/wadl/application.rb	Fri, 29 Apr 2011 14:10:27 +0200
+lib/wadl/fault.rb	Fri, 29 Apr 2011 14:10:38 +0200
+lib/wadl/param.rb	Fri, 29 Apr 2011 14:10:11 +0200
+COPYING	Fri, 29 Apr 2011 14:07:41 +0200
+lib/wadl/fault_format.rb	Fri, 29 Apr 2011 14:10:57 +0200
+lib/wadl/version.rb	Thu, 14 Jul 2011 18:25:28 +0200
+README	Thu, 14 Jul 2011 18:25:20 +0200
+lib/wadl/request_format.rb	Fri, 29 Apr 2011 14:10:34 +0200
+lib/wadl/uri_parts.rb	Fri, 29 Apr 2011 14:10:23 +0200
+lib/wadl/representation_container.rb	Fri, 29 Apr 2011 14:10:06 +0200
+lib/wadl.rb	Fri, 29 Apr 2011 14:09:33 +0200
+lib/wadl/address.rb	Fri, 29 Apr 2011 14:10:52 +0200
+lib/wadl/http_method.rb	Fri, 29 Apr 2011 14:10:31 +0200
+lib/wadl/resource_container.rb	Fri, 29 Apr 2011 14:10:00 +0200
+lib/wadl/cheap_schema.rb	Fri, 29 Apr 2011 14:11:03 +0200
+lib/wadl/resource_type.rb	Fri, 29 Apr 2011 14:10:45 +0200
+lib/wadl/link.rb	Fri, 29 Apr 2011 14:10:41 +0200
+lib/wadl/cli.rb	Thu, 14 Jul 2011 17:31:07 +0200
+lib/wadl/resource.rb	Tue, 07 Jun 2011 12:23:26 +0200
+lib/wadl/resource_and_address.rb	Fri, 29 Apr 2011 14:09:52 +0200
+ChangeLog	Fri, 07 May 2010 10:40:08 +0200
+lib/wadl/response_format.rb	Fri, 29 Apr 2011 14:11:00 +0200
+lib/wadl/response.rb	Fri, 29 Apr 2011 14:09:56 +0200
