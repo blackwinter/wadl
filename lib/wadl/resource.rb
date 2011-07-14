@@ -138,19 +138,25 @@ module WADL
     def find_method_by_id(id)
       id = id.to_s
       each_http_method { |m| return m if m.dereference.id == id }
+      nil
     end
 
     def find_method_by_http_method(action)
       action = action.to_s.downcase
       each_http_method { |m| return m if m.dereference.name.downcase == action }
+      nil
     end
 
     # Methods for reading or writing this resource
-    def self.define_http_methods(klass = self, methods = %w[get post put delete])
+    def self.define_http_methods(klass = self, methods = %w[head get post put delete])
       methods.each { |method|
         klass.class_eval <<-EOT, __FILE__, __LINE__ + 1
           def #{method}(*args, &block)
-            find_method_by_http_method(:#{method}).call(self, *args, &block)
+            if method = find_method_by_http_method(:#{method})
+              method.call(self, *args, &block)
+            else
+              raise ArgumentError, 'Method not allowed ("#{method}")'
+            end
           end
         EOT
       }
