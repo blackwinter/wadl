@@ -131,10 +131,7 @@ module WADL
       }
 
       # Bind header variables to header parameters
-      header_var_values.each { |name, value|
-        param = header_params.delete(name.to_s)
-        headers[name] = param % value if param
-      }
+      headers.merge!(header_var_values)
 
       self
     end
