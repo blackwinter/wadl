@@ -64,7 +64,7 @@ module WADL
 
     end
 
-    attr_reader :resource_path, :opts
+    attr_reader :resource_path, :query
 
     def run(arguments)
       if options.delete(:dump_config)
@@ -85,7 +85,7 @@ module WADL
         stderr.puts api       if debug >= 2
       end
 
-      response = auth_resource.send(options[:method].downcase, :query => opts)
+      response = auth_resource.send(options[:method].downcase, :query => query)
 
       stderr.puts response.code.join(' ')
       stdout.puts response.representation unless response.code.first =~ /\A[45]/
@@ -122,8 +122,8 @@ module WADL
     end
 
     def parse_arguments(arguments)
-      @resource_path, @opts, skip_next = [], {}, false
-      @opts.update(options[:query]) if options[:query]
+      @resource_path, query, skip_next = [], {}, false
+      query.update(options[:query]) if options[:query]
 
       arguments.each_with_index { |arg, index|
         if skip_next
@@ -134,7 +134,7 @@ module WADL
         if arg =~ OPTION_RE
           key, value, next_arg = $1, $2, arguments[index + 1]
 
-          add_param(opts, key, value || if next_arg =~ OPTION_RE
+          add_param(query, key, value || if next_arg =~ OPTION_RE
             '1'  # "true"
           else
             skip_next = true
@@ -146,10 +146,10 @@ module WADL
       }
     end
 
-    def parse_query(query)
+    def parse_query(query_string)
       params = {}
 
-      query.split(QUERY_SEPARATOR_RE).each { |pair|
+      query_string.split(QUERY_SEPARATOR_RE).each { |pair|
         add_param(params, *pair.split('=', 2).map { |v| CGI.unescape(v) })
       }
 
