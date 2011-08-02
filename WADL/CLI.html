@@ -83,6 +83,8 @@
           
           <li><a href="#method-i-oauthorize">#oauthorize</a></li>
           
+          <li><a href="#method-i-opts">#opts</a></li>
+          
           <li><a href="#method-i-parse_arguments">#parse_arguments</a></li>
           
           <li><a href="#method-i-parse_options">#parse_options</a></li>
@@ -206,6 +208,8 @@
     </div><!-- description -->
 
     
+    
+    
     <div id="5Buntitled-5D" class="documentation-section">
       
 
@@ -252,11 +256,11 @@
         <h3 class="section-header">Attributes</h3>
 
         
-        <div id="opts-attribute-method" class="method-detail">
-          <a name="opts"></a>
+        <div id="query-attribute-method" class="method-detail">
+          <a name="query"></a>
           
           <div class="method-heading attribute-method-heading">
-            <span class="method-name">opts</span><span
+            <span class="method-name">query</span><span
               class="attribute-access-type">[R]</span>
           </div>
 
@@ -548,7 +552,7 @@
     <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">api</span>       <span class="ruby-keyword">if</span> <span class="ruby-identifier">debug</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">2</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-identifier">response</span> = <span class="ruby-identifier">auth_resource</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:method</span>].<span class="ruby-identifier">downcase</span>, <span class="ruby-value">:query</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-identifier">auth_resource</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:method</span>].<span class="ruby-identifier">downcase</span>, <span class="ruby-value">:query</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">query</span>)
 
   <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">' '</span>)
   <span class="ruby-identifier">stdout</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">representation</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\A[45]/</span>
@@ -808,6 +812,127 @@
         </div><!-- oauthorize-method -->
 
       
+        <div id="opts-method" class="method-detail ">
+          <a name="method-i-opts"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">opts</span><span
+              class="method-args">(opts)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="opts-source">
+<pre>
+<span class="ruby-comment"># File lib/wadl/cli.rb, line 241</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">opts</span>(<span class="ruby-identifier">opts</span>)
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-c'</span>, <span class="ruby-string">'--config YAML'</span>, <span class="ruby-node">&quot;Config file [Default: #{defaults[:config]}#{' (currently not present)' unless File.readable?(defaults[:config])}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">config</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:config</span>] = <span class="ruby-identifier">config</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">''</span>
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-w'</span>, <span class="ruby-string">'--wadl FILE_OR_URL'</span>, <span class="ruby-string">&quot;Path or URL to WADL file [Required]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">wadl</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:wadl</span>] = <span class="ruby-identifier">wadl</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-m'</span>, <span class="ruby-string">'--method METHOD'</span>, <span class="ruby-node">&quot;Request method [Default: #{defaults[:method]}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">method</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:method</span>] = <span class="ruby-identifier">method</span>.<span class="ruby-identifier">upcase</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-a'</span>, <span class="ruby-string">'--api-base PATH'</span>, <span class="ruby-string">&quot;Base path for API&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">api_base</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:api_base</span>] = <span class="ruby-identifier">api_base</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-q'</span>, <span class="ruby-string">'--query QUERY'</span>, <span class="ruby-string">&quot;Query string to pass to request&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">query</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:query</span>] = <span class="ruby-identifier">parse_query</span>(<span class="ruby-identifier">query</span>)
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">''</span>
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'--skip-auth'</span>, <span class="ruby-string">&quot;Skip any authentication&quot;</span>) {
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:skip_auth</span>] = <span class="ruby-keyword">true</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">''</span>
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">'Basic Auth options:'</span>
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-B'</span>, <span class="ruby-string">'--basic'</span>, <span class="ruby-string">&quot;Perform Basic Auth&quot;</span>) {
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:basic</span>] = <span class="ruby-keyword">true</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">''</span>
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'--user USER'</span>, <span class="ruby-string">&quot;User name&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:user</span>] = <span class="ruby-identifier">user</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'--password PASSWORD'</span>, <span class="ruby-string">&quot;Password for user&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">password</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:password</span>] = <span class="ruby-identifier">password</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">''</span>
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">'OAuth options:'</span>
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-O'</span>, <span class="ruby-string">'--oauth'</span>, <span class="ruby-string">&quot;Perform OAuth&quot;</span>) {
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:oauth</span>] = <span class="ruby-keyword">true</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">''</span>
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'--consumer-key KEY'</span>, <span class="ruby-string">&quot;Consumer key to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">consumer_key</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:consumer_key</span>] = <span class="ruby-identifier">consumer_key</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'--consumer-secret SECRET'</span>, <span class="ruby-string">&quot;Consumer secret to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">consumer_secret</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:consumer_secret</span>] = <span class="ruby-identifier">consumer_secret</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">''</span>
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'--token TOKEN'</span>, <span class="ruby-string">&quot;Access token to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">token</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:token</span>] = <span class="ruby-identifier">token</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'--secret SECRET'</span>, <span class="ruby-string">&quot;Token secret to use&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">secret</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:secret</span>] = <span class="ruby-identifier">secret</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-string">''</span>
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-b'</span>, <span class="ruby-string">'--base-url URL'</span>, <span class="ruby-string">&quot;Base URL [Default: \&quot;dirname\&quot; of WADL]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">base_url</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:base_url</span>] = <span class="ruby-identifier">base_url</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'--request-token-url URL'</span>, <span class="ruby-node">&quot;Request token URL [Default: #{defaults[:request_token_url] % 'BASE_URL'}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">request_token_url</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:request_token_url</span>] = <span class="ruby-identifier">request_token_url</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'--access-token-url URL'</span>, <span class="ruby-node">&quot;Access token URL [Default: #{defaults[:access_token_url] % 'BASE_URL'}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">access_token_url</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:access_token_url</span>] = <span class="ruby-identifier">access_token_url</span>
+  }
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'--authorize-url URL'</span>, <span class="ruby-node">&quot;Authorize URL [Default: #{defaults[:authorize_url] % 'BASE_URL'}]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">authorize_url</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:authorize_url</span>] = <span class="ruby-identifier">authorize_url</span>
+  }
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- opts-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- opts-method -->
+
+      
         <div id="parse_arguments-method" class="method-detail ">
           <a name="method-i-parse_arguments"></a>
 
@@ -829,8 +954,8 @@
 <pre>
 <span class="ruby-comment"># File lib/wadl/cli.rb, line 124</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_arguments</span>(<span class="ruby-identifier">arguments</span>)
-  <span class="ruby-ivar">@resource_path</span>, <span class="ruby-ivar">@opts</span>, <span class="ruby-identifier">skip_next</span> = [], {}, <span class="ruby-keyword">false</span>
-  <span class="ruby-ivar">@opts</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:query</span>]) <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:query</span>]
+  <span class="ruby-ivar">@resource_path</span>, <span class="ruby-identifier">query</span>, <span class="ruby-identifier">skip_next</span> = [], {}, <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">query</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:query</span>]) <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:query</span>]
 
   <span class="ruby-identifier">arguments</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">skip_next</span>
@@ -841,7 +966,7 @@
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">arg</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">OPTION_RE</span>
       <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">next_arg</span> = <span class="ruby-node">$1</span>, <span class="ruby-node">$2</span>, <span class="ruby-identifier">arguments</span>[<span class="ruby-identifier">index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>]
 
-      <span class="ruby-identifier">add_param</span>(<span class="ruby-identifier">opts</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">next_arg</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">OPTION_RE</span>
+      <span class="ruby-identifier">add_param</span>(<span class="ruby-identifier">query</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">next_arg</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">OPTION_RE</span>
         <span class="ruby-string">'1'</span>  <span class="ruby-comment"># &quot;true&quot;</span>
       <span class="ruby-keyword">else</span>
         <span class="ruby-identifier">skip_next</span> = <span class="ruby-keyword">true</span>
@@ -902,7 +1027,7 @@
           
           <div class="method-heading">
             <span class="method-name">parse_query</span><span
-              class="method-args">(query)</span>
+              class="method-args">(query_string)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
           
@@ -916,10 +1041,10 @@
             <div class="method-source-code" id="parse_query-source">
 <pre>
 <span class="ruby-comment"># File lib/wadl/cli.rb, line 149</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_query</span>(<span class="ruby-identifier">query</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_query</span>(<span class="ruby-identifier">query_string</span>)
   <span class="ruby-identifier">params</span> = {}
 
-  <span class="ruby-identifier">query</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">QUERY_SEPARATOR_RE</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">pair</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">query_string</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">QUERY_SEPARATOR_RE</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">pair</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">add_param</span>(<span class="ruby-identifier">params</span>, *<span class="ruby-identifier">pair</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'='</span>, <span class="ruby-value">2</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-constant">CGI</span>.<span class="ruby-identifier">unescape</span>(<span class="ruby-identifier">v</span>) })
   }
 
