@@ -122,7 +122,7 @@ module WADL
     end
 
     def parse_arguments(arguments)
-      @resource_path, query, skip_next = [], {}, false
+      @resource_path, @query, skip_next = [], {}, false
       query.update(options[:query]) if options[:query]
 
       arguments.each_with_index { |arg, index|
