@@ -954,7 +954,7 @@
 <pre>
 <span class="ruby-comment"># File lib/wadl/cli.rb, line 124</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_arguments</span>(<span class="ruby-identifier">arguments</span>)
-  <span class="ruby-ivar">@resource_path</span>, <span class="ruby-identifier">query</span>, <span class="ruby-identifier">skip_next</span> = [], {}, <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@resource_path</span>, <span class="ruby-ivar">@query</span>, <span class="ruby-identifier">skip_next</span> = [], {}, <span class="ruby-keyword">false</span>
   <span class="ruby-identifier">query</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:query</span>]) <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:query</span>]
 
   <span class="ruby-identifier">arguments</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
