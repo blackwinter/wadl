@@ -3,7 +3,7 @@
 #                                                                             #
 # A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
-# Copyright (C) 2010-2011 Jens Wille                                          #
+# Copyright (C) 2010-2012 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@uni-koeln.de>                                    #
@@ -134,12 +134,14 @@ module WADL
         if arg =~ OPTION_RE
           key, value, next_arg = $1, $2, arguments[index + 1]
 
-          add_param(query, key, value || if next_arg =~ OPTION_RE
+          value ||= if next_arg.nil? || next_arg =~ OPTION_RE
             '1'  # "true"
           else
             skip_next = true
             next_arg
-          end)
+          end
+
+          add_param(query, key, value)
         else
           resource_path << arg
         end
