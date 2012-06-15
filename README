@@ -45,8 +45,8 @@ The 20060802 WADL standard is almost entirely supported. However,
 == LINKS
 
 <b></b>
-Homepage::      http://www.crummy.com/software/wadl.rb/
-WADL::          http://wadl.dev.java.net/
+Homepage::      http://www.crummy.com/software/wadl.rb
+WADL::          http://wadl.java.net
 Documentation:: http://rdoc.info/projects/blackwinter/wadl
 Source code::   http://github.com/blackwinter/wadl
 
