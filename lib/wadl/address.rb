@@ -87,7 +87,7 @@ module WADL
 
       # This patch solves and issue regarding basic_auth and the use of uri template params
       #  This way, path params are never evaluated if they are not set (like in with_basic_auth/2) 
-      if(path_var_values.length > 0)  path_fragments.each { |fragment|
+      if(path_var_values.length > 0) then path_fragments.each { |fragment|
         if fragment.respond_to?(:to_str)
           # This fragment is a string which might contain {} substitutions.
           # Make any substitutions available to the provided path variables.
