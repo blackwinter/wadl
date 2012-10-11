@@ -251,6 +251,42 @@ class PathParameters < WADLTest
     assert_equal(lights.uri(:path => { :light3 => true    }), off_uri)
   end
 
+  def test_template_params_with_basic_auth
+    service = wadl(<<-EOT).resource(:service_id_json)
+<resources base="http://www.example.com/">
+  <resource path="service/{id}.json" id="service_id_json">
+    <param name="Authorization" style="header"/>
+    <param name="id" style="template" type="plain"/>
+    <method name="DELETE" id="DELETE-service_id_json">
+      <request></request>
+      <response></response>
+    </method>
+    <method name="PUT" id="PUT-service_id_json">
+      <request>
+        <param name="body" style="header" type="application/json"/>
+      </request>
+      <response></response>
+    </method>
+    <method name="GET" id="GET-service_id_json">
+      <request></request>
+      <response>
+        <representation type="application/json"/>
+      </response>
+    </method>
+  </resource>
+</resources>
+    EOT
+
+    arg = { :path => { :id => 42 } }
+    uri = 'http://www.example.com/service/42.json'
+
+    assert_equal(uri, u1 = service.bind(arg).uri)
+    assert_equal(nil, u1.headers['Authorization'])
+
+    assert_equal(uri, u2 = service.with_basic_auth('u', 'p').bind(arg).uri)
+    assert_equal("Basic dTpw\n", u2.headers['Authorization'])
+  end
+
 end
 
 class RequestFormatTests < WADLTest

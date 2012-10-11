@@ -42,6 +42,7 @@ module WADL
 
     def initialize(*args)
       super
+      @auth = {}
     end
 
     def dereference_with_context(child)
@@ -51,13 +52,16 @@ module WADL
     # Returns a ResourceAndAddress object bound to this resource
     # and the given query variables.
     def bind(args = {})
+      args[:headers] = @auth.merge(args[:headers] || {})
       ResourceAndAddress.new(self).bind!(args)
     end
 
     # Sets basic auth parameters
     def with_basic_auth(user, pass, header = 'Authorization')
-      bind(:headers => { header => "Basic #{["#{user}:#{pass}"].pack('m')}" })
+      auth(header, "Basic #{["#{user}:#{pass}"].pack('m')}")
     end
+
+    alias_method :basic_auth, :with_basic_auth
 
     # Sets OAuth parameters
     #
@@ -67,8 +71,15 @@ module WADL
     #  :access_token
     #  :token_secret
     def with_oauth(*args)
-      header, prefix = HTTPMethod::OAUTH_HEADER, HTTPMethod::OAUTH_PREFIX
-      bind(:headers => { header => "#{prefix}#{args.to_yaml}" })
+      auth(HTTPMethod::OAUTH_HEADER,
+        "#{HTTPMethod::OAUTH_PREFIX}#{args.to_yaml}")
+    end
+
+    alias_method :oauth, :with_oauth
+
+    def auth(header, value)
+      @auth[header] = value
+      self
     end
 
     def uri(args = {}, working_address = nil)
