@@ -89,17 +89,17 @@ module WADL
         if fragment.respond_to?(:to_str)
           # This fragment is a string which might contain {} substitutions.
           # Make any substitutions available to the provided path variables.
-          self.class.embedded_param_names(fragment).each { |param_name|
-            value = path_var_values[param_name] || path_var_values[param_name.to_sym]
+          self.class.embedded_param_names(fragment).each { |name|
+            value = path_var_values[name] || path_var_values[name.to_sym]
 
-            value = if param = path_params[param_name]
+            value = if param = path_params[name]
               path_params_to_delete << param
               param % value
             else
-              Param.default.format(value, param_name)
+              Param.default.format(value, name)
             end
 
-            fragment.gsub!("{#{param_name}}", value)
+            fragment.gsub!("{#{name}}", value)
           }
         else
           # This fragment is an array of Param objects (style 'matrix'
@@ -107,15 +107,15 @@ module WADL
           # happen, the array will become a mixed array of Param objects
           # and strings.
           fragment.each_with_index { |param, i|
-            if param.respond_to?(:name)
-              name = param.name
+            next unless param.respond_to?(:name)
 
-              value = path_var_values[name] || path_var_values[name.to_sym]
-              value = param % value
-              fragment[i] = value if value
+            name = param.name
 
-              path_params_to_delete << param
-            end
+            value = path_var_values[name] || path_var_values[name.to_sym]
+            value = param % value
+            fragment[i] = value if value
+
+            path_params_to_delete << param
           }
         end
       }

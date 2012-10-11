@@ -24,7 +24,7 @@ class WADLTest < Test::Unit::TestCase
     EOT
   end
 
-  # Null test to shut the compiler up.
+  # Null test to shut the compiler up. (Ruby < 1.9)
   def test_null
   end
 
@@ -251,10 +251,12 @@ class PathParameters < WADLTest
     assert_equal(lights.uri(:path => { :light3 => true    }), off_uri)
   end
 
-  class RequestFormatTests < WADLTest
+end
 
-    def setup
-      @wadl = wadl(<<-EOT)
+class RequestFormatTests < WADLTest
+
+  def setup
+    @wadl = wadl(<<-EOT)
 <resources base="http://www.example.com/">
   <resource id="top" path="palette">
     <param style="form" name="api_key" />
@@ -279,32 +281,30 @@ class PathParameters < WADLTest
     </representation>
   </request>
 </method>
-      EOT
+    EOT
 
-      @color = @wadl.find_resource('top').bind(:query => { :api_key => 'foobar' }).find_resource('color')
-    end
+    @color = @wadl.find_resource('top').bind(:query => { :api_key => 'foobar' }).find_resource('color')
+  end
 
-    def test_query_vars
-      graphic = @color.find_method('get_graphic')
-      path    = { :color => 'blue' }
-      query   = { :shade => 'light' }
+  def test_query_vars
+    graphic = @color.find_method('get_graphic')
+    path    = { :color => 'blue' }
+    query   = { :shade => 'light' }
 
-      assert_equal(graphic.request.uri(@color, :path => path, :query => query),
-                   'http://www.example.com/palette/colors/blue?shade=light')
+    assert_equal(graphic.request.uri(@color, :path => path, :query => query),
+                 'http://www.example.com/palette/colors/blue?shade=light')
 
-      assert_raises(ArgumentError) { graphic.request.uri(@color, path) }
-    end
+    assert_raises(ArgumentError) { graphic.request.uri(@color, path) }
+  end
 
-    def test_representation
-      graphic = @color.find_method('set_graphic')
-      representation = graphic.request.find_form
+  def test_representation
+    graphic = @color.find_method('set_graphic')
+    representation = graphic.request.find_form
 
-      assert_equal(representation % { :new_graphic => 'foobar', 'filename' => 'blue.jpg' },
-                   'new_graphic=foobar&filename=blue.jpg')
+    assert_equal(representation % { :new_graphic => 'foobar', 'filename' => 'blue.jpg' },
+                 'new_graphic=foobar&filename=blue.jpg')
 
-      assert_raises(ArgumentError) { representation % { :new_graphic => 'foobar' } }
-    end
-
+    assert_raises(ArgumentError) { representation % { :new_graphic => 'foobar' } }
   end
 
 end
