@@ -70,6 +70,11 @@ module WADL
       self
     end
 
+    def auth(header, value)
+      @address.auth(header, value)
+      self
+    end
+
     def uri(args = {})
       @address.deep_copy.bind!(args).uri
     end

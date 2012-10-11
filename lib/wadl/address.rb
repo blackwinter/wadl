@@ -50,11 +50,13 @@ module WADL
                    path_params = {}, query_params = {}, header_params = {})
       @path_fragments, @query_vars, @headers = path_fragments, query_vars, headers
       @path_params, @query_params, @header_params = path_params, query_params, header_params
+
+      @auth = {}
     end
 
     # Perform a deep copy.
     def deep_copy
-      Address.new(
+      address = Address.new(
         _deep_copy_array(@path_fragments),
         _deep_copy_array(@query_vars),
         _deep_copy_hash(@headers),
@@ -62,6 +64,10 @@ module WADL
         @query_params.dup,
         @header_params.dup
       )
+
+      @auth.each { |header, value| address.auth(header, value) }
+
+      address
     end
 
     def to_s
@@ -69,6 +75,7 @@ module WADL
       " Path fragments: #{@path_fragments.inspect}\n"         <<
       " Query variables: #{@query_vars.inspect}\n"            <<
       " Header variables: #{@headers.inspect}\n"              <<
+      " Authorization parameters: #{@auth.inspect}\n"         <<
       " Unbound path parameters: #{@path_params.inspect}\n"   <<
       " Unbound query parameters: #{@query_params.inspect}\n" <<
       " Unbound header parameters: #{@header_params.inspect}\n"
@@ -81,6 +88,8 @@ module WADL
       path_var_values   = args[:path]    || {}
       query_var_values  = args[:query]   || {}
       header_var_values = args[:headers] || {}
+
+      @auth.each { |header, value| header_var_values[header] = value }.clear
 
       # Bind variables found in the path fragments.
       path_params_to_delete = []
@@ -139,6 +148,11 @@ module WADL
         end
       }
 
+      self
+    end
+
+    def auth(header, value)
+      @auth[header] = value
       self
     end
 
