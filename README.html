@@ -1,140 +1,137 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html>
 <head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-  <title>File: README [wadl Application documentation (v0.2.6)]</title>
+<title>README - wadl Application documentation (v0.2.7)</title>
 
-  <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
-  <script src="./js/jquery.js" type="text/javascript"
-    charset="utf-8"></script>
-  <script src="./js/thickbox-compressed.js" type="text/javascript"
-    charset="utf-8"></script>
-  <script src="./js/quicksearch.js" type="text/javascript"
-    charset="utf-8"></script>
-  <script src="./js/darkfish.js" type="text/javascript"
-    charset="utf-8"></script>
-</head>
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
 
 <body class="file">
-  <div id="metadata">
-    <div id="home-metadata">
-      <div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="./index.html">Home</a>
-          <a href="./index.html#classes">Classes</a>
-          <a href="./index.html#methods">Methods</a>
-        </h3>
-      </div>
-    </div>
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
 
-    <div id="project-metadata">
-      
-      
-      <div id="fileindex-section" class="section project-section">
-        <h3 class="section-header">Files</h3>
-        <ul>
-        
-          <li class="file"><a href="./COPYING.html">COPYING</a></li>
-        
-          <li class="file"><a href="./ChangeLog.html">ChangeLog</a></li>
-        
-          <li class="file"><a href="./README.html">README</a></li>
-        
-        </ul>
-      </div>
-      
 
-      <div id="classindex-section" class="section project-section">
-        <h3 class="section-header">Class Index
-          <span class="search-toggle"><img src="./images/find.png"
-            height="16" width="16" alt="[+]"
-            title="show/hide quicksearch" /></span></h3>
-        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-        <fieldset>
-          <legend>Quicksearch</legend>
-          <input type="text" name="quicksearch" value=""
-            class="quicksearch-field" />
-        </fieldset>
-        </form>
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
 
-        <ul class="link-list">
-        
-          <li><a href="./WADL.html">WADL</a></li>
-        
-          <li><a href="./WADL/Address.html">WADL::Address</a></li>
-        
-          <li><a href="./WADL/Application.html">WADL::Application</a></li>
-        
-          <li><a href="./WADL/CLI.html">WADL::CLI</a></li>
-        
-          <li><a href="./WADL/CheapSchema.html">WADL::CheapSchema</a></li>
-        
-          <li><a href="./WADL/Documentation.html">WADL::Documentation</a></li>
-        
-          <li><a href="./WADL/Fault.html">WADL::Fault</a></li>
-        
-          <li><a href="./WADL/FaultFormat.html">WADL::FaultFormat</a></li>
-        
-          <li><a href="./WADL/Faults.html">WADL::Faults</a></li>
-        
-          <li><a href="./WADL/HTTPMethod.html">WADL::HTTPMethod</a></li>
-        
-          <li><a href="./WADL/HasDocs.html">WADL::HasDocs</a></li>
-        
-          <li><a href="./WADL/Link.html">WADL::Link</a></li>
-        
-          <li><a href="./WADL/Option.html">WADL::Option</a></li>
-        
-          <li><a href="./WADL/Param.html">WADL::Param</a></li>
-        
-          <li><a href="./WADL/RepresentationContainer.html">WADL::RepresentationContainer</a></li>
-        
-          <li><a href="./WADL/RepresentationFormat.html">WADL::RepresentationFormat</a></li>
-        
-          <li><a href="./WADL/RequestFormat.html">WADL::RequestFormat</a></li>
-        
-          <li><a href="./WADL/Resource.html">WADL::Resource</a></li>
-        
-          <li><a href="./WADL/ResourceAndAddress.html">WADL::ResourceAndAddress</a></li>
-        
-          <li><a href="./WADL/ResourceContainer.html">WADL::ResourceContainer</a></li>
-        
-          <li><a href="./WADL/ResourceType.html">WADL::ResourceType</a></li>
-        
-          <li><a href="./WADL/Resources.html">WADL::Resources</a></li>
-        
-          <li><a href="./WADL/Response.html">WADL::Response</a></li>
-        
-          <li><a href="./WADL/ResponseFormat.html">WADL::ResponseFormat</a></li>
-        
-          <li><a href="./WADL/URIParts.html">WADL::URIParts</a></li>
-        
-          <li><a href="./WADL/Version.html">WADL::Version</a></li>
-        
-          <li><a href="./WADL/XMLRepresentation.html">WADL::XMLRepresentation</a></li>
-        
-        </ul>
-        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
-      </div>
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
 
-      
-    </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./COPYING.html">COPYING</a>
+  
+    <li class="file"><a href="./ChangeLog.html">ChangeLog</a>
+  
+    <li class="file"><a href="./README.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./WADL.html">WADL</a>
+  
+    <li><a href="./WADL/Address.html">WADL::Address</a>
+  
+    <li><a href="./WADL/Application.html">WADL::Application</a>
+  
+    <li><a href="./WADL/CLI.html">WADL::CLI</a>
+  
+    <li><a href="./WADL/CheapSchema.html">WADL::CheapSchema</a>
+  
+    <li><a href="./WADL/Documentation.html">WADL::Documentation</a>
+  
+    <li><a href="./WADL/Fault.html">WADL::Fault</a>
+  
+    <li><a href="./WADL/FaultFormat.html">WADL::FaultFormat</a>
+  
+    <li><a href="./WADL/Faults.html">WADL::Faults</a>
+  
+    <li><a href="./WADL/HTTPMethod.html">WADL::HTTPMethod</a>
+  
+    <li><a href="./WADL/HasDocs.html">WADL::HasDocs</a>
+  
+    <li><a href="./WADL/Link.html">WADL::Link</a>
+  
+    <li><a href="./WADL/Option.html">WADL::Option</a>
+  
+    <li><a href="./WADL/Param.html">WADL::Param</a>
+  
+    <li><a href="./WADL/RepresentationContainer.html">WADL::RepresentationContainer</a>
+  
+    <li><a href="./WADL/RepresentationFormat.html">WADL::RepresentationFormat</a>
+  
+    <li><a href="./WADL/RequestFormat.html">WADL::RequestFormat</a>
+  
+    <li><a href="./WADL/Resource.html">WADL::Resource</a>
+  
+    <li><a href="./WADL/ResourceAndAddress.html">WADL::ResourceAndAddress</a>
+  
+    <li><a href="./WADL/ResourceContainer.html">WADL::ResourceContainer</a>
+  
+    <li><a href="./WADL/ResourceType.html">WADL::ResourceType</a>
+  
+    <li><a href="./WADL/Resources.html">WADL::Resources</a>
+  
+    <li><a href="./WADL/Response.html">WADL::Response</a>
+  
+    <li><a href="./WADL/ResponseFormat.html">WADL::ResponseFormat</a>
+  
+    <li><a href="./WADL/URIParts.html">WADL::URIParts</a>
+  
+    <li><a href="./WADL/Version.html">WADL::Version</a>
+  
+    <li><a href="./WADL/XMLRepresentation.html">WADL::XMLRepresentation</a>
+  
+  </ul>
+</nav>
+
   </div>
+</nav>
 
-  <div id="documentation">
-    
-<h1>wadl - Ruby client for the Web Application Description Language.</h1>
+<div id="documentation" class="description">
+  
+<h1 id="label-wadl+-+Ruby+client+for+the+Web+Application+Description+Language.">wadl - Ruby client for the Web Application Description Language.</h1>
 
-<h2>VERSION</h2>
+<h2 id="label-VERSION">VERSION</h2>
 
-<p>This documentation refers to wadl version 0.2.6</p>
+<p>This documentation refers to wadl version 0.2.7</p>
 
-<h2>DESCRIPTION</h2>
+<h2 id="label-DESCRIPTION">DESCRIPTION</h2>
 
 <p>This is a Ruby client for the Web Application Description Language. It
 hides the details of HTTP communication between a web service client and a
@@ -142,10 +139,10 @@ REST or HTTP+POX web service.</p>
 
 <p>We hope that <a href="WADL.html">WADL</a> descriptors and client libraries
 will replace one-off wrapper libraries specific to one service and one
-programming language – or at least make such wrapper libraries much
-easier to write.</p>
+programming language – or at least make such wrapper libraries much easier
+to write.</p>
 
-<h3>Interesting Features:</h3>
+<h3 id="label-Interesting+Features%3A">Interesting Features:</h3>
 <ul><li>
 <p>Traversing the tree of resources is like traversing a data structure.
 Here’s code to get recent posts from del.icio.us:</p>
@@ -165,7 +162,7 @@ can define “header”-style parameters to be included in the HTTP request
 headers. See delicious.wadl for an example.</p>
 </li></ul>
 
-<h3>Shortcomings:</h3>
+<h3 id="label-Shortcomings%3A">Shortcomings:</h3>
 
 <p>The 20060802 <a href="WADL.html">WADL</a> standard is almost entirely
 supported. However,</p>
@@ -175,27 +172,27 @@ supported. However,</p>
 <p>As are links</p>
 </li></ul>
 
-<h2>LINKS</h2>
+<h2 id="label-LINKS">LINKS</h2>
 
 <p></p>
-<table class="rdoc-list"><tr><td class="rdoc-term"><p>Homepage</p></td>
-<td>
+<dl class="rdoc-list note-list"><dt>Homepage
+<dd>
 <p><a
-href="http://www.crummy.com/software/wadl.rb/">www.crummy.com/software/wadl.rb/</a></p>
-</td></tr><tr><td class="rdoc-term"><p><a href="WADL.html">WADL</a></p></td>
-<td>
-<p><a href="http://wadl.dev.java.net/">wadl.dev.java.net/</a></p>
-</td></tr><tr><td class="rdoc-term"><p>Documentation</p></td>
-<td>
+href="http://www.crummy.com/software/wadl.rb">www.crummy.com/software/wadl.rb</a></p>
+</dd><dt><a href="WADL.html">WADL</a>
+<dd>
+<p><a href="http://wadl.java.net">wadl.java.net</a></p>
+</dd><dt>Documentation
+<dd>
 <p><a
 href="http://rdoc.info/projects/blackwinter/wadl">rdoc.info/projects/blackwinter/wadl</a></p>
-</td></tr><tr><td class="rdoc-term"><p>Source code</p></td>
-<td>
+</dd><dt>Source code
+<dd>
 <p><a
 href="http://github.com/blackwinter/wadl">github.com/blackwinter/wadl</a></p>
-</td></tr></table>
+</dd></dl>
 
-<h2>AUTHORS</h2>
+<h2 id="label-AUTHORS">AUTHORS</h2>
 <ul><li>
 <p>Leonard Richardson &lt;<a
 href="mailto:leonardr@segfault.org">leonardr@segfault.org</a>&gt; (Original
@@ -205,9 +202,9 @@ author)</p>
 href="mailto:jens.wille@uni-koeln.de">jens.wille@uni-koeln.de</a>&gt;</p>
 </li></ul>
 
-<h2>LICENSE AND COPYRIGHT</h2>
+<h2 id="label-LICENSE+AND+COPYRIGHT">LICENSE AND COPYRIGHT</h2>
 
-<p>Copyright (C) 2006-2008 Leonard Richardson Copyright (C) 2010-2011 Jens
+<p>Copyright (C) 2006-2008 Leonard Richardson Copyright (C) 2010-2012 Jens
 Wille</p>
 
 <p>wadl is free software: you can redistribute it and/or modify it under the
@@ -224,13 +221,13 @@ more details.</p>
 along with wadl. If not, see &lt;<a
 href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
 
-  </div>
+</div>
 
-  <div id="validator-badges">
-    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-      Rdoc Generator</a> 2</small>.</p>
-  </div>
-</body>
-</html>
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
 

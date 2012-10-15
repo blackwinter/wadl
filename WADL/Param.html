@@ -1,243 +1,229 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+
+<html>
 <head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-  <title>Class: WADL::Param</title>
+<title>class WADL::Param - wadl Application documentation (v0.2.7)</title>
 
-  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
-  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
 
-</head>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
 <body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
 
-  <div id="metadata">
-    <div id="home-metadata">
-      <div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="../index.html">Home</a>
-          <a href="../index.html#classes">Classes</a>
-          <a href="../index.html#methods">Methods</a>
-        </h3>
-      </div>
-    </div>
 
-    <div id="file-metadata">
-      <div id="file-list-section" class="section">
-        <h3 class="section-header">In Files</h3>
-        <div class="section-body">
-          <ul>
-          
-            <li><a href="../lib/wadl/param_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/wadl/param.rb">lib/wadl/param.rb</a></li>
-          
-          </ul>
-        </div>
-      </div>
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
 
-      
-    </div>
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
 
-    <div id="class-metadata">
-      
-      <!-- Parent Class -->
-      <div id="parent-class-section" class="section">
-        <h3 class="section-header">Parent</h3>
-        
-        <p class="link">HasDocs</p>
-        
-      </div>
-      
 
-      
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/wadl/param.rb
+  </ul>
+</nav>
 
-      
-
-      
-      <!-- Method Quickref -->
-      <div id="method-list-section" class="section">
-        <h3 class="section-header">Methods</h3>
-        <ul class="link-list">
-          
-          <li><a href="#method-c-default">::default</a></li>
-          
-          <li><a href="#method-i-25">#%</a></li>
-          
-          <li><a href="#method-i-format">#format</a></li>
-          
-          <li><a href="#method-i-inspect">#inspect</a></li>
-          
-          <li><a href="#method-i-repeating-3F">#repeating?</a></li>
-          
-          <li><a href="#method-i-required-3F">#required?</a></li>
-          
-        </ul>
-      </div>
-      
-
-      
-    </div>
-
-    <div id="project-metadata">
-      
-      
-      <div id="fileindex-section" class="section project-section">
-        <h3 class="section-header">Files</h3>
-        <ul>
-        
-          <li class="file"><a href="../COPYING.html">COPYING</a></li>
-        
-          <li class="file"><a href="../ChangeLog.html">ChangeLog</a></li>
-        
-          <li class="file"><a href="../README.html">README</a></li>
-        
-        </ul>
-      </div>
-      
-
-      <div id="classindex-section" class="section project-section">
-        <h3 class="section-header">Class/Module Index
-          <span class="search-toggle"><img src="../images/find.png"
-            height="16" width="16" alt="[+]"
-            title="show/hide quicksearch" /></span></h3>
-        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-        <fieldset>
-          <legend>Quicksearch</legend>
-          <input type="text" name="quicksearch" value=""
-            class="quicksearch-field" />
-        </fieldset>
-        </form>
-
-        <ul class="link-list">
-        
-          <li><a href="../WADL.html">WADL</a></li>
-        
-          <li><a href="../WADL/Address.html">WADL::Address</a></li>
-        
-          <li><a href="../WADL/Application.html">WADL::Application</a></li>
-        
-          <li><a href="../WADL/CLI.html">WADL::CLI</a></li>
-        
-          <li><a href="../WADL/CheapSchema.html">WADL::CheapSchema</a></li>
-        
-          <li><a href="../WADL/Documentation.html">WADL::Documentation</a></li>
-        
-          <li><a href="../WADL/Fault.html">WADL::Fault</a></li>
-        
-          <li><a href="../WADL/FaultFormat.html">WADL::FaultFormat</a></li>
-        
-          <li><a href="../WADL/Faults.html">WADL::Faults</a></li>
-        
-          <li><a href="../WADL/HTTPMethod.html">WADL::HTTPMethod</a></li>
-        
-          <li><a href="../WADL/HasDocs.html">WADL::HasDocs</a></li>
-        
-          <li><a href="../WADL/Link.html">WADL::Link</a></li>
-        
-          <li><a href="../WADL/Option.html">WADL::Option</a></li>
-        
-          <li><a href="../WADL/Param.html">WADL::Param</a></li>
-        
-          <li><a href="../WADL/RepresentationContainer.html">WADL::RepresentationContainer</a></li>
-        
-          <li><a href="../WADL/RepresentationFormat.html">WADL::RepresentationFormat</a></li>
-        
-          <li><a href="../WADL/RequestFormat.html">WADL::RequestFormat</a></li>
-        
-          <li><a href="../WADL/Resource.html">WADL::Resource</a></li>
-        
-          <li><a href="../WADL/ResourceAndAddress.html">WADL::ResourceAndAddress</a></li>
-        
-          <li><a href="../WADL/ResourceContainer.html">WADL::ResourceContainer</a></li>
-        
-          <li><a href="../WADL/ResourceType.html">WADL::ResourceType</a></li>
-        
-          <li><a href="../WADL/Resources.html">WADL::Resources</a></li>
-        
-          <li><a href="../WADL/Response.html">WADL::Response</a></li>
-        
-          <li><a href="../WADL/ResponseFormat.html">WADL::ResponseFormat</a></li>
-        
-          <li><a href="../WADL/URIParts.html">WADL::URIParts</a></li>
-        
-          <li><a href="../WADL/Version.html">WADL::Version</a></li>
-        
-          <li><a href="../WADL/XMLRepresentation.html">WADL::XMLRepresentation</a></li>
-        
-        </ul>
-        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
-      </div>
-
-      
-    </div>
+    
   </div>
 
-  <div id="documentation">
-    <h1 class="class">WADL::Param</h1>
-
-    <div id="description" class="description">
-      
-    </div><!-- description -->
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">HasDocs
+  
+</nav>
 
     
-    
-    
-    <div id="5Buntitled-5D" class="documentation-section">
-      
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
 
-      
+  <ul class="link-list">
+    
+    <li><a href="#method-c-default">::default</a>
+    
+    <li><a href="#method-i-25">#%</a>
+    
+    <li><a href="#method-i-format">#format</a>
+    
+    <li><a href="#method-i-inspect">#inspect</a>
+    
+    <li><a href="#method-i-repeating-3F">#repeating?</a>
+    
+    <li><a href="#method-i-required-3F">#required?</a>
+    
+  </ul>
+</nav>
 
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../COPYING.html">COPYING</a>
+  
+    <li class="file"><a href="../ChangeLog.html">ChangeLog</a>
+  
+    <li class="file"><a href="../README.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../WADL.html">WADL</a>
+  
+    <li><a href="../WADL/Address.html">WADL::Address</a>
+  
+    <li><a href="../WADL/Application.html">WADL::Application</a>
+  
+    <li><a href="../WADL/CLI.html">WADL::CLI</a>
+  
+    <li><a href="../WADL/CheapSchema.html">WADL::CheapSchema</a>
+  
+    <li><a href="../WADL/Documentation.html">WADL::Documentation</a>
+  
+    <li><a href="../WADL/Fault.html">WADL::Fault</a>
+  
+    <li><a href="../WADL/FaultFormat.html">WADL::FaultFormat</a>
+  
+    <li><a href="../WADL/Faults.html">WADL::Faults</a>
+  
+    <li><a href="../WADL/HTTPMethod.html">WADL::HTTPMethod</a>
+  
+    <li><a href="../WADL/HasDocs.html">WADL::HasDocs</a>
+  
+    <li><a href="../WADL/Link.html">WADL::Link</a>
+  
+    <li><a href="../WADL/Option.html">WADL::Option</a>
+  
+    <li><a href="../WADL/Param.html">WADL::Param</a>
+  
+    <li><a href="../WADL/RepresentationContainer.html">WADL::RepresentationContainer</a>
+  
+    <li><a href="../WADL/RepresentationFormat.html">WADL::RepresentationFormat</a>
+  
+    <li><a href="../WADL/RequestFormat.html">WADL::RequestFormat</a>
+  
+    <li><a href="../WADL/Resource.html">WADL::Resource</a>
+  
+    <li><a href="../WADL/ResourceAndAddress.html">WADL::ResourceAndAddress</a>
+  
+    <li><a href="../WADL/ResourceContainer.html">WADL::ResourceContainer</a>
+  
+    <li><a href="../WADL/ResourceType.html">WADL::ResourceType</a>
+  
+    <li><a href="../WADL/Resources.html">WADL::Resources</a>
+  
+    <li><a href="../WADL/Response.html">WADL::Response</a>
+  
+    <li><a href="../WADL/ResponseFormat.html">WADL::ResponseFormat</a>
+  
+    <li><a href="../WADL/URIParts.html">WADL::URIParts</a>
+  
+    <li><a href="../WADL/Version.html">WADL::Version</a>
+  
+    <li><a href="../WADL/XMLRepresentation.html">WADL::XMLRepresentation</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class WADL::Param</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
       
-      <!-- Constants -->
-      <div id="constants-list" class="section">
-        <h3 class="section-header">Constants</h3>
-        <dl>
+        <dt id="BOOLEAN_RE">BOOLEAN_RE
         
-          <dt><a name="BOOLEAN_RE">BOOLEAN_RE</a></dt>
-          
-          <dd class="description"><p>cf. &lt;<a
-href="http://www.w3.org/TR/xmlschema-2/#boolean">www.w3.org/TR/xmlschema-2/#boolean</a>&gt;</p></dd>
-          
+        <dd class="description"><p>cf. &lt;<a
+href="http://www.w3.org/TR/xmlschema-2/#boolean">www.w3.org/TR/xmlschema-2/#boolean</a>&gt;</p>
         
-        </dl>
-      </div>
       
+      </dl>
+    </section>
+    
 
-      
+    
 
-      <!-- Methods -->
-      
-      <div id="public-class-method-details" class="method-section section">
-        <h3 class="section-header">Public Class Methods</h3>
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
 
-      
-        <div id="default-method" class="method-detail ">
-          <a name="method-c-default"></a>
+    
+      <div id="method-c-default" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">default</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
 
+        <div class="method-description">
           
-          <div class="method-heading">
-            <span class="method-name">default</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            <p>A default <a href="Param.html">Param</a> object to use for a path parameter
+          <p>A default <a href="Param.html">Param</a> object to use for a path parameter
 that is only specified as a name in the path of a resource.</p>
-            
+          
 
-            
-            <div class="method-source-code" id="default-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/param.rb, line 46</span>
+          
+          <div class="method-source-code" id="default-source">
+            <pre><span class="ruby-comment"># File lib/wadl/param.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">default</span>
   <span class="ruby-ivar">@default</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">begin</span>
     <span class="ruby-identifier">default</span> = <span class="ruby-constant">Param</span>.<span class="ruby-identifier">new</span>
@@ -249,75 +235,70 @@ that is only specified as a name in the path of a resource.</p>
     <span class="ruby-identifier">default</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- default-source -->
-            
-          </div>
-
+          </div><!-- default-source -->
           
+        </div>
 
-          
-        </div><!-- default-method -->
+        
 
-      
-      </div><!-- public-class-method-details -->
+        
+      </div><!-- default-method -->
+
     
-      <div id="public-instance-method-details" class="method-section section">
-        <h3 class="section-header">Public Instance Methods</h3>
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
 
-      
-        <div id="25-method" class="method-detail method-alias">
-          <a name="method-i-25"></a>
+    
+      <div id="method-i-25" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">%</span><span
+            class="method-args">(value, name = nil, style = nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
 
+        <div class="method-description">
           
-          <div class="method-heading">
-            <span class="method-name">%</span><span
-              class="method-args">(value, name = nil, style = nil)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
           
-
-          <div class="method-description">
-            
-            
-            
-
-            
-          </div>
-
           
 
           
-          <div class="aliases">
-            Alias for: <a href="Param.html#method-i-format">format</a>
-          </div>
-          
-        </div><!-- 25-method -->
+        </div>
 
-      
-        <div id="format-method" class="method-detail ">
-          <a name="method-i-format"></a>
+        
 
-          
-          <div class="method-heading">
-            <span class="method-name">format</span><span
-              class="method-args">(value, name = nil, style = nil)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
+        
+        <div class="aliases">
+          Alias for: <a href="Param.html#method-i-format">format</a>
+        </div>
+        
+      </div><!-- 25-method -->
 
-          <div class="method-description">
-            
-            <p>Validates and formats a proposed value for this parameter. Returns the
+    
+      <div id="method-i-format" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">format</span><span
+            class="method-args">(value, name = nil, style = nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Validates and formats a proposed value for this parameter. Returns the
 formatted value. Raises an ArgumentError if the value is invalid.</p>
 
-<p>The ‘name’ and ‘style’ arguments are used in conjunction with the
-default <a href="Param.html">Param</a> object.</p>
-            
+<p>The ‘name’ and ‘style’ arguments are used in conjunction with the default
+<a href="Param.html">Param</a> object.</p>
+          
 
-            
-            <div class="method-source-code" id="format-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/param.rb, line 76</span>
+          
+          <div class="method-source-code" id="format-source">
+            <pre><span class="ruby-comment"># File lib/wadl/param.rb, line 76</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">format</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">name</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">style</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">name</span>  <span class="ruby-operator">||=</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span>
   <span class="ruby-identifier">style</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style</span>
@@ -327,7 +308,7 @@ default <a href="Param.html">Param</a> object.</p>
 
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">value</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">required?</span>
-      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%{No value provided for required param &quot;#{name}&quot;!}</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{No value provided for required param &quot;#{name}&quot;!}</span>
     <span class="ruby-keyword">else</span>
       <span class="ruby-keyword">return</span> <span class="ruby-string">''</span> <span class="ruby-comment"># No value provided and none required.</span>
     <span class="ruby-keyword">end</span>
@@ -337,7 +318,7 @@ default <a href="Param.html">Param</a> object.</p>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">repeating?</span>
       <span class="ruby-identifier">values</span> = <span class="ruby-identifier">value</span>
     <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%{Multiple values provided for single-value param &quot;#{name}&quot;}</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{Multiple values provided for single-value param &quot;#{name}&quot;}</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">values</span> = [<span class="ruby-identifier">value</span>]
@@ -349,7 +330,7 @@ default <a href="Param.html">Param</a> object.</p>
     <span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
       <span class="ruby-keyword">unless</span> <span class="ruby-identifier">find_option</span>(<span class="ruby-identifier">value</span>)
         <span class="ruby-identifier">acceptable</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">value</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-string">'&quot;, &quot;'</span>)
-        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%{&quot;#{value}&quot; is not among the acceptable parameter values (&quot;#{acceptable}&quot;)}</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">%Q{&quot;#{value}&quot; is not among the acceptable parameter values (&quot;#{acceptable}&quot;)}</span>
       <span class="ruby-keyword">end</span>
     }
   <span class="ruby-keyword">end</span>
@@ -371,132 +352,120 @@ default <a href="Param.html">Param</a> object.</p>
     <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-constant">URI</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span>) }.<span class="ruby-identifier">join</span>(<span class="ruby-string">','</span>)
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- format-source -->
-            
-          </div>
+          </div><!-- format-source -->
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Param.html#method-i-25">%</a>
+        </div>
+        
+
+        
+      </div><!-- format-method -->
+
+    
+      <div id="method-i-inspect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
 
           
-          <div class="aliases">
-            Also aliased as: <a href="Param.html#method-i-25">%</a>
-          </div>
-          
-
-          
-        </div><!-- format-method -->
-
-      
-        <div id="inspect-method" class="method-detail ">
-          <a name="method-i-inspect"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">inspect</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="inspect-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/param.rb, line 66</span>
+          <div class="method-source-code" id="inspect-source">
+            <pre><span class="ruby-comment"># File lib/wadl/param.rb, line 66</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
-  <span class="ruby-node">%{Param &quot;#{name}&quot;}</span>
+  <span class="ruby-node">%Q{Param &quot;#{name}&quot;}</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- inspect-source -->
-            
-          </div>
+          </div><!-- inspect-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- inspect-method -->
+
+    
+      <div id="method-i-repeating-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">repeating?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- inspect-method -->
-
-      
-        <div id="repeating-3F-method" class="method-detail ">
-          <a name="method-i-repeating-3F"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">repeating?</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="repeating-3F-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/param.rb, line 62</span>
+          <div class="method-source-code" id="repeating-3F-source">
+            <pre><span class="ruby-comment"># File lib/wadl/param.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">repeating?</span>
   <span class="ruby-identifier">repeating</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">BOOLEAN_RE</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- repeating-3F-source -->
-            
-          </div>
+          </div><!-- repeating-3F-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- repeating-3F-method -->
+
+    
+      <div id="method-i-required-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">required?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- repeating-3F-method -->
-
-      
-        <div id="required-3F-method" class="method-detail ">
-          <a name="method-i-required-3F"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">required?</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="required-3F-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/param.rb, line 58</span>
+          <div class="method-source-code" id="required-3F-source">
+            <pre><span class="ruby-comment"># File lib/wadl/param.rb, line 58</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">required?</span>
   <span class="ruby-identifier">required</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">BOOLEAN_RE</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- required-3F-source -->
-            
-          </div>
-
+          </div><!-- required-3F-source -->
           
+        </div>
 
-          
-        </div><!-- required-3F-method -->
+        
 
-      
-      </div><!-- public-instance-method-details -->
+        
+      </div><!-- required-3F-method -->
+
     
-    </div><!-- 5Buntitled-5D -->
+    </section><!-- public-instance-method-details -->
   
+  </section><!-- 5Buntitled-5D -->
 
-  </div><!-- documentation -->
+</div><!-- documentation -->
 
-  <div id="validator-badges">
-    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-      Rdoc Generator</a> 2</small>.</p>
-  </div>
 
-</body>
-</html>
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
 

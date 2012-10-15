@@ -1,522 +1,517 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+
+<html>
 <head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-  <title>Class: WADL::ResourceAndAddress</title>
+<title>class WADL::ResourceAndAddress - wadl Application documentation (v0.2.7)</title>
 
-  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
-  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
 
-</head>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
 <body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
 
-  <div id="metadata">
-    <div id="home-metadata">
-      <div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="../index.html">Home</a>
-          <a href="../index.html#classes">Classes</a>
-          <a href="../index.html#methods">Methods</a>
-        </h3>
-      </div>
-    </div>
 
-    <div id="file-metadata">
-      <div id="file-list-section" class="section">
-        <h3 class="section-header">In Files</h3>
-        <div class="section-body">
-          <ul>
-          
-            <li><a href="../lib/wadl/resource_and_address_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/wadl/resource_and_address.rb">lib/wadl/resource_and_address.rb</a></li>
-          
-          </ul>
-        </div>
-      </div>
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
 
-      
-    </div>
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
 
-    <div id="class-metadata">
-      
-      <!-- Parent Class -->
-      <div id="parent-class-section" class="section">
-        <h3 class="section-header">Parent</h3>
-        
-        <p class="link">DelegateClass(Resource)</p>
-        
-      </div>
-      
 
-      
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/wadl/resource_and_address.rb
+  </ul>
+</nav>
 
-      
-
-      
-      <!-- Method Quickref -->
-      <div id="method-list-section" class="section">
-        <h3 class="section-header">Methods</h3>
-        <ul class="link-list">
-          
-          <li><a href="#method-c-new">::new</a></li>
-          
-          <li><a href="#method-i-address">#address</a></li>
-          
-          <li><a href="#method-i-bind">#bind</a></li>
-          
-          <li><a href="#method-i-bind-21">#bind!</a></li>
-          
-          <li><a href="#method-i-find_resource">#find_resource</a></li>
-          
-          <li><a href="#method-i-find_resource_by_path">#find_resource_by_path</a></li>
-          
-          <li><a href="#method-i-id">#id</a></li>
-          
-          <li><a href="#method-i-inspect">#inspect</a></li>
-          
-          <li><a href="#method-i-method_missing">#method_missing</a></li>
-          
-          <li><a href="#method-i-resource">#resource</a></li>
-          
-          <li><a href="#method-i-to_s">#to_s</a></li>
-          
-          <li><a href="#method-i-uri">#uri</a></li>
-          
-        </ul>
-      </div>
-      
-
-      
-    </div>
-
-    <div id="project-metadata">
-      
-      
-      <div id="fileindex-section" class="section project-section">
-        <h3 class="section-header">Files</h3>
-        <ul>
-        
-          <li class="file"><a href="../COPYING.html">COPYING</a></li>
-        
-          <li class="file"><a href="../ChangeLog.html">ChangeLog</a></li>
-        
-          <li class="file"><a href="../README.html">README</a></li>
-        
-        </ul>
-      </div>
-      
-
-      <div id="classindex-section" class="section project-section">
-        <h3 class="section-header">Class/Module Index
-          <span class="search-toggle"><img src="../images/find.png"
-            height="16" width="16" alt="[+]"
-            title="show/hide quicksearch" /></span></h3>
-        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-        <fieldset>
-          <legend>Quicksearch</legend>
-          <input type="text" name="quicksearch" value=""
-            class="quicksearch-field" />
-        </fieldset>
-        </form>
-
-        <ul class="link-list">
-        
-          <li><a href="../WADL.html">WADL</a></li>
-        
-          <li><a href="../WADL/Address.html">WADL::Address</a></li>
-        
-          <li><a href="../WADL/Application.html">WADL::Application</a></li>
-        
-          <li><a href="../WADL/CLI.html">WADL::CLI</a></li>
-        
-          <li><a href="../WADL/CheapSchema.html">WADL::CheapSchema</a></li>
-        
-          <li><a href="../WADL/Documentation.html">WADL::Documentation</a></li>
-        
-          <li><a href="../WADL/Fault.html">WADL::Fault</a></li>
-        
-          <li><a href="../WADL/FaultFormat.html">WADL::FaultFormat</a></li>
-        
-          <li><a href="../WADL/Faults.html">WADL::Faults</a></li>
-        
-          <li><a href="../WADL/HTTPMethod.html">WADL::HTTPMethod</a></li>
-        
-          <li><a href="../WADL/HasDocs.html">WADL::HasDocs</a></li>
-        
-          <li><a href="../WADL/Link.html">WADL::Link</a></li>
-        
-          <li><a href="../WADL/Option.html">WADL::Option</a></li>
-        
-          <li><a href="../WADL/Param.html">WADL::Param</a></li>
-        
-          <li><a href="../WADL/RepresentationContainer.html">WADL::RepresentationContainer</a></li>
-        
-          <li><a href="../WADL/RepresentationFormat.html">WADL::RepresentationFormat</a></li>
-        
-          <li><a href="../WADL/RequestFormat.html">WADL::RequestFormat</a></li>
-        
-          <li><a href="../WADL/Resource.html">WADL::Resource</a></li>
-        
-          <li><a href="../WADL/ResourceAndAddress.html">WADL::ResourceAndAddress</a></li>
-        
-          <li><a href="../WADL/ResourceContainer.html">WADL::ResourceContainer</a></li>
-        
-          <li><a href="../WADL/ResourceType.html">WADL::ResourceType</a></li>
-        
-          <li><a href="../WADL/Resources.html">WADL::Resources</a></li>
-        
-          <li><a href="../WADL/Response.html">WADL::Response</a></li>
-        
-          <li><a href="../WADL/ResponseFormat.html">WADL::ResponseFormat</a></li>
-        
-          <li><a href="../WADL/URIParts.html">WADL::URIParts</a></li>
-        
-          <li><a href="../WADL/Version.html">WADL::Version</a></li>
-        
-          <li><a href="../WADL/XMLRepresentation.html">WADL::XMLRepresentation</a></li>
-        
-        </ul>
-        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
-      </div>
-
-      
-    </div>
+    
   </div>
 
-  <div id="documentation">
-    <h1 class="class">WADL::ResourceAndAddress</h1>
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">DelegateClass(Resource)
+  
+</nav>
 
-    <div id="description" class="description">
-      
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-i-address">#address</a>
+    
+    <li><a href="#method-i-auth">#auth</a>
+    
+    <li><a href="#method-i-bind">#bind</a>
+    
+    <li><a href="#method-i-bind-21">#bind!</a>
+    
+    <li><a href="#method-i-find_resource">#find_resource</a>
+    
+    <li><a href="#method-i-find_resource_by_path">#find_resource_by_path</a>
+    
+    <li><a href="#method-i-id">#id</a>
+    
+    <li><a href="#method-i-inspect">#inspect</a>
+    
+    <li><a href="#method-i-method_missing">#method_missing</a>
+    
+    <li><a href="#method-i-resource">#resource</a>
+    
+    <li><a href="#method-i-to_s">#to_s</a>
+    
+    <li><a href="#method-i-uri">#uri</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../COPYING.html">COPYING</a>
+  
+    <li class="file"><a href="../ChangeLog.html">ChangeLog</a>
+  
+    <li class="file"><a href="../README.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../WADL.html">WADL</a>
+  
+    <li><a href="../WADL/Address.html">WADL::Address</a>
+  
+    <li><a href="../WADL/Application.html">WADL::Application</a>
+  
+    <li><a href="../WADL/CLI.html">WADL::CLI</a>
+  
+    <li><a href="../WADL/CheapSchema.html">WADL::CheapSchema</a>
+  
+    <li><a href="../WADL/Documentation.html">WADL::Documentation</a>
+  
+    <li><a href="../WADL/Fault.html">WADL::Fault</a>
+  
+    <li><a href="../WADL/FaultFormat.html">WADL::FaultFormat</a>
+  
+    <li><a href="../WADL/Faults.html">WADL::Faults</a>
+  
+    <li><a href="../WADL/HTTPMethod.html">WADL::HTTPMethod</a>
+  
+    <li><a href="../WADL/HasDocs.html">WADL::HasDocs</a>
+  
+    <li><a href="../WADL/Link.html">WADL::Link</a>
+  
+    <li><a href="../WADL/Option.html">WADL::Option</a>
+  
+    <li><a href="../WADL/Param.html">WADL::Param</a>
+  
+    <li><a href="../WADL/RepresentationContainer.html">WADL::RepresentationContainer</a>
+  
+    <li><a href="../WADL/RepresentationFormat.html">WADL::RepresentationFormat</a>
+  
+    <li><a href="../WADL/RequestFormat.html">WADL::RequestFormat</a>
+  
+    <li><a href="../WADL/Resource.html">WADL::Resource</a>
+  
+    <li><a href="../WADL/ResourceAndAddress.html">WADL::ResourceAndAddress</a>
+  
+    <li><a href="../WADL/ResourceContainer.html">WADL::ResourceContainer</a>
+  
+    <li><a href="../WADL/ResourceType.html">WADL::ResourceType</a>
+  
+    <li><a href="../WADL/Resources.html">WADL::Resources</a>
+  
+    <li><a href="../WADL/Response.html">WADL::Response</a>
+  
+    <li><a href="../WADL/ResponseFormat.html">WADL::ResponseFormat</a>
+  
+    <li><a href="../WADL/URIParts.html">WADL::URIParts</a>
+  
+    <li><a href="../WADL/Version.html">WADL::Version</a>
+  
+    <li><a href="../WADL/XMLRepresentation.html">WADL::XMLRepresentation</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class WADL::ResourceAndAddress</h1>
+
+  <div id="description" class="description">
+    
 <p>A resource bound beneath a certain address. Used to keep track of a path
 through a twisting resource hierarchy that includes references.</p>
 
-    </div><!-- description -->
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
 
     
+
     
+
     
-    <div id="5Buntitled-5D" class="documentation-section">
-      
 
-      
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
 
-      
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(resource, address = nil, combine_address_with_resource = true)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
 
-      
-
-      <!-- Methods -->
-      
-      <div id="public-class-method-details" class="method-section section">
-        <h3 class="section-header">Public Class Methods</h3>
-
-      
-        <div id="new-method" class="method-detail ">
-          <a name="method-c-new"></a>
+        <div class="method-description">
+          
+          
+          
 
           
-          <div class="method-heading">
-            <span class="method-name">new</span><span
-              class="method-args">(resource, address = nil, combine_address_with_resource = true)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="new-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 39</span>
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-identifier">address</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">combine_address_with_resource</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-ivar">@resource</span> = <span class="ruby-identifier">resource</span>
   <span class="ruby-ivar">@address</span>  = <span class="ruby-identifier">combine_address_with_resource</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">resource</span>.<span class="ruby-identifier">address</span>(<span class="ruby-identifier">address</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">address</span>
 
   <span class="ruby-keyword">super</span>(<span class="ruby-identifier">resource</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- new-source -->
-            
-          </div>
-
+          </div><!-- new-source -->
           
+        </div>
 
-          
-        </div><!-- new-method -->
+        
 
-      
-      </div><!-- public-class-method-details -->
+        
+      </div><!-- new-method -->
+
     
-      <div id="public-instance-method-details" class="method-section section">
-        <h3 class="section-header">Public Instance Methods</h3>
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
 
-      
-        <div id="address-method" class="method-detail ">
-          <a name="method-i-address"></a>
+    
+      <div id="method-i-address" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">address</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
 
           
-          <div class="method-heading">
-            <span class="method-name">address</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="address-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 60</span>
+          <div class="method-source-code" id="address-source">
+            <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">address</span>
   <span class="ruby-ivar">@address</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- address-source -->
-            
-          </div>
+          </div><!-- address-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- address-method -->
+
+    
+      <div id="method-i-auth" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">auth</span><span
+            class="method-args">(header, value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- address-method -->
+          <div class="method-source-code" id="auth-source">
+            <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 73</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">auth</span>(<span class="ruby-identifier">header</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">auth</span>(<span class="ruby-identifier">header</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- auth-source -->
+          
+        </div>
 
-      
-        <div id="bind-method" class="method-detail ">
-          <a name="method-i-bind"></a>
+        
+
+        
+      </div><!-- auth-method -->
+
+    
+      <div id="method-i-bind" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">bind</span><span
+            class="method-args">(*args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
 
           
-          <div class="method-heading">
-            <span class="method-name">bind</span><span
-              class="method-args">(*args)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="bind-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 64</span>
+          <div class="method-source-code" id="bind-source">
+            <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 64</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">bind</span>(*<span class="ruby-identifier">args</span>)
   <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@resource</span>, <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">deep_copy</span>, <span class="ruby-keyword">false</span>).<span class="ruby-identifier">bind!</span>(*<span class="ruby-identifier">args</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- bind-source -->
-            
-          </div>
+          </div><!-- bind-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- bind-method -->
+
+    
+      <div id="method-i-bind-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">bind!</span><span
+            class="method-args">(args = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- bind-method -->
-
-      
-        <div id="bind-21-method" class="method-detail ">
-          <a name="method-i-bind-21"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">bind!</span><span
-              class="method-args">(args = {})</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="bind-21-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 68</span>
+          <div class="method-source-code" id="bind-21-source">
+            <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span> = {})
   <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span>)
   <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- bind-21-source -->
-            
-          </div>
+          </div><!-- bind-21-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- bind-21-method -->
+
+    
+      <div id="method-i-find_resource" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">find_resource</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- bind-21-method -->
-
-      
-        <div id="find_resource-method" class="method-detail ">
-          <a name="method-i-find_resource"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">find_resource</span><span
-              class="method-args">(*args, &block)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="find_resource-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 94</span>
+          <div class="method-source-code" id="find_resource-source">
+            <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 99</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find_resource</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">resource</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">find_resource</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">resource</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-ivar">@address</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- find_resource-source -->
-            
-          </div>
+          </div><!-- find_resource-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- find_resource-method -->
+
+    
+      <div id="method-i-find_resource_by_path" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">find_resource_by_path</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- find_resource-method -->
-
-      
-        <div id="find_resource_by_path-method" class="method-detail ">
-          <a name="method-i-find_resource_by_path"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">find_resource_by_path</span><span
-              class="method-args">(*args, &block)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="find_resource_by_path-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 99</span>
+          <div class="method-source-code" id="find_resource_by_path-source">
+            <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 104</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find_resource_by_path</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">resource</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">find_resource_by_path</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">resource</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-ivar">@address</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- find_resource_by_path-source -->
-            
-          </div>
-
+          </div><!-- find_resource_by_path-source -->
           
+        </div>
 
+        
+
+        
+      </div><!-- find_resource_by_path-method -->
+
+    
+      <div id="method-i-id" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">id</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
           
-        </div><!-- find_resource_by_path-method -->
-
-      
-        <div id="id-method" class="method-detail ">
-          <a name="method-i-id"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">id</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            <p>The id method is not delegated, because it’s the name of a (deprecated)
+          <p>The id method is not delegated, because it’s the name of a (deprecated)
 built-in Ruby method. We wnat to delegate it.</p>
-            
+          
 
-            
-            <div class="method-source-code" id="id-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 48</span>
+          
+          <div class="method-source-code" id="id-source">
+            <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">id</span>
   <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">id</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- id-source -->
-            
-          </div>
+          </div><!-- id-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- id-method -->
+
+    
+      <div id="method-i-inspect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- id-method -->
-
-      
-        <div id="inspect-method" class="method-detail ">
-          <a name="method-i-inspect"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">inspect</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="inspect-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 56</span>
+          <div class="method-source-code" id="inspect-source">
+            <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
   <span class="ruby-node">&quot;ResourceAndAddress\n Resource: #{@resource}\n #{@address.inspect}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- inspect-source -->
-            
-          </div>
+          </div><!-- inspect-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- inspect-method -->
+
+    
+      <div id="method-i-method_missing" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">method_missing</span><span
+            class="method-args">(name, *args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a
+href="ResourceAndAddress.html#method-i-method_missing">#method_missing</a>
+is to catch generated methods that don't get delegated.</p>
           
 
           
-        </div><!-- inspect-method -->
-
-      
-        <div id="method_missing-method" class="method-detail ">
-          <a name="method-i-method_missing"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">method_missing</span><span
-              class="method-args">(name, *args, &block)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            <p><a
-href="ResourceAndAddress.html#method-i-method_missing">method_missing</a>
-is to catch generated methods that don’t get delegated.</p>
-            
-
-            
-            <div class="method-source-code" id="method_missing-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 78</span>
+          <div class="method-source-code" id="method_missing-source">
+            <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 83</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">name</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">name</span>)
     <span class="ruby-identifier">result</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
@@ -525,132 +520,120 @@ is to catch generated methods that don’t get delegated.</p>
     <span class="ruby-keyword">super</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- method_missing-source -->
-            
-          </div>
-
+          </div><!-- method_missing-source -->
           
+        </div>
 
+        
+
+        
+      </div><!-- method_missing-method -->
+
+    
+      <div id="method-i-resource" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">resource</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
           
-        </div><!-- method_missing-method -->
-
-      
-        <div id="resource-method" class="method-detail ">
-          <a name="method-i-resource"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">resource</span><span
-              class="method-args">(*args, &block)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            <p><a
-href="ResourceAndAddress.html#method-i-method_missing">method_missing</a>
-won’t catch these guys because they were defined in the delegation
+          <p><a
+href="ResourceAndAddress.html#method-i-method_missing">#method_missing</a>
+won't catch these guys because they were defined in the delegation
 operation.</p>
-            
+          
 
-            
-            <div class="method-source-code" id="resource-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 89</span>
+          
+          <div class="method-source-code" id="resource-source">
+            <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 94</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">resource</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">resource</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">resource</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">resource</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-ivar">@address</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- resource-source -->
-            
-          </div>
+          </div><!-- resource-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- resource-method -->
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- resource-method -->
-
-      
-        <div id="to_s-method" class="method-detail ">
-          <a name="method-i-to_s"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">to_s</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="to_s-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 52</span>
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 52</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-identifier">inspect</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- to_s-source -->
-            
-          </div>
+          </div><!-- to_s-source -->
+          
+        </div>
 
+        
+
+        
+      </div><!-- to_s-method -->
+
+    
+      <div id="method-i-uri" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">uri</span><span
+            class="method-args">(args = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
           
 
           
-        </div><!-- to_s-method -->
-
-      
-        <div id="uri-method" class="method-detail ">
-          <a name="method-i-uri"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">uri</span><span
-              class="method-args">(args = {})</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="uri-source">
-<pre>
-<span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 73</span>
+          <div class="method-source-code" id="uri-source">
+            <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">uri</span>(<span class="ruby-identifier">args</span> = {})
   <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">deep_copy</span>.<span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span>).<span class="ruby-identifier">uri</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- uri-source -->
-            
-          </div>
-
+          </div><!-- uri-source -->
           
+        </div>
 
-          
-        </div><!-- uri-method -->
+        
 
-      
-      </div><!-- public-instance-method-details -->
+        
+      </div><!-- uri-method -->
+
     
-    </div><!-- 5Buntitled-5D -->
+    </section><!-- public-instance-method-details -->
   
+  </section><!-- 5Buntitled-5D -->
 
-  </div><!-- documentation -->
+</div><!-- documentation -->
 
-  <div id="validator-badges">
-    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-      Rdoc Generator</a> 2</small>.</p>
-  </div>
 
-</body>
-</html>
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
 
