@@ -43,11 +43,14 @@
 </nav>
 
 
+  
+
   <div id="file-metadata">
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
     <li>lib/wadl/http_method.rb
+    <li>lib/wadl/resource.rb
   </ul>
 </nav>
 
@@ -64,15 +67,16 @@
 </nav>
 
     
+    
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
     
-    <li><a href="#method-i-call">#call</a>
+    <li ><a href="#method-i-call">#call</a>
     
-    <li><a href="#method-i-set_oauth_header">#set_oauth_header</a>
+    <li ><a href="#method-i-set_oauth_header">#set_oauth_header</a>
     
   </ul>
 </nav>
@@ -207,7 +211,9 @@
         <div class="method-heading">
           <span class="method-name">call</span><span
             class="method-args">(resource, args = {})</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -221,13 +227,14 @@
 :send_representation
 :expect_representation</pre>
           
+          
 
           
           <div class="method-source-code" id="call-source">
             <pre><span class="ruby-comment"># File lib/wadl/http_method.rb, line 58</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">call</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-identifier">args</span> = {})
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:uri</span>)
-    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;You can't call a method that's not attached to a resource! (You may have dereferenced a method when you shouldn't have)&quot;</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;You can&#39;t call a method that&#39;s not attached to a resource! (You may have dereferenced a method when you shouldn&#39;t have)&quot;</span>
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-identifier">resource</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">parent</span>
@@ -236,9 +243,9 @@
   <span class="ruby-identifier">uri</span> = <span class="ruby-identifier">method</span>.<span class="ruby-identifier">request</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">method</span>.<span class="ruby-identifier">request</span>.<span class="ruby-identifier">uri</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-identifier">args</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">resource</span>.<span class="ruby-identifier">uri</span>(<span class="ruby-identifier">args</span>)
   <span class="ruby-identifier">headers</span> = <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">headers</span>.<span class="ruby-identifier">dup</span>
 
-  <span class="ruby-identifier">headers</span>[<span class="ruby-string">'Accept'</span>]       = <span class="ruby-identifier">expect_representation</span>.<span class="ruby-identifier">mediaType</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-value">:expect_representation</span>]
-  <span class="ruby-identifier">headers</span>[<span class="ruby-string">'User-Agent'</span>]   = <span class="ruby-string">'Ruby WADL client'</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">headers</span>[<span class="ruby-string">'User-Agent'</span>]
-  <span class="ruby-identifier">headers</span>[<span class="ruby-string">'Content-Type'</span>] = <span class="ruby-string">'application/x-www-form-urlencoded'</span>
+  <span class="ruby-identifier">headers</span>[<span class="ruby-string">&#39;Accept&#39;</span>]       = <span class="ruby-identifier">expect_representation</span>.<span class="ruby-identifier">mediaType</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-value">:expect_representation</span>]
+  <span class="ruby-identifier">headers</span>[<span class="ruby-string">&#39;User-Agent&#39;</span>]   = <span class="ruby-string">&#39;Ruby WADL client&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">headers</span>[<span class="ruby-string">&#39;User-Agent&#39;</span>]
+  <span class="ruby-identifier">headers</span>[<span class="ruby-string">&#39;Content-Type&#39;</span>] = <span class="ruby-string">&#39;application/x-www-form-urlencoded&#39;</span>
   <span class="ruby-identifier">headers</span>[<span class="ruby-value">:method</span>]        = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">to_sym</span>
   <span class="ruby-identifier">headers</span>[<span class="ruby-value">:body</span>]          = <span class="ruby-identifier">args</span>[<span class="ruby-value">:send_representation</span>]
 
@@ -267,11 +274,14 @@
         <div class="method-heading">
           <span class="method-name">set_oauth_header</span><span
             class="method-args">(headers, uri)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -283,7 +293,7 @@
   <span class="ruby-identifier">args</span> = <span class="ruby-identifier">headers</span>[<span class="ruby-constant">OAUTH_HEADER</span>] <span class="ruby-keyword">or</span> <span class="ruby-keyword">return</span>
 
   <span class="ruby-identifier">yaml</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">dup</span>
-  <span class="ruby-identifier">yaml</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-node">%r\A#{OAUTH_PREFIX}/</span>, <span class="ruby-string">''</span>) <span class="ruby-keyword">or</span> <span class="ruby-keyword">return</span>
+  <span class="ruby-identifier">yaml</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-node">/\A#{OAUTH_PREFIX}/</span>, <span class="ruby-string">&#39;&#39;</span>) <span class="ruby-keyword">or</span> <span class="ruby-keyword">return</span>
 
   <span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span>, <span class="ruby-identifier">access_token</span>, <span class="ruby-identifier">token_secret</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">yaml</span>)
 
@@ -296,8 +306,8 @@
     <span class="ruby-value">:request_uri</span>      =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">path</span>,
     <span class="ruby-value">:consumer</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">consumer</span>,
     <span class="ruby-value">:token</span>            =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">token</span>,
-    <span class="ruby-value">:scheme</span>           =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'header'</span>,
-    <span class="ruby-value">:signature_method</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'HMAC-SHA1'</span>
+    <span class="ruby-value">:scheme</span>           =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;header&#39;</span>,
+    <span class="ruby-value">:signature_method</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;HMAC-SHA1&#39;</span>
   )
 
   <span class="ruby-identifier">headers</span>[<span class="ruby-constant">OAUTH_HEADER</span>] = <span class="ruby-identifier">helper</span>.<span class="ruby-identifier">header</span>
@@ -321,7 +331,7 @@
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

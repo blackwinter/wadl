@@ -43,6 +43,8 @@
 </nav>
 
 
+  
+
   <div id="file-metadata">
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
@@ -76,39 +78,40 @@
   </ul>
 </nav>
 
+    
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
     
-    <li><a href="#method-c-define_http_methods">::define_http_methods</a>
+    <li ><a href="#method-c-define_http_methods">::define_http_methods</a>
     
-    <li><a href="#method-c-new">::new</a>
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
     
-    <li><a href="#method-i-address">#address</a>
+    <li ><a href="#method-i-address">#address</a>
     
-    <li><a href="#method-i-bind">#bind</a>
+    <li ><a href="#method-i-bind">#bind</a>
     
-    <li><a href="#method-i-dereference_with_context">#dereference_with_context</a>
+    <li ><a href="#method-i-dereference_with_context">#dereference_with_context</a>
     
-    <li><a href="#method-i-each_http_method">#each_http_method</a>
+    <li ><a href="#method-i-each_http_method">#each_http_method</a>
     
-    <li><a href="#method-i-find_by_id">#find_by_id</a>
+    <li ><a href="#method-i-find_by_id">#find_by_id</a>
     
-    <li><a href="#method-i-find_method_by_http_method">#find_method_by_http_method</a>
+    <li ><a href="#method-i-find_method_by_http_method">#find_method_by_http_method</a>
     
-    <li><a href="#method-i-find_method_by_id">#find_method_by_id</a>
+    <li ><a href="#method-i-find_method_by_id">#find_method_by_id</a>
     
-    <li><a href="#method-i-representation_for">#representation_for</a>
+    <li ><a href="#method-i-representation_for">#representation_for</a>
     
-    <li><a href="#method-i-resource_and_address">#resource_and_address</a>
+    <li ><a href="#method-i-resource_and_address">#resource_and_address</a>
     
-    <li><a href="#method-i-uri">#uri</a>
+    <li ><a href="#method-i-uri">#uri</a>
     
-    <li><a href="#method-i-with_basic_auth">#with_basic_auth</a>
+    <li ><a href="#method-i-with_basic_auth">#with_basic_auth</a>
     
-    <li><a href="#method-i-with_oauth">#with_oauth</a>
+    <li ><a href="#method-i-with_oauth">#with_oauth</a>
     
   </ul>
 </nav>
@@ -225,13 +228,16 @@
         <div class="method-heading">
           <span class="method-name">define_http_methods</span><span
             class="method-args">(klass = self, methods = %w[head get post put delete])</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
           
           <p>Methods for reading or writing this resource</p>
+          
           
 
           
@@ -243,7 +249,7 @@
             if method = find_method_by_http_method(:#{method})
               method.call(self, *args, &amp;block)
             else
-              raise ArgumentError, 'Method not allowed (&quot;#{method}&quot;)'
+              raise ArgumentError, &#39;Method not allowed (&quot;#{method}&quot;)&#39;
             end
           end
 &quot;</span>, <span class="ruby-keyword">__FILE__</span>, <span class="ruby-keyword">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
@@ -264,7 +270,9 @@
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">(*args)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -272,11 +280,17 @@
           
           
           
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="CheapSchema.html#method-c-new">WADL::CheapSchema.new</a>
+            </div>
+          
 
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 43</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
   <span class="ruby-keyword">super</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
@@ -300,7 +314,9 @@
         <div class="method-heading">
           <span class="method-name">address</span><span
             class="method-args">(working_address = nil)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -308,6 +324,7 @@
           
           <p>Returns an <a href="Address.html">Address</a> object refering to this
 resource</p>
+          
           
 
           
@@ -328,7 +345,7 @@ resource</p>
 
   <span class="ruby-comment"># Install path, query, and header parameters in the Address. These</span>
   <span class="ruby-comment"># may override existing parameters with the same names, but if</span>
-  <span class="ruby-comment"># you've got a WADL application that works that way, you should</span>
+  <span class="ruby-comment"># you&#39;ve got a WADL application that works that way, you should</span>
   <span class="ruby-comment"># have bound parameters to values earlier.</span>
   <span class="ruby-identifier">new_path_fragments</span> = []
   <span class="ruby-identifier">embedded_param_names</span> = <span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Address</span>.<span class="ruby-identifier">embedded_param_names</span>(<span class="ruby-identifier">path</span>))
@@ -339,9 +356,9 @@ resource</p>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">embedded_param_names</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
       <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">path_params</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">param</span>
     <span class="ruby-keyword">else</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">param</span>.<span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-string">'query'</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">param</span>.<span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;query&#39;</span>
         <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">query_params</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">param</span>
-      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">param</span>.<span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-string">'header'</span>
+      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">param</span>.<span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;header&#39;</span>
         <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">header_params</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">param</span>
       <span class="ruby-keyword">else</span>
         <span class="ruby-identifier">new_path_fragments</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">param</span>
@@ -369,7 +386,9 @@ resource</p>
         <div class="method-heading">
           <span class="method-name">bind</span><span
             class="method-args">(args = {})</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -377,6 +396,7 @@ resource</p>
           
           <p>Returns a <a href="ResourceAndAddress.html">ResourceAndAddress</a> object
 bound to this resource and the given query variables.</p>
+          
           
 
           
@@ -400,11 +420,14 @@ bound to this resource and the given query variables.</p>
         <div class="method-heading">
           <span class="method-name">dereference_with_context</span><span
             class="method-args">(child)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -430,7 +453,9 @@ bound to this resource and the given query variables.</p>
         <div class="method-heading">
           <span class="method-name">each_http_method</span><span
             class="method-args">() { |m| ... }</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -438,12 +463,13 @@ bound to this resource and the given query variables.</p>
           
           <p>Find HTTP methods in this resource and in the mixed-in types</p>
           
+          
 
           
           <div class="method-source-code" id="each_http_method-source">
             <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 139</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">each_http_method</span>
-  [<span class="ruby-keyword">self</span>, *<span class="ruby-identifier">resource_types</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">http_methods</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span> <span class="ruby-identifier">m</span> } }
+  [<span class="ruby-keyword">self</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">resource_types</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">http_methods</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span> <span class="ruby-identifier">m</span> } }
 <span class="ruby-keyword">end</span></pre>
           </div><!-- each_http_method-source -->
           
@@ -460,11 +486,14 @@ bound to this resource and the given query variables.</p>
         <div class="method-heading">
           <span class="method-name">find_by_id</span><span
             class="method-args">(id)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -491,11 +520,14 @@ bound to this resource and the given query variables.</p>
         <div class="method-heading">
           <span class="method-name">find_method_by_http_method</span><span
             class="method-args">(action)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -523,11 +555,14 @@ bound to this resource and the given query variables.</p>
         <div class="method-heading">
           <span class="method-name">find_method_by_id</span><span
             class="method-args">(id)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -555,11 +590,14 @@ bound to this resource and the given query variables.</p>
         <div class="method-heading">
           <span class="method-name">representation_for</span><span
             class="method-args">(http_method, request = true, all = false)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -588,7 +626,9 @@ bound to this resource and the given query variables.</p>
         <div class="method-heading">
           <span class="method-name">resource_and_address</span><span
             class="method-args">(child = self, *args)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -596,12 +636,13 @@ bound to this resource and the given query variables.</p>
           
           
           
+          
 
           
           <div class="method-source-code" id="resource_and_address-source">
             <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 47</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">resource_and_address</span>(<span class="ruby-identifier">child</span> = <span class="ruby-keyword">self</span>, *<span class="ruby-identifier">args</span>)
-  <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">child</span>, *<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">resource_and_address</span>(<span class="ruby-identifier">child</span> = <span class="ruby-keyword">self</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">child</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- resource_and_address-source -->
           
@@ -618,11 +659,14 @@ bound to this resource and the given query variables.</p>
         <div class="method-heading">
           <span class="method-name">uri</span><span
             class="method-args">(args = {}, working_address = nil)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -648,7 +692,9 @@ bound to this resource and the given query variables.</p>
         <div class="method-heading">
           <span class="method-name">with_basic_auth</span><span
             class="method-args">(user, pass, header = 'Authorization')</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -656,13 +702,14 @@ bound to this resource and the given query variables.</p>
           
           <p>Sets basic auth parameters</p>
           
+          
 
           
           <div class="method-source-code" id="with_basic_auth-source">
             <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 62</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">with_basic_auth</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>, <span class="ruby-identifier">header</span> = <span class="ruby-string">'Authorization'</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">with_basic_auth</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>, <span class="ruby-identifier">header</span> = <span class="ruby-string">&#39;Authorization&#39;</span>)
   <span class="ruby-identifier">resource_and_address</span>.<span class="ruby-identifier">auth</span>(<span class="ruby-identifier">header</span>,
-    <span class="ruby-node">&quot;Basic #{[&quot;#{user}:#{pass}&quot;].pack('m')}&quot;</span>)
+    <span class="ruby-node">&quot;Basic #{[&quot;#{user}:#{pass}&quot;].pack(&#39;m&#39;)}&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- with_basic_auth-source -->
           
@@ -679,7 +726,9 @@ bound to this resource and the given query variables.</p>
         <div class="method-heading">
           <span class="method-name">with_oauth</span><span
             class="method-args">(*args)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -694,11 +743,12 @@ bound to this resource and the given query variables.</p>
 :access_token
 :token_secret</pre>
           
+          
 
           
           <div class="method-source-code" id="with_oauth-source">
             <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 74</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">with_oauth</span>(*<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">with_oauth</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
   <span class="ruby-identifier">resource_and_address</span>.<span class="ruby-identifier">auth</span>(<span class="ruby-constant">HTTPMethod</span><span class="ruby-operator">::</span><span class="ruby-constant">OAUTH_HEADER</span>,
     <span class="ruby-node">&quot;#{HTTPMethod::OAUTH_PREFIX}#{args.to_yaml}&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -721,7 +771,7 @@ bound to this resource and the given query variables.</p>
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

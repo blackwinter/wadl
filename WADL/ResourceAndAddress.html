@@ -43,6 +43,8 @@
 </nav>
 
 
+  
+
   <div id="file-metadata">
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
@@ -64,37 +66,38 @@
 </nav>
 
     
+    
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
     
-    <li><a href="#method-c-new">::new</a>
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
     
-    <li><a href="#method-i-address">#address</a>
+    <li ><a href="#method-i-address">#address</a>
     
-    <li><a href="#method-i-auth">#auth</a>
+    <li ><a href="#method-i-auth">#auth</a>
     
-    <li><a href="#method-i-bind">#bind</a>
+    <li ><a href="#method-i-bind">#bind</a>
     
-    <li><a href="#method-i-bind-21">#bind!</a>
+    <li ><a href="#method-i-bind-21">#bind!</a>
     
-    <li><a href="#method-i-find_resource">#find_resource</a>
+    <li ><a href="#method-i-find_resource">#find_resource</a>
     
-    <li><a href="#method-i-find_resource_by_path">#find_resource_by_path</a>
+    <li ><a href="#method-i-find_resource_by_path">#find_resource_by_path</a>
     
-    <li><a href="#method-i-id">#id</a>
+    <li ><a href="#method-i-id">#id</a>
     
-    <li><a href="#method-i-inspect">#inspect</a>
+    <li ><a href="#method-i-inspect">#inspect</a>
     
-    <li><a href="#method-i-method_missing">#method_missing</a>
+    <li class="calls-super" ><a href="#method-i-method_missing">#method_missing</a>
     
-    <li><a href="#method-i-resource">#resource</a>
+    <li ><a href="#method-i-resource">#resource</a>
     
-    <li><a href="#method-i-to_s">#to_s</a>
+    <li ><a href="#method-i-to_s">#to_s</a>
     
-    <li><a href="#method-i-uri">#uri</a>
+    <li ><a href="#method-i-uri">#uri</a>
     
   </ul>
 </nav>
@@ -214,13 +217,21 @@ through a twisting resource hierarchy that includes references.</p>
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">(resource, address = nil, combine_address_with_resource = true)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
           
           
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
           
 
           
@@ -253,11 +264,14 @@ through a twisting resource hierarchy that includes references.</p>
         <div class="method-heading">
           <span class="method-name">address</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -283,11 +297,14 @@ through a twisting resource hierarchy that includes references.</p>
         <div class="method-heading">
           <span class="method-name">auth</span><span
             class="method-args">(header, value)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -314,7 +331,9 @@ through a twisting resource hierarchy that includes references.</p>
         <div class="method-heading">
           <span class="method-name">bind</span><span
             class="method-args">(*args)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -322,12 +341,13 @@ through a twisting resource hierarchy that includes references.</p>
           
           
           
+          
 
           
           <div class="method-source-code" id="bind-source">
             <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 64</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">bind</span>(*<span class="ruby-identifier">args</span>)
-  <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@resource</span>, <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">deep_copy</span>, <span class="ruby-keyword">false</span>).<span class="ruby-identifier">bind!</span>(*<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">bind</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@resource</span>, <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">deep_copy</span>, <span class="ruby-keyword">false</span>).<span class="ruby-identifier">bind!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- bind-source -->
           
@@ -344,11 +364,14 @@ through a twisting resource hierarchy that includes references.</p>
         <div class="method-heading">
           <span class="method-name">bind!</span><span
             class="method-args">(args = {})</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -375,7 +398,9 @@ through a twisting resource hierarchy that includes references.</p>
         <div class="method-heading">
           <span class="method-name">find_resource</span><span
             class="method-args">(*args, &block)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -383,12 +408,13 @@ through a twisting resource hierarchy that includes references.</p>
           
           
           
+          
 
           
           <div class="method-source-code" id="find_resource-source">
             <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 99</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">find_resource</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">resource</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">find_resource</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">find_resource</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">resource</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">find_resource</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">resource</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-ivar">@address</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- find_resource-source -->
@@ -406,7 +432,9 @@ through a twisting resource hierarchy that includes references.</p>
         <div class="method-heading">
           <span class="method-name">find_resource_by_path</span><span
             class="method-args">(*args, &block)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -414,12 +442,13 @@ through a twisting resource hierarchy that includes references.</p>
           
           
           
+          
 
           
           <div class="method-source-code" id="find_resource_by_path-source">
             <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 104</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">find_resource_by_path</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">resource</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">find_resource_by_path</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">find_resource_by_path</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">resource</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">find_resource_by_path</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">resource</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-ivar">@address</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- find_resource_by_path-source -->
@@ -437,14 +466,17 @@ through a twisting resource hierarchy that includes references.</p>
         <div class="method-heading">
           <span class="method-name">id</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
           
-          <p>The id method is not delegated, because it’s the name of a (deprecated)
+          <p>The id method is not delegated, because it&#39;s the name of a (deprecated)
 built-in Ruby method. We wnat to delegate it.</p>
+          
           
 
           
@@ -468,11 +500,14 @@ built-in Ruby method. We wnat to delegate it.</p>
         <div class="method-heading">
           <span class="method-name">inspect</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -498,7 +533,9 @@ built-in Ruby method. We wnat to delegate it.</p>
         <div class="method-heading">
           <span class="method-name">method_missing</span><span
             class="method-args">(name, *args, &block)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -506,15 +543,21 @@ built-in Ruby method. We wnat to delegate it.</p>
           
           <p><a
 href="ResourceAndAddress.html#method-i-method_missing">#method_missing</a>
-is to catch generated methods that don't get delegated.</p>
+is to catch generated methods that don&#39;t get delegated.</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
           
 
           
           <div class="method-source-code" id="method_missing-source">
             <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 83</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">name</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">name</span>)
-    <span class="ruby-identifier">result</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+    <span class="ruby-identifier">result</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
     <span class="ruby-identifier">result</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Resource</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">result</span>, <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">dup</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">result</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-keyword">super</span>
@@ -535,7 +578,9 @@ is to catch generated methods that don't get delegated.</p>
         <div class="method-heading">
           <span class="method-name">resource</span><span
             class="method-args">(*args, &block)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -543,15 +588,16 @@ is to catch generated methods that don't get delegated.</p>
           
           <p><a
 href="ResourceAndAddress.html#method-i-method_missing">#method_missing</a>
-won't catch these guys because they were defined in the delegation
+won&#39;t catch these guys because they were defined in the delegation
 operation.</p>
+          
           
 
           
           <div class="method-source-code" id="resource-source">
             <pre><span class="ruby-comment"># File lib/wadl/resource_and_address.rb, line 94</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">resource</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">resource</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">resource</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">resource</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">resource</span> = <span class="ruby-ivar">@resource</span>.<span class="ruby-identifier">resource</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">resource</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-ivar">@address</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- resource-source -->
@@ -569,11 +615,14 @@ operation.</p>
         <div class="method-heading">
           <span class="method-name">to_s</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -599,11 +648,14 @@ operation.</p>
         <div class="method-heading">
           <span class="method-name">uri</span><span
             class="method-args">(args = {})</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
+          
           
           
           
@@ -633,7 +685,7 @@ operation.</p>
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

@@ -43,6 +43,24 @@
 </nav>
 
 
+  
+<div id="table-of-contents">
+  <nav class="section">
+    <h3 class="section-header">Table of Contents</h3>
+    <ul>
+      <li><a href="#label-wadl+-+Ruby+client+for+the+Web+Application+Description+Language.">wadl - Ruby client for the Web Application Description Language.</a>
+      <li><a href="#label-VERSION">VERSION</a>
+      <li><a href="#label-DESCRIPTION">DESCRIPTION</a>
+      <li><a href="#label-Interesting+Features%3A">Interesting Features:</a>
+      <li><a href="#label-Shortcomings%3A">Shortcomings:</a>
+      <li><a href="#label-LINKS">LINKS</a>
+      <li><a href="#label-AUTHORS">AUTHORS</a>
+      <li><a href="#label-LICENSE+AND+COPYRIGHT">LICENSE AND COPYRIGHT</a>
+    </ul>
+  </nav>
+</div>
+
+
   <div id="project-metadata">
     <nav id="fileindex-section" class="section project-section">
   <h3 class="section-header">Pages</h3>
@@ -125,13 +143,13 @@
 
 <div id="documentation" class="description">
   
-<h1 id="label-wadl+-+Ruby+client+for+the+Web+Application+Description+Language.">wadl - Ruby client for the Web Application Description Language.</h1>
+<h1 id="label-wadl+-+Ruby+client+for+the+Web+Application+Description+Language.">wadl - Ruby client for the Web Application Description Language.<span><a href="#label-wadl+-+Ruby+client+for+the+Web+Application+Description+Language.">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
 
-<h2 id="label-VERSION">VERSION</h2>
+<h2 id="label-VERSION">VERSION<span><a href="#label-VERSION">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p>This documentation refers to wadl version 0.2.7</p>
 
-<h2 id="label-DESCRIPTION">DESCRIPTION</h2>
+<h2 id="label-DESCRIPTION">DESCRIPTION<span><a href="#label-DESCRIPTION">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p>This is a Ruby client for the Web Application Description Language. It
 hides the details of HTTP communication between a web service client and a
@@ -142,10 +160,10 @@ will replace one-off wrapper libraries specific to one service and one
 programming language – or at least make such wrapper libraries much easier
 to write.</p>
 
-<h3 id="label-Interesting+Features%3A">Interesting Features:</h3>
+<h3 id="label-Interesting+Features%3A">Interesting Features:<span><a href="#label-Interesting+Features%3A">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 <ul><li>
 <p>Traversing the tree of resources is like traversing a data structure.
-Here’s code to get recent posts from del.icio.us:</p>
+Here&#39;s code to get recent posts from del.icio.us:</p>
 
 <pre>WADL::Application.from_wadl(open(&quot;delicious.wadl&quot;)).v1.posts.recent.get</pre>
 </li><li>
@@ -157,12 +175,12 @@ keys) permanently to the <a href="WADL.html">WADL</a> application, and
 leave others (such as search queries) to be bound differently for each
 request.</p>
 </li><li>
-<p>This feature isn’t in the <a href="WADL.html">WADL</a> standard yet: you
-can define “header”-style parameters to be included in the HTTP request
+<p>This feature isn&#39;t in the <a href="WADL.html">WADL</a> standard yet:
+you can define “header”-style parameters to be included in the HTTP request
 headers. See delicious.wadl for an example.</p>
 </li></ul>
 
-<h3 id="label-Shortcomings%3A">Shortcomings:</h3>
+<h3 id="label-Shortcomings%3A">Shortcomings:<span><a href="#label-Shortcomings%3A">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <p>The 20060802 <a href="WADL.html">WADL</a> standard is almost entirely
 supported. However,</p>
@@ -172,7 +190,7 @@ supported. However,</p>
 <p>As are links</p>
 </li></ul>
 
-<h2 id="label-LINKS">LINKS</h2>
+<h2 id="label-LINKS">LINKS<span><a href="#label-LINKS">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p></p>
 <dl class="rdoc-list note-list"><dt>Homepage
@@ -185,26 +203,29 @@ href="http://www.crummy.com/software/wadl.rb">www.crummy.com/software/wadl.rb</a
 </dd><dt>Documentation
 <dd>
 <p><a
-href="http://rdoc.info/projects/blackwinter/wadl">rdoc.info/projects/blackwinter/wadl</a></p>
+href="http://blackwinter.github.com/wadl">blackwinter.github.com/wadl</a></p>
 </dd><dt>Source code
 <dd>
 <p><a
 href="http://github.com/blackwinter/wadl">github.com/blackwinter/wadl</a></p>
+</dd><dt>RubyGem
+<dd>
+<p><a href="http://rubygems.org/gems/wadl">rubygems.org/gems/wadl</a></p>
 </dd></dl>
 
-<h2 id="label-AUTHORS">AUTHORS</h2>
+<h2 id="label-AUTHORS">AUTHORS<span><a href="#label-AUTHORS">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 <ul><li>
 <p>Leonard Richardson &lt;<a
 href="mailto:leonardr@segfault.org">leonardr@segfault.org</a>&gt; (Original
 author)</p>
 </li><li>
 <p>Jens Wille &lt;<a
-href="mailto:jens.wille@uni-koeln.de">jens.wille@uni-koeln.de</a>&gt;</p>
+href="mailto:jens.wille@gmail.com">jens.wille@gmail.com</a>&gt;</p>
 </li></ul>
 
-<h2 id="label-LICENSE+AND+COPYRIGHT">LICENSE AND COPYRIGHT</h2>
+<h2 id="label-LICENSE+AND+COPYRIGHT">LICENSE AND COPYRIGHT<span><a href="#label-LICENSE+AND+COPYRIGHT">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<p>Copyright (C) 2006-2008 Leonard Richardson Copyright (C) 2010-2012 Jens
+<p>Copyright (C) 2006-2008 Leonard Richardson Copyright (C) 2010-2013 Jens
 Wille</p>
 
 <p>wadl is free software: you can redistribute it and/or modify it under the
@@ -219,7 +240,7 @@ more details.</p>
 
 <p>You should have received a copy of the GNU Affero General Public License
 along with wadl. If not, see &lt;<a
-href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
+href="http://www.gnu.org/licenses">www.gnu.org/licenses</a>/&gt;.</p>
 
 </div>
 
@@ -227,7 +248,7 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 
