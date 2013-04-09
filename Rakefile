@@ -9,7 +9,7 @@ begin
       :version      => WADL::VERSION,
       :summary      => %q{Ruby client for the Web Application Description Language.},
       :authors      => ['Leonard Richardson', 'Jens Wille'],
-      :email        => ['leonardr@segfault.org', 'jens.wille@uni-koeln.de'],
+      :email        => ['leonardr@segfault.org', 'jens.wille@gmail.com'],
       :homepage     => :blackwinter,
       :dependencies => %w[rest-open-uri mime-types] << ['ruby-nuggets', '>= 0.7.3']
     }

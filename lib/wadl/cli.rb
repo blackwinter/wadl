@@ -3,10 +3,10 @@
 #                                                                             #
 # A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
-# Copyright (C) 2010-2012 Jens Wille                                          #
+# Copyright (C) 2010-2013 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
-#     Jens Wille <jens.wille@uni-koeln.de>                                    #
+#     Jens Wille <jens.wille@gmail.com>                                       #
 #                                                                             #
 # wadl is free software; you can redistribute it and/or modify it under the   #
 # terms of the GNU Affero General Public License as published by the Free     #

@@ -4,11 +4,11 @@
 # A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
-# Copyright (C) 2010-2011 Jens Wille                                          #
+# Copyright (C) 2010-2013 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Leonard Richardson <leonardr@segfault.org> (Original author)            #
-#     Jens Wille <jens.wille@uni-koeln.de>                                    #
+#     Jens Wille <jens.wille@gmail.com>                                       #
 #                                                                             #
 # wadl is free software; you can redistribute it and/or modify it under the   #
 # terms of the GNU Affero General Public License as published by the Free     #
