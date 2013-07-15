@@ -10,6 +10,7 @@ begin
       :summary      => %q{Ruby client for the Web Application Description Language.},
       :authors      => ['Leonard Richardson', 'Jens Wille'],
       :email        => ['leonardr@segfault.org', 'jens.wille@gmail.com'],
+      :license      => %q{AGPL},
       :homepage     => :blackwinter,
       :dependencies => %w[rest-open-uri mime-types] << ['ruby-nuggets', '>= 0.7.3']
     }
