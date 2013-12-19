@@ -1,5 +1,5 @@
-Tue, 16 Apr 2013 12:32:12 +0200
-README	Tue, 09 Apr 2013 13:03:30 +0200
+Thu, 19 Dec 2013 13:29:25 +0100
+README	Thu, 19 Dec 2013 13:28:44 +0100
 COPYING	Tue, 09 Apr 2013 11:30:22 +0200
 ChangeLog	Tue, 16 Apr 2013 12:19:20 +0200
 lib/wadl.rb	Tue, 09 Apr 2013 13:04:33 +0200
@@ -9,7 +9,7 @@ lib/wadl/fault.rb	Tue, 09 Apr 2013 13:05:29 +0200
 lib/wadl/param.rb	Tue, 09 Apr 2013 13:05:42 +0200
 lib/wadl/option.rb	Tue, 09 Apr 2013 13:05:39 +0200
 lib/wadl/address.rb	Tue, 09 Apr 2013 13:04:44 +0200
-lib/wadl/version.rb	Tue, 09 Apr 2013 11:30:22 +0200
+lib/wadl/version.rb	Thu, 19 Dec 2013 13:28:50 +0100
 lib/wadl/has_docs.rb	Tue, 09 Apr 2013 13:05:31 +0200
 lib/wadl/resource.rb	Tue, 09 Apr 2013 13:05:59 +0200
 lib/wadl/response.rb	Tue, 09 Apr 2013 13:06:12 +0200
