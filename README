@@ -49,6 +49,7 @@ WADL Specification:: https://wadl.java.net
 Documentation::      https://blackwinter.github.io/wadl/
 Source code::        https://github.com/blackwinter/wadl
 RubyGem::            https://rubygems.org/gems/wadl
+Travis CI::          https://travis-ci.org/blackwinter/wadl
 
 
 == AUTHORS
