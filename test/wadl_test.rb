@@ -24,10 +24,6 @@ class WADLTest < Test::Unit::TestCase
     EOT
   end
 
-  # Null test to shut the compiler up. (Ruby < 1.9)
-  def test_null
-  end
-
 end
 
 class FindingWhatYouNeed < WADLTest
@@ -253,7 +249,7 @@ class PathParameters < WADLTest
 
 end
 
-class RequestFormatTests < WADLTest
+class RequestFormatTest < WADLTest
 
   def setup
     @wadl = wadl(<<-EOT)
@@ -309,7 +305,55 @@ class RequestFormatTests < WADLTest
 
 end
 
-class AuthTests < WADLTest
+class ResponseFormatTest < WADLTest
+
+  def setup
+    @wadl = wadl(<<-EOT)
+<resources base="http://www.example.com/">
+  <resource id="top" path="palette">
+    <method name="GET" id="get_graphic">
+      <request></request>
+      <response>
+        <representation mediaType="application/json"/>
+      </response>
+    </method>
+  </resource>
+  <resource id="bottom" path="palette">
+    <method name="GET" id="set_graphic">
+      <request></request>
+      <response>
+        <representation mediaType="application/json"/>
+      </response>
+      <response>
+        <representation mediaType="text/xml"/>
+      </response>
+    </method>
+  </resource>
+</resources>
+    EOT
+  end
+
+  def test_representation
+    graphic = @wadl.find_resource('top').find_method('get_graphic')
+    representations = graphic.response.representations
+
+    assert_equal(1, representations.size)
+    assert_equal('application/json', representations.first.mediaType)
+  end
+
+  def test_multiple_response_formats
+    graphic = @wadl.find_resource('bottom').find_method('set_graphic')
+    responses = graphic.responses
+
+    assert_equal(2, responses.size)
+    assert_equal(%w[application/json text/xml], responses.map { |response|
+      response.representations.first.mediaType
+    })
+  end
+
+end
+
+class AuthTest < WADLTest
 
   def setup
     @wadl = wadl(<<-EOT)

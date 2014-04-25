@@ -46,8 +46,13 @@ module WADL
     in_document 'method'
     as_collection 'http_methods'
     has_required :id, :name
-    has_one RequestFormat, ResponseFormat
+    has_one RequestFormat
+    has_many ResponseFormat
     may_be_reference
+
+    def response
+      responses.first
+    end
 
     # Args:
     #  :path - Values for path parameters
