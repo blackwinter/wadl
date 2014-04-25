@@ -26,7 +26,7 @@
 ###############################################################################
 #++
 
-require 'yaml'
+require 'safe_yaml/load'
 require 'rf-rest-open-uri'
 require 'wadl'
 
@@ -89,27 +89,18 @@ module WADL
     end
 
     def set_oauth_header(headers, uri)
-      args = headers[OAUTH_HEADER] or return
-
-      yaml = args.dup
-      yaml.sub!(/\A#{OAUTH_PREFIX}/, '') or return
-
-      consumer_key, consumer_secret, access_token, token_secret = YAML.load(yaml)
+      args = SafeYAML.load($') if headers[OAUTH_HEADER] =~ /\A#{OAUTH_PREFIX}/
+      return unless args.is_a?(Array) && args.size == 4
 
       request = OpenURI::Methods[headers[:method]].new(uri.to_s)
 
-      consumer = OAuth::Consumer.new(consumer_key, consumer_secret)
-      token    = OAuth::AccessToken.new(consumer, access_token, token_secret)
-
-      helper = OAuth::Client::Helper.new(request,
+      headers[OAUTH_HEADER] = OAuth::Client::Helper.new(request,
         :request_uri      => request.path,
-        :consumer         => consumer,
-        :token            => token,
+        :consumer         => consumer = OAuth::Consumer.new(*args[0, 2]),
+        :token            => OAuth::AccessToken.new(consumer, *args[2, 2]),
         :scheme           => 'header',
         :signature_method => 'HMAC-SHA1'
-      )
-
-      headers[OAUTH_HEADER] = helper.header
+      ).header
     end
 
   end

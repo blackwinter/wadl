@@ -12,7 +12,7 @@ begin
       :email        => ['leonardr@segfault.org', 'jens.wille@gmail.com'],
       :license      => %q{AGPL-3.0},
       :homepage     => :blackwinter,
-      :dependencies => %w[cyclops rf-rest-open-uri mime-types]
+      :dependencies => %w[cyclops rf-rest-open-uri mime-types safe_yaml]
     }
   }}
 rescue LoadError => err
