@@ -4,7 +4,7 @@
 # wadl -- Super cheap Ruby WADL client                                        #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
-# Copyright (C) 2010-2013 Jens Wille                                          #
+# Copyright (C) 2010-2014 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Leonard Richardson <leonardr@segfault.org> (Original author)            #
@@ -26,7 +26,7 @@
 ###############################################################################
 #++
 
-require 'wadl/version'
+require_relative 'wadl/version'
 
 module WADL
 

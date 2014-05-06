@@ -25,8 +25,8 @@
 #++
 
 require 'cgi'
-require 'stringio'
 require 'cyclops'
+require 'stringio'
 require 'wadl'
 
 begin
@@ -53,12 +53,12 @@ module WADL
 
       def defaults
         super.merge(
-          :config            => 'config.yaml',
-          :method            => 'GET',
-          :user              => ENV['USER'] || '',
-          :request_token_url => '%s/oauth/request_token',
-          :access_token_url  => '%s/oauth/access_token',
-          :authorize_url     => '%s/oauth/authorize'
+          config:            'config.yaml',
+          method:            'GET',
+          user:              ENV['USER'] || '',
+          request_token_url: '%s/oauth/request_token',
+          access_token_url:  '%s/oauth/access_token',
+          authorize_url:     '%s/oauth/authorize'
         )
       end
 
@@ -85,7 +85,7 @@ module WADL
         stderr.puts api       if debug >= 2
       end
 
-      response = auth_resource.send(options[:method].downcase, :query => query)
+      response = auth_resource.send(options[:method].downcase, query: query)
 
       stderr.puts response.code.join(' ')
       stdout.puts response.representation unless response.code.first =~ /\A[45]/
@@ -182,7 +182,7 @@ module WADL
 
     def basic_auth_resource
       user, pass = options.values_at(:user, :password)
-      pass ||= ask("Password for user #{user}: ") { |q| q.echo = false }
+      pass ||= askpass("Password for user #{user}: ")
 
       quit 'USER and PASSWORD required' unless user && pass
 

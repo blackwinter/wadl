@@ -4,7 +4,7 @@
 # A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
-# Copyright (C) 2010-2013 Jens Wille                                          #
+# Copyright (C) 2010-2014 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Leonard Richardson <leonardr@segfault.org> (Original author)            #
@@ -27,7 +27,6 @@
 #++
 
 require 'set'
-require 'wadl'
 
 module WADL
 

@@ -4,7 +4,7 @@
 # A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
-# Copyright (C) 2010-2013 Jens Wille                                          #
+# Copyright (C) 2010-2014 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Leonard Richardson <leonardr@segfault.org> (Original author)            #
@@ -27,7 +27,6 @@
 #++
 
 require 'cgi'
-require 'wadl'
 
 module WADL
 
@@ -38,15 +37,17 @@ module WADL
     has_many Param
     may_be_reference
 
+    FORM_TYPES = %w[application/x-www-form-urlencoded multipart/form-data]
+
     def is_form_representation?
-      mediaType == 'application/x-www-form-urlencoded' || mediaType == 'multipart/form-data'
+      FORM_TYPES.include?(mediaType)
     end
 
     # Creates a representation by plugging a set of parameters
     # into a representation format.
     def %(values)
-      unless mediaType == 'application/x-www-form-urlencoded'
-        raise "wadl.rb can't instantiate a representation of type #{mediaType}"
+      unless is_form_representation?
+        raise "wadl can't instantiate a representation of type #{mediaType}"
       end
 
       representation = []

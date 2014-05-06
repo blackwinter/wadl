@@ -28,7 +28,6 @@
 
 require 'safe_yaml/load'
 require 'rf-rest-open-uri'
-require 'wadl'
 
 begin
   require 'oauth/client/helper'
@@ -95,11 +94,11 @@ module WADL
       request = OpenURI::Methods[headers[:method]].new(uri.to_s)
 
       headers[OAUTH_HEADER] = OAuth::Client::Helper.new(request,
-        :request_uri      => request.path,
-        :consumer         => consumer = OAuth::Consumer.new(*args[0, 2]),
-        :token            => OAuth::AccessToken.new(consumer, *args[2, 2]),
-        :scheme           => 'header',
-        :signature_method => 'HMAC-SHA1'
+        request_uri:      request.path,
+        consumer:         consumer = OAuth::Consumer.new(*args[0, 2]),
+        token:            OAuth::AccessToken.new(consumer, *args[2, 2]),
+        scheme:           'header',
+        signature_method: 'HMAC-SHA1'
       ).header
     end
 

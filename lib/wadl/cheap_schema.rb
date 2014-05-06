@@ -4,7 +4,7 @@
 # A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
-# Copyright (C) 2010-2013 Jens Wille                                          #
+# Copyright (C) 2010-2014 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Leonard Richardson <leonardr@segfault.org> (Original author)            #
@@ -25,8 +25,6 @@
 #                                                                             #
 ###############################################################################
 #++
-
-require 'wadl'
 
 module WADL
 
@@ -389,8 +387,3 @@ module WADL
   end
 
 end
-
-# Simple backport for Ruby <= 1.8.5
-class Object  # :nodoc:
-  def instance_variable_defined?(sym); instance_eval("defined?(#{sym})"); end
-end unless Object.method_defined?(:instance_variable_defined?)

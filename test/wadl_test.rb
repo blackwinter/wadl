@@ -1,10 +1,5 @@
 # Unit tests for the Ruby WADL library.
 
-begin
-  require 'rubygems'
-rescue LoadError
-end
-
 $LOAD_PATH.unshift(File.expand_path('../lib', __FILE__))
 
 require 'test/unit'
@@ -125,15 +120,15 @@ class PathParameters < WADLTest
     insult_resource = @wadl.find_resource_by_path('the/{person}/is/{a}')
 
     # Test simple substitution.
-    assert_equal(insult_resource.uri(:path => { 'person' => 'king', 'a' => 'fink' }),
+    assert_equal(insult_resource.uri(path: { 'person' => 'king', 'a' => 'fink' }),
                  'http://www.example.com/the/king/is/;a=fink')
     # Test default values.
-    assert_equal(insult_resource.uri(:path => { 'person' => 'king' }),
+    assert_equal(insult_resource.uri(path: { 'person' => 'king' }),
                  'http://www.example.com/the/king/is/;a=dork')
 
     # Test use of optional paramaters.
-    assert_equal(insult_resource.uri(:path => { 'person' => 'king', 'a' => 'fink',
-                                                'and' => 'he can bite me' }),
+    assert_equal(insult_resource.uri(path: { 'person' => 'king', 'a' => 'fink',
+                                             'and' => 'he can bite me' }),
                  'http://www.example.com/the/king/is/;a=fink/;and=he%20can%20bite%20me')
 
     # Don't provide required argument.
@@ -141,7 +136,7 @@ class PathParameters < WADLTest
 
     # Provide multiple values for single-valued argument.
     assert_raises(ArgumentError) {
-      insult_resource.uri(:path => { :person => 'king', :a => ['fink', 'dolt'] })
+      insult_resource.uri(path: { person: 'king', a: %w[fink dolt] })
     }
   end
 
@@ -159,10 +154,10 @@ class PathParameters < WADLTest
 </resources>
     EOT
 
-    assert_equal(resource.uri(:path => { :fate => 'Clotho' }),
+    assert_equal(resource.uri(path: { fate: 'Clotho' }),
                  'http://www.example.com/fates/Clotho')
 
-    assert_raises(ArgumentError) { resource.uri(:path => { :fate => 'Groucho' }) }
+    assert_raises(ArgumentError) { resource.uri(path: { fate: 'Groucho' }) }
   end
 
   # This one's complicated. We bind a resource's path parameters to
@@ -174,19 +169,19 @@ class PathParameters < WADLTest
     assert_equal(im_mad_because.uri, 'http://www.example.com/im/mad/because')
 
     insult = im_mad_because.find_resource('insult')
-    assert_equal(insult.uri(:path => { 'person' => 'king', 'a' => 'fink' }),
+    assert_equal(insult.uri(path: { 'person' => 'king', 'a' => 'fink' }),
                   'http://www.example.com/im/mad/because/the/king/is/;a=fink')
 
-    im_mad_because_hes_a_fink = insult.bind!(:path => { 'person' => 'king', 'a' => 'fink' })
+    im_mad_because_hes_a_fink = insult.bind!(path: { 'person' => 'king', 'a' => 'fink' })
     assert_equal(im_mad_because_hes_a_fink.uri,
                  'http://www.example.com/im/mad/because/the/king/is/;a=fink')
 
     im_mad_because_hes_a_fink_lets = im_mad_because_hes_a_fink.find_resource("so-let's")
-    assert_equal(im_mad_because_hes_a_fink_lets.uri(:path => { 'do something' => 'revolt' }),
+    assert_equal(im_mad_because_hes_a_fink_lets.uri(path: { 'do something' => 'revolt' }),
                  "http://www.example.com/im/mad/because/the/king/is/;a=fink/so-let's/revolt")
 
     im_mad_because_hes_a_fink_lets_revolt = im_mad_because_hes_a_fink_lets.
-      bind(:path => { 'person' => 'fink', 'do something' => 'revolt' })
+      bind(path: { 'person' => 'fink', 'do something' => 'revolt' })
 
     assert_equal(im_mad_because_hes_a_fink_lets_revolt.uri,
                  "http://www.example.com/im/mad/because/the/king/is/;a=fink/so-let's/revolt")
@@ -206,7 +201,7 @@ class PathParameters < WADLTest
     { 'plain'  => 'http://www.example.com/i/want/pony,water%20slide,BB%20gun',
       'matrix' => 'http://www.example.com/i/want/;a=pony;a=water%20slide;a=BB%20gun' }.each { |style, uri|
       list = wadl(text % style).find_resource('list')
-      assert_equal(list.uri(:path => { :a => ['pony', 'water slide', 'BB gun'] }), uri)
+      assert_equal(list.uri(path: { a: ['pony', 'water slide', 'BB gun'] }), uri)
     }
   end
 
@@ -219,7 +214,7 @@ class PathParameters < WADLTest
 </resources>
     EOT
 
-    assert_equal(poll.uri(:opinion => 'ungood'),
+    assert_equal(poll.uri(opinion: 'ungood'),
                  'http://www.example.com/big-brother-is/doubleplusgood')
   end
 
@@ -237,14 +232,14 @@ class PathParameters < WADLTest
     on_uri  = 'http://www.example.com/light-panel/;light1;light3'
     off_uri = 'http://www.example.com/light-panel/;light1'
 
-    assert_equal(lights.uri(:path => { :light3 => 'true' }), on_uri)
-    assert_equal(lights.uri(:path => { :light3 => '1'    }), on_uri)
+    assert_equal(lights.uri(path: { light3: 'true' }), on_uri)
+    assert_equal(lights.uri(path: { light3: '1'    }), on_uri)
 
     assert_equal(lights.uri, off_uri)
-    assert_equal(lights.uri(:path => { :light3 => 'false' }), off_uri)
-    assert_equal(lights.uri(:path => { :light3 => false   }), off_uri)
-    assert_equal(lights.uri(:path => { :light3 => 'True'  }), off_uri)
-    assert_equal(lights.uri(:path => { :light3 => true    }), off_uri)
+    assert_equal(lights.uri(path: { light3: 'false' }), off_uri)
+    assert_equal(lights.uri(path: { light3: false   }), off_uri)
+    assert_equal(lights.uri(path: { light3: 'True'  }), off_uri)
+    assert_equal(lights.uri(path: { light3: true    }), off_uri)
   end
 
 end
@@ -279,15 +274,15 @@ class RequestFormatTest < WADLTest
 </method>
     EOT
 
-    @color = @wadl.find_resource('top').bind(:query => { :api_key => 'foobar' }).find_resource('color')
+    @color = @wadl.find_resource('top').bind(query: { api_key: 'foobar' }).find_resource('color')
   end
 
   def test_query_vars
     graphic = @color.find_method('get_graphic')
-    path    = { :color => 'blue' }
-    query   = { :shade => 'light' }
+    path    = { color: 'blue' }
+    query   = { shade: 'light' }
 
-    assert_equal(graphic.request.uri(@color, :path => path, :query => query),
+    assert_equal(graphic.request.uri(@color, path: path, query: query),
                  'http://www.example.com/palette/colors/blue?shade=light')
 
     assert_raises(ArgumentError) { graphic.request.uri(@color, path) }
@@ -297,10 +292,10 @@ class RequestFormatTest < WADLTest
     graphic = @color.find_method('set_graphic')
     representation = graphic.request.find_form
 
-    assert_equal(representation % { :new_graphic => 'foobar', 'filename' => 'blue.jpg' },
+    assert_equal(representation % { new_graphic: 'foobar', 'filename' => 'blue.jpg' },
                  'new_graphic=foobar&filename=blue.jpg')
 
-    assert_raises(ArgumentError) { representation % { :new_graphic => 'foobar' } }
+    assert_raises(ArgumentError) { representation % { new_graphic: 'foobar' } }
   end
 
 end
@@ -390,7 +385,7 @@ class AuthTest < WADLTest
   end
 
   def test_template_params_with_basic_auth
-    arg = { :path => { :id => 42 } }
+    arg = { path: { id: 42 } }
     uri = 'http://www.example.com/service/42.json'
 
     assert_equal(uri, u1 = @service.bind(arg).uri)
