@@ -29,13 +29,9 @@ require 'cyclops'
 require 'stringio'
 require 'wadl'
 
-begin
-  require 'oauth/cli'
-rescue LoadError
-  warn "For OAuth support, install the `oauth' library."
-end
-
 module WADL
+
+  require_oauth :cli
 
   class CLI < Cyclops
 

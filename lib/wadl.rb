@@ -54,4 +54,17 @@ module WADL
   autoload :URIParts,                'wadl/uri_parts'
   autoload :XMLRepresentation,       'wadl/xml_representation'
 
+  class << self
+
+    def require_oauth(lib)
+      require "oauth/#{lib}"
+    rescue LoadError => err
+      define_singleton_method(__method__) { |*| }  # only warn once
+      warn "For OAuth support, install the `oauth' library. (#{err})"
+    end
+
+    private :require_oauth
+
+  end
+
 end

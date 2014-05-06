@@ -29,13 +29,9 @@
 require 'safe_yaml/load'
 require 'rf-rest-open-uri'
 
-begin
-  require 'oauth/client/helper'
-rescue LoadError
-  warn "For OAuth support, install the 'oauth' library."
-end
-
 module WADL
+
+  require_oauth 'client/helper'
 
   class HTTPMethod < HasDocs
 
