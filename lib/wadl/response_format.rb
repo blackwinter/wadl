@@ -26,10 +26,7 @@
 ###############################################################################
 #++
 
-begin
-  require 'mime/types'
-rescue LoadError
-end
+require 'mime/types'
 
 module WADL
 
@@ -68,7 +65,7 @@ module WADL
               response_raw_sub_type == raw_sub_type
             end
           }
-        end if defined?(MIME::Types)
+        end
 
         # If all else fails, try to find a response that specifies no
         # media type. TODO: check if this would be valid WADL.
