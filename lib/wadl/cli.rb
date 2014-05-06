@@ -97,8 +97,11 @@ module WADL
 
     def resource
       @resource ||= begin
-        path = [options[:api_base], *resource_path].compact.join('/').split(RESOURCE_PATH_RE)
-        path.inject(api) { |m, n| m.send(:find_resource_by_path, n) } or quit "Resource not found: #{path.join('/')}"
+        path = [options[:api_base], *resource_path].compact.join('/')
+        path = path.sub(/\A\//, '').split(RESOURCE_PATH_RE)
+
+        path.inject(api) { |m, n| m.send(:find_resource_by_path, n) or
+          quit "Resource not found: #{path.join('/')}: #{n}" }
       end
     end
 
