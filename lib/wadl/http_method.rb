@@ -60,8 +60,8 @@ module WADL
       headers = uri.headers.dup
       headers['Accept'] = expect_representation.mediaType if args[:expect_representation]
 
-      method.response.build(HTTPRequest.execute(uri,
-        name.downcase.to_sym, args[:send_representation], headers))
+      method.response.build(HTTPRequest.execute(
+        uri, name, args[:send_representation], headers))
     end
 
   end

@@ -39,6 +39,7 @@ module WADL
   autoload :HasDocs,                 'wadl/has_docs'
   autoload :HTTPMethod,              'wadl/http_method'
   autoload :HTTPRequest,             'wadl/http_request'
+  autoload :HTTPResponse,            'wadl/http_response'
   autoload :Link,                    'wadl/link'
   autoload :Option,                  'wadl/option'
   autoload :Param,                   'wadl/param'

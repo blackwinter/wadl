@@ -26,15 +26,16 @@
 ###############################################################################
 #++
 
+require 'net/https'
 require 'safe_yaml/load'
-
-require_relative 'rest-open-uri'
 
 module WADL
 
   require_oauth 'client/helper'
 
   class HTTPRequest
+
+    DEFAULT_METHOD = :get
 
     DEFAULT_USER_AGENT   = "Ruby WADL client/#{VERSION}"
     DEFAULT_CONTENT_TYPE = 'application/x-www-form-urlencoded'
@@ -44,8 +45,8 @@ module WADL
 
     class << self
 
-      def execute(uri, method = :get, body = nil, headers = {})
-        new.execute(uri, method, body, headers)
+      def execute(uri, *args)
+        new(uri).execute(*args)
       end
 
       def oauth_header(args)
@@ -59,33 +60,73 @@ module WADL
 
     end
 
-    def execute(uri, method, body, headers)
-      headers[:method] = method
-      headers[:body]   = body
+    def initialize(uri)
+      self.uri = URI(uri)
+    end
 
-      set_default_headers(headers)
-      set_oauth_header(uri, headers)
+    def start
+      self.http = Net::HTTP.start(
+        uri.hostname, uri.port,
+        use_ssl: uri.scheme == 'https'
+      )
 
-      open(uri, headers)
-    rescue OpenURI::HTTPError => err
-      err.io
+      self
+    end
+
+    def finish
+      http.finish if started?
+      self
+    end
+
+    def started?
+      http && http.started?
+    end
+
+    def execute(*args)
+      start unless started?
+
+      req = prepare_request(*args)
+      res = http.request(req)
+
+      HTTPResponse.new(res)
     end
 
     private
 
-    def set_default_headers(headers)
-      headers['User-Agent']   ||= DEFAULT_USER_AGENT
-      headers['Content-Type'] ||= DEFAULT_CONTENT_TYPE
+    attr_accessor :uri, :http
+
+    def prepare_request(method, body, headers)
+      req = make_request(method || DEFAULT_METHOD)
+      req.body = body if req.request_body_permitted?
+
+      set_headers(req, headers)
+
+      req
     end
 
-    def set_oauth_header(uri, headers)
+    def make_request(method)
+      Net::HTTP.const_get(method.to_s.capitalize).new(uri)
+    rescue NameError
+      raise ArgumentError, "method not supported: #{method}"
+    end
+
+    def set_headers(req, headers)
+      set_oauth_header(req, headers)
+
+      headers['User-Agent']   ||= DEFAULT_USER_AGENT
+      headers['Content-Type'] ||= DEFAULT_CONTENT_TYPE
+
+      headers.each { |key, value|
+        Array(value).each { |val| req.add_field(key, val) }
+      }
+    end
+
+    def set_oauth_header(req, headers)
       args = SafeYAML.load($') if headers[OAUTH_HEADER] =~ /\A#{OAUTH_PREFIX}/
       return unless self.class.valid_oauth_args?(args)
 
-      request = OpenURI::Methods[headers[:method]].new(uri.to_s)
-
-      headers[OAUTH_HEADER] = OAuth::Client::Helper.new(request,
-        request_uri:      request.path,
+      headers[OAUTH_HEADER] = OAuth::Client::Helper.new(req,
+        request_uri:      req.request_uri,
         consumer:         consumer = OAuth::Consumer.new(*args[0, 2]),
         token:            OAuth::AccessToken.new(consumer, *args[2, 2]),
         scheme:           'header',

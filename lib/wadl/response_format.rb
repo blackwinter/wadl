@@ -93,7 +93,7 @@ module WADL
       end
 
       klass = response_format.is_a?(FaultFormat) ? response_format.subclass : Response
-      obj = klass.new(http_response.status, http_response, body, response_format)
+      obj = klass.new(http_response.status, http_response.headers, body, response_format)
 
       obj.is_a?(Exception) ? raise(obj) : obj
     end

@@ -28,37 +28,16 @@
 
 module WADL
 
-  class FaultFormat < RepresentationFormat
+  class HTTPResponse
 
-    in_document 'fault'
-    has_attributes :id, :mediaType, :element, :status
-    has_many Param
-    may_be_reference
-
-    attr_writer :subclass
-
-    def subclass
-      attributes['href'] ? dereference.subclass : @subclass
+    def initialize(res)
+      @status, @content_type, @body, @headers =
+        [res.code, res.message], res.content_type, res.body, res.to_hash
     end
 
-    # Define a custom subclass for this fault, so that the programmer
-    # can rescue this particular fault.
-    def self.from_element(*args)
-      me = super
+    attr_reader :status, :content_type, :body, :headers
 
-      me.subclass = if name = me.attributes['id']
-        begin
-          Faults.const_defined?(name) ?
-            Faults.const_get(name) :
-            Faults.const_set(name, Class.new(Fault))
-        rescue NameError
-          # This fault format's ID can't be a class name. Use the
-          # generic subclass of Fault.
-        end
-      end || Fault unless me.attributes['href']
-
-      me
-    end
+    alias_method :read, :body
 
   end
 

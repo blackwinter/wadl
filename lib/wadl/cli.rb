@@ -51,7 +51,7 @@ module WADL
       def defaults
         super.merge(
           config:            'config.yaml',
-          method:            'GET',
+          method:            HTTPRequest::DEFAULT_METHOD.upcase,
           user:              ENV['USER'] || '',
           request_token_url: '%s/oauth/request_token',
           access_token_url:  '%s/oauth/access_token',
@@ -89,7 +89,7 @@ module WADL
     end
 
     def api
-      @api ||= WADL::Application.from_wadl(open(options[:wadl]))
+      @api ||= Application.from_wadl(open(options[:wadl]))
     end
 
     def resource
