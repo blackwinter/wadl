@@ -71,8 +71,7 @@ module WADL
     #  :access_token
     #  :token_secret
     def with_oauth(*args)
-      resource_and_address.auth(HTTPMethod::OAUTH_HEADER,
-        "#{HTTPMethod::OAUTH_PREFIX}#{args.to_yaml}")
+      resource_and_address.auth(*HTTPRequest.oauth_header(args))
     end
 
     def uri(args = {}, working_address = nil)

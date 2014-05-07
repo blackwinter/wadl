@@ -1,7 +1,7 @@
 #--
 ###############################################################################
 #                                                                             #
-# wadl -- Super cheap Ruby WADL client                                        #
+# A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
 # Copyright (C) 2010-2014 Jens Wille                                          #
@@ -26,45 +26,72 @@
 ###############################################################################
 #++
 
-require_relative 'wadl/version'
+require 'safe_yaml/load'
+
+require_relative 'rest-open-uri'
 
 module WADL
 
-  autoload :Address,                 'wadl/address'
-  autoload :Application,             'wadl/application'
-  autoload :CheapSchema,             'wadl/cheap_schema'
-  autoload :Documentation,           'wadl/documentation'
-  autoload :FaultFormat,             'wadl/fault_format'
-  autoload :Fault,                   'wadl/fault'
-  autoload :HasDocs,                 'wadl/has_docs'
-  autoload :HTTPMethod,              'wadl/http_method'
-  autoload :HTTPRequest,             'wadl/http_request'
-  autoload :Link,                    'wadl/link'
-  autoload :Option,                  'wadl/option'
-  autoload :Param,                   'wadl/param'
-  autoload :RepresentationContainer, 'wadl/representation_container'
-  autoload :RepresentationFormat,    'wadl/representation_format'
-  autoload :RequestFormat,           'wadl/request_format'
-  autoload :ResourceAndAddress,      'wadl/resource_and_address'
-  autoload :ResourceContainer,       'wadl/resource_container'
-  autoload :Resource,                'wadl/resource'
-  autoload :Resources,               'wadl/resources'
-  autoload :ResourceType,            'wadl/resource_type'
-  autoload :ResponseFormat,          'wadl/response_format'
-  autoload :Response,                'wadl/response'
-  autoload :URIParts,                'wadl/uri_parts'
-  autoload :XMLRepresentation,       'wadl/xml_representation'
+  require_oauth 'client/helper'
 
-  class << self
+  class HTTPRequest
 
-    def require_oauth(lib)
-      require "oauth/#{lib}"
-    rescue LoadError => err
-      define_singleton_method(__method__) { |*| }  # only warn once
-      warn "For OAuth support, install the `oauth' library. (#{err})"
+    DEFAULT_USER_AGENT   = "Ruby WADL client/#{VERSION}"
+    DEFAULT_CONTENT_TYPE = 'application/x-www-form-urlencoded'
+
+    OAUTH_HEADER = 'Authorization'
+    OAUTH_PREFIX = 'OAuth:'
+
+    class << self
+
+      def execute(uri, method = :get, body = nil, headers = {})
+        new.execute(uri, method, body, headers)
+      end
+
+      def oauth_header(args)
+        return unless valid_oauth_args?(args)
+        [OAUTH_HEADER, "#{OAUTH_PREFIX}#{args.to_yaml}"]
+      end
+
+      def valid_oauth_args?(args)
+        args.is_a?(Array) && args.size == 4
+      end
+
     end
 
-    private :require_oauth
+    def execute(uri, method, body, headers)
+      headers[:method] = method
+      headers[:body]   = body
+
+      set_default_headers(headers)
+      set_oauth_header(uri, headers)
+
+      open(uri, headers)
+    rescue OpenURI::HTTPError => err
+      err.io
+    end
+
+    private
+
+    def set_default_headers(headers)
+      headers['User-Agent']   ||= DEFAULT_USER_AGENT
+      headers['Content-Type'] ||= DEFAULT_CONTENT_TYPE
+    end
+
+    def set_oauth_header(uri, headers)
+      args = SafeYAML.load($') if headers[OAUTH_HEADER] =~ /\A#{OAUTH_PREFIX}/
+      return unless self.class.valid_oauth_args?(args)
+
+      request = OpenURI::Methods[headers[:method]].new(uri.to_s)
+
+      headers[OAUTH_HEADER] = OAuth::Client::Helper.new(request,
+        request_uri:      request.path,
+        consumer:         consumer = OAuth::Consumer.new(*args[0, 2]),
+        token:            OAuth::AccessToken.new(consumer, *args[2, 2]),
+        scheme:           'header',
+        signature_method: 'HMAC-SHA1'
+      ).header
+    end
 
   end
 

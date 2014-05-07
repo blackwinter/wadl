@@ -13,7 +13,7 @@ begin
       email:        'jens.wille@gmail.com',
       license:      %q{AGPL-3.0},
       homepage:     :blackwinter,
-      dependencies: %w[cyclops rf-rest-open-uri mime-types safe_yaml],
+      dependencies: %w[cyclops mime-types safe_yaml],
 
       required_ruby_version: '>= 1.9.3'
     }

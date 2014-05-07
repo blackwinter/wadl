@@ -26,6 +26,7 @@
 
 require 'cgi'
 require 'cyclops'
+require 'open-uri'
 require 'stringio'
 require 'wadl'
 
