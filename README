@@ -46,7 +46,7 @@ The 20060802 WADL standard is almost entirely supported. However,
 
 Homepage::           http://www.crummy.com/software/wadl.rb
 WADL Specification:: https://wadl.java.net
-Documentation::      https://blackwinter.github.io/wadl/
+Documentation::      https://blackwinter.github.com/wadl
 Source code::        https://github.com/blackwinter/wadl
 RubyGem::            https://rubygems.org/gems/wadl
 Travis CI::          https://travis-ci.org/blackwinter/wadl
