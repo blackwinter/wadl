@@ -1,4 +1,4 @@
-require File.expand_path(%q{../lib/wadl/version}, __FILE__)
+require_relative 'lib/wadl/version'
 
 begin
   require 'hen'
@@ -13,7 +13,11 @@ begin
       email:        'jens.wille@gmail.com',
       license:      %q{AGPL-3.0},
       homepage:     :blackwinter,
-      dependencies: %w[cyclops mime-types safe_yaml],
+      dependencies: {
+        'cyclops'    => ['~> 0.0', '>= 0.0.4'],
+        'mime-types' => '~> 2.4',
+        'safe_yaml'  => '~> 1.0'
+      },
 
       required_ruby_version: '>= 1.9.3'
     }
