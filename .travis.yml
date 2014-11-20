@@ -23,4 +23,5 @@ script:
   rake test
 
 install:
-  gem install --prerelease --development wadl
+  - gem install nuggets minitest
+  - gem install --prerelease --development wadl
