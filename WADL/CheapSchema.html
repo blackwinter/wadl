@@ -2,118 +2,94 @@
 
 <html>
 <head>
-<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta charset="UTF-8">
 
-<title>class WADL::CheapSchema - wadl Application documentation (v0.2.8)</title>
+<title>class WADL::CheapSchema - wadl Application documentation (v0.3.0)</title>
 
-<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+<link href="../fonts.css" rel="stylesheet">
+<link href="../rdoc.css" rel="stylesheet">
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
 </script>
 
-<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/navigation.js"></script>
+<script src="../js/search_index.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/searcher.js"></script>
+<script src="../js/darkfish.js"></script>
 
 
-<body id="top" class="class">
-<nav id="metadata">
-  <nav id="home-section" class="section">
-  <h3 class="section-header">
-    <a href="../index.html">Home</a>
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
     <a href="../table_of_contents.html#classes">Classes</a>
     <a href="../table_of_contents.html#methods">Methods</a>
-  </h3>
-</nav>
+  </div>
+</div>
 
-
-  <nav id="search-section" class="section project-section" class="initially-hidden">
+    <div id="search-section" role="search" class="project-section initially-hidden">
   <form action="#" method="get" accept-charset="utf-8">
-    <h3 class="section-header">
-      <input type="text" name="search" placeholder="Search" id="search-field"
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
              title="Type to search, Up and Down to navigate, Enter to load">
-    </h3>
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
   </form>
+</div>
 
-  <ul id="search-results" class="initially-hidden"></ul>
-</nav>
-
+  </div>
 
   
-
-  <div id="file-metadata">
-    <nav id="file-list-section" class="section">
-  <h3 class="section-header">Defined In</h3>
-  <ul>
-    <li>lib/wadl/cheap_schema.rb
-  </ul>
-</nav>
-
-    
-  </div>
 
   <div id="class-metadata">
     
-    <nav id="parent-class-section" class="section">
-  <h3 class="section-header">Parent</h3>
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
   
   <p class="link">Object
   
-</nav>
+</div>
 
     
     
     <!-- Method Quickref -->
-<nav id="method-list-section" class="section">
-  <h3 class="section-header">Methods</h3>
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
 
-  <ul class="link-list">
-    
-    <li ><a href="#method-c-as_collection">::as_collection</a>
-    
-    <li ><a href="#method-c-as_member">::as_member</a>
-    
-    <li ><a href="#method-c-contents_are_mixed_data">::contents_are_mixed_data</a>
-    
-    <li ><a href="#method-c-define_dereferencing_accessors">::define_dereferencing_accessors</a>
-    
-    <li ><a href="#method-c-dereferencing_attr_accessor">::dereferencing_attr_accessor</a>
-    
-    <li ><a href="#method-c-dereferencing_instance_accessor">::dereferencing_instance_accessor</a>
-    
-    <li ><a href="#method-c-from_element">::from_element</a>
-    
-    <li ><a href="#method-c-has_attributes">::has_attributes</a>
-    
-    <li ><a href="#method-c-has_many">::has_many</a>
-    
-    <li ><a href="#method-c-has_one">::has_one</a>
-    
-    <li ><a href="#method-c-has_required">::has_required</a>
-    
-    <li ><a href="#method-c-has_required_or_attributes">::has_required_or_attributes</a>
-    
-    <li ><a href="#method-c-in_document">::in_document</a>
-    
-    <li ><a href="#method-c-inherit">::inherit</a>
-    
-    <li ><a href="#method-c-inherited">::inherited</a>
-    
-    <li ><a href="#method-c-init">::init</a>
-    
-    <li ><a href="#method-c-may_be_reference">::may_be_reference</a>
-    
-    <li ><a href="#method-c-may_be_reference-3F">::may_be_reference?</a>
+  <ul class="link-list" role="directory">
     
     <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-as_collection">#as_collection</a>
+    
+    <li ><a href="#method-i-as_member">#as_member</a>
+    
+    <li ><a href="#method-i-contents_are_mixed_data">#contents_are_mixed_data</a>
+    
+    <li ><a href="#method-i-define_dereferencing_accessors">#define_dereferencing_accessors</a>
     
     <li ><a href="#method-i-dereference">#dereference</a>
     
     <li ><a href="#method-i-dereference_with_context">#dereference_with_context</a>
+    
+    <li ><a href="#method-i-dereferencing_attr_accessor">#dereferencing_attr_accessor</a>
+    
+    <li ><a href="#method-i-dereferencing_instance_accessor">#dereferencing_instance_accessor</a>
     
     <li ><a href="#method-i-each_attribute">#each_attribute</a>
     
@@ -121,106 +97,53 @@
     
     <li ><a href="#method-i-each_member">#each_member</a>
     
+    <li ><a href="#method-i-from_element">#from_element</a>
+    
+    <li ><a href="#method-i-has_attributes">#has_attributes</a>
+    
+    <li ><a href="#method-i-has_many">#has_many</a>
+    
+    <li ><a href="#method-i-has_one">#has_one</a>
+    
+    <li ><a href="#method-i-has_required">#has_required</a>
+    
+    <li ><a href="#method-i-has_required_or_attributes">#has_required_or_attributes</a>
+    
+    <li ><a href="#method-i-in_document">#in_document</a>
+    
+    <li ><a href="#method-i-inherit">#inherit</a>
+    
+    <li ><a href="#method-i-inherited">#inherited</a>
+    
+    <li ><a href="#method-i-init">#init</a>
+    
     <li ><a href="#method-i-matches-3F">#matches?</a>
+    
+    <li ><a href="#method-i-may_be_reference">#may_be_reference</a>
+    
+    <li ><a href="#method-i-may_be_reference-3F">#may_be_reference?</a>
     
     <li ><a href="#method-i-paths">#paths</a>
     
     <li ><a href="#method-i-to_s">#to_s</a>
     
   </ul>
-</nav>
-
-  </div>
-
-  <div id="project-metadata">
-    <nav id="fileindex-section" class="section project-section">
-  <h3 class="section-header">Pages</h3>
-
-  <ul>
-  
-    <li class="file"><a href="../COPYING.html">COPYING</a>
-  
-    <li class="file"><a href="../ChangeLog.html">ChangeLog</a>
-  
-    <li class="file"><a href="../README.html">README</a>
-  
-  </ul>
-</nav>
-
-    <nav id="classindex-section" class="section project-section">
-  <h3 class="section-header">Class and Module Index</h3>
-
-  <ul class="link-list">
-  
-    <li><a href="../WADL.html">WADL</a>
-  
-    <li><a href="../WADL/Address.html">WADL::Address</a>
-  
-    <li><a href="../WADL/Application.html">WADL::Application</a>
-  
-    <li><a href="../WADL/CLI.html">WADL::CLI</a>
-  
-    <li><a href="../WADL/CheapSchema.html">WADL::CheapSchema</a>
-  
-    <li><a href="../WADL/Documentation.html">WADL::Documentation</a>
-  
-    <li><a href="../WADL/Fault.html">WADL::Fault</a>
-  
-    <li><a href="../WADL/FaultFormat.html">WADL::FaultFormat</a>
-  
-    <li><a href="../WADL/Faults.html">WADL::Faults</a>
-  
-    <li><a href="../WADL/HTTPMethod.html">WADL::HTTPMethod</a>
-  
-    <li><a href="../WADL/HasDocs.html">WADL::HasDocs</a>
-  
-    <li><a href="../WADL/Link.html">WADL::Link</a>
-  
-    <li><a href="../WADL/Option.html">WADL::Option</a>
-  
-    <li><a href="../WADL/Param.html">WADL::Param</a>
-  
-    <li><a href="../WADL/RepresentationContainer.html">WADL::RepresentationContainer</a>
-  
-    <li><a href="../WADL/RepresentationFormat.html">WADL::RepresentationFormat</a>
-  
-    <li><a href="../WADL/RequestFormat.html">WADL::RequestFormat</a>
-  
-    <li><a href="../WADL/Resource.html">WADL::Resource</a>
-  
-    <li><a href="../WADL/ResourceAndAddress.html">WADL::ResourceAndAddress</a>
-  
-    <li><a href="../WADL/ResourceContainer.html">WADL::ResourceContainer</a>
-  
-    <li><a href="../WADL/ResourceType.html">WADL::ResourceType</a>
-  
-    <li><a href="../WADL/Resources.html">WADL::Resources</a>
-  
-    <li><a href="../WADL/Response.html">WADL::Response</a>
-  
-    <li><a href="../WADL/ResponseFormat.html">WADL::ResponseFormat</a>
-  
-    <li><a href="../WADL/URIParts.html">WADL::URIParts</a>
-  
-    <li><a href="../WADL/Version.html">WADL::Version</a>
-  
-    <li><a href="../WADL/XMLRepresentation.html">WADL::XMLRepresentation</a>
-  
-  </ul>
-</nav>
+</div>
 
   </div>
 </nav>
 
-<div id="documentation">
-  <h1 class="class">class WADL::CheapSchema</h1>
+<main role="main" aria-labelledby="class-WADL::CheapSchema">
+  <h1 id="class-WADL::CheapSchema" class="class">
+    class WADL::CheapSchema
+  </h1>
 
-  <div id="description" class="description">
+  <section class="description">
     
 <p>A cheap way of defining an XML schema as Ruby classes and then parsing
 documents into instances of those classes.</p>
 
-  </div><!-- description -->
+  </section>
 
   
   
@@ -231,14 +154,15 @@ documents into instances of those classes.</p>
     
 
     
-    <!-- Constants -->
-    <section id="constants-list" class="section">
-      <h3 class="section-header">Constants</h3>
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
       <dl>
       
         <dt id="ATTRIBUTES">ATTRIBUTES
         
-        <dd class="description">
+        <dd>
         
       
       </dl>
@@ -246,9 +170,10 @@ documents into instances of those classes.</p>
     
 
     
-    <!-- Attributes -->
-    <section id="attribute-method-details" class="method-section section">
-      <h3 class="section-header">Attributes</h3>
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
 
       
       <div id="attribute-i-attributes" class="method-detail">
@@ -303,16 +228,58 @@ documents into instances of those classes.</p>
         </div>
       </div>
       
-    </section><!-- attribute-method-details -->
+    </section>
     
 
-    <!-- Methods -->
     
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
 
     
-      <div id="method-c-as_collection" class="method-detail ">
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 269</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
+  <span class="ruby-ivar">@attributes</span>, <span class="ruby-ivar">@contents</span>, <span class="ruby-ivar">@referenced</span> = {}, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-as_collection" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">as_collection</span><span
@@ -331,21 +298,21 @@ documents into instances of those classes.</p>
 
           
           <div class="method-source-code" id="as_collection-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 79</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 77</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">as_collection</span>(<span class="ruby-identifier">collection_name</span>)
   <span class="ruby-ivar">@names</span>[<span class="ruby-value">:collection</span>] = <span class="ruby-identifier">collection_name</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- as_collection-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- as_collection-method -->
+      </div>
 
     
-      <div id="method-c-as_member" class="method-detail ">
+      <div id="method-i-as_member" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">as_member</span><span
@@ -364,21 +331,21 @@ documents into instances of those classes.</p>
 
           
           <div class="method-source-code" id="as_member-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 83</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">as_member</span>(<span class="ruby-identifier">member_name</span>)
   <span class="ruby-ivar">@names</span>[<span class="ruby-value">:member</span>] = <span class="ruby-identifier">member_name</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- as_member-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- as_member-method -->
+      </div>
 
     
-      <div id="method-c-contents_are_mixed_data" class="method-detail ">
+      <div id="method-i-contents_are_mixed_data" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">contents_are_mixed_data</span><span
@@ -397,21 +364,94 @@ documents into instances of those classes.</p>
 
           
           <div class="method-source-code" id="contents_are_mixed_data-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 87</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 85</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">contents_are_mixed_data</span>
   <span class="ruby-ivar">@contents_are_mixed_data</span> = <span class="ruby-keyword">true</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- contents_are_mixed_data-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- contents_are_mixed_data-method -->
+      </div>
 
     
-      <div id="method-c-dereferencing_attr_accessor" class="method-detail ">
+      <div id="method-i-dereference" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dereference</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>A null implementation so that foo.dereference will always return the “real”
+object.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="dereference-source">
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 285</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">dereference</span>
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-dereference_with_context" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dereference_with_context</span><span
+            class="method-args">(referent)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>This object is a reference to another object. This method returns an object
+that acts like the other object, but also contains any neccessary context
+about this object. See the <a
+href="ResourceAndAddress.html">ResourceAndAddress</a> implementation, in
+which a dereferenced resource contains information about the parent of the
+resource that referenced it (otherwise, there&#39;s no way to build the
+URI).</p>
+          
+          
+
+          
+          <div class="method-source-code" id="dereference_with_context-source">
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 279</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">dereference_with_context</span>(<span class="ruby-identifier">referent</span>)
+  <span class="ruby-identifier">referent</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-dereferencing_attr_accessor" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">dereferencing_attr_accessor</span><span
@@ -430,24 +470,24 @@ documents into instances of those classes.</p>
 
           
           <div class="method-source-code" id="dereferencing_attr_accessor-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 139</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 137</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">dereferencing_attr_accessor</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">symbols</span>)
   <span class="ruby-identifier">define_dereferencing_accessors</span>(<span class="ruby-identifier">symbols</span>,
     <span class="ruby-string">&#39;dereference.attributes[&quot;%s&quot;]&#39;</span>,
     <span class="ruby-string">&#39;dereference.attributes[&quot;%s&quot;] = value&#39;</span>
   )
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- dereferencing_attr_accessor-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- dereferencing_attr_accessor-method -->
+      </div>
 
     
-      <div id="method-c-dereferencing_instance_accessor" class="method-detail ">
+      <div id="method-i-dereferencing_instance_accessor" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">dereferencing_instance_accessor</span><span
@@ -466,7 +506,7 @@ documents into instances of those classes.</p>
 
           
           <div class="method-source-code" id="dereferencing_instance_accessor-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 131</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 129</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">dereferencing_instance_accessor</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">symbols</span>)
   <span class="ruby-identifier">define_dereferencing_accessors</span>(<span class="ruby-identifier">symbols</span>,
     <span class="ruby-string">&#39;d, v = dereference, :@%s; &#39;</span> <span class="ruby-operator">&lt;&lt;</span>
@@ -474,17 +514,127 @@ documents into instances of those classes.</p>
     <span class="ruby-string">&#39;dereference.instance_variable_set(:@%s, value)&#39;</span>
   )
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- dereferencing_instance_accessor-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- dereferencing_instance_accessor-method -->
+      </div>
 
     
-      <div id="method-c-from_element" class="method-detail ">
+      <div id="method-i-each_attribute" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">each_attribute</span><span
+            class="method-args">() { |attr, val| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="each_attribute-source">
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 295</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">each_attribute</span>
+  [<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">required_attributes</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">attributes</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">list</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">val</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">attr</span>.<span class="ruby-identifier">to_s</span>]
+      <span class="ruby-keyword">yield</span> <span class="ruby-identifier">attr</span>, <span class="ruby-identifier">val</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>
+    }
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-each_collection" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">each_collection</span><span
+            class="method-args">() { |collection| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="each_collection-source">
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 311</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">each_collection</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">collections</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">collection_class</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">collection</span> = <span class="ruby-identifier">send</span>(<span class="ruby-identifier">collection_class</span>.<span class="ruby-identifier">names</span>[<span class="ruby-value">:collection</span>])
+    <span class="ruby-keyword">yield</span> <span class="ruby-identifier">collection</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">collection</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">collection</span>.<span class="ruby-identifier">empty?</span>
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-each_member" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">each_member</span><span
+            class="method-args">() { |member| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="each_member-source">
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 304</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">each_member</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">members</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">member_class</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">member</span> = <span class="ruby-identifier">send</span>(<span class="ruby-identifier">member_class</span>.<span class="ruby-identifier">names</span>[<span class="ruby-value">:member</span>])
+    <span class="ruby-keyword">yield</span> <span class="ruby-identifier">member</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">member</span>
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-from_element" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">from_element</span><span
@@ -503,7 +653,7 @@ documents into instances of those classes.</p>
 
           
           <div class="method-source-code" id="from_element-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 181</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 179</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">from_element</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">element</span>, <span class="ruby-identifier">need_finalization</span>)
   <span class="ruby-identifier">attributes</span> = <span class="ruby-identifier">element</span>.<span class="ruby-identifier">attributes</span>
 
@@ -567,17 +717,17 @@ documents into instances of those classes.</p>
 
   <span class="ruby-identifier">me</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- from_element-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- from_element-method -->
+      </div>
 
     
-      <div id="method-c-has_attributes" class="method-detail ">
+      <div id="method-i-has_attributes" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">has_attributes</span><span
@@ -596,21 +746,21 @@ documents into instances of those classes.</p>
 
           
           <div class="method-source-code" id="has_attributes-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 146</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 144</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">has_attributes</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">names</span>)
   <span class="ruby-identifier">has_required_or_attributes</span>(<span class="ruby-identifier">names</span>, <span class="ruby-ivar">@attributes</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- has_attributes-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- has_attributes-method -->
+      </div>
 
     
-      <div id="method-c-has_many" class="method-detail ">
+      <div id="method-i-has_many" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">has_many</span><span
@@ -629,7 +779,7 @@ documents into instances of those classes.</p>
 
           
           <div class="method-source-code" id="has_many-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 98</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 96</span>
       <span class="ruby-keyword">def</span> <span class="ruby-identifier">has_many</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">classes</span>)
         <span class="ruby-identifier">classes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">klass</span><span class="ruby-operator">|</span>
           <span class="ruby-ivar">@collections</span>[<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">names</span>[<span class="ruby-value">:element</span>]] = <span class="ruby-identifier">klass</span>
@@ -661,17 +811,17 @@ documents into instances of those classes.</p>
 &quot;</span>, <span class="ruby-keyword">__FILE__</span>, <span class="ruby-keyword">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
         }
       <span class="ruby-keyword">end</span></pre>
-          </div><!-- has_many-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- has_many-method -->
+      </div>
 
     
-      <div id="method-c-has_one" class="method-detail ">
+      <div id="method-i-has_one" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">has_one</span><span
@@ -690,24 +840,24 @@ documents into instances of those classes.</p>
 
           
           <div class="method-source-code" id="has_one-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 91</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 89</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">has_one</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">classes</span>)
   <span class="ruby-identifier">classes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">klass</span><span class="ruby-operator">|</span>
     <span class="ruby-ivar">@members</span>[<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">names</span>[<span class="ruby-value">:element</span>]] = <span class="ruby-identifier">klass</span>
     <span class="ruby-identifier">dereferencing_instance_accessor</span>(<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">names</span>[<span class="ruby-value">:member</span>])
   }
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- has_one-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- has_one-method -->
+      </div>
 
     
-      <div id="method-c-has_required" class="method-detail ">
+      <div id="method-i-has_required" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">has_required</span><span
@@ -726,21 +876,21 @@ documents into instances of those classes.</p>
 
           
           <div class="method-source-code" id="has_required-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 150</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 148</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">has_required</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">names</span>)
   <span class="ruby-identifier">has_required_or_attributes</span>(<span class="ruby-identifier">names</span>, <span class="ruby-ivar">@required_attributes</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- has_required-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- has_required-method -->
+      </div>
 
     
-      <div id="method-c-in_document" class="method-detail ">
+      <div id="method-i-in_document" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">in_document</span><span
@@ -759,23 +909,23 @@ documents into instances of those classes.</p>
 
           
           <div class="method-source-code" id="in_document-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 73</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">in_document</span>(<span class="ruby-identifier">element_name</span>)
   <span class="ruby-ivar">@names</span>[<span class="ruby-value">:element</span>]    = <span class="ruby-identifier">element_name</span>
   <span class="ruby-ivar">@names</span>[<span class="ruby-value">:member</span>]     = <span class="ruby-identifier">element_name</span>
   <span class="ruby-ivar">@names</span>[<span class="ruby-value">:collection</span>] = <span class="ruby-identifier">element_name</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;s&#39;</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- in_document-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- in_document-method -->
+      </div>
 
     
-      <div id="method-c-inherit" class="method-detail ">
+      <div id="method-i-inherit" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">inherit</span><span
@@ -794,7 +944,7 @@ documents into instances of those classes.</p>
 
           
           <div class="method-source-code" id="inherit-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 52</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">inherit</span>(<span class="ruby-identifier">from</span>)
   <span class="ruby-identifier">init</span>
 
@@ -807,17 +957,17 @@ documents into instances of those classes.</p>
     <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{attr}&quot;</span>, <span class="ruby-identifier">from</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-node">&quot;@#{attr}&quot;</span>))
   }
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- inherit-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- inherit-method -->
+      </div>
 
     
-      <div id="method-c-inherited" class="method-detail ">
+      <div id="method-i-inherited" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">inherited</span><span
@@ -836,21 +986,21 @@ documents into instances of those classes.</p>
 
           
           <div class="method-source-code" id="inherited-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 65</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">inherited</span>(<span class="ruby-identifier">klass</span>)
   <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">inherit</span>(<span class="ruby-keyword">self</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- inherited-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- inherited-method -->
+      </div>
 
     
-      <div id="method-c-init" class="method-detail ">
+      <div id="method-i-init" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">init</span><span
@@ -869,22 +1019,56 @@ documents into instances of those classes.</p>
 
           
           <div class="method-source-code" id="init-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 47</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">init</span>
   <span class="ruby-ivar">@names</span>, <span class="ruby-ivar">@members</span>, <span class="ruby-ivar">@collections</span> = {}, {}, {}
   <span class="ruby-ivar">@required_attributes</span>, <span class="ruby-ivar">@attributes</span> = [], []
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- init-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- init-method -->
+      </div>
 
     
-      <div id="method-c-may_be_reference" class="method-detail ">
+      <div id="method-i-matches-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">matches?</span><span
+            class="method-args">(name)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns whether or not the given name matches this object. By default,
+checks the index key for this class.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="matches-3F-source">
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 291</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">index_key</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-may_be_reference" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">may_be_reference</span><span
@@ -903,7 +1087,7 @@ documents into instances of those classes.</p>
 
           
           <div class="method-source-code" id="may_be_reference-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 154</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 152</span>
       <span class="ruby-keyword">def</span> <span class="ruby-identifier">may_be_reference</span>
         <span class="ruby-ivar">@may_be_reference</span> = <span class="ruby-keyword">true</span>
 
@@ -928,17 +1112,17 @@ documents into instances of those classes.</p>
           end
 &quot;</span>, <span class="ruby-keyword">__FILE__</span>, <span class="ruby-keyword">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
       <span class="ruby-keyword">end</span></pre>
-          </div><!-- may_be_reference-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- may_be_reference-method -->
+      </div>
 
     
-      <div id="method-c-may_be_reference-3F" class="method-detail ">
+      <div id="method-i-may_be_reference-3F" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">may_be_reference?</span><span
@@ -957,356 +1141,18 @@ documents into instances of those classes.</p>
 
           
           <div class="method-source-code" id="may_be_reference-3F-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 69</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">may_be_reference?</span>
   <span class="ruby-ivar">@may_be_reference</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- may_be_reference-3F-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- may_be_reference-3F-method -->
-
-    
-      <div id="method-c-new" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">new</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 271</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
-  <span class="ruby-ivar">@attributes</span>, <span class="ruby-ivar">@contents</span>, <span class="ruby-ivar">@referenced</span> = {}, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">nil</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- new-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- new-method -->
-
-    
-    </section><!-- public-class-method-details -->
-  
-     <section id="private-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Private Class Methods</h3>
-
-    
-      <div id="method-c-define_dereferencing_accessors" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">define_dereferencing_accessors</span><span
-            class="method-args">(symbols, getter, setter)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="define_dereferencing_accessors-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 247</span>
-      <span class="ruby-keyword">def</span> <span class="ruby-identifier">define_dereferencing_accessors</span>(<span class="ruby-identifier">symbols</span>, <span class="ruby-identifier">getter</span>, <span class="ruby-identifier">setter</span>)
-        <span class="ruby-identifier">symbols</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
-          <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
-
-          <span class="ruby-identifier">class_eval</span> <span class="ruby-string">&quot;            def #{name}; #{getter % name}; end
-            def #{name}=(value); #{setter % name}; end
-&quot;</span>, <span class="ruby-keyword">__FILE__</span>, <span class="ruby-keyword">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\W/</span>
-        }
-      <span class="ruby-keyword">end</span></pre>
-          </div><!-- define_dereferencing_accessors-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- define_dereferencing_accessors-method -->
-
-    
-      <div id="method-c-has_required_or_attributes" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">has_required_or_attributes</span><span
-            class="method-args">(names, var)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="has_required_or_attributes-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 258</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">has_required_or_attributes</span>(<span class="ruby-identifier">names</span>, <span class="ruby-identifier">var</span>)
-  <span class="ruby-identifier">names</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">var</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">name</span>
-    <span class="ruby-ivar">@index_attribute</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
-    <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-value">:href</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">attr_accessor</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">dereferencing_attr_accessor</span>(<span class="ruby-identifier">name</span>)
-  }
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- has_required_or_attributes-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- has_required_or_attributes-method -->
-
-    
-    </section><!-- private-class-method-details -->
-  
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
-
-    
-      <div id="method-i-dereference" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">dereference</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>A null implementation so that foo.dereference will always return the “real”
-object.</p>
-          
-          
-
-          
-          <div class="method-source-code" id="dereference-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 287</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">dereference</span>
-  <span class="ruby-keyword">self</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- dereference-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- dereference-method -->
-
-    
-      <div id="method-i-dereference_with_context" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">dereference_with_context</span><span
-            class="method-args">(referent)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>This object is a reference to another object. This method returns an object
-that acts like the other object, but also contains any neccessary context
-about this object. See the <a
-href="ResourceAndAddress.html">ResourceAndAddress</a> implementation, in
-which a dereferenced resource contains information about the parent of the
-resource that referenced it (otherwise, there&#39;s no way to build the
-URI).</p>
-          
-          
-
-          
-          <div class="method-source-code" id="dereference_with_context-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 281</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">dereference_with_context</span>(<span class="ruby-identifier">referent</span>)
-  <span class="ruby-identifier">referent</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- dereference_with_context-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- dereference_with_context-method -->
-
-    
-      <div id="method-i-each_attribute" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">each_attribute</span><span
-            class="method-args">() { |attr, val| ... }</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="each_attribute-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 297</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">each_attribute</span>
-  [<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">required_attributes</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">attributes</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">list</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">val</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">attr</span>.<span class="ruby-identifier">to_s</span>]
-      <span class="ruby-keyword">yield</span> <span class="ruby-identifier">attr</span>, <span class="ruby-identifier">val</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>
-    }
-  }
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- each_attribute-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- each_attribute-method -->
-
-    
-      <div id="method-i-each_collection" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">each_collection</span><span
-            class="method-args">() { |collection| ... }</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="each_collection-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 313</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">each_collection</span>
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">collections</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">collection_class</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">collection</span> = <span class="ruby-identifier">send</span>(<span class="ruby-identifier">collection_class</span>.<span class="ruby-identifier">names</span>[<span class="ruby-value">:collection</span>])
-    <span class="ruby-keyword">yield</span> <span class="ruby-identifier">collection</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">collection</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">collection</span>.<span class="ruby-identifier">empty?</span>
-  }
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- each_collection-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- each_collection-method -->
-
-    
-      <div id="method-i-each_member" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">each_member</span><span
-            class="method-args">() { |member| ... }</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="each_member-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 306</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">each_member</span>
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">members</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">member_class</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">member</span> = <span class="ruby-identifier">send</span>(<span class="ruby-identifier">member_class</span>.<span class="ruby-identifier">names</span>[<span class="ruby-value">:member</span>])
-    <span class="ruby-keyword">yield</span> <span class="ruby-identifier">member</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">member</span>
-  }
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- each_member-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- each_member-method -->
-
-    
-      <div id="method-i-matches-3F" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">matches?</span><span
-            class="method-args">(name)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Returns whether or not the given name matches this object. By default,
-checks the index key for this class.</p>
-          
-          
-
-          
-          <div class="method-source-code" id="matches-3F-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 293</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">name</span>)
-  <span class="ruby-identifier">index_key</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- matches-3F-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- matches-3F-method -->
+      </div>
 
     
       <div id="method-i-paths" class="method-detail ">
@@ -1328,7 +1174,7 @@ checks the index key for this class.</p>
 
           
           <div class="method-source-code" id="paths-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 320</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 318</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">paths</span>(<span class="ruby-identifier">level</span> = <span class="ruby-identifier">default</span> = <span class="ruby-value">0</span>)
   <span class="ruby-identifier">klass</span>, <span class="ruby-identifier">paths</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>, []
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">paths</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">may_be_reference?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;href&#39;</span>]
@@ -1365,14 +1211,14 @@ checks the index key for this class.</p>
     <span class="ruby-identifier">paths</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- paths-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- paths-method -->
+      </div>
 
     
       <div id="method-i-to_s" class="method-detail ">
@@ -1394,7 +1240,7 @@ checks the index key for this class.</p>
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 357</span>
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 355</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">indent</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">collection</span> = <span class="ruby-keyword">false</span>)
   <span class="ruby-identifier">klass</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>
 
@@ -1426,26 +1272,109 @@ checks the index key for this class.</p>
 
   <span class="ruby-identifier">s</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- to_s-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- to_s-method -->
+      </div>
 
     
-    </section><!-- public-instance-method-details -->
+    </section>
   
-  </section><!-- 5Buntitled-5D -->
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Private Instance Methods</h3>
+       </header>
 
-</div><!-- documentation -->
+    
+      <div id="method-i-define_dereferencing_accessors" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">define_dereferencing_accessors</span><span
+            class="method-args">(symbols, getter, setter)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="define_dereferencing_accessors-source">
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 245</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-identifier">define_dereferencing_accessors</span>(<span class="ruby-identifier">symbols</span>, <span class="ruby-identifier">getter</span>, <span class="ruby-identifier">setter</span>)
+        <span class="ruby-identifier">symbols</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+
+          <span class="ruby-identifier">class_eval</span> <span class="ruby-string">&quot;            def #{name}; #{getter % name}; end
+            def #{name}=(value); #{setter % name}; end
+&quot;</span>, <span class="ruby-keyword">__FILE__</span>, <span class="ruby-keyword">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\W/</span>
+        }
+      <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-has_required_or_attributes" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">has_required_or_attributes</span><span
+            class="method-args">(names, var)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="has_required_or_attributes-source">
+            <pre><span class="ruby-comment"># File lib/wadl/cheap_schema.rb, line 256</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">has_required_or_attributes</span>(<span class="ruby-identifier">names</span>, <span class="ruby-identifier">var</span>)
+  <span class="ruby-identifier">names</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">var</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">name</span>
+    <span class="ruby-ivar">@index_attribute</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-value">:href</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">attr_accessor</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">dereferencing_attr_accessor</span>(<span class="ruby-identifier">name</span>)
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
 
 
-<footer id="validator-badges">
-  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
-  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

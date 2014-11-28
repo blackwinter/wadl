@@ -2,72 +2,71 @@
 
 <html>
 <head>
-<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta charset="UTF-8">
 
-<title>class WADL::Resource - wadl Application documentation (v0.2.8)</title>
+<title>class WADL::Resource - wadl Application documentation (v0.3.0)</title>
 
-<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+<link href="../fonts.css" rel="stylesheet">
+<link href="../rdoc.css" rel="stylesheet">
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
 </script>
 
-<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/navigation.js"></script>
+<script src="../js/search_index.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/searcher.js"></script>
+<script src="../js/darkfish.js"></script>
 
 
-<body id="top" class="class">
-<nav id="metadata">
-  <nav id="home-section" class="section">
-  <h3 class="section-header">
-    <a href="../index.html">Home</a>
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
     <a href="../table_of_contents.html#classes">Classes</a>
     <a href="../table_of_contents.html#methods">Methods</a>
-  </h3>
-</nav>
+  </div>
+</div>
 
-
-  <nav id="search-section" class="section project-section" class="initially-hidden">
+    <div id="search-section" role="search" class="project-section initially-hidden">
   <form action="#" method="get" accept-charset="utf-8">
-    <h3 class="section-header">
-      <input type="text" name="search" placeholder="Search" id="search-field"
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
              title="Type to search, Up and Down to navigate, Enter to load">
-    </h3>
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
   </form>
+</div>
 
-  <ul id="search-results" class="initially-hidden"></ul>
-</nav>
-
+  </div>
 
   
-
-  <div id="file-metadata">
-    <nav id="file-list-section" class="section">
-  <h3 class="section-header">Defined In</h3>
-  <ul>
-    <li>lib/wadl/resource.rb
-  </ul>
-</nav>
-
-    
-  </div>
 
   <div id="class-metadata">
     
-    <nav id="parent-class-section" class="section">
-  <h3 class="section-header">Parent</h3>
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
   
   <p class="link"><a href="HasDocs.html">WADL::HasDocs</a>
   
-</nav>
+</div>
 
-    <!-- Included Modules -->
-<nav id="includes-section" class="section">
-  <h3 class="section-header">Included Modules</h3>
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
 
   <ul class="link-list">
   
@@ -76,14 +75,14 @@
   
   
   </ul>
-</nav>
+</div>
 
     
     <!-- Method Quickref -->
-<nav id="method-list-section" class="section">
-  <h3 class="section-header">Methods</h3>
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
 
-  <ul class="link-list">
+  <ul class="link-list" role="directory">
     
     <li ><a href="#method-c-define_http_methods">::define_http_methods</a>
     
@@ -114,96 +113,19 @@
     <li ><a href="#method-i-with_oauth">#with_oauth</a>
     
   </ul>
-</nav>
-
-  </div>
-
-  <div id="project-metadata">
-    <nav id="fileindex-section" class="section project-section">
-  <h3 class="section-header">Pages</h3>
-
-  <ul>
-  
-    <li class="file"><a href="../COPYING.html">COPYING</a>
-  
-    <li class="file"><a href="../ChangeLog.html">ChangeLog</a>
-  
-    <li class="file"><a href="../README.html">README</a>
-  
-  </ul>
-</nav>
-
-    <nav id="classindex-section" class="section project-section">
-  <h3 class="section-header">Class and Module Index</h3>
-
-  <ul class="link-list">
-  
-    <li><a href="../WADL.html">WADL</a>
-  
-    <li><a href="../WADL/Address.html">WADL::Address</a>
-  
-    <li><a href="../WADL/Application.html">WADL::Application</a>
-  
-    <li><a href="../WADL/CLI.html">WADL::CLI</a>
-  
-    <li><a href="../WADL/CheapSchema.html">WADL::CheapSchema</a>
-  
-    <li><a href="../WADL/Documentation.html">WADL::Documentation</a>
-  
-    <li><a href="../WADL/Fault.html">WADL::Fault</a>
-  
-    <li><a href="../WADL/FaultFormat.html">WADL::FaultFormat</a>
-  
-    <li><a href="../WADL/Faults.html">WADL::Faults</a>
-  
-    <li><a href="../WADL/HTTPMethod.html">WADL::HTTPMethod</a>
-  
-    <li><a href="../WADL/HasDocs.html">WADL::HasDocs</a>
-  
-    <li><a href="../WADL/Link.html">WADL::Link</a>
-  
-    <li><a href="../WADL/Option.html">WADL::Option</a>
-  
-    <li><a href="../WADL/Param.html">WADL::Param</a>
-  
-    <li><a href="../WADL/RepresentationContainer.html">WADL::RepresentationContainer</a>
-  
-    <li><a href="../WADL/RepresentationFormat.html">WADL::RepresentationFormat</a>
-  
-    <li><a href="../WADL/RequestFormat.html">WADL::RequestFormat</a>
-  
-    <li><a href="../WADL/Resource.html">WADL::Resource</a>
-  
-    <li><a href="../WADL/ResourceAndAddress.html">WADL::ResourceAndAddress</a>
-  
-    <li><a href="../WADL/ResourceContainer.html">WADL::ResourceContainer</a>
-  
-    <li><a href="../WADL/ResourceType.html">WADL::ResourceType</a>
-  
-    <li><a href="../WADL/Resources.html">WADL::Resources</a>
-  
-    <li><a href="../WADL/Response.html">WADL::Response</a>
-  
-    <li><a href="../WADL/ResponseFormat.html">WADL::ResponseFormat</a>
-  
-    <li><a href="../WADL/URIParts.html">WADL::URIParts</a>
-  
-    <li><a href="../WADL/Version.html">WADL::Version</a>
-  
-    <li><a href="../WADL/XMLRepresentation.html">WADL::XMLRepresentation</a>
-  
-  </ul>
-</nav>
+</div>
 
   </div>
 </nav>
 
-<div id="documentation">
-  <h1 class="class">class WADL::Resource</h1>
+<main role="main" aria-labelledby="class-WADL::Resource">
+  <h1 id="class-WADL::Resource" class="class">
+    class WADL::Resource
+  </h1>
 
-  <div id="description" class="description">
+  <section class="description">
     
-  </div><!-- description -->
+  </section>
 
   
   
@@ -217,10 +139,11 @@
 
     
 
-    <!-- Methods -->
     
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
 
     
       <div id="method-c-define_http_methods" class="method-detail ">
@@ -242,7 +165,7 @@
 
           
           <div class="method-source-code" id="define_http_methods-source">
-            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 156</span>
+            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 154</span>
     <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">define_http_methods</span>(<span class="ruby-identifier">klass</span> = <span class="ruby-keyword">self</span>, <span class="ruby-identifier">methods</span> = <span class="ruby-node">%w[head get post put delete]</span>)
       <span class="ruby-identifier">methods</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">method</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">class_eval</span> <span class="ruby-string">&quot;          def #{method}(*args, &amp;block)
@@ -255,14 +178,14 @@
 &quot;</span>, <span class="ruby-keyword">__FILE__</span>, <span class="ruby-keyword">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
       }
     <span class="ruby-keyword">end</span></pre>
-          </div><!-- define_http_methods-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- define_http_methods-method -->
+      </div>
 
     
       <div id="method-c-new" class="method-detail ">
@@ -289,24 +212,26 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 43</span>
+            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
   <span class="ruby-keyword">super</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- new-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- new-method -->
+      </div>
 
     
-    </section><!-- public-class-method-details -->
+    </section>
   
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
 
     
       <div id="method-i-address" class="method-detail ">
@@ -329,7 +254,7 @@ resource</p>
 
           
           <div class="method-source-code" id="address-source">
-            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 84</span>
+            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 82</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">address</span>(<span class="ruby-identifier">working_address</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">working_address</span> <span class="ruby-operator">&amp;&amp;=</span> <span class="ruby-identifier">working_address</span>.<span class="ruby-identifier">deep_copy</span>
 
@@ -371,14 +296,14 @@ resource</p>
 
   <span class="ruby-identifier">working_address</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- address-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- address-method -->
+      </div>
 
     
       <div id="method-i-bind" class="method-detail ">
@@ -401,18 +326,18 @@ bound to this resource and the given query variables.</p>
 
           
           <div class="method-source-code" id="bind-source">
-            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 57</span>
+            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">bind</span>(<span class="ruby-identifier">args</span> = {})
   <span class="ruby-identifier">resource_and_address</span>.<span class="ruby-identifier">bind!</span>(<span class="ruby-identifier">args</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- bind-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- bind-method -->
+      </div>
 
     
       <div id="method-i-dereference_with_context" class="method-detail ">
@@ -434,18 +359,18 @@ bound to this resource and the given query variables.</p>
 
           
           <div class="method-source-code" id="dereference_with_context-source">
-            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 51</span>
+            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">dereference_with_context</span>(<span class="ruby-identifier">child</span>)
   <span class="ruby-identifier">resource_and_address</span>(<span class="ruby-identifier">child</span>, <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">address</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- dereference_with_context-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- dereference_with_context-method -->
+      </div>
 
     
       <div id="method-i-each_http_method" class="method-detail ">
@@ -467,18 +392,18 @@ bound to this resource and the given query variables.</p>
 
           
           <div class="method-source-code" id="each_http_method-source">
-            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 139</span>
+            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 137</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">each_http_method</span>
   [<span class="ruby-keyword">self</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">resource_types</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">http_methods</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span> <span class="ruby-identifier">m</span> } }
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- each_http_method-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- each_http_method-method -->
+      </div>
 
     
       <div id="method-i-find_by_id" class="method-detail ">
@@ -500,19 +425,19 @@ bound to this resource and the given query variables.</p>
 
           
           <div class="method-source-code" id="find_by_id-source">
-            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 133</span>
+            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 131</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>
   <span class="ruby-identifier">resources</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">id</span> }
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- find_by_id-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- find_by_id-method -->
+      </div>
 
     
       <div id="method-i-find_method_by_http_method" class="method-detail ">
@@ -534,20 +459,20 @@ bound to this resource and the given query variables.</p>
 
           
           <div class="method-source-code" id="find_method_by_http_method-source">
-            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 149</span>
+            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 147</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find_method_by_http_method</span>(<span class="ruby-identifier">action</span>)
   <span class="ruby-identifier">action</span> = <span class="ruby-identifier">action</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>
   <span class="ruby-identifier">each_http_method</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-keyword">return</span> <span class="ruby-identifier">m</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">action</span> }
   <span class="ruby-keyword">nil</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- find_method_by_http_method-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- find_method_by_http_method-method -->
+      </div>
 
     
       <div id="method-i-find_method_by_id" class="method-detail ">
@@ -569,20 +494,20 @@ bound to this resource and the given query variables.</p>
 
           
           <div class="method-source-code" id="find_method_by_id-source">
-            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 143</span>
+            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 141</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find_method_by_id</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>
   <span class="ruby-identifier">each_http_method</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-keyword">return</span> <span class="ruby-identifier">m</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">dereference</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">id</span> }
   <span class="ruby-keyword">nil</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- find_method_by_id-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- find_method_by_id-method -->
+      </div>
 
     
       <div id="method-i-representation_for" class="method-detail ">
@@ -604,21 +529,21 @@ bound to this resource and the given query variables.</p>
 
           
           <div class="method-source-code" id="representation_for-source">
-            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 126</span>
+            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 124</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">representation_for</span>(<span class="ruby-identifier">http_method</span>, <span class="ruby-identifier">request</span> = <span class="ruby-keyword">true</span>, <span class="ruby-identifier">all</span> = <span class="ruby-keyword">false</span>)
   <span class="ruby-identifier">method</span> = <span class="ruby-identifier">find_method_by_http_method</span>(<span class="ruby-identifier">http_method</span>)
   <span class="ruby-identifier">representations</span> = (<span class="ruby-identifier">request</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">method</span>.<span class="ruby-identifier">request</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">method</span>.<span class="ruby-identifier">response</span>).<span class="ruby-identifier">representations</span>
 
   <span class="ruby-identifier">all</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">representations</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">representations</span>[<span class="ruby-value">0</span>]
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- representation_for-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- representation_for-method -->
+      </div>
 
     
       <div id="method-i-resource_and_address" class="method-detail ">
@@ -640,18 +565,18 @@ bound to this resource and the given query variables.</p>
 
           
           <div class="method-source-code" id="resource_and_address-source">
-            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 47</span>
+            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">resource_and_address</span>(<span class="ruby-identifier">child</span> = <span class="ruby-keyword">self</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
   <span class="ruby-constant">ResourceAndAddress</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">child</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- resource_and_address-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- resource_and_address-method -->
+      </div>
 
     
       <div id="method-i-uri" class="method-detail ">
@@ -673,18 +598,18 @@ bound to this resource and the given query variables.</p>
 
           
           <div class="method-source-code" id="uri-source">
-            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 79</span>
+            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 77</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">uri</span>(<span class="ruby-identifier">args</span> = {}, <span class="ruby-identifier">working_address</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">address</span>(<span class="ruby-identifier">working_address</span>).<span class="ruby-identifier">uri</span>(<span class="ruby-identifier">args</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- uri-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- uri-method -->
+      </div>
 
     
       <div id="method-i-with_basic_auth" class="method-detail ">
@@ -706,19 +631,19 @@ bound to this resource and the given query variables.</p>
 
           
           <div class="method-source-code" id="with_basic_auth-source">
-            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 62</span>
+            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">with_basic_auth</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>, <span class="ruby-identifier">header</span> = <span class="ruby-string">&#39;Authorization&#39;</span>)
   <span class="ruby-identifier">resource_and_address</span>.<span class="ruby-identifier">auth</span>(<span class="ruby-identifier">header</span>,
     <span class="ruby-node">&quot;Basic #{[&quot;#{user}:#{pass}&quot;].pack(&#39;m&#39;)}&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- with_basic_auth-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- with_basic_auth-method -->
+      </div>
 
     
       <div id="method-i-with_oauth" class="method-detail ">
@@ -747,31 +672,29 @@ bound to this resource and the given query variables.</p>
 
           
           <div class="method-source-code" id="with_oauth-source">
-            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 74</span>
+            <pre><span class="ruby-comment"># File lib/wadl/resource.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">with_oauth</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-  <span class="ruby-identifier">resource_and_address</span>.<span class="ruby-identifier">auth</span>(<span class="ruby-constant">HTTPMethod</span><span class="ruby-operator">::</span><span class="ruby-constant">OAUTH_HEADER</span>,
-    <span class="ruby-node">&quot;#{HTTPMethod::OAUTH_PREFIX}#{args.to_yaml}&quot;</span>)
+  <span class="ruby-identifier">resource_and_address</span>.<span class="ruby-identifier">auth</span>(<span class="ruby-operator">*</span><span class="ruby-constant">HTTPRequest</span>.<span class="ruby-identifier">oauth_header</span>(<span class="ruby-identifier">args</span>))
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- with_oauth-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- with_oauth-method -->
+      </div>
 
     
-    </section><!-- public-instance-method-details -->
+    </section>
   
-  </section><!-- 5Buntitled-5D -->
+  </section>
+</main>
 
-</div><!-- documentation -->
 
-
-<footer id="validator-badges">
-  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
-  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

@@ -2,173 +2,95 @@
 
 <html>
 <head>
-<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta charset="UTF-8">
 
-<title>class WADL::HTTPMethod - wadl Application documentation (v0.2.8)</title>
+<title>class WADL::HTTPMethod - wadl Application documentation (v0.3.0)</title>
 
-<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+<link href="../fonts.css" rel="stylesheet">
+<link href="../rdoc.css" rel="stylesheet">
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
 </script>
 
-<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/navigation.js"></script>
+<script src="../js/search_index.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/searcher.js"></script>
+<script src="../js/darkfish.js"></script>
 
 
-<body id="top" class="class">
-<nav id="metadata">
-  <nav id="home-section" class="section">
-  <h3 class="section-header">
-    <a href="../index.html">Home</a>
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
     <a href="../table_of_contents.html#classes">Classes</a>
     <a href="../table_of_contents.html#methods">Methods</a>
-  </h3>
-</nav>
+  </div>
+</div>
 
-
-  <nav id="search-section" class="section project-section" class="initially-hidden">
+    <div id="search-section" role="search" class="project-section initially-hidden">
   <form action="#" method="get" accept-charset="utf-8">
-    <h3 class="section-header">
-      <input type="text" name="search" placeholder="Search" id="search-field"
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
              title="Type to search, Up and Down to navigate, Enter to load">
-    </h3>
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
   </form>
+</div>
 
-  <ul id="search-results" class="initially-hidden"></ul>
-</nav>
-
+  </div>
 
   
-
-  <div id="file-metadata">
-    <nav id="file-list-section" class="section">
-  <h3 class="section-header">Defined In</h3>
-  <ul>
-    <li>lib/wadl/http_method.rb
-    <li>lib/wadl/resource.rb
-  </ul>
-</nav>
-
-    
-  </div>
 
   <div id="class-metadata">
     
-    <nav id="parent-class-section" class="section">
-  <h3 class="section-header">Parent</h3>
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
   
   <p class="link"><a href="HasDocs.html">WADL::HasDocs</a>
   
-</nav>
+</div>
 
     
     
     <!-- Method Quickref -->
-<nav id="method-list-section" class="section">
-  <h3 class="section-header">Methods</h3>
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
 
-  <ul class="link-list">
+  <ul class="link-list" role="directory">
     
     <li ><a href="#method-i-call">#call</a>
     
-    <li ><a href="#method-i-set_oauth_header">#set_oauth_header</a>
+    <li ><a href="#method-i-response">#response</a>
     
   </ul>
-</nav>
-
-  </div>
-
-  <div id="project-metadata">
-    <nav id="fileindex-section" class="section project-section">
-  <h3 class="section-header">Pages</h3>
-
-  <ul>
-  
-    <li class="file"><a href="../COPYING.html">COPYING</a>
-  
-    <li class="file"><a href="../ChangeLog.html">ChangeLog</a>
-  
-    <li class="file"><a href="../README.html">README</a>
-  
-  </ul>
-</nav>
-
-    <nav id="classindex-section" class="section project-section">
-  <h3 class="section-header">Class and Module Index</h3>
-
-  <ul class="link-list">
-  
-    <li><a href="../WADL.html">WADL</a>
-  
-    <li><a href="../WADL/Address.html">WADL::Address</a>
-  
-    <li><a href="../WADL/Application.html">WADL::Application</a>
-  
-    <li><a href="../WADL/CLI.html">WADL::CLI</a>
-  
-    <li><a href="../WADL/CheapSchema.html">WADL::CheapSchema</a>
-  
-    <li><a href="../WADL/Documentation.html">WADL::Documentation</a>
-  
-    <li><a href="../WADL/Fault.html">WADL::Fault</a>
-  
-    <li><a href="../WADL/FaultFormat.html">WADL::FaultFormat</a>
-  
-    <li><a href="../WADL/Faults.html">WADL::Faults</a>
-  
-    <li><a href="../WADL/HTTPMethod.html">WADL::HTTPMethod</a>
-  
-    <li><a href="../WADL/HasDocs.html">WADL::HasDocs</a>
-  
-    <li><a href="../WADL/Link.html">WADL::Link</a>
-  
-    <li><a href="../WADL/Option.html">WADL::Option</a>
-  
-    <li><a href="../WADL/Param.html">WADL::Param</a>
-  
-    <li><a href="../WADL/RepresentationContainer.html">WADL::RepresentationContainer</a>
-  
-    <li><a href="../WADL/RepresentationFormat.html">WADL::RepresentationFormat</a>
-  
-    <li><a href="../WADL/RequestFormat.html">WADL::RequestFormat</a>
-  
-    <li><a href="../WADL/Resource.html">WADL::Resource</a>
-  
-    <li><a href="../WADL/ResourceAndAddress.html">WADL::ResourceAndAddress</a>
-  
-    <li><a href="../WADL/ResourceContainer.html">WADL::ResourceContainer</a>
-  
-    <li><a href="../WADL/ResourceType.html">WADL::ResourceType</a>
-  
-    <li><a href="../WADL/Resources.html">WADL::Resources</a>
-  
-    <li><a href="../WADL/Response.html">WADL::Response</a>
-  
-    <li><a href="../WADL/ResponseFormat.html">WADL::ResponseFormat</a>
-  
-    <li><a href="../WADL/URIParts.html">WADL::URIParts</a>
-  
-    <li><a href="../WADL/Version.html">WADL::Version</a>
-  
-    <li><a href="../WADL/XMLRepresentation.html">WADL::XMLRepresentation</a>
-  
-  </ul>
-</nav>
+</div>
 
   </div>
 </nav>
 
-<div id="documentation">
-  <h1 class="class">class WADL::HTTPMethod</h1>
+<main role="main" aria-labelledby="class-WADL::HTTPMethod">
+  <h1 id="class-WADL::HTTPMethod" class="class">
+    class WADL::HTTPMethod
+  </h1>
 
-  <div id="description" class="description">
+  <section class="description">
     
-  </div><!-- description -->
+  </section>
 
   
   
@@ -179,31 +101,14 @@
     
 
     
-    <!-- Constants -->
-    <section id="constants-list" class="section">
-      <h3 class="section-header">Constants</h3>
-      <dl>
-      
-        <dt id="OAUTH_HEADER">OAUTH_HEADER
-        
-        <dd class="description">
-        
-      
-        <dt id="OAUTH_PREFIX">OAUTH_PREFIX
-        
-        <dd class="description">
-        
-      
-      </dl>
-    </section>
-    
 
     
 
-    <!-- Methods -->
     
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
 
     
       <div id="method-i-call" class="method-detail ">
@@ -231,7 +136,7 @@
 
           
           <div class="method-source-code" id="call-source">
-            <pre><span class="ruby-comment"># File lib/wadl/http_method.rb, line 58</span>
+            <pre><span class="ruby-comment"># File lib/wadl/http_method.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">call</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-identifier">args</span> = {})
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:uri</span>)
     <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;You can&#39;t call a method that&#39;s not attached to a resource! (You may have dereferenced a method when you shouldn&#39;t have)&quot;</span>
@@ -241,39 +146,28 @@
   <span class="ruby-identifier">method</span> = <span class="ruby-identifier">dereference</span>
 
   <span class="ruby-identifier">uri</span> = <span class="ruby-identifier">method</span>.<span class="ruby-identifier">request</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">method</span>.<span class="ruby-identifier">request</span>.<span class="ruby-identifier">uri</span>(<span class="ruby-identifier">resource</span>, <span class="ruby-identifier">args</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">resource</span>.<span class="ruby-identifier">uri</span>(<span class="ruby-identifier">args</span>)
+
   <span class="ruby-identifier">headers</span> = <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">headers</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">headers</span>[<span class="ruby-string">&#39;Accept&#39;</span>] = <span class="ruby-identifier">expect_representation</span>.<span class="ruby-identifier">mediaType</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-value">:expect_representation</span>]
 
-  <span class="ruby-identifier">headers</span>[<span class="ruby-string">&#39;Accept&#39;</span>]       = <span class="ruby-identifier">expect_representation</span>.<span class="ruby-identifier">mediaType</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-value">:expect_representation</span>]
-  <span class="ruby-identifier">headers</span>[<span class="ruby-string">&#39;User-Agent&#39;</span>]   = <span class="ruby-string">&#39;Ruby WADL client&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">headers</span>[<span class="ruby-string">&#39;User-Agent&#39;</span>]
-  <span class="ruby-identifier">headers</span>[<span class="ruby-string">&#39;Content-Type&#39;</span>] = <span class="ruby-string">&#39;application/x-www-form-urlencoded&#39;</span>
-  <span class="ruby-identifier">headers</span>[<span class="ruby-value">:method</span>]        = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">to_sym</span>
-  <span class="ruby-identifier">headers</span>[<span class="ruby-value">:body</span>]          = <span class="ruby-identifier">args</span>[<span class="ruby-value">:send_representation</span>]
-
-  <span class="ruby-identifier">set_oauth_header</span>(<span class="ruby-identifier">headers</span>, <span class="ruby-identifier">uri</span>)
-
-  <span class="ruby-identifier">response</span> = <span class="ruby-keyword">begin</span>
-    <span class="ruby-identifier">open</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">headers</span>)
-  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">OpenURI</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">err</span>
-    <span class="ruby-identifier">err</span>.<span class="ruby-identifier">io</span>
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-identifier">method</span>.<span class="ruby-identifier">response</span>.<span class="ruby-identifier">build</span>(<span class="ruby-identifier">response</span>)
+  <span class="ruby-identifier">method</span>.<span class="ruby-identifier">response</span>.<span class="ruby-identifier">build</span>(<span class="ruby-constant">HTTPRequest</span>.<span class="ruby-identifier">execute</span>(
+    <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">args</span>[<span class="ruby-value">:send_representation</span>], <span class="ruby-identifier">headers</span>))
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- call-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- call-method -->
+      </div>
 
     
-      <div id="method-i-set_oauth_header" class="method-detail ">
+      <div id="method-i-response" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">set_oauth_header</span><span
-            class="method-args">(headers, uri)</span>
+          <span class="method-name">response</span><span
+            class="method-args">()</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -287,51 +181,30 @@
           
 
           
-          <div class="method-source-code" id="set_oauth_header-source">
-            <pre><span class="ruby-comment"># File lib/wadl/http_method.rb, line 86</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_oauth_header</span>(<span class="ruby-identifier">headers</span>, <span class="ruby-identifier">uri</span>)
-  <span class="ruby-identifier">args</span> = <span class="ruby-identifier">headers</span>[<span class="ruby-constant">OAUTH_HEADER</span>] <span class="ruby-keyword">or</span> <span class="ruby-keyword">return</span>
-
-  <span class="ruby-identifier">yaml</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">dup</span>
-  <span class="ruby-identifier">yaml</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-node">/\A#{OAUTH_PREFIX}/</span>, <span class="ruby-string">&#39;&#39;</span>) <span class="ruby-keyword">or</span> <span class="ruby-keyword">return</span>
-
-  <span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span>, <span class="ruby-identifier">access_token</span>, <span class="ruby-identifier">token_secret</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">yaml</span>)
-
-  <span class="ruby-identifier">request</span> = <span class="ruby-constant">OpenURI</span><span class="ruby-operator">::</span><span class="ruby-constant">Methods</span>[<span class="ruby-identifier">headers</span>[<span class="ruby-value">:method</span>]].<span class="ruby-identifier">new</span>(<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">to_s</span>)
-
-  <span class="ruby-identifier">consumer</span> = <span class="ruby-constant">OAuth</span><span class="ruby-operator">::</span><span class="ruby-constant">Consumer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span>)
-  <span class="ruby-identifier">token</span>    = <span class="ruby-constant">OAuth</span><span class="ruby-operator">::</span><span class="ruby-constant">AccessToken</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">consumer</span>, <span class="ruby-identifier">access_token</span>, <span class="ruby-identifier">token_secret</span>)
-
-  <span class="ruby-identifier">helper</span> = <span class="ruby-constant">OAuth</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span><span class="ruby-operator">::</span><span class="ruby-constant">Helper</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">request</span>,
-    <span class="ruby-value">:request_uri</span>      =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">path</span>,
-    <span class="ruby-value">:consumer</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">consumer</span>,
-    <span class="ruby-value">:token</span>            =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">token</span>,
-    <span class="ruby-value">:scheme</span>           =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;header&#39;</span>,
-    <span class="ruby-value">:signature_method</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;HMAC-SHA1&#39;</span>
-  )
-
-  <span class="ruby-identifier">headers</span>[<span class="ruby-constant">OAUTH_HEADER</span>] = <span class="ruby-identifier">helper</span>.<span class="ruby-identifier">header</span>
+          <div class="method-source-code" id="response-source">
+            <pre><span class="ruby-comment"># File lib/wadl/http_method.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">response</span>
+  <span class="ruby-identifier">responses</span>.<span class="ruby-identifier">first</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- set_oauth_header-source -->
+          </div>
           
         </div>
 
         
 
         
-      </div><!-- set_oauth_header-method -->
+      </div>
 
     
-    </section><!-- public-instance-method-details -->
+    </section>
   
-  </section><!-- 5Buntitled-5D -->
+  </section>
+</main>
 
-</div><!-- documentation -->
 
-
-<footer id="validator-badges">
-  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
-  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 
