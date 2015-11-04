@@ -14,8 +14,8 @@ begin
       license:      %q{AGPL-3.0},
       homepage:     :blackwinter,
       dependencies: {
-        'cyclops'    => ['~> 0.0', '>= 0.0.4'],
-        'mime-types' => '~> 2.4',
+        'cyclops'    => '~> 0.2',
+        'mime-types' => '~> 2.6',
         'safe_yaml'  => '~> 1.0'
       },
 
