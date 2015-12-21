@@ -4,7 +4,7 @@
 # A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
-# Copyright (C) 2010-2014 Jens Wille                                          #
+# Copyright (C) 2010-2015 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Leonard Richardson <leonardr@segfault.org> (Original author)            #
@@ -32,7 +32,8 @@ module WADL
 
     in_document 'method'
     as_collection 'http_methods'
-    has_required :id, :name
+    has_attributes :id
+    has_required :name
     has_one RequestFormat
     has_many ResponseFormat
     may_be_reference

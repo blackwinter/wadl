@@ -348,6 +348,52 @@ class ResponseFormatTest < WADLTest
 
 end
 
+class EmbeddedMethodTest < WADLTest
+
+  def setup
+    @wadl = wadl(<<-EOT)
+<resources base="http://www.example.com/">
+  <resource id="top" path="palette">
+    <method name="GET">
+      <request></request>
+      <response>
+        <representation mediaType="application/json"/>
+      </response>
+    </method>
+  </resource>
+  <resource id="bottom" path="palette">
+    <method name="GET">
+      <request></request>
+      <response>
+        <representation mediaType="application/json"/>
+      </response>
+      <response>
+        <representation mediaType="text/xml"/>
+      </response>
+    </method>
+  </resource>
+</resources>
+    EOT
+  end
+
+  def test_find_method
+    graphic = @wadl.find_resource('top').find_method_by_http_method(:get)
+    representations = graphic.response.representations
+
+    assert_equal(1, representations.size)
+    assert_equal('application/json', representations.first.mediaType)
+
+    graphic = @wadl.find_resource('bottom').find_method_by_http_method(:get)
+    responses = graphic.responses
+
+    assert_equal(2, responses.size)
+    assert_equal(%w[application/json text/xml], responses.map { |response|
+      response.representations.first.mediaType
+    })
+  end
+
+end
+
 class AuthTest < WADLTest
 
   def setup
