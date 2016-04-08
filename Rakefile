@@ -19,7 +19,7 @@ begin
         'safe_yaml'  => '~> 1.0'
       },
 
-      required_ruby_version: '>= 1.9.3'
+      required_ruby_version: '>= 2.0'
     }
   }}
 rescue LoadError => err
