@@ -1,23 +1,23 @@
-Fri, 28 Nov 2014 15:08:57 +0100
-README	Fri, 28 Nov 2014 15:05:25 +0100
+Fri, 08 Apr 2016 12:51:07 +0200
+README	Fri, 08 Apr 2016 12:50:21 +0200
 COPYING	Mon, 14 Apr 2014 11:39:59 +0200
 ChangeLog	Mon, 14 Apr 2014 11:39:59 +0200
 lib/wadl.rb	Wed, 07 May 2014 16:42:43 +0200
 lib/wadl/cli.rb	Wed, 07 May 2014 16:42:43 +0200
 lib/wadl/link.rb	Wed, 07 May 2014 16:42:43 +0200
 lib/wadl/fault.rb	Wed, 07 May 2014 16:42:43 +0200
-lib/wadl/param.rb	Wed, 07 May 2014 16:42:43 +0200
+lib/wadl/param.rb	Fri, 08 Apr 2016 12:50:21 +0200
 lib/wadl/option.rb	Wed, 07 May 2014 16:42:43 +0200
-lib/wadl/address.rb	Wed, 07 May 2014 16:42:43 +0200
-lib/wadl/version.rb	Fri, 28 Nov 2014 15:05:02 +0100
+lib/wadl/address.rb	Fri, 08 Apr 2016 12:50:21 +0200
+lib/wadl/version.rb	Fri, 08 Apr 2016 12:50:21 +0200
 lib/wadl/has_docs.rb	Wed, 07 May 2014 16:42:43 +0200
 lib/wadl/resource.rb	Wed, 07 May 2014 16:42:43 +0200
 lib/wadl/response.rb	Wed, 07 May 2014 16:42:43 +0200
 lib/wadl/resources.rb	Wed, 07 May 2014 16:42:43 +0200
 lib/wadl/uri_parts.rb	Wed, 07 May 2014 16:42:43 +0200
 lib/wadl/application.rb	Wed, 07 May 2014 16:42:43 +0200
-lib/wadl/http_method.rb	Wed, 07 May 2014 16:42:43 +0200
-lib/wadl/cheap_schema.rb	Wed, 07 May 2014 16:42:43 +0200
+lib/wadl/http_method.rb	Fri, 08 Apr 2016 11:03:37 +0200
+lib/wadl/cheap_schema.rb	Fri, 08 Apr 2016 12:50:21 +0200
 lib/wadl/fault_format.rb	Wed, 07 May 2014 16:42:43 +0200
 lib/wadl/http_request.rb	Wed, 07 May 2014 16:42:43 +0200
 lib/wadl/documentation.rb	Wed, 07 May 2014 16:42:43 +0200
@@ -28,5 +28,5 @@ lib/wadl/response_format.rb	Wed, 07 May 2014 16:42:43 +0200
 lib/wadl/resource_container.rb	Wed, 07 May 2014 16:42:43 +0200
 lib/wadl/xml_representation.rb	Wed, 07 May 2014 16:42:43 +0200
 lib/wadl/resource_and_address.rb	Wed, 07 May 2014 16:42:43 +0200
-lib/wadl/representation_format.rb	Wed, 07 May 2014 16:42:43 +0200
+lib/wadl/representation_format.rb	Fri, 08 Apr 2016 12:50:21 +0200
 lib/wadl/representation_container.rb	Wed, 07 May 2014 16:42:43 +0200

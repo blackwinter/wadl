@@ -4,21 +4,18 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class WADL::HTTPRequest - wadl Application documentation (v0.3.0)</title>
-
-<link href="../fonts.css" rel="stylesheet">
-<link href="../rdoc.css" rel="stylesheet">
+<title>class WADL::HTTPRequest - wadl Application documentation (v0.3.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
 </script>
 
 <script src="../js/jquery.js"></script>
-<script src="../js/navigation.js"></script>
-<script src="../js/search_index.js"></script>
-<script src="../js/search.js"></script>
-<script src="../js/searcher.js"></script>
 <script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
 
 
 <body id="top" role="document" class="class">
@@ -73,15 +70,19 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-c-execute">::execute</a>
+    
     <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-c-oauth_header">::oauth_header</a>
+    
+    <li ><a href="#method-c-valid_oauth_args-3F">::valid_oauth_args?</a>
     
     <li ><a href="#method-i-execute">#execute</a>
     
     <li ><a href="#method-i-finish">#finish</a>
     
     <li ><a href="#method-i-make_request">#make_request</a>
-    
-    <li ><a href="#method-i-oauth_header">#oauth_header</a>
     
     <li ><a href="#method-i-prepare_request">#prepare_request</a>
     
@@ -92,8 +93,6 @@
     <li ><a href="#method-i-start">#start</a>
     
     <li ><a href="#method-i-started-3F">#started?</a>
-    
-    <li ><a href="#method-i-valid_oauth_args-3F">#valid_oauth_args?</a>
     
   </ul>
 </div>
@@ -197,6 +196,39 @@
        </header>
 
     
+      <div id="method-c-execute" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">execute</span><span
+            class="method-args">(uri, *args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="execute-source">
+            <pre><span class="ruby-comment"># File lib/wadl/http_request.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">execute</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">new</span>(<span class="ruby-identifier">uri</span>).<span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-c-new" class="method-detail ">
         
         <div class="method-heading">
@@ -230,6 +262,73 @@
       </div>
 
     
+      <div id="method-c-oauth_header" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">oauth_header</span><span
+            class="method-args">(args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="oauth_header-source">
+            <pre><span class="ruby-comment"># File lib/wadl/http_request.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">oauth_header</span>(<span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">valid_oauth_args?</span>(<span class="ruby-identifier">args</span>)
+  [<span class="ruby-constant">OAUTH_HEADER</span>, <span class="ruby-node">&quot;#{OAUTH_PREFIX}#{args.to_yaml}&quot;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-valid_oauth_args-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">valid_oauth_args?</span><span
+            class="method-args">(args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="valid_oauth_args-3F-source">
+            <pre><span class="ruby-comment"># File lib/wadl/http_request.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">valid_oauth_args?</span>(<span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">args</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">4</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
     </section>
   
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
@@ -242,7 +341,7 @@
         
         <div class="method-heading">
           <span class="method-name">execute</span><span
-            class="method-args">(uri, *args)</span>
+            class="method-args">(*args)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -257,9 +356,14 @@
 
           
           <div class="method-source-code" id="execute-source">
-            <pre><span class="ruby-comment"># File lib/wadl/http_request.rb, line 48</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">execute</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-  <span class="ruby-identifier">new</span>(<span class="ruby-identifier">uri</span>).<span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+            <pre><span class="ruby-comment"># File lib/wadl/http_request.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">start</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">started?</span>
+
+  <span class="ruby-identifier">req</span> = <span class="ruby-identifier">prepare_request</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">http</span>.<span class="ruby-identifier">request</span>(<span class="ruby-identifier">req</span>)
+
+  <span class="ruby-constant">HTTPResponse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">res</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -294,40 +398,6 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">finish</span>
   <span class="ruby-identifier">http</span>.<span class="ruby-identifier">finish</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">started?</span>
   <span class="ruby-keyword">self</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-oauth_header" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">oauth_header</span><span
-            class="method-args">(args)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="oauth_header-source">
-            <pre><span class="ruby-comment"># File lib/wadl/http_request.rb, line 52</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">oauth_header</span>(<span class="ruby-identifier">args</span>)
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">valid_oauth_args?</span>(<span class="ruby-identifier">args</span>)
-  [<span class="ruby-constant">OAUTH_HEADER</span>, <span class="ruby-node">&quot;#{OAUTH_PREFIX}#{args.to_yaml}&quot;</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -399,39 +469,6 @@
             <pre><span class="ruby-comment"># File lib/wadl/http_request.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">started?</span>
   <span class="ruby-identifier">http</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">http</span>.<span class="ruby-identifier">started?</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-valid_oauth_args-3F" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">valid_oauth_args?</span><span
-            class="method-args">(args)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="valid_oauth_args-3F-source">
-            <pre><span class="ruby-comment"># File lib/wadl/http_request.rb, line 57</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">valid_oauth_args?</span>(<span class="ruby-identifier">args</span>)
-  <span class="ruby-identifier">args</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">4</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -614,7 +651,7 @@
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

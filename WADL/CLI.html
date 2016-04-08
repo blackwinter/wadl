@@ -4,21 +4,18 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class WADL::CLI - wadl Application documentation (v0.3.0)</title>
-
-<link href="../fonts.css" rel="stylesheet">
-<link href="../rdoc.css" rel="stylesheet">
+<title>class WADL::CLI - wadl Application documentation (v0.3.1)</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
 </script>
 
 <script src="../js/jquery.js"></script>
-<script src="../js/navigation.js"></script>
-<script src="../js/search_index.js"></script>
-<script src="../js/search.js"></script>
-<script src="../js/searcher.js"></script>
 <script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
 
 
 <body id="top" role="document" class="class">
@@ -73,6 +70,10 @@
 
   <ul class="link-list" role="directory">
     
+    <li class="calls-super" ><a href="#method-c-defaults">::defaults</a>
+    
+    <li ><a href="#method-c-usage">::usage</a>
+    
     <li ><a href="#method-i-add_param">#add_param</a>
     
     <li ><a href="#method-i-api">#api</a>
@@ -80,8 +81,6 @@
     <li ><a href="#method-i-auth_resource">#auth_resource</a>
     
     <li ><a href="#method-i-basic_auth_resource">#basic_auth_resource</a>
-    
-    <li class="calls-super" ><a href="#method-i-defaults">#defaults</a>
     
     <li class="calls-super" ><a href="#method-i-generic_opts">#generic_opts</a>
     
@@ -104,8 +103,6 @@
     <li ><a href="#method-i-resource">#resource</a>
     
     <li ><a href="#method-i-run">#run</a>
-    
-    <li ><a href="#method-i-usage">#usage</a>
     
   </ul>
 </div>
@@ -203,6 +200,92 @@
     
 
     
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-defaults" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">defaults</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="defaults-source">
+            <pre><span class="ruby-comment"># File lib/wadl/cli.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">defaults</span>
+  <span class="ruby-keyword">super</span>.<span class="ruby-identifier">merge</span>(
+    <span class="ruby-identifier">config</span><span class="ruby-operator">:</span>            <span class="ruby-string">&#39;config.yaml&#39;</span>,
+    <span class="ruby-identifier">method</span><span class="ruby-operator">:</span>            <span class="ruby-constant">HTTPRequest</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT_METHOD</span>.<span class="ruby-identifier">upcase</span>,
+    <span class="ruby-identifier">user</span><span class="ruby-operator">:</span>              <span class="ruby-constant">ENV</span>[<span class="ruby-string">&#39;USER&#39;</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;&#39;</span>,
+    <span class="ruby-identifier">request_token_url</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;%s/oauth/request_token&#39;</span>,
+    <span class="ruby-identifier">access_token_url</span><span class="ruby-operator">:</span>  <span class="ruby-string">&#39;%s/oauth/access_token&#39;</span>,
+    <span class="ruby-identifier">authorize_url</span><span class="ruby-operator">:</span>     <span class="ruby-string">&#39;%s/oauth/authorize&#39;</span>
+  )
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-usage" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">usage</span><span
+            class="method-args">(*)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="usage-source">
+            <pre><span class="ruby-comment"># File lib/wadl/cli.rb, line 47</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">usage</span>(<span class="ruby-operator">*</span>)
+  <span class="ruby-node">&quot;#{super} &lt;resource-path&gt; [-- arguments]&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
@@ -267,51 +350,6 @@
                      <span class="ruby-identifier">options</span>[<span class="ruby-value">:oauth</span>]     <span class="ruby-operator">?</span> <span class="ruby-identifier">oauth_resource</span>      <span class="ruby-operator">:</span>
                      <span class="ruby-identifier">options</span>[<span class="ruby-value">:basic</span>]     <span class="ruby-operator">?</span> <span class="ruby-identifier">basic_auth_resource</span> <span class="ruby-operator">:</span>
                                            <span class="ruby-identifier">resource</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-defaults" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">defaults</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-            <div class="method-calls-super">
-              Calls superclass method
-              
-            </div>
-          
-
-          
-          <div class="method-source-code" id="defaults-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cli.rb, line 51</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">defaults</span>
-  <span class="ruby-keyword">super</span>.<span class="ruby-identifier">merge</span>(
-    <span class="ruby-identifier">config</span><span class="ruby-operator">:</span>            <span class="ruby-string">&#39;config.yaml&#39;</span>,
-    <span class="ruby-identifier">method</span><span class="ruby-operator">:</span>            <span class="ruby-constant">HTTPRequest</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT_METHOD</span>.<span class="ruby-identifier">upcase</span>,
-    <span class="ruby-identifier">user</span><span class="ruby-operator">:</span>              <span class="ruby-constant">ENV</span>[<span class="ruby-string">&#39;USER&#39;</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;&#39;</span>,
-    <span class="ruby-identifier">request_token_url</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;%s/oauth/request_token&#39;</span>,
-    <span class="ruby-identifier">access_token_url</span><span class="ruby-operator">:</span>  <span class="ruby-string">&#39;%s/oauth/access_token&#39;</span>,
-    <span class="ruby-identifier">authorize_url</span><span class="ruby-operator">:</span>     <span class="ruby-string">&#39;%s/oauth/authorize&#39;</span>
-  )
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -444,39 +482,6 @@
 
   <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39; &#39;</span>)
   <span class="ruby-identifier">stdout</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">representation</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\A[45]/</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-usage" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">usage</span><span
-            class="method-args">(*)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="usage-source">
-            <pre><span class="ruby-comment"># File lib/wadl/cli.rb, line 47</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">usage</span>(<span class="ruby-operator">*</span>)
-  <span class="ruby-node">&quot;#{super} &lt;resource-path&gt; [-- arguments]&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -1007,7 +1012,7 @@
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 
