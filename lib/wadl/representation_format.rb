@@ -4,7 +4,7 @@
 # A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
-# Copyright (C) 2010-2014 Jens Wille                                          #
+# Copyright (C) 2010-2016 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Leonard Richardson <leonardr@segfault.org> (Original author)            #
@@ -63,7 +63,7 @@ module WADL
           raise ArgumentError, "Your proposed representation is missing a value for #{param.name}" if param.required?
         end
 
-        p_values.each { |v| representation << "#{CGI::escape(name)}=#{CGI::escape(v.to_s)}" } if p_values
+        p_values.each { |v| representation << "#{CGI.escape(name)}=#{CGI.escape(v.to_s)}" } if p_values
       }
 
       representation.join('&')

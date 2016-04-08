@@ -26,7 +26,7 @@
 ###############################################################################
 #++
 
-require 'uri'
+require 'erb'
 
 module WADL
 
@@ -112,22 +112,28 @@ module WADL
       if style == 'query' || parent.is_a?(RequestFormat) || (
         parent.respond_to?(:is_form_representation?) && parent.is_form_representation?
       )
-        values.map { |v| "#{URI.escape(name)}=#{URI.escape(v.to_s)}" }.join('&')
+        values.map { |v| "#{uri_escape(name)}=#{uri_escape(v.to_s)}" }.join('&')
       elsif style == 'matrix'
         if type == 'xsd:boolean'
           values.map { |v| ";#{name}" if v =~ BOOLEAN_RE }.compact.join
         else
-          values.map { |v| ";#{URI.escape(name)}=#{URI.escape(v.to_s)}" if v }.compact.join
+          values.map { |v| ";#{uri_escape(name)}=#{uri_escape(v.to_s)}" if v }.compact.join
         end
       elsif style == 'header'
         values.join(',')
       else
         # All other cases: plain text representation.
-        values.map { |v| URI.escape(v.to_s) }.join(',')
+        values.map { |v| uri_escape(v.to_s) }.join(',')
       end
     end
 
     alias_method :%, :format
+
+    private
+
+    def uri_escape(v)
+      ERB::Util.url_encode(v)
+    end
 
   end
 
