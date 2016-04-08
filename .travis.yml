@@ -24,7 +24,8 @@ script:
   rake test
 
 install:
-  gem install --prerelease --development wadl
+  - gem install nuggets power_assert
+  - gem install --prerelease --development wadl
 
 sudo:
   false
