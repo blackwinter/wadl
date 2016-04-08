@@ -2,7 +2,7 @@
 
 == VERSION
 
-This documentation refers to wadl version 0.3.0
+This documentation refers to wadl version 0.3.1
 
 
 == DESCRIPTION
@@ -61,7 +61,7 @@ Travis CI::          https://travis-ci.org/blackwinter/wadl
 == LICENSE AND COPYRIGHT
 
 Copyright (C) 2006-2008 Leonard Richardson
-Copyright (C) 2010-2014 Jens Wille
+Copyright (C) 2010-2016 Jens Wille
 
 wadl is free software: you can redistribute it and/or modify it under
 the terms of the GNU Affero General Public License as published by the

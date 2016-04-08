@@ -15,7 +15,7 @@ begin
       homepage:     :blackwinter,
       dependencies: {
         'cyclops'    => '~> 0.2',
-        'mime-types' => '~> 2.6',
+        'mime-types' => '~> 3.0',
         'safe_yaml'  => '~> 1.0'
       },
 
