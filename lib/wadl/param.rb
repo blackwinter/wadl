@@ -4,7 +4,7 @@
 # A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
-# Copyright (C) 2010-2014 Jens Wille                                          #
+# Copyright (C) 2010-2016 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Leonard Richardson <leonardr@segfault.org> (Original author)            #
@@ -101,10 +101,10 @@ module WADL
       # If the param lists acceptable values in option tags, make sure that
       # all values are found in those tags.
       if options && !options.empty?
-        values.each { |value|
-          unless find_option(value)
+        values.each { |_value|
+          unless find_option(_value)
             acceptable = options.map { |o| o.value }.join('", "')
-            raise ArgumentError, %Q{"#{value}" is not among the acceptable parameter values ("#{acceptable}")}
+            raise ArgumentError, %Q{"#{_value}" is not among the acceptable parameter values ("#{acceptable}")}
           end
         }
       end

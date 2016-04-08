@@ -4,7 +4,7 @@
 # A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
-# Copyright (C) 2010-2014 Jens Wille                                          #
+# Copyright (C) 2010-2016 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Leonard Richardson <leonardr@segfault.org> (Original author)            #
@@ -112,11 +112,11 @@ module WADL
               auto_dereference = args.shift
               auto_dereference = true if auto_dereference.nil?
 
-              match = #{collection_name}.find { |match|
-                block[match] || (
+              match = #{collection_name}.find { |_match|
+                block[_match] || (
                   #{klass}.may_be_reference? &&
                   auto_dereference &&
-                  block[match.dereference]
+                  block[_match.dereference]
                 )
               }
 
@@ -337,10 +337,10 @@ module WADL
       if default
         memo = []
 
-        paths.map { |level, path|
-          if path
-            memo.slice!(level..-1)
-            memo[level] = path
+        paths.map { |_level, _path|
+          if _path
+            memo.slice!(_level..-1)
+            memo[_level] = _path
 
             nil  # ignore
           else
@@ -352,12 +352,12 @@ module WADL
       end
     end
 
-    def to_s(indent = 0, collection = false)
+    def to_s(indent = 0, is_collection = false)
       klass = self.class
 
       a = '  '
       i = a * indent
-      s = "#{collection ? a * (indent - 1) + '- ' : i}#{klass.name}\n"
+      s = "#{is_collection ? a * (indent - 1) + '- ' : i}#{klass.name}\n"
 
       if klass.may_be_reference? and href = attributes['href']
         s << "#{i}= href=#{href}\n"

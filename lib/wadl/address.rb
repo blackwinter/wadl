@@ -4,7 +4,7 @@
 # A component of wadl, the super cheap Ruby WADL client.                      #
 #                                                                             #
 # Copyright (C) 2006-2008 Leonard Richardson                                  #
-# Copyright (C) 2010-2014 Jens Wille                                          #
+# Copyright (C) 2010-2016 Jens Wille                                          #
 #                                                                             #
 # Authors:                                                                    #
 #     Leonard Richardson <leonardr@segfault.org> (Original author)            #
@@ -195,12 +195,12 @@ module WADL
 
     private
 
-    def _deep_copy_hash(h)
-      h.inject({}) { |h, (k, v)| h[k] = v && v.dup; h }
+    def _deep_copy_hash(o)
+      o.inject({}) { |h, (k, v)| h[k] = v && v.dup; h }
     end
 
-    def _deep_copy_array(a)
-      a.inject([]) { |a, e| a << (e && e.dup) }
+    def _deep_copy_array(o)
+      o.inject([]) { |a, e| a << (e && e.dup) }
     end
 
   end
