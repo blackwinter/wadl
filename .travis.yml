@@ -24,8 +24,7 @@ script:
   rake test
 
 install:
-  - gem install nuggets power_assert mime-types-data
-  - gem install --prerelease --development wadl
+  gem install --prerelease --development wadl
 
 sudo:
   false
