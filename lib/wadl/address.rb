@@ -92,7 +92,9 @@ module WADL
       # Bind variables found in the path fragments.
       path_params_to_delete = []
 
-      path_fragments.each { |fragment|
+      # This patch solves and issue regarding basic_auth and the use of uri template params
+      #  This way, path params are never evaluated if they are not set (like in with_basic_auth/2) 
+      if(path_var_values.length > 0) then path_fragments.each { |fragment|
         if fragment.respond_to?(:to_str)
           # This fragment is a string which might contain {} substitutions.
           # Make any substitutions available to the provided path variables.
@@ -125,7 +127,7 @@ module WADL
             path_params_to_delete << param
           }
         end
-      }
+      } end
 
       # Delete any embedded path parameters that are now bound from
       # our list of unbound parameters.
